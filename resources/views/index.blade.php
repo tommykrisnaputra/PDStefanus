@@ -59,7 +59,7 @@
                 <a href="/" class="home-navlink">Home</a>
                 <span class="home-text">Info Paroki</span>
               </div>
-              <a href="login" class="home-navlink1">
+              <a href="/" class="home-navlink1">
                 <div class="solid-button-container">
                   <button class="solid-button-button button Button">
                     <span>Login</span>

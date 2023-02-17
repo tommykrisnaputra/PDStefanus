@@ -127,7 +127,7 @@
 
 <body>
     <div>
-        <link href="css/home.css" rel="stylesheet" type="text/css">
+        <link href="css/users.css" rel="stylesheet" type="text/css">
 
         <div class="home-container">
             <div class="home-top-container">
@@ -222,113 +222,40 @@
             <div id="main-section" class="home-main">
                 <h1>Kegiatan PD</h1>
                 <span class="home-text17">Recommended</span>
-                <div class="home-cards-container">
-                    <div class="place-card-container">
-                        <img alt="image"
-                            src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-                            class="place-card-image" />
-                        <div class="place-card-container1">
-                            <span class="place-card-text">
-                                <span>Tumbuhkan Cinta Dalam Keluarga</span>
-                            </span>
-                            <span class="place-card-text1">
-                                <span>
-                                    Kalau kamu belum menerapkan ‘cinta’ di dalam keluarga, coba
-                                    yuk sesekali menelpon orang tuamu, kakak, atau adikmu untuk
-                                    sekadar menanyakan kabar mereka. Sekecil apapun perbuatanmu
-                                    untuk keluarga,sebetulnya sangat berarti.
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="place-card-container">
-                        <img alt="image"
-                            src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-                            class="place-card-image" />
-                        <div class="place-card-container1">
-                            <span class="place-card-text">
-                                <span>Home Alone Together</span>
-                            </span>
-                            <span class="place-card-text1">
-                                <span>
-                                    February biasanya identik dg Love ya Stefaners 😍 Kalo
-                                    ngmngin soal Cinta, bukan melulu ke pasangan😯 Tapi,
-                                    Keluarga juga seharusnya menjadi sumber Cinta kita❤️ Tapi
-                                    pernah gak kamu merasa sendiri, Hampa dan merasa tidak ada
-                                    Cinta di dalam keluarga? 🤔
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="place-card-container">
-                        <img alt="image"
-                            src="https://images.unsplash.com/photo-1513342791620-b106dc487c94?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-                            class="place-card-image" />
-                        <div class="place-card-container1">
-                            <span class="place-card-text">
-                                <span>Memiliki Iman Yang Kuat</span>
-                            </span>
-                            <span class="place-card-text1">
-                                <span>
-                                    Buah dari iman adalah damai sejahtera dan sukacita. Lakukan
-                                    hal kecil dengan cinta yang besar. -St. Teresa dari Kalkuta-
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="place-card-container">
-                        <img alt="image"
-                            src="https://images.unsplash.com/photo-1551634979-2b11f8c946fe?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-                            class="place-card-image" />
-                        <div class="place-card-container1">
-                            <span class="place-card-text">
-                                <span>The Adventure Begins</span>
-                            </span>
-                            <span class="place-card-text1">
-                                <span>
-                                    Gak berasa ya bulan January udh mau selesai ni 😱 Udh siap
-                                    blm ni guys buat memulai perjalanan kita d tahun ini? Atau
-                                    masih ada yg ragu &amp; bingung mau mulai darimana? Daripada
-                                    bingung, yuk kita sharing bareng di PD
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="place-card-container">
-                        <img alt="image"
-                            src="https://images.unsplash.com/photo-1585211969224-3e992986159d?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-                            class="place-card-image" />
-                        <div class="place-card-container1">
-                            <span class="place-card-text">
-                                <span>Our House Clicked</span>
-                            </span>
-                            <span class="place-card-text1">
-                                <span>
-                                    Can’t wait to see stefaners di @pdstefanus #openhouse2023
-                                    #clicked🔥🔥🔥
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="place-card-container">
-                        <img alt="image"
-                            src="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-                            class="place-card-image" />
-                        <div class="place-card-container1">
-                            <span class="place-card-text">
-                                <span>Everlasting Love</span>
-                            </span>
-                            <span class="place-card-text1">
-                                <span>
-                                    Katanya cinta itu senantiasa memberi, ia tak pernah
-                                    sekalipun meminta, cinta selalu membawa gembira, ia tak
-                                    pernah mendatangkan derita.🥹 Banyak pilihan yang ditawarkan
-                                    Tuhan dalam hidup ini, namun hatiku tertuju untuk … ?🤔
-                                    Temukan jawabannya 👇🏻👇🏻
-                                </span>
-                            </span>
-                        </div>
-                    </div>
+                <div class="container">
+                    <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
+                    <ul class="responsive-table">
+                        <li class="table-header">
+                            <div class="col col-1">Job Id</div>
+                            <div class="col col-2">Customer Name</div>
+                            <div class="col col-3">Amount Due</div>
+                            <div class="col col-4">Payment Status</div>
+                        </li>
+                        <li class="table-row">
+                            <div class="col col-1" data-label="Job Id">42235</div>
+                            <div class="col col-2" data-label="Customer Name">John Doe</div>
+                            <div class="col col-3" data-label="Amount">$350</div>
+                            <div class="col col-4" data-label="Payment Status">Pending</div>
+                        </li>
+                        <li class="table-row">
+                            <div class="col col-1" data-label="Job Id">42442</div>
+                            <div class="col col-2" data-label="Customer Name">Jennifer Smith</div>
+                            <div class="col col-3" data-label="Amount">$220</div>
+                            <div class="col col-4" data-label="Payment Status">Pending</div>
+                        </li>
+                        <li class="table-row">
+                            <div class="col col-1" data-label="Job Id">42257</div>
+                            <div class="col col-2" data-label="Customer Name">John Smith</div>
+                            <div class="col col-3" data-label="Amount">$341</div>
+                            <div class="col col-4" data-label="Payment Status">Pending</div>
+                        </li>
+                        <li class="table-row">
+                            <div class="col col-1" data-label="Job Id">42311</div>
+                            <div class="col col-2" data-label="Customer Name">John Carpenter</div>
+                            <div class="col col-3" data-label="Amount">$115</div>
+                            <div class="col col-4" data-label="Payment Status">Pending</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="home-footer">

@@ -220,10 +220,8 @@
                 </div>
             </div>
             <div id="main-section" class="home-main">
-                <h1>Kegiatan PD</h1>
-                <span class="home-text17">Recommended</span>
+                <h1 class="table-title">Kegiatan PD</h1>
                 <div class="container">
-                    <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
                     <ul class="responsive-table">
                         <li class="table-header">
                             <div class="col col-1">Job Id</div>

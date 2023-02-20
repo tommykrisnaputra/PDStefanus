@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>PD Stefanus Travel Agency</title>
-    <meta property="og:title" content="PD Stefanus Travel Agency" />
+    <title>PD Stefanus Grogol</title>
+    <meta property="og:title" content="PD Stefanus Grogol" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -140,6 +140,11 @@
                         <div class="home-links-container">
                             <a href="/" class="home-navlink">Home</a>
                             <span class="home-text">Info Paroki</span>
+                            <div class="solid-button-container">
+                                <button class="solid-button-button button Button">
+                                    <span>Login</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div data-role="MobileMenu" class="home-mobile-menu">
@@ -362,11 +367,6 @@
                                     </path>
                                 </svg>
                             </a>
-                        </div>
-                        <div class="solid-button-container solid-button-root-class-name">
-                            <button class="solid-button-button button Button">
-                                <span>Login</span>
-                            </button>
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>PD Stefanus Travel Agency</title>
-    <meta property="og:title" content="PD Stefanus Travel Agency" />
+    <title>PD Stefanus Grogol</title>
+    <meta property="og:title" content="PD Stefanus Grogol" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -145,14 +145,20 @@
                 </nav>
             </div>
             <div id="main-section" class="home-main">
-                <h1 class="table-title">Kegiatan PD</h1>
+                <h1 class="table-title">Umat PD Stefanus</h1>
                 <div class="container">
                     <ul class="responsive-table">
                         <li class="table-header">
-                            <div class="col col-1">Job Id</div>
-                            <div class="col col-2">Customer Name</div>
-                            <div class="col col-3">Amount Due</div>
-                            <div class="col col-4">Payment Status</div>
+                            <div class="col">Nama</div>
+                            <div class="col">Tanggal Lahir</div>
+                            <div class="col">Alamat</div>
+                            <div class="col">Paroki</div>
+                            <div class="col">Instagram</div>
+                            <div class="col">Email</div>
+                            <div class="col">Gender</div>
+                            <div class="col">Terakhir Datang</div>
+                            <div class="col">Persentase Kedatangan</div>
+                            <div class="col">Deskripsi</div>
                         </li>
                         <li class="table-row">
                             <div class="col col-1" data-label="Job Id">42235</div>

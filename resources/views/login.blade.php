@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login - PD Stefanus Travel Agency</title>
-    <meta property="og:title" content="Login - PD Stefanus Travel Agency" />
+    <title>Login - PD Stefanus Grogol</title>
+    <meta property="og:title" content="Login - PD Stefanus Grogol" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />

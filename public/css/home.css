@@ -12,19 +12,6 @@
   padding-bottom: var(--dl-space-space-halfunit);
   background-color: var(--dl-color-primary-100);
 }
-.solid-button-root-class-name {
-  margin-top: 20px;
-}
-@media(max-width: 991px) {
-  .solid-button-root-class-name {
-    margin-top: 20px;
-  }
-}
-@media(max-width: 479px) {
-  .solid-button-root-class-name {
-    margin-top: 10px;
-  }
-}
 
 .place-card-container {
   width: 300px;

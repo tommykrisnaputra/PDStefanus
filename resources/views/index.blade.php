@@ -140,11 +140,11 @@
                         <div class="home-links-container">
                             <a href="/" class="home-navlink">Home</a>
                             <span class="home-text">Info Paroki</span>
-                            <div class="solid-button-container">
+                            <a href="/users" class="home-navlink solid-button-container">
                                 <button class="solid-button-button button Button">
                                     <span>Login</span>
                                 </button>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div data-role="MobileMenu" class="home-mobile-menu">

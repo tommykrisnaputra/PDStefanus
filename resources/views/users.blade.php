@@ -140,6 +140,11 @@
                         <div class="home-links-container">
                             <a href="/" class="home-navlink">Home</a>
                             <span class="home-text">Info Paroki</span>
+                            <a href="/users" class="solid-button-container">
+                                <button class="solid-button-button button Button">
+                                    <span>Login</span>
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </nav>
@@ -149,41 +154,23 @@
                 <div class="container">
                     <ul class="responsive-table">
                         <li class="table-header">
-                            <div class="col">Nama</div>
-                            <div class="col">Tanggal Lahir</div>
-                            <div class="col">Alamat</div>
-                            <div class="col">Paroki</div>
-                            <div class="col">Instagram</div>
-                            <div class="col">Email</div>
-                            <div class="col">Gender</div>
-                            <div class="col">Terakhir Datang</div>
-                            <div class="col">Persentase Kedatangan</div>
-                            <div class="col">Deskripsi</div>
+                            <div class="col col-1">Nama</div>
+                            <div class="col col-1">Tanggal Lahir</div>
+                            <div class="col col-1">Paroki</div>
+                            <div class="col col-1">Kedatangan Terakhir</div>
+                            <div class="col col-1">Persentase Kedatangan</div>
+                            <div class="col col-1">Deskripsi</div>
                         </li>
-                        <li class="table-row">
-                            <div class="col col-1" data-label="Job Id">42235</div>
-                            <div class="col col-2" data-label="Customer Name">John Doe</div>
-                            <div class="col col-3" data-label="Amount">$350</div>
-                            <div class="col col-4" data-label="Payment Status">Pending</div>
-                        </li>
-                        <li class="table-row">
-                            <div class="col col-1" data-label="Job Id">42442</div>
-                            <div class="col col-2" data-label="Customer Name">Jennifer Smith</div>
-                            <div class="col col-3" data-label="Amount">$220</div>
-                            <div class="col col-4" data-label="Payment Status">Pending</div>
-                        </li>
-                        <li class="table-row">
-                            <div class="col col-1" data-label="Job Id">42257</div>
-                            <div class="col col-2" data-label="Customer Name">John Smith</div>
-                            <div class="col col-3" data-label="Amount">$341</div>
-                            <div class="col col-4" data-label="Payment Status">Pending</div>
-                        </li>
-                        <li class="table-row">
-                            <div class="col col-1" data-label="Job Id">42311</div>
-                            <div class="col col-2" data-label="Customer Name">John Carpenter</div>
-                            <div class="col col-3" data-label="Amount">$115</div>
-                            <div class="col col-4" data-label="Payment Status">Pending</div>
-                        </li>
+                        @foreach($users as $key => $data)
+                            <li class="table-row">
+                                <div class="col col-1" data-label="Nama">{{$data->full_name}}</div>
+                                <div class="col col-1" data-label="Tanggal Lahir">{{date('d-m-Y', strtotime($data->birthdate))}}</div>
+                                <div class="col col-1" data-label="Paroki">{{$data->paroki}}</div>
+                                <div class="col col-1" data-label="Kedatangan Terakhir">{{date('d-m-Y', strtotime($data->last_attendance))}}</div>
+                                <div class="col col-1" data-label="Persentase Kedatangan">{{$data->attendance_percentage}}</div>
+                                <div class="col col-1" data-label="Deskripsi">{{$data->description}}</div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -219,18 +206,11 @@
                                 </svg>
                             </a>
                         </div>
-                        <div class="solid-button-container solid-button-root-class-name">
-                            <button class="solid-button-button button Button">
-                                <span>Login</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
 
 </html>

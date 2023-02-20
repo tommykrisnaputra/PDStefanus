@@ -22,5 +22,6 @@ Route::get('/login', function () {
 });
 
 Route::get('/users', function () {
-    return view('users');
+    $users = DB::table('users')->get();
+    return view('users', ['users' => $users]);
 });

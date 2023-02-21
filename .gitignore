@@ -3,11 +3,14 @@
 /public/build
 /public/hot
 /public/storage
+/public/index.php
 /storage/*.key
 /vendor
 .env
 .env.backup
 .env.production
+.index.php
+.htaccess
 Homestead.json
 Homestead.yaml
 auth.json

@@ -127,14 +127,19 @@
 
 <body>
     <div>
-        <link rel="stylesheet" href="{{ asset('css/users.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/users/index.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/users/edit.css') }}">
         <div class="home-container">
             <div class="home-top-container">
                 <nav data-role="Header" class="home-navbar">
                     <a href="/users" class="home-navlink">
-                        <img alt="image" src={{ asset('images/logo1-600h.png') }} loading="lazy" class="home-image" />
+                        <img alt="image" src={{ asset('images/logo1-600h.png') }} loading="lazy"
+                            class="home-image" />
                     </a>
-                    <h1 class="home-logo">PD OMPKK St. Stefanus</h1>
+                    <h1 class="home-logo">
+                        <p>PD OMPKK St. Stefanus</p>
+                        <p>Umat PD - Edit</p>
+                    </h1>
                     <div class="home-right-side">
                         <div class="home-links-container">
                             <a href="/" class="home-navlink">Home</a>
@@ -149,38 +154,50 @@
                 </nav>
             </div>
             <div id="main-section" class="home-main">
-                <h1 class="table-title">Umat PD Stefanus</h1>
                 <div class="container">
-                    <ul class="responsive-table">
-                        <li class="table-header">
-                            <div class="col col-1">Nama</div>
-                            <div class="col col-1">Tanggal Lahir</div>
-                            <div class="col col-1">Alamat</div>
-                            <div class="col col-2">Paroki</div>
-                            <div class="col col-2">Nomor HP</div>
-                            <div class="col col-1">Kedatangan Terakhir</div>
-                            <div class="col col-1">Persentase Kedatangan</div>
-                            <div class="col col-1">Action</div>
-                            {{-- <div class="col col-1">Deskripsi</div> --}}
-                        </li>
-                        @foreach($users as $key => $data)
-                            <li class="table-row">
-                                <div class="col col-1" data-label="Nama">{{$data->full_name}}</div>
-                                <div class="col col-1" data-label="Tanggal Lahir">{{date('d-m-Y', strtotime($data->birthdate))}}</div>
-                                <div class="col col-1" data-label="Alamat">{{$data->address}}</div>
-                                <div class="col col-2" data-label="Paroki">{{$data->paroki}}</div>
-                                <div class="col col-2" data-label="Nomor HP">{{$data->phone_number}}</div>
-                                <div class="col col-1" data-label="Kedatangan Terakhir">{{date('D,d-m-Y', strtotime($data->last_attendance))}}</div>
-                                <div class="col col-1" data-label="Persentase Kedatangan">{{$data->attendance_percentage}}%</div>
-                                <div class="col col-1" data-label="Action">
-                                    <a href="{{ url('users/edit', ['id' => $data->id]) }}" > 
-                                        Edit
-                                    </a>
+                    <div class="container">
+                        <form action="action_page.php">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="fname">First Name</label>
                                 </div>
-                                {{-- <div class="col col-1" data-label="Deskripsi">{{$data->description}}</div> --}}
-                            </li>
-                        @endforeach
-                    </ul>
+                                <div class="col-75">
+                                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="lname">Last Name</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="country">Country</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="country" name="country">
+                                        <option value="australia">Australia</option>
+                                        <option value="canada">Canada</option>
+                                        <option value="usa">USA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="subject">Subject</label>
+                                </div>
+                                <div class="col-75">
+                                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="home-footer">

@@ -14,6 +14,11 @@ class UsersController extends Controller
         return view('users.index', ['users' => $users]);
     }
 
+    public function add(){
+        $users = DB::table('users')->get();
+        return view('users.edit', ['users' => $users]);
+    }
+
     public function edit(){
         $users = DB::table('users')->get();
         return view('users.edit', ['users' => $users]);

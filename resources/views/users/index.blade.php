@@ -122,20 +122,22 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         data-tag="font" />
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
     <div>
-        <link href="css/users.css" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="{{ asset('css/users/index.css') }}">
         <div class="home-container">
             <div class="home-top-container">
                 <nav data-role="Header" class="home-navbar">
                     <a href="/users" class="home-navlink">
                         <img alt="image" src="images/logo1-600h.png" loading="lazy" class="home-image" />
                     </a>
-                    <h1 class="home-logo">PD OMPKK St. Stefanus</h1>
+                    <h1 class="home-logo">
+                        <p>PD OMPKK St. Stefanus</p>
+                        <p>Umat PD</p>
+                    </h1>
                     <div class="home-right-side">
                         <div class="home-links-container">
                             <a href="/" class="home-navlink">Home</a>
@@ -150,7 +152,6 @@
                 </nav>
             </div>
             <div id="main-section" class="home-main">
-                <h1 class="table-title">Umat PD Stefanus</h1>
                 <div class="container">
                     <ul class="responsive-table">
                         <li class="table-header">
@@ -163,17 +164,21 @@
                             <div class="col col-1">Persentase Kedatangan</div>
                             <div class="col col-1">Action</div>
                         </li>
-                        @foreach($users as $key => $data)
+                        @foreach ($users as $key => $data)
                             <li class="table-row">
-                                <div class="col col-1" data-label="Nama">{{$data->full_name}}</div>
-                                <div class="col col-1" data-label="Tanggal Lahir">{{date('d-m-Y', strtotime($data->birthdate))}}</div>
-                                <div class="col col-1" data-label="Alamat">{{$data->address}}</div>
-                                <div class="col col-2" data-label="Paroki">{{$data->paroki}}</div>
-                                <div class="col col-2" data-label="Nomor HP">{{$data->phone_number}}</div>
-                                <div class="col col-1" data-label="Kedatangan Terakhir">{{date('D,d-m-Y', strtotime($data->last_attendance))}}</div>
-                                <div class="col col-1" data-label="Persentase Kedatangan">{{$data->attendance_percentage}}%</div>
-                                <div class="col col-1" data-label="Action">  
-                                    <a href="{{ url('users/edit', ['id' => $data->id]) }}" class="solid-button-container">
+                                <div class="col col-1" data-label="Nama">{{ $data->full_name }}</div>
+                                <div class="col col-1" data-label="Tanggal Lahir">
+                                    {{ date('d-m-Y', strtotime($data->birthdate)) }}</div>
+                                <div class="col col-1" data-label="Alamat">{{ $data->address }}</div>
+                                <div class="col col-2" data-label="Paroki">{{ $data->paroki }}</div>
+                                <div class="col col-2" data-label="Nomor HP">{{ $data->phone_number }}</div>
+                                <div class="col col-1" data-label="Kedatangan Terakhir">
+                                    {{ date('D,d-m-Y', strtotime($data->last_attendance)) }}</div>
+                                <div class="col col-1" data-label="Persentase Kedatangan">
+                                    {{ $data->attendance_percentage }}%</div>
+                                <div class="col col-1" data-label="Action">
+                                    <a href="{{ url('users/edit', ['id' => $data->id]) }}"
+                                        class="solid-button-container">
                                         <button class="solid-button-button button Button">Edit</button>
                                     </a>
                                 </div>

@@ -9,8 +9,13 @@ use DB;
 
 class UsersController extends Controller
 {
-    public function index(){
+    public function index() {
         $users = DB::table('users')->get();
-        return view('users', ['users' => $users]);
+        return view('users.index', ['users' => $users]);
+    }
+
+    public function edit(){
+        $users = DB::table('users')->get();
+        return view('users.edit', ['users' => $users]);
     }
 }

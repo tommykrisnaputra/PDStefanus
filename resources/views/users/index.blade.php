@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>PD Stefanus Grogol</title>
+    <title>PD Stefanus</title>
     <meta property="og:title" content="PD Stefanus Grogol" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -161,7 +161,7 @@
                             <div class="col col-2">Nomor HP</div>
                             <div class="col col-1">Kedatangan Terakhir</div>
                             <div class="col col-1">Persentase Kedatangan</div>
-                            {{-- <div class="col col-1">Deskripsi</div> --}}
+                            <div class="col col-1">Action</div>
                         </li>
                         @foreach($users as $key => $data)
                             <li class="table-row">
@@ -172,7 +172,11 @@
                                 <div class="col col-2" data-label="Nomor HP">{{$data->phone_number}}</div>
                                 <div class="col col-1" data-label="Kedatangan Terakhir">{{date('D,d-m-Y', strtotime($data->last_attendance))}}</div>
                                 <div class="col col-1" data-label="Persentase Kedatangan">{{$data->attendance_percentage}}%</div>
-                                {{-- <div class="col col-1" data-label="Deskripsi">{{$data->description}}</div> --}}
+                                <div class="col col-1" data-label="Action">  
+                                    <a href="{{ url('users/edit', ['id' => $data->id]) }}" class="solid-button-container">
+                                        <button class="solid-button-button button Button">Edit</button>
+                                    </a>
+                                </div>
                             </li>
                         @endforeach
                     </ul>

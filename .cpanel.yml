@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/pdsw2935/PDStefanus/
-    - /bin/cp -R * $DEPLOYPATH
     - composer install
+    - /bin/cp -R * $DEPLOYPATH

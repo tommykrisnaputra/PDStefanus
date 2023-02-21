@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
-
     <style data-tag="reset-style-sheet">
         html {
             line-height: 1.15;
@@ -123,9 +122,19 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         data-tag="font" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"></script>
 </head>
 
 <body>
+    <script type="text/javascript">
+        $("document").ready(function() {
+            setTimeout(function() {
+                $('.toast').remove();
+            }, 2000);
+        });
+    </script>
     <div>
         <link rel="stylesheet" href="{{ asset('css/users/index.css') }}">
         <div class="home-container">
@@ -151,32 +160,43 @@
                     </div>
                 </nav>
             </div>
+            @if (session('message'))
+                <div class="toast active">
+                    <div class="toast-content">
+                        <div class="message">
+                            <span class="text text-1">Success!</span>
+                            {{ session('message') }}
+                        </div>
+                    </div>
+                    <div class="progress active"></div>
+                </div>
+            @endif
             <div id="main-section" class="home-main">
                 <div class="container">
                     <ul class="responsive-table">
                         <li class="table-header">
-                            <div class="col col-1">Nama</div>
-                            <div class="col col-1">Tanggal Lahir</div>
+                            <div class="col col-2">Nama</div>
+                            <div class="col col-3">Tanggal Lahir</div>
                             <div class="col col-1">Alamat</div>
                             <div class="col col-2">Paroki</div>
                             <div class="col col-2">Nomor HP</div>
-                            <div class="col col-1">Kedatangan Terakhir</div>
-                            <div class="col col-1">Persentase Kedatangan</div>
-                            <div class="col col-1">Action</div>
+                            <div class="col col-3">Kedatangan Terakhir</div>
+                            <div class="col col-3">Persentase Kedatangan</div>
+                            <div class="col col-3"></div>
                         </li>
                         @foreach ($users as $key => $data)
                             <li class="table-row">
-                                <div class="col col-1" data-label="Nama">{{ $data->full_name }}</div>
-                                <div class="col col-1" data-label="Tanggal Lahir">
+                                <div class="col col-2" data-label="Nama">{{ $data->full_name }}</div>
+                                <div class="col col-3" data-label="Tanggal Lahir">
                                     {{ date('d-m-Y', strtotime($data->birthdate)) }}</div>
                                 <div class="col col-1" data-label="Alamat">{{ $data->address }}</div>
                                 <div class="col col-2" data-label="Paroki">{{ $data->paroki }}</div>
                                 <div class="col col-2" data-label="Nomor HP">{{ $data->phone_number }}</div>
-                                <div class="col col-1" data-label="Kedatangan Terakhir">
+                                <div class="col col-3" data-label="Kedatangan Terakhir">
                                     {{ date('D,d-m-Y', strtotime($data->last_attendance)) }}</div>
-                                <div class="col col-1" data-label="Persentase Kedatangan">
+                                <div class="col col-3" data-label="Persentase Kedatangan">
                                     {{ $data->attendance_percentage }}%</div>
-                                <div class="col col-1" data-label="Action">
+                                <div class="col col-3" data-label="Action">
                                     <a href="{{ url('users/edit', ['id' => $data->id]) }}"
                                         class="solid-button-container">
                                         <button class="solid-button-button button Button">Edit</button>

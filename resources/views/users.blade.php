@@ -156,19 +156,23 @@
                         <li class="table-header">
                             <div class="col col-1">Nama</div>
                             <div class="col col-1">Tanggal Lahir</div>
-                            <div class="col col-1">Paroki</div>
+                            <div class="col col-1">Alamat</div>
+                            <div class="col col-2">Paroki</div>
+                            <div class="col col-2">Nomor HP</div>
                             <div class="col col-1">Kedatangan Terakhir</div>
                             <div class="col col-1">Persentase Kedatangan</div>
-                            <div class="col col-1">Deskripsi</div>
+                            {{-- <div class="col col-1">Deskripsi</div> --}}
                         </li>
                         @foreach($users as $key => $data)
                             <li class="table-row">
                                 <div class="col col-1" data-label="Nama">{{$data->full_name}}</div>
                                 <div class="col col-1" data-label="Tanggal Lahir">{{date('d-m-Y', strtotime($data->birthdate))}}</div>
-                                <div class="col col-1" data-label="Paroki">{{$data->paroki}}</div>
-                                <div class="col col-1" data-label="Kedatangan Terakhir">{{date('d-m-Y', strtotime($data->last_attendance))}}</div>
-                                <div class="col col-1" data-label="Persentase Kedatangan">{{$data->attendance_percentage}}</div>
-                                <div class="col col-1" data-label="Deskripsi">{{$data->description}}</div>
+                                <div class="col col-1" data-label="Alamat">{{$data->address}}</div>
+                                <div class="col col-2" data-label="Paroki">{{$data->paroki}}</div>
+                                <div class="col col-2" data-label="Nomor HP">{{$data->phone_number}}</div>
+                                <div class="col col-1" data-label="Kedatangan Terakhir">{{date('D,d-m-Y', strtotime($data->last_attendance))}}</div>
+                                <div class="col col-1" data-label="Persentase Kedatangan">{{$data->attendance_percentage}}%</div>
+                                {{-- <div class="col col-1" data-label="Deskripsi">{{$data->description}}</div> --}}
                             </li>
                         @endforeach
                     </ul>

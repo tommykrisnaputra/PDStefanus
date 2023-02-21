@@ -3,6 +3,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/pdsw2935/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    - composer install
     # - /bin/cp -R bootstrap $DEPLOYPATH
     # - /bin/cp -R config $DEPLOYPATH
     # - /bin/cp -R database $DEPLOYPATH

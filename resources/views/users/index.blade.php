@@ -159,7 +159,6 @@
                         </div>
                     </div>
                 </nav>
-            </div>
             @if (session('message'))
                 <div class="toast active">
                     <div class="toast-content">
@@ -171,6 +170,7 @@
                     <div class="progress active"></div>
                 </div>
             @endif
+            </div>
             <div id="main-section" class="home-main">
                 <div class="container">
                     <ul class="responsive-table">

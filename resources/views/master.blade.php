@@ -134,14 +134,15 @@
 
 <body>
     <div class="home-container">
-        <div class="home-top-container">
-            @include('navbar')
 
-            @yield('content')
+        @include('navbar')
 
-            @include('footer')
-        </div>
+        @yield('content')
+
+        @include('footer')
+
     </div>
+
 
     @section('js')
         <!-- some js here -->

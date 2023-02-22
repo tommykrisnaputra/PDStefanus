@@ -30,7 +30,7 @@ class UsersController extends Controller
         $helper = new helper();
         $users = DB::table('users')->find($id);
         $users->phone_number = $helper->checkPhone($users->phone_number);
-        return view('users.edit', ['users' => $users]);
+        return view('users.form', ['users' => $users]);
     }
 
     public function create(Request $request){

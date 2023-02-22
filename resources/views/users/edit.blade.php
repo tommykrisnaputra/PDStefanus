@@ -127,7 +127,6 @@
 
 <body>
     <div>
-        <link rel="stylesheet" href="{{ asset('css/users/index.css') }}">
         <link rel="stylesheet" href="{{ asset('css/users/edit.css') }}">
         <div class="home-container">
             <div class="home-top-container">

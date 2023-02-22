@@ -129,6 +129,8 @@
   flex-direction: row;
   justify-content: center;
   background-color: var(--dl-color-gray-black);
+  position: fixed;
+  bottom: 0;
 }
 .home-menu {
   width: 100%;
@@ -232,6 +234,10 @@
 
 body {
 	 font-family: "lato", sans-serif;
+    position:relative;
+    margin:0;
+    padding:0;
+    overflow:auto;
 }
  .container {
 	 margin-left: auto;
@@ -255,13 +261,13 @@ body {
 	 margin-bottom: 25px;
 }
  .responsive-table .table-header {
-	 background-color: #95a5a6;
+	 background-color: #76CDCD;
 	 font-size: 14px;
 	 text-transform: capitalize;
 	 letter-spacing: 0.03em;
 }
  .responsive-table .table-row {
-	 background-color: #fff;
+	 background-color: #DDF2F4;
 	 box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
 }
  .responsive-table .col-1 {

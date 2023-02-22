@@ -129,7 +129,8 @@
   flex-direction: row;
   justify-content: center;
   background-color: var(--dl-color-gray-black);
-  margin-top: auto;
+  bottom: 0;
+  
 }
 .home-menu {
   width: 100%;

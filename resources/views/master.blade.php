@@ -16,7 +16,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"></script>
-
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @section('css')
         <style data-tag="reset-style-sheet">
             html {

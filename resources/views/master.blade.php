@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"></script>
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/alert.css') }}">
     @section('css')
         <style data-tag="reset-style-sheet">
             html {
@@ -137,15 +138,15 @@
 
         @include('navbar')
 
+        @include('alert')
+
         @yield('content')
 
         @include('footer')
 
     </div>
 
-
     @section('js')
-        <!-- some js here -->
     @show
 </body>
 

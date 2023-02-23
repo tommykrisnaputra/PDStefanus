@@ -261,11 +261,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  padding-top: var(--dl-space-space-quadruple);
-  padding-left: var(--dl-space-space-doubleunit);
-  padding-right: var(--dl-space-space-doubleunit);
   flex-direction: column;
-  padding-bottom: var(--dl-space-space-quadruple);
   justify-content: flex-start;
 }
 .home-text17 {

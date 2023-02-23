@@ -119,6 +119,10 @@ input[type=submit] {
   .place-card-container {
     width: 200px;
   }
+
+  .home-footer {
+    position: unset !important;
+  }
 }
 
 @media(max-width: 479px) {
@@ -345,11 +349,7 @@ input[type=submit] {
 .home-main {
   width: 70%;
   align-items: center;
-  padding-top: var(--dl-space-space-quadruple);
-  padding-left: var(--dl-space-space-doubleunit);
-  padding-right: var(--dl-space-space-doubleunit);
   flex-direction: column;
-  padding-bottom: var(--dl-space-space-quadruple);
   justify-content: flex-start;
 }
 
@@ -371,14 +371,8 @@ input[type=submit] {
 }
 
 .home-footer {
-  color: var(--dl-color-gray-white);
-  width: 100%;
-  display: flex;
-  padding: var(--dl-space-space-tripleunit);
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  background-color: var(--dl-color-gray-black);
+  position: fixed;
+  bottom: 0;
 }
 
 .home-menu {
@@ -545,4 +539,126 @@ input[type=submit] {
   border-radius: 20px;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.form-error {
+  box-shadow: 2px 4px 16px 0px rgba(255, 0, 0, 0.7);
+}
+
+.alert-toast.active~button {
+  pointer-events: none;
+}
+
+.alert-toast {
+  top: 25px;
+  right: 30px;
+  border-radius: 20px;
+  background: #fff;
+  padding: 20px 35px 20px 25px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+  box-shadow: 0px 1px 2px 0px rgba(255, 0, 0, 0.7),
+    1px 2px 4px 0px rgba(255, 0, 0, 0.7),
+    2px 4px 8px 0px rgba(255, 0, 0, 0.7),
+    2px 4px 16px 0px rgba(255, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.alert-toast.active {
+  transform: translateX(0%);
+}
+
+.alert-toast .alert-toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.alert-toast-content .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  background-color: #4070f4;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.alert-toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.message .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.message .text.text-1 {
+  font-weight: 600;
+  color: #333;
+}
+
+.alert-toast .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.alert-toast .close:hover {
+  opacity: 1;
+}
+
+.alert-toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+
+}
+
+.alert-toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #4070f4;
+}
+
+.progress.active:before {
+  animation: progress 2s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  width: 100%;
+  padding: 12px 36px 12px 12px;
+  box-sizing: border-box;
+}
+
+.fa-eye {
+  position: absolute;
+  top: 28%;
+  right: 4%;
+  cursor: pointer;
+  color: lightgray;
 }

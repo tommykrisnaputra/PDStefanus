@@ -1,4 +1,5 @@
 <div class="nav home-navbar home-top-container">
+    <input type="checkbox" id="nav-check">
     <img alt="image" src="{{ asset('images/logo1-600h.png') }}" loading="lazy" class="home-image" />
     <div class="nav-header">
         <div class="nav-title">

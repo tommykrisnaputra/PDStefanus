@@ -67,6 +67,6 @@ class UsersController extends Controller
             'description' => $request->description,
         ]);
         DB::commit();
-        return redirect('/users')->with(['message' => 'User ' . $request->fullname . ' berhasil  di update']);
+        return redirect('/users')->with(['message' => 'Data ' . $request->fullname . ' berhasil  di update']);
     }
 }

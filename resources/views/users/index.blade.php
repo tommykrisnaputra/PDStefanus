@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title') 
+@section('title')
     Umat PD
 @endsection
 
@@ -11,6 +11,9 @@
 
 @section('navbar')
     @parent
+@endsection
+
+@section('content')
     @if (session('message'))
         <div class="toast active">
             <div class="toast-content">
@@ -22,9 +25,6 @@
             <div class="progress active"></div>
         </div>
     @endif
-@endsection
-
-@section('content')
     <div id="main-section" class="home-main">
         <div class="container">
             <ul class="responsive-table">

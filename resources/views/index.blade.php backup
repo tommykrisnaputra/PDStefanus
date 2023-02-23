@@ -122,22 +122,25 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         data-tag="font" />
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 
 <body>
     <div>
-        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+        <link rel="stylesheet" href="{{asset('css/home.css')}}">
+
         <div class="home-container">
             <div class="home-top-container">
                 <nav data-role="Header" class="home-navbar">
-                    <img alt="image" src="images/logo1-600h.png" loading="lazy" class="home-image" />
+                    <a href="/users" class="home-navlink">
+                        <img alt="image" src="images/logo1-600h.png" loading="lazy" class="home-image" />
+                    </a>
                     <h1 class="home-logo">PD OMPKK St. Stefanus</h1>
                     <div class="home-right-side">
                         <div class="home-links-container">
                             <a href="/" class="home-navlink">Home</a>
-                            <a href="/register" class="home-text">Pendaftaran</a>
-                            <a href="/users" class="solid-button-container">
+                            <span class="home-text">Info Paroki</span>
+                            <a href="/users" class="home-navlink solid-button-container">
                                 <button class="solid-button-button button Button">
                                     <span>Login</span>
                                 </button>

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
+use DB;
 
 class RegisterController extends Controller
 {
     /**
      * Display register page.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function show()
@@ -19,29 +21,53 @@ class RegisterController extends Controller
 
     /**
      * Handle account registration request
-     * 
+     *
      * @param RegisterRequest $request
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
 
-    public function register(Request $request) 
+    public function register(Request $request)
     {
-        $request->validate([
-            // 'fullname' => 'required|unique:users|max:255',
-            'email' => 'required',
-            'phone_number' => 'required|numeric',
-            'birthdate' => 'nullable|date',
+        $validator = Validator::make($request->all(), [
+            'fullname' => 'required|max:255',
+            'email' => 'required|email|unique:users',
+            'phone_number' => 'required|numeric|unique:users',
+            'birthdate' => 'required|date',
+            'address' => 'regex:/^[a-zA-Z0-9\s]+$/',
+            'paroki' => 'regex:/^[a-zA-Z0-9\s]+$/',
+            'gender' => 'required|in:male,female',
+            'first_attendance' => 'nullable',
+            'password' => 'required|min:8|confirmed',
         ]);
-
-        // info($request);
-        // return $request;
-        // return redirect()->back()->withErrors(['fullname' => $request]);
-        return redirect()->back()->with(['message' => 'Data  berhasil  di update']);
-        // $user = User::create($request->validated());
-
-        // auth()->login($user);
-
-        // return redirect('/')->with('success', "Account successfully registered.");
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+            $user = DB::table('users')->insertGetId([
+                'full_name' => $request->fullname,
+                'birthdate' => $request->birthdate,
+                'address' => $request->address,
+                'paroki' => $request->paroki,
+                'phone_number' => $request->phone_number,
+                'email' => $request->email,
+                'gender' => $request->gender,
+                'first_attendance' => $request->first_attendance,
+                'last_attendance' => $request->first_attendance,
+                'total_attendance' => 1,
+                'attendance_percentage' => 100,
+                'active' => 'true',
+            ]);
+            DB::table('password')->insert([
+                'user_id' => $user,
+                'password' => $request->password,
+                'active' => 'true',
+            ]);
+            return redirect()
+                ->back()
+                ->with(['message' => 'Data  berhasil  di update']);
+        }
     }
 }

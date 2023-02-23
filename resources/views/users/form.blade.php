@@ -32,7 +32,7 @@
                         <label for="birthdate">Tanggal Lahir</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="birthdate" name="birthdate" value="{{ $users->birthdate }}">
+                        <input type="text" id="birthdate" name="birthdate" value="{{ date('d-m-Y', strtotime($users->birthdate)) }}">
                     </div>
                 </div>
                 <div class="row">
@@ -98,7 +98,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="first_attendance" name="first_attendance"
-                            value="{{ $users->first_attendance }}">
+                            value="{{ date('d-m-Y', strtotime($users->first_attendance)) }}">
                     </div>
                 </div>
                 <div class="row">
@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="last_attendance" name="last_attendance"
-                            value="{{ $users->last_attendance }}">
+                            value="{{ date('d-m-Y', strtotime($users->last_attendance)) }}">
                     </div>
                 </div>
                 <div class="row">

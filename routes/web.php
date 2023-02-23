@@ -14,7 +14,6 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function () { return view('index'); });
 Route::get('/login', function () { return view('login'); });
 Route::get('/users', [UsersController::class, 'index']);
 Route::get('/users/edit/{id}', [UsersController::class, 'edit']);

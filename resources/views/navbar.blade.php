@@ -16,7 +16,8 @@
     </div>
     <div class="nav-links">
         <a href="/">Home</a>
-        <a class="home-text">Info Paroki</a>
+        <a href="/register">Pendaftaran</a>
+        <a>Info Paroki</a>
         <a href="/users" class="solid-button-container">
             <button class="solid-button-button button Button">
                 <span>Login</span>

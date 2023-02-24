@@ -19,7 +19,7 @@
             <i class="checkmark">✓</i>
         </div>
         <span class="message">Success</span>
-        <p>We received your purchase request;<br /> we'll be in touch shortly!</p>
+        <p>Pendaftaran anda sudah berhasil!</p>
     </div>
 @endsection
 

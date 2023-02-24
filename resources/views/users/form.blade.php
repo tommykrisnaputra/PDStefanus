@@ -7,7 +7,6 @@
 @section('css')
     @parent
     <link rel="stylesheet" href="{{ asset('css/users/form.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 @endsection
 
 @section('navbar')

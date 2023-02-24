@@ -3,6 +3,11 @@
   bottom: 0;
 }
 
+
+.home-main {
+  width: 70%;
+}
+
 .responsive-table li {
   border-radius: 20px;
   padding: 25px 30px;

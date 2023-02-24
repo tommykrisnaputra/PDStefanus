@@ -128,27 +128,6 @@
 <body>
     <div>
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-        {{-- <div class="home-container">
-            <div class="nav home-navbar">
-                <input type="checkbox" id="nav-check">
-                <div class="nav-btn">
-                    <label for="nav-check">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </label>
-                </div>
-                <div class="nav-links">
-                    <a href="/">Home</a>
-                    <a href="/register">Pendaftaran</a>
-                    <a href="/users" class="solid-button-container">
-                        <button class="solid-button-button button Button">
-                            <span>Login</span>
-                        </button>
-                    </a>
-                </div>
-            </div> --}}
-
         <div class="home-top-container">
             <nav data-role="Header" class="home-navbar">
                 <img alt="image" src="images/logo1-600h.png" loading="lazy" class="home-image" />
@@ -245,7 +224,7 @@
                         <br />
                         <span>Link Stefannews 2022 👇👇</span>
                         <br />
-                        <span class="home-text15">linktr.ee/PDSt.Stefanus</span>
+                        <a href="https://linktr.ee/PDSt.Stefanus" class="home-text15">linktr.ee/PDSt.Stefanus</a>
                     </span>
                 </div>
             </div>

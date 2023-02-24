@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Pendaftaran
+    Umat PD - Edit
 @endsection
 
 @section('css')

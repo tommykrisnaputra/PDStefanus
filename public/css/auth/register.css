@@ -389,12 +389,6 @@ input[type=submit] {
   object-fit: cover;
 }
 
-.home-logo2 {
-  width: 617px;
-  align-self: center;
-  text-align: left;
-  margin-left: var(--dl-space-space-unit);
-}
 
 .home-follow-container1 {
   display: flex;
@@ -493,10 +487,6 @@ input[type=submit] {
   .home-menu {
     flex-direction: column;
   }
-
-  .home-logo2 {
-    text-align: center;
-  }
 }
 
 @media(max-width: 479px) {
@@ -514,12 +504,6 @@ input[type=submit] {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .home-logo2 {
-    width: 100%;
-    margin-top: 20px;
-    text-align: center;
   }
 
   .home-follow-container1 {

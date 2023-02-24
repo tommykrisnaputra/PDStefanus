@@ -34,10 +34,10 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|numeric|unique:users',
             'birthdate' => 'required|date',
-            'address' => 'regex:/^[a-zA-Z0-9\s]+$/',
-            'paroki' => 'regex:/^[a-zA-Z0-9\s]+$/',
+            'address' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
+            'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender' => 'required|in:male,female',
-            'first_attendance' => 'nullable',
+            'first_attendance' => 'required',
             'password' => 'required|min:8|confirmed',
         ]);
         if ($validator->fails()) {
@@ -65,9 +65,10 @@ class RegisterController extends Controller
                 'password' => $request->password,
                 'active' => 'true',
             ]);
-            return redirect()
-                ->back()
-                ->with(['message' => 'Data  berhasil  di update']);
+            return redirect('/success');
+            // return redirect()
+            //     ->back()
+            //     ->with(['message' => 'Data  berhasil  di update']);
         }
     }
 }

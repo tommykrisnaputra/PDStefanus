@@ -36,7 +36,7 @@
                         <div class="col col-2" data-label="Paroki">{{ $data->paroki }}</div>
                         <div class="col col-2" data-label="Nomor HP">{{ $data->phone_number }}</div>
                         <div class="col col-3" data-label="Kedatangan Terakhir">
-                            {{ date('D,d-m-Y', strtotime($data->last_attendance)) }}</div>
+                            {{ date('d-m-Y', strtotime($data->last_attendance)) }}</div>
                         <div class="col col-3" data-label="Persentase Kedatangan">
                             {{ $data->attendance_percentage }}%</div>
                         <div class="col col-3" data-label="Action">

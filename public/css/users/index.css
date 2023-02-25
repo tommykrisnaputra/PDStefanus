@@ -40,6 +40,10 @@
 }
 
 @media all and (max-width: 767px) {
+  .home-main {
+    width: 100%;
+  }
+
   .responsive-table .table-header {
     display: none;
   }

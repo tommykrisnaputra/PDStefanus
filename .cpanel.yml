@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/pdsw2935/PDStefanus/
-    - export DEPLOYPATH_PUBLIC=/home/pdsw2935/public_html/
-    - /bin/cp -R public/css/* $DEPLOYPATH_PUBLIC
+    - export DEPLOYPATH_CSS=/home/pdsw2935/public_html/css
+    - /bin/cp -R public/css/* $DEPLOYPATH_CSS

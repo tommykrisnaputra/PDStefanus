@@ -28,7 +28,7 @@ input[type=submit] {
 /* Style the container */
 .container {
   border-radius: 20px;
-  background-color: #DDF2F4;
+  /* background-color: #DDF2F4; */
   padding: 20px;
 }
 

@@ -26,11 +26,7 @@ input[type=submit] {
 }
 
 /* Style the container */
-.container {
-  border-radius: 20px;
-  /* background-color: #DDF2F4; */
-  padding: 20px;
-}
+.container {}
 
 /* Floating column for labels: 25% width */
 .col-25 {

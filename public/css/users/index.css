@@ -101,7 +101,7 @@
 }
 
 .search-container:active {
-  animation: hoverShake 0.15s linear 3;
+  /* animation: hoverShake 0.15s linear 3; */
 }
 
 @media(max-width: 1300px) {

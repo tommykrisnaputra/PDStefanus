@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -64,13 +65,10 @@ class RegisterController extends Controller
             ]);
             DB::table('password')->insert([
                 'user_id' => $user,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
                 'active' => 'true',
             ]);
-            return redirect('/success');
-            // return redirect()
-            //     ->back()
-            //     ->with(['message' => 'Data  berhasil  di update']);
+            return redirect()->route('success');
         }
     }
 }

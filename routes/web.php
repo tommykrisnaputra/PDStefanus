@@ -14,20 +14,22 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/login', function () { return view('login'); });
-Route::get('/users', [UsersController::class, 'index']);
-Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
-Route::post('/users/update/{id}', [UsersController::class, 'update']);
-
-Route::group(['namespace' => 'App\Http\Controllers'], function()
-{   
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
-    Route::get('/', 'HomeController@index')->name('home.index');
-    Route::get('/success', 'HomeController@success')->name('home.success');
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/success', 'HomeController@success')->name('success');
+    Route::get('/login', 'HomeController@login')->name('login');
 
-    Route::group(['middleware' => ['guest']], function() {
+    /**
+     * Users Routes
+     */
+    Route::get('/users', [UsersController::class, 'index']);
+    Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
+    Route::post('/users/update/{id}', [UsersController::class, 'update']);
+
+    Route::group(['middleware' => ['guest']], function () {
         /**
          * Register Routes
          */
@@ -39,10 +41,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'LoginController@login')->name('login.perform');
-
     });
 
-    Route::group(['middleware' => ['auth']], function() {
+    Route::group(['middleware' => ['auth']], function () {
         /**
          * Logout Routes
          */

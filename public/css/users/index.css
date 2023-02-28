@@ -58,8 +58,6 @@
     -4px -4px 6px 0 rgba(116, 125, 136, .2),
     inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-  margin-bottom: 30px;
-  margin-left: auto;
   width: 200px;
 }
 
@@ -75,7 +73,6 @@
   font-weight: 500;
   font-size: 16px;
   transition: 0.8s;
-
 }
 
 .search-container .search-btn .fas {
@@ -151,4 +148,20 @@
     display: grid;
     padding: 10px 0;
   }
+}
+
+.search-text {
+  text-align: center;
+  width: min-content;
+  display: inline-table;
+}
+
+.search-main-container {
+  margin-bottom: 30px;
+  margin-left: auto;
+  display: table;
+}
+
+.search-info {
+  margin: auto;
 }

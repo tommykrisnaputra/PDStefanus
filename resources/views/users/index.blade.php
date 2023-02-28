@@ -18,11 +18,27 @@
 @section('content')
     <div id="main-section" class="home-main">
         <div class="container">
-            <div class="search-container">
-                <input type="text" name="search" placeholder="Search (name)..." class="search-input" id="search">
-                <a href="#" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </a>
+            <div class="search-main-container">
+                {{-- <div class="search-text">
+                    <span class="search-info">Pencarian tanggal</span>
+                    <div class="search-container">
+                        <input type="text" name="search" placeholder="Search..." class="search-input" id="search">
+                        <a href="#" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+
+                </div> --}}
+                <div class="search-text">
+                    <span class="search-info">Pencarian nama, alamat, paroki, nomor hp, instagram</span>
+                    <div class="search-container">
+                        <input type="text" name="search" placeholder="Search..." class="search-input" id="search">
+                        <a href="#" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+
+                </div>
             </div>
             <ul class="responsive-table">
                 <li class="table-header">

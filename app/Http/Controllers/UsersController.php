@@ -93,6 +93,10 @@ class UsersController extends Controller
         try {
             $users = DB::table('users')
                 ->where('full_name', 'LIKE', '%' . $request->keyword . '%')
+                ->orWhere('paroki', 'LIKE', '%' . $request->keyword . '%')
+                ->orWhere('phone_number', 'LIKE', '%' . $request->keyword . '%')
+                ->orWhere('address', 'LIKE', '%' . $request->keyword . '%')
+                ->orWhere('social_instagram', 'LIKE', '%' . $request->keyword . '%')
                 ->get();
             return response()->json([
                 'users' => $users,

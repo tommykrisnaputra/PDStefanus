@@ -23,6 +23,8 @@
                     <div class="col col-1">Alamat</div>
                     <div class="col col-2">Paroki</div>
                     <div class="col col-2">Nomor HP</div>
+                    <div class="col col-2">Instagram</div>
+                    <div class="col col-3">Pertama Datang</div>
                     <div class="col col-3">Kedatangan Terakhir</div>
                     <div class="col col-3">Persentase Kedatangan</div>
                     <div class="col col-3"></div>
@@ -35,6 +37,9 @@
                         <div class="col col-1" data-label="Alamat">{{ $data->address }}</div>
                         <div class="col col-2" data-label="Paroki">{{ $data->paroki }}</div>
                         <div class="col col-2" data-label="Nomor HP">{{ $data->phone_number }}</div>
+                        <div class="col col-2" data-label="Instagram">{{ $data->social_instagram }}</div>
+                        <div class="col col-3" data-label="Pertama Datang">
+                            {{ date('d-m-Y', strtotime($data->first_attendance)) }}</div>
                         <div class="col col-3" data-label="Kedatangan Terakhir">
                             {{ date('d-m-Y', strtotime($data->last_attendance)) }}</div>
                         <div class="col col-3" data-label="Persentase Kedatangan">

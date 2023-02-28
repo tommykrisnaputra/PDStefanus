@@ -69,6 +69,15 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
+                        <label for="social_instagram">Instagram</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="tel" id="social_instagram" name="social_instagram" value="{{ old('social_instagram') }}"
+                            placeholder="Masukan tag Instagram" class="{{ $errors->has('social_instagram') ? 'form-error' : '' }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="address">Alamat</label>
                     </div>
                     <div class="col-75">

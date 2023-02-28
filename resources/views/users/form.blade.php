@@ -90,7 +90,7 @@
                             class="{{ $errors->has('paroki') ? 'form-error' : '' }}">
                     </div>
                 </div>
-                {{-- <div class="row">
+                <div class="row">
                     <div class="col-25">
                         <label for="social_instagram">Instagram</label>
                     </div>
@@ -100,7 +100,7 @@
                             placeholder="Masukan tag Instagram"
                             class="{{ $errors->has('social_instagram') ? 'form-error' : '' }}">
                     </div>
-                </div> --}}
+                </div>
                 <div class="row">
                     <div class="col-25">
                         <label for="gender">Gender</label>

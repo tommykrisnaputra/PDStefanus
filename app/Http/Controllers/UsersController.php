@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HelperController as helper;
 use Illuminate\Support\Facades\Validator;
+use Exception;
 use DB;
 
 class UsersController extends Controller
@@ -84,6 +85,20 @@ class UsersController extends Controller
                 ]);
             DB::commit();
             return redirect('/users')->with(['message' => 'Data ' . $request->fullname . ' berhasil  di update']);
+        }
+    }
+
+    public function search(Request $request)
+    {
+        try {
+            $users = DB::table('users')
+                ->where('full_name', 'LIKE', '%' . $request->keyword . '%')
+                ->get();
+            return response()->json([
+                'users' => $users,
+            ]);
+        } catch (Exception $e) {
+            dd($e->getMessage());
         }
     }
 }

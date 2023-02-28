@@ -28,6 +28,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/users', [UsersController::class, 'index']);
     Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
     Route::post('/users/update/{id}', [UsersController::class, 'update']);
+    Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');
 
     Route::group(['middleware' => ['guest']], function () {
         /**

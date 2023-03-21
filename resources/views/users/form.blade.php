@@ -103,6 +103,17 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
+                        <label for="social_tiktok">Tik Tok</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="social_tiktok" name="social_tiktok"
+                            value="{{ old('social_tiktok', $users->social_tiktok ?? '') }}"
+                            placeholder="Masukan tag Tik Tok"
+                            class="{{ $errors->has('social_tiktok') ? 'form-error' : '' }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="gender">Gender</label>
                     </div>
                     <div class="col-75">

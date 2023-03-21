@@ -17,9 +17,6 @@ class UsersController extends Controller
     {
         $helper = new helper();
         $users = DB::table('users')->get();
-        foreach ($users as $check) {
-            $check->phone_number = $helper->checkPhone($check->phone_number);
-        }
         return view('users.index', ['users' => $users]);
     }
 

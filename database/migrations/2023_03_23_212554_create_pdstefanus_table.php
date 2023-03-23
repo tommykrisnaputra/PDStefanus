@@ -119,6 +119,7 @@ return new class extends Migration
             $table->timestamp('last_attendance')->nullable();
             $table->decimal('total_attendance', 10, 0)->nullable();
             $table->decimal('attendance_percentage', 10, 0)->nullable();
+            $table->string('password');
             $table->string('active', 50)->default('');
             $table->string('remember_token')->default('');
             $table->timestamp('created_at')->nullable()->useCurrent();

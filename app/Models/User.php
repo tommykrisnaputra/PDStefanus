@@ -1,44 +1,110 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
+
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+/**
+ * Class User
+ * 
+ * @property int $id
+ * @property int|null $role_id
+ * @property string $full_name
+ * @property Carbon $birthdate
+ * @property string|null $address
+ * @property string|null $paroki
+ * @property string|null $social_instagram
+ * @property string|null $social_tiktok
+ * @property string $phone_number
+ * @property string|null $image
+ * @property string $email
+ * @property string|null $description
+ * @property string|null $gender
+ * @property Carbon $first_attendance
+ * @property Carbon|null $last_attendance
+ * @property float|null $total_attendance
+ * @property float|null $attendance_percentage
+ * @property string $password
+ * @property string $active
+ * @property string $remember_token
+ * @property Carbon|null $created_at
+ * @property int|null $created_by
+ * @property Carbon|null $updated_at
+ * @property int|null $udpated_by
+ * 
+ * @property Role|null $role
+ * @property Collection|Attendance[] $attendances
+ * @property Collection|LoginHistory[] $login_histories
+ * @property Collection|Password[] $passwords
+ *
+ * @package App\Models
+ */
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+	protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'role_id',
-        'full_name',
-        'birthdate',
-    ];
+	protected $casts = [
+		'role_id' => 'int',
+		'birthdate' => 'date',
+		'first_attendance' => 'date',
+		'last_attendance' => 'date',
+		'total_attendance' => 'float',
+		'attendance_percentage' => 'float',
+		'created_by' => 'int',
+		'udpated_by' => 'int'
+	];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+	protected $hidden = [
+		'password',
+		'remember_token'
+	];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+	protected $fillable = [
+		'role_id',
+		'full_name',
+		'birthdate',
+		'address',
+		'paroki',
+		'social_instagram',
+		'social_tiktok',
+		'phone_number',
+		'image',
+		'email',
+		'description',
+		'gender',
+		'first_attendance',
+		'last_attendance',
+		'total_attendance',
+		'attendance_percentage',
+		'active',
+		'remember_token',
+		'created_by',
+		'udpated_by'
+	];
+
+	public function role()
+	{
+		return $this->belongsTo(Role::class);
+	}
+
+	public function attendances()
+	{
+		return $this->hasMany(Attendance::class);
+	}
+
+	public function login_histories()
+	{
+		return $this->hasMany(LoginHistory::class);
+	}
+
+	public function passwords()
+	{
+		return $this->hasMany(Password::class);
+	}
 }

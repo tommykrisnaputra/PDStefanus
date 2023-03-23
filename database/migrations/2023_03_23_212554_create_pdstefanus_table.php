@@ -78,7 +78,7 @@ return new class extends Migration
             $table->integer('id', true);
             $table->string('name');
             $table->string('image')->nullable();
-            $table->boolean('active');
+            $table->boolean('active')->default(true);
             $table->string('description')->nullable();
             $table->timestamp('begin_date')->nullable();
             $table->timestamp('end_date')->nullable();
@@ -103,7 +103,7 @@ return new class extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('role_id')->nullable()->index('role_id');
+            $table->integer('role_id')->nullable()->index('role_id')->default(1);
             $table->string('full_name');
             $table->timestamp('birthdate');
             $table->string('address')->nullable();
@@ -120,12 +120,12 @@ return new class extends Migration
             $table->decimal('total_attendance', 10, 0)->nullable();
             $table->decimal('attendance_percentage', 10, 0)->nullable();
             $table->string('password');
-            $table->string('active', 50)->default('');
+            $table->boolean('active')->default(true);
             $table->string('remember_token')->default('');
             $table->timestamp('created_at')->nullable()->useCurrent();
-            $table->integer('created_by')->nullable();
+            $table->integer('created_by')->nullable('registration');
             $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
-            $table->integer('udpated_by')->nullable();
+            $table->integer('udpated_by')->nullable('registration');
         });
 
         Schema::table('attendance', function (Blueprint $table) {
@@ -144,6 +144,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->foreign(['role_id'], 'users_ibfk_1')->references(['id'])->on('roles')->onUpdate('NO ACTION')->onDelete('CASCADE');
         });
+        
+        DB::table('roles')->insert(
+            array('name' => 'umat'),
+            array('name' => 'admin'),
+        );
     }
 
     /**

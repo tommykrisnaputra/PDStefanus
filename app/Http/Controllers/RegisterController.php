@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
-use DB;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -31,7 +30,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'fullname' => 'required|max:255',
+            'full_name' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|numeric|unique:users',
             'birthdate' => 'required|date',
@@ -49,27 +48,7 @@ class RegisterController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         } else {
-            $user = DB::table('users')->insertGetId([
-                'full_name' => $request->fullname,
-                'birthdate' => $request->birthdate,
-                'address' => $request->address,
-                'paroki' => $request->paroki,
-                'phone_number' => $request->phone_number,
-                'social_instagram' => $request->social_instagram,
-                'social_tiktok' => $request->social_tiktok,
-                'email' => $request->email,
-                'gender' => $request->gender,
-                'first_attendance' => $request->first_attendance,
-                'last_attendance' => $request->first_attendance,
-                'total_attendance' => 1,
-                'attendance_percentage' => 100,
-                'active' => 'true',
-            ]);
-            DB::table('password')->insert([
-                'user_id' => $user,
-                'password' => Hash::make($request->password),
-                'active' => 'true',
-            ]);
+            $user = User::create($request->all());
             return redirect()->route('success');
         }
     }

@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class User
@@ -82,11 +83,23 @@ class User extends Model
 		'last_attendance',
 		'total_attendance',
 		'attendance_percentage',
+		'password',
 		'active',
 		'remember_token',
 		'created_by',
 		'udpated_by'
 	];
+
+	/**
+	 * Always encrypt the password when it is updated.
+	 *
+	 * @param $value
+	* @return string
+	*/
+	public function setPasswordAttribute($value)
+	{
+		$this->attributes['password'] = Hash::make($value);
+	}
 
 	public function role()
 	{

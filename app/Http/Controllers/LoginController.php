@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,18 +27,29 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
+        // adam@adam.com / adamadam
         $credentials = $request->getCredentials();
 
-        if(!Auth::validate($credentials)):
-            return redirect()->to('login')
-                ->withErrors(trans('auth.failed'));
-        endif;
+        // if(!Auth::validate($credentials)):
+        //     return redirect()->to('users')
+        //         ->withErrors(trans('auth.failed'));
+        // endif;
 
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('home');
+        }
+ 
+        return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',
+        ])->onlyInput('username');
 
-        Auth::login($user);
+        // $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
-        return $this->authenticated($request, $user);
+        // Auth::login($user);
+
+        // return $this->authenticated($request, $user);
     }
 
     /**

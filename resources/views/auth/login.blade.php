@@ -25,7 +25,8 @@
                     </div>
                     <div class="col-75">
                         <input type="username" id="username" name="username" value="{{ old('username') }}"
-                            placeholder="Masukan Email atau Nomor HP" class="{{ $errors->has('username') ? 'form-error' : '' }}">
+                            placeholder="Masukan Email atau Nomor HP"
+                            class="{{ $errors->has('username') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">
@@ -47,4 +48,21 @@
 @endsection
 
 @section('js')
+    <script>
+        const passwordInput = document.querySelector("#password")
+        const eye = document.querySelector("#eye")
+        eye.addEventListener("click", function() {
+            this.classList.toggle("fa-eye-slash")
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+            passwordInput.setAttribute("type", type)
+        })
+
+        const passwordConfirmationInput = document.querySelector("#password_confirmation")
+        const eyeConfirmation = document.querySelector("#eye-confirmation")
+        eyeConfirmation.addEventListener("click", function() {
+            this.classList.toggle("fa-eye-slash")
+            const type = passwordConfirmationInput.getAttribute("type") === "password" ? "text" : "password"
+            passwordConfirmationInput.setAttribute("type", type)
+        })
+    </script>
 @endsection

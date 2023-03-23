@@ -27,6 +27,14 @@ class UsersController extends Controller
         return view('users.edit', ['users' => $users]);
     }
 
+    public function edit($id)
+    {
+        $helper = new helper();
+        $users = User::find($id);
+        $users->phone_number = $helper->checkPhone($users->phone_number);
+        return view('users.form', ['users' => $users]);
+    }
+
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [

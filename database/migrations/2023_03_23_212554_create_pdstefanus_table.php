@@ -4,9 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -19,9 +19,16 @@ return new class extends Migration
             $table->integer('user_id')->index('user_id');
             $table->integer('event_id')->index('event_id');
             $table->string('description')->nullable();
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable();
         });
 
@@ -32,9 +39,16 @@ return new class extends Migration
             $table->string('media')->nullable();
             $table->string('links')->nullable();
             $table->string('description')->nullable();
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable();
         });
 
@@ -44,9 +58,16 @@ return new class extends Migration
             $table->integer('password');
             $table->string('status');
             $table->string('description')->nullable();
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable();
         });
 
@@ -55,22 +76,39 @@ return new class extends Migration
             $table->string('name');
             $table->string('url');
             $table->string('description')->nullable();
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable();
         });
 
         Schema::create('password', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('user_id')->nullable()->index('user_id');
+            $table
+                ->integer('user_id')
+                ->nullable()
+                ->index('user_id');
             $table->string('password');
             $table->string('password_question')->nullable();
             $table->string('password_answer')->nullable();
             $table->string('active', 50)->default('');
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable();
         });
 
@@ -82,9 +120,16 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->timestamp('begin_date')->nullable();
             $table->timestamp('end_date')->nullable();
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable();
         });
 
@@ -95,15 +140,26 @@ return new class extends Migration
             $table->string('lyrics')->nullable();
             $table->string('description')->nullable();
             $table->timestamp('production_date')->nullable();
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable();
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable();
         });
 
         Schema::create('users', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('role_id')->nullable()->index('role_id')->default(1);
+            $table
+                ->integer('role_id')
+                ->nullable()
+                ->index('role_id')
+                ->default(1);
             $table->string('full_name');
             $table->timestamp('birthdate');
             $table->string('address')->nullable();
@@ -122,33 +178,87 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('active')->default(true);
             $table->string('remember_token')->default('');
-            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
             $table->integer('created_by')->nullable('registration');
-            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable()->useCurrent();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
             $table->integer('udpated_by')->nullable('registration');
         });
 
         Schema::table('attendance', function (Blueprint $table) {
-            $table->foreign(['user_id'], 'attendance_ibfk_1')->references(['id'])->on('users')->onUpdate('NO ACTION')->onDelete('CASCADE');
-            $table->foreign(['event_id'], 'attendance_ibfk_2')->references(['id'])->on('events')->onUpdate('NO ACTION')->onDelete('CASCADE');
+            $table
+                ->foreign(['user_id'], 'attendance_ibfk_1')
+                ->references(['id'])
+                ->on('users')
+                ->onUpdate('NO ACTION')
+                ->onDelete('CASCADE');
+            $table
+                ->foreign(['event_id'], 'attendance_ibfk_2')
+                ->references(['id'])
+                ->on('events')
+                ->onUpdate('NO ACTION')
+                ->onDelete('CASCADE');
         });
 
         Schema::table('login_history', function (Blueprint $table) {
-            $table->foreign(['user_id'], 'login_history_ibfk_1')->references(['id'])->on('users')->onUpdate('NO ACTION')->onDelete('CASCADE');
+            $table
+                ->foreign(['user_id'], 'login_history_ibfk_1')
+                ->references(['id'])
+                ->on('users')
+                ->onUpdate('NO ACTION')
+                ->onDelete('CASCADE');
         });
 
         Schema::table('password', function (Blueprint $table) {
-            $table->foreign(['user_id'], 'password_ibfk_1')->references(['id'])->on('users')->onUpdate('NO ACTION')->onDelete('CASCADE');
+            $table
+                ->foreign(['user_id'], 'password_ibfk_1')
+                ->references(['id'])
+                ->on('users')
+                ->onUpdate('NO ACTION')
+                ->onDelete('CASCADE');
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign(['role_id'], 'users_ibfk_1')->references(['id'])->on('roles')->onUpdate('NO ACTION')->onDelete('CASCADE');
+            $table
+                ->foreign(['role_id'], 'users_ibfk_1')
+                ->references(['id'])
+                ->on('roles')
+                ->onUpdate('NO ACTION')
+                ->onDelete('CASCADE');
         });
-        
-        DB::table('roles')->insert(
-            array('name' => 'umat'),
-            array('name' => 'admin'),
-        );
+
+        DB::table('roles')->insert([
+            [
+                'name' => 'umat',
+            ],
+            [
+                'name' => 'admin',
+            ],
+        ]);
+
+        DB::table('users')->insert([
+            [
+                'role_id' => 2,
+                'full_name' => 'PD Stefanus',
+                'birthdate' => '2023-03-24',
+                'address' => 'Jl. Satria IV No.Blok C',
+                'paroki' => 'Kristoforus',
+                'social_instagram' => 'pdstefanus',
+                'social_tiktok' => 'pdstefanus',
+                'phone_number' => '087877828233',
+                'email' => 'stefan_news@yahoo.com',
+                'first_attendance' => '2023-03-24',
+                'last_attendance' => '2023-03-24',
+                'password' => Hash::make('adminstefanus'),
+                'active' => true,
+            ],
+        ]);
     }
 
     /**

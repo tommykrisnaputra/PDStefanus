@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Exception;
 use DB;
 use App\Models\User;
+use App\Models\Role;
 
 class UsersController extends Controller
 {
@@ -18,6 +19,7 @@ class UsersController extends Controller
     {
         $helper = new helper();
         $users = User::all();
+
         return view('users.index', ['users' => $users]);
     }
 
@@ -31,18 +33,20 @@ class UsersController extends Controller
     {
         $helper = new helper();
         $users = User::find($id);
+        $roles = Role::find($users->role_id);
         $users->phone_number = $helper->checkPhone($users->phone_number);
-        return view('users.form', ['users' => $users]);
+        return view('users.form', ['users' => $users, 'roles' => $roles]);
     }
 
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
+            'role' => 'required|numeric',
             'email' => 'required|email',
             'phone_number' => 'required|numeric',
             'birthdate' => 'required|date',
-            'address' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
+            'address' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender' => 'required|in:male,female',
             'first_attendance' => 'required',
@@ -55,6 +59,7 @@ class UsersController extends Controller
         } else {
             User::find($request->id)->update([
                 'full_name' => $request->full_name,
+                'role_id' => $request->role,
                 'birthdate' => $request->birthdate,
                 'address' => $request->address,
                 'paroki' => $request->paroki,

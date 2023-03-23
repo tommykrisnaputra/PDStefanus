@@ -17,24 +17,22 @@
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/register">Pendaftaran</a>
-        <a href="/users">Umat</a>
-        <a href="/login" class="solid-button-container">
-            <button class="solid-button-button button Button">
-                <span>Login</span>
-            </button>
-        </a>
         @auth
-            {{ auth()->user()->name }}
-            <div class="text-end">
-                <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
-            </div>
+            {{-- {{ auth()->user()->role_id }} --}}
+            <a href="/users">Umat</a>
+            <a href="{{ route('logout.perform') }}" class="solid-button-container">
+                <button class="solid-button-button button Button">
+                    <span>Logout</span>
+                </button>
+            </a>
         @endauth
 
         @guest
-            <div class="text-end">
-                <a href="{{ route('login.perform') }}" class="btn btn-outline-light me-2">Login</a>
-                <a href="{{ route('register.perform') }}" class="btn btn-warning">Sign-up</a>
-            </div>
+            <a href="/login" class="solid-button-container">
+                <button class="solid-button-button button Button">
+                    <span>Login</span>
+                </button>
+            </a>
         @endguest
     </div>
 </div>

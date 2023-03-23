@@ -20,15 +20,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
      */
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/success', 'HomeController@success')->name('success');
-    Route::get('/login', 'HomeController@login')->name('login');
-
-    /**
-     * Users Routes
-     */
-    Route::get('/users', [UsersController::class, 'index']);
-    Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
-    Route::post('/users/update/{id}', [UsersController::class, 'update']);
-    Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');
 
     Route::group(['middleware' => ['guest']], function () {
         /**
@@ -49,5 +40,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+    });
+
+    Route::group(['middleware' => ['isAdmin', 'NullToBlank']], function () {
+        /**
+         * Users Routes
+         */
+        Route::get('/users', [UsersController::class, 'index']);
+        Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
+        Route::post('/users/update/{id}', [UsersController::class, 'update']);
+        Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');
     });
 });

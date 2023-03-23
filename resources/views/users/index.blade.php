@@ -143,7 +143,7 @@
                             <div class="col col-2" data-label="Nomor HP"> ` + res.users[i].phone_number + ` </div>
                             <div class="col col-1" data-label="Instagram"> <a href="https://www.instagram.com/`+ res.users[i].social_instagram +`" target="_blank" rel="noreferrer noopener">` 
                                 + res.users[i].social_instagram + `</a> </div>
-                            <div class="col col-1" data-label="Tik Tok"> <a href="https://www.instagram.com/`+ res.users[i].social_tiktok +`" target="_blank" rel="noreferrer noopener">` + res.users[i].social_tiktok + `</a> </div>
+                            <div class="col col-1" data-label="Tik Tok"> <a href="https://www.tiktok.com/@`+ res.users[i].social_tiktok +`" target="_blank" rel="noreferrer noopener">` + res.users[i].social_tiktok + `</a> </div>
                             <div class="col col-2" data-label="Pertama Datang">
                                 ` + new Date(res.users[i].first_attendance).toLocaleString('id-ID', options_2) + `
                                </div>

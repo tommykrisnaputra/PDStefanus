@@ -42,6 +42,19 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
+                        <label for="role">Role</label>
+                    </div>
+                    <div class="col-75">
+                        <select name="role" id="role"
+                            value="{{ old('role', $roles->id ?? '') }}" placeholder="Masukan role"
+                            class="{{ $errors->has('role') ? 'form-error' : '' }}">
+                            <option value="1" @selected($roles->id == 1)>Umat</option>
+                            <option value="2" @selected($roles->id == 2)>Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="email">Email</label>
                     </div>
                     <div class="col-75">
@@ -117,11 +130,11 @@
                         <label for="gender">Gender</label>
                     </div>
                     <div class="col-75">
-                        <select name="gender" id="gender" value="male"
+                        <select name="gender" id="gender"
                             value="{{ old('gender', $users->gender ?? '') }}" placeholder="Masukan gender"
                             class="{{ $errors->has('gender') ? 'form-error' : '' }}">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="male" @selected($users->gender == "male")>Male</option>
+                            <option value="female" @selected($users->gender == "female")>Female</option>
                         </select>
                     </div>
                 </div>

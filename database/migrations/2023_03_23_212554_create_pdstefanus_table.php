@@ -234,7 +234,7 @@ return new class extends Migration {
             [
                 'name' => 'Pujian',
                 'date' => '2023-03-30',
-                'media' => 'https://www.instagram.com/reel/Co6EEAphLdQ/?utm_source=ig_web_copy_link',
+                'media' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/County_Dublin_-_Holmpatrick_Church_of_Ireland_Church_-_20190615195717.jpg/1200px-County_Dublin_-_Holmpatrick_Church_of_Ireland_Church_-_20190615195717.jpg',
                 'links' => 'https://www.instagram.com/reel/Co6EEAphLdQ/?utm_source=ig_web_copy_link',
                 'description' => 'Pujian',
                 'order_number' => 1,
@@ -242,7 +242,7 @@ return new class extends Migration {
             [
                 'name' => 'Dance',
                 'date' => '2023-03-30',
-                'media' => 'https://www.instagram.com/reel/CqF_KDXgA47/?utm_source=ig_web_copy_link',
+                'media' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJRKwHTcmdDwIqcloCC076mxpFa0oP6Nizjw&usqp=CAU',
                 'links' => 'https://www.instagram.com/reel/CqF_KDXgA47/?utm_source=ig_web_copy_link',
                 'description' => 'Dance',
                 'order_number' => 2,
@@ -250,7 +250,7 @@ return new class extends Migration {
             [
                 'name' => 'Kombas',
                 'date' => '2023-03-30',
-                'media' => 'https://www.instagram.com/reel/Cnn3ncQoJSL/?utm_source=ig_web_copy_link',
+                'media' => 'https://holynamewinfield.org/images/stories/rotator/rd2022/rotator1.jpg',
                 'links' => 'https://www.instagram.com/reel/Cnn3ncQoJSL/?utm_source=ig_web_copy_link',
                 'description' => 'Kombas',
                 'order_number' => 3,
@@ -258,7 +258,7 @@ return new class extends Migration {
             [
                 'name' => 'PD Stefanus',
                 'date' => '2023-03-30',
-                'media' => 'https://www.instagram.com/p/CqGBUiyvyl7/?utm_source=ig_web_copy_link',
+                'media' => 'https://www.imb.org/wp-content/uploads/2016/08/Local-Church.jpg',
                 'links' => 'https://pdstefanusgrogol.com/',
                 'description' => 'PD Stefanus di adakan setiap hari kamis malam pukul 19.00 WIB',
                 'order_number' => 4,

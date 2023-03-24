@@ -89,29 +89,6 @@ return new class extends Migration {
             $table->integer('udpated_by')->nullable();
         });
 
-        Schema::create('password', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table
-                ->integer('user_id')
-                ->nullable()
-                ->index('user_id');
-            $table->string('password');
-            $table->string('password_question')->nullable();
-            $table->string('password_answer')->nullable();
-            $table->string('active', 50)->default('');
-            $table
-                ->timestamp('created_at')
-                ->nullable()
-                ->useCurrent();
-            $table->integer('created_by')->nullable();
-            $table
-                ->timestamp('updated_at')
-                ->useCurrentOnUpdate()
-                ->nullable()
-                ->useCurrent();
-            $table->integer('udpated_by')->nullable();
-        });
-
         Schema::create('roles', function (Blueprint $table) {
             $table->integer('id', true);
             $table->string('name');
@@ -215,15 +192,6 @@ return new class extends Migration {
                 ->onDelete('CASCADE');
         });
 
-        Schema::table('password', function (Blueprint $table) {
-            $table
-                ->foreign(['user_id'], 'password_ibfk_1')
-                ->references(['id'])
-                ->on('users')
-                ->onUpdate('NO ACTION')
-                ->onDelete('CASCADE');
-        });
-
         Schema::table('users', function (Blueprint $table) {
             $table
                 ->foreign(['role_id'], 'users_ibfk_1')
@@ -272,10 +240,6 @@ return new class extends Migration {
             $table->dropForeign('users_ibfk_1');
         });
 
-        Schema::table('password', function (Blueprint $table) {
-            $table->dropForeign('password_ibfk_1');
-        });
-
         Schema::table('login_history', function (Blueprint $table) {
             $table->dropForeign('login_history_ibfk_1');
         });
@@ -290,8 +254,6 @@ return new class extends Migration {
         Schema::dropIfExists('songs');
 
         Schema::dropIfExists('roles');
-
-        Schema::dropIfExists('password');
 
         Schema::dropIfExists('media');
 

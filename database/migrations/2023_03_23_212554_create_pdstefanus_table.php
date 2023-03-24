@@ -39,6 +39,8 @@ return new class extends Migration {
             $table->string('media')->nullable();
             $table->string('links')->nullable();
             $table->string('description')->nullable();
+            $table->boolean('active')->default(true);
+            $table->integer('order_number')->nullable();
             $table
                 ->timestamp('created_at')
                 ->nullable()
@@ -225,6 +227,41 @@ return new class extends Migration {
                 'last_attendance' => '2023-03-24',
                 'password' => Hash::make('adminstefanus'),
                 'active' => true,
+            ],
+        ]);
+
+        DB::table('events')->insert([
+            [
+                'name' => 'Pujian',
+                'date' => '2023-03-30',
+                'media' => 'https://www.instagram.com/reel/Co6EEAphLdQ/?utm_source=ig_web_copy_link',
+                'links' => 'https://www.instagram.com/reel/Co6EEAphLdQ/?utm_source=ig_web_copy_link',
+                'description' => 'Pujian',
+                'order_number' => 1,
+            ],
+            [
+                'name' => 'Dance',
+                'date' => '2023-03-30',
+                'media' => 'https://www.instagram.com/reel/CqF_KDXgA47/?utm_source=ig_web_copy_link',
+                'links' => 'https://www.instagram.com/reel/CqF_KDXgA47/?utm_source=ig_web_copy_link',
+                'description' => 'Dance',
+                'order_number' => 2,
+            ],
+            [
+                'name' => 'Kombas',
+                'date' => '2023-03-30',
+                'media' => 'https://www.instagram.com/reel/Cnn3ncQoJSL/?utm_source=ig_web_copy_link',
+                'links' => 'https://www.instagram.com/reel/Cnn3ncQoJSL/?utm_source=ig_web_copy_link',
+                'description' => 'Kombas',
+                'order_number' => 3,
+            ],
+            [
+                'name' => 'PD Stefanus',
+                'date' => '2023-03-30',
+                'media' => 'https://www.instagram.com/p/CqGBUiyvyl7/?utm_source=ig_web_copy_link',
+                'links' => 'https://pdstefanusgrogol.com/',
+                'description' => 'PD Stefanus di adakan setiap hari kamis malam pukul 19.00 WIB',
+                'order_number' => 4,
             ],
         ]);
     }

@@ -15,18 +15,28 @@
 
 @section('content')
     <div id="main-section" class="home-main">
+        @if ($errors->any())
+            <div class="alert-toast">
+                <div class="alert-toast-content">
+                    <div class="message">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="container">
             <form method="POST" action="/login">
                 @csrf
                 <!-- {{ csrf_field() }} -->
                 <div class="row">
                     <div class="col-25">
-                        <label for="username">Email atau Nomor HP</label>
+                        <label for="email">Email</label>
                     </div>
                     <div class="col-75">
-                        <input type="username" id="username" name="username" value="{{ old('username') }}"
-                            placeholder="Masukan Email atau Nomor HP"
-                            class="{{ $errors->has('username') ? 'form-error' : '' }}">
+                        <input type="email" id="email" name="email" value="{{ old('email') }}"
+                            placeholder="Masukan Email" class="{{ $errors->has('email') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">

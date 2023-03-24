@@ -21,13 +21,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/success', 'HomeController@success')->name('success');
 
-    Route::group(['middleware' => ['guest']], function () {
-        /**
-         * Register Routes
-         */
-        Route::get('/register', 'RegisterController@show')->name('register.show');
-        Route::post('/register', 'RegisterController@register')->name('register.perform');
+    /**
+     * Register Routes
+     */
+    Route::get('/register', 'RegisterController@show')->name('register.show');
+    Route::post('/register', 'RegisterController@register')->name('register.perform');
 
+    Route::group(['middleware' => ['guest']], function () {
         /**
          * Login Routes
          */
@@ -46,7 +46,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         /**
          * Users Routes
          */
-        Route::get('/users', [UsersController::class, 'index']);
+        Route::get('/users', [UsersController::class, 'index'])->name('users.show');
         Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
         Route::post('/users/update/{id}', [UsersController::class, 'update']);
         Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');

@@ -44,7 +44,7 @@
                 <li class="table-header">
                     <div class="col col-1">Nama</div>
                     <div class="col col-2">Tanggal Lahir</div>
-                    <div class="col col-3">Alamat</div>
+                    <div class="col col-2">Alamat</div>
                     <div class="col col-1">Paroki</div>
                     <div class="col col-2">Nomor HP</div>
                     <div class="col col-1">Instagram</div>
@@ -138,7 +138,7 @@
                             <div class="col col-1" data-label="Nama"> ` + res.users[i].full_name + ` </div>
                             <div class="col col-2" data-label="Tanggal Lahir">
                                 ` + new Date(res.users[i].birthdate).toLocaleString('id-ID', options_2) + `</div>
-                            <div class="col col-3" data-label="Alamat">` + res.users[i].address + ` </div>
+                            <div class="col col-2" data-label="Alamat">` + res.users[i].address + ` </div>
                             <div class="col col-1" data-label="Paroki"> ` + res.users[i].paroki + ` </div>
                             <div class="col col-2" data-label="Nomor HP"> ` + res.users[i].phone_number + ` </div>
                             <div class="col col-1" data-label="Instagram"> <a href="https://www.instagram.com/`+ res.users[i].social_instagram +`" target="_blank" rel="noreferrer noopener">` 

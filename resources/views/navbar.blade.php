@@ -19,7 +19,9 @@
         <a href="/register">Pendaftaran</a>
         @auth
             {{-- {{ auth()->user()->role_id }} --}}
-            <a href="/users">Umat</a>
+            @if (auth()->user()->isAdmin())
+                <a href="/users">Umat</a>
+            @endif
             <a href="{{ route('logout.perform') }}" class="solid-button-container">
                 <button class="solid-button-button button Button">
                     <span>Logout</span>

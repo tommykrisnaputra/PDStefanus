@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Role;
 
 /**
  * Class User
- * 
+ *
  * @property int $id
  * @property int|null $role_id
  * @property string $full_name
@@ -39,7 +40,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property int|null $created_by
  * @property Carbon|null $updated_at
  * @property int|null $udpated_by
- * 
+ *
  * @property Role|null $role
  * @property Collection|Attendance[] $attendances
  * @property Collection|LoginHistory[] $login_histories
@@ -49,76 +50,57 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-	protected $table = 'users';
+    protected $table = 'users';
 
-	protected $casts = [
-		'role_id' => 'int',
-		'birthdate' => 'date',
-		'first_attendance' => 'date',
-		'last_attendance' => 'date',
-		'total_attendance' => 'float',
-		'attendance_percentage' => 'float',
-		'created_by' => 'int',
-		'udpated_by' => 'int'
-	];
+    protected $casts = [
+        'role_id' => 'int',
+        'birthdate' => 'date',
+        'first_attendance' => 'date',
+        'last_attendance' => 'date',
+        'total_attendance' => 'float',
+        'attendance_percentage' => 'float',
+        'created_by' => 'int',
+        'udpated_by' => 'int',
+    ];
 
-	protected $hidden = [
-		'password',
-		'remember_token'
-	];
+    protected $hidden = ['password', 'remember_token'];
 
-	protected $fillable = [
-		'role_id',
-		'full_name',
-		'birthdate',
-		'address',
-		'paroki',
-		'social_instagram',
-		'social_tiktok',
-		'phone_number',
-		'image',
-		'email',
-		'description',
-		'gender',
-		'first_attendance',
-		'last_attendance',
-		'total_attendance',
-		'attendance_percentage',
-		'password',
-		'active',
-		'remember_token',
-		'created_by',
-		'udpated_by'
-	];
+    protected $fillable = ['role_id', 'full_name', 'birthdate', 'address', 'paroki', 'social_instagram', 'social_tiktok', 'phone_number', 'image', 'email', 'description', 'gender', 'first_attendance', 'last_attendance', 'total_attendance', 'attendance_percentage', 'password', 'active', 'remember_token', 'created_by', 'udpated_by'];
 
-	/**
-	 * Always encrypt the password when it is updated.
-	 *
-	 * @param $value
-	* @return string
-	*/
-	public function setPasswordAttribute($value)
-	{
-		$this->attributes['password'] = Hash::make($value);
-	}
+    /**
+     * Always encrypt the password when it is updated.
+     *
+     * @param $value
+     * @return string
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 
-	public function role()
-	{
-		return $this->belongsTo(Role::class);
-	}
+    public function role()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 
-	public function attendances()
-	{
-		return $this->hasMany(Attendance::class);
-	}
+    public function isAdmin()
+    {
+		if (auth()->user()->role_id == 2) return true;
+		else return false;
+    }
 
-	public function login_histories()
-	{
-		return $this->hasMany(LoginHistory::class);
-	}
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 
-	public function passwords()
-	{
-		return $this->hasMany(Password::class);
-	}
+    public function login_histories()
+    {
+        return $this->hasMany(LoginHistory::class);
+    }
+
+    public function passwords()
+    {
+        return $this->hasMany(Password::class);
+    }
 }

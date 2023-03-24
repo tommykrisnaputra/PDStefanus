@@ -6,6 +6,7 @@ input[type=text], input[type=date], input[type=email], input[type=password], inp
   border-radius: 20px;
   box-sizing: border-box;
   resize: vertical;
+  background-color: #fff;
 }
 
 /* Style the label to display next to the inputs */

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -49,7 +50,12 @@ class RegisterController extends Controller
                 ->withErrors($validator);
         } else {
             $user = User::create($request->all());
-            return redirect()->route('success');
+            if (Auth::check()) {
+                return redirect('/users');
+            } else {
+                auth()->login($user);
+                return redirect()->route('success');
+            }
         }
     }
 }

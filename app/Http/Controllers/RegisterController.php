@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
@@ -49,11 +49,27 @@ class RegisterController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         } else {
-            $user = User::create($request->all());
-            if (Auth::check()) {
+            $user = User::create([
+                'full_name' => $request->full_name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'birthdate' => $request->birthdate,
+                'social_instagram' => $request->social_instagram,
+                'social_tiktok' => $request->social_tiktok,
+                'address' => $request->address,
+                'paroki' => $request->paroki,
+                'gender' => $request->gender,
+                'first_attendance' => $request->first_attendance,
+                'last_attendance' => $request->first_attendance,
+                'total_attendance' => '1',
+                'attendance_percentage' => '100',
+                'description' => '',
+            ]);
+            if (Auth::check() && Auth::User()->isAdmin()) {
                 return redirect('/users');
             } else {
                 auth()->login($user);
+                $request->session()->regenerate();
                 return redirect()->route('success');
             }
         }

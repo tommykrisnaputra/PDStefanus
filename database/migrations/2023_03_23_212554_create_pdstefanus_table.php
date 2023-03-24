@@ -29,7 +29,7 @@ return new class extends Migration {
                 ->useCurrentOnUpdate()
                 ->nullable()
                 ->useCurrent();
-            $table->integer('udpated_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
 
         Schema::create('events', function (Blueprint $table) {
@@ -51,7 +51,7 @@ return new class extends Migration {
                 ->useCurrentOnUpdate()
                 ->nullable()
                 ->useCurrent();
-            $table->integer('udpated_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
 
         Schema::create('login_history', function (Blueprint $table) {
@@ -70,7 +70,7 @@ return new class extends Migration {
                 ->useCurrentOnUpdate()
                 ->nullable()
                 ->useCurrent();
-            $table->integer('udpated_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
 
         Schema::create('media', function (Blueprint $table) {
@@ -88,7 +88,7 @@ return new class extends Migration {
                 ->useCurrentOnUpdate()
                 ->nullable()
                 ->useCurrent();
-            $table->integer('udpated_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
 
         Schema::create('roles', function (Blueprint $table) {
@@ -109,7 +109,7 @@ return new class extends Migration {
                 ->useCurrentOnUpdate()
                 ->nullable()
                 ->useCurrent();
-            $table->integer('udpated_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
 
         Schema::create('songs', function (Blueprint $table) {
@@ -129,7 +129,7 @@ return new class extends Migration {
                 ->useCurrentOnUpdate()
                 ->nullable()
                 ->useCurrent();
-            $table->integer('udpated_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
 
         Schema::create('users', function (Blueprint $table) {
@@ -167,7 +167,7 @@ return new class extends Migration {
                 ->useCurrentOnUpdate()
                 ->nullable()
                 ->useCurrent();
-            $table->integer('udpated_by')->nullable('registration');
+            $table->integer('updated_by')->nullable('registration');
         });
 
         Schema::table('attendance', function (Blueprint $table) {

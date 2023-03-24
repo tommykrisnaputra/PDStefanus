@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property int|null $created_by
  * @property Carbon|null $updated_at
- * @property int|null $udpated_by
+ * @property int|null $updated_by
  * 
  * @property Collection|User[] $users
  *
@@ -38,7 +38,7 @@ class Role extends Model
 		'begin_date' => 'date',
 		'end_date' => 'date',
 		'created_by' => 'int',
-		'udpated_by' => 'int'
+		'updated_by' => 'int'
 	];
 
 	protected $fillable = [
@@ -49,7 +49,7 @@ class Role extends Model
 		'begin_date',
 		'end_date',
 		'created_by',
-		'udpated_by'
+		'updated_by'
 	];
 
 	public function users()

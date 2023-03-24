@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property int|null $created_by
  * @property Carbon|null $updated_at
- * @property int|null $udpated_by
+ * @property int|null $updated_by
  *
  * @package App\Models
  */
@@ -32,7 +32,7 @@ class Song extends Model
 	protected $casts = [
 		'production_date' => 'date',
 		'created_by' => 'int',
-		'udpated_by' => 'int'
+		'updated_by' => 'int'
 	];
 
 	protected $fillable = [
@@ -42,6 +42,6 @@ class Song extends Model
 		'description',
 		'production_date',
 		'created_by',
-		'udpated_by'
+		'updated_by'
 	];
 }

@@ -19,10 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $media
  * @property string|null $links
  * @property string|null $description
+ * @property bool $active
+ * @property int|null $order_number
  * @property Carbon|null $created_at
  * @property int|null $created_by
  * @property Carbon|null $updated_at
- * @property int|null $udpated_by
+ * @property int|null $updated_by
  * 
  * @property Collection|Attendance[] $attendances
  *
@@ -34,8 +36,10 @@ class Event extends Model
 
 	protected $casts = [
 		'date' => 'date',
+		'active' => 'bool',
+		'order_number' => 'int',
 		'created_by' => 'int',
-		'udpated_by' => 'int'
+		'updated_by' => 'int'
 	];
 
 	protected $fillable = [
@@ -44,8 +48,10 @@ class Event extends Model
 		'media',
 		'links',
 		'description',
+		'active',
+		'order_number',
 		'created_by',
-		'udpated_by'
+		'updated_by'
 	];
 
 	public function attendances()

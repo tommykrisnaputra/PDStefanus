@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class HomeController extends Controller
 {
-    public function index() 
+    public function index()
     {
-        return view('home');
+        $events = Event::where('active', '=', '1')->orderBy('order_number')->get();
+        return view('home', ['events' => $events]);
     }
 
-    public function success() 
+    public function success()
     {
         return view('success');
     }
 
-    public function login() 
+    public function login()
     {
         return view('login');
     }

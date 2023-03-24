@@ -21,6 +21,7 @@
             {{-- {{ auth()->user()->role_id }} --}}
             @if (auth()->user()->isAdmin())
                 <a href="/users">Umat</a>
+                <a href={{route('events.show')}}>Kegiatan PD</a>
             @endif
             <a href="{{ route('logout.perform') }}" class="solid-button-container">
                 <button class="solid-button-button button Button">

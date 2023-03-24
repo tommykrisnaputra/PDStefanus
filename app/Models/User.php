@@ -60,7 +60,7 @@ class User extends Authenticatable
         'total_attendance' => 'float',
         'attendance_percentage' => 'float',
         'created_by' => 'int',
-        'udpated_by' => 'int',
+        'updated_by' => 'int',
     ];
 
     protected $hidden = ['password', 'remember_token'];

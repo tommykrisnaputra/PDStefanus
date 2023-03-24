@@ -2,31 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
-use App\Http\Controllers\HelperController as helper;
-use Illuminate\Support\Facades\Validator;
 use Exception;
 use DB;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
+use App\Http\Controllers\HelperController as helper;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UsersController extends Controller
 {
     public function index()
     {
-        $helper = new helper();
         $users = User::all();
-
         return view('users.index', ['users' => $users]);
-    }
-
-    public function add()
-    {
-        $users = User::all();
-        return view('users.edit', ['users' => $users]);
     }
 
     public function edit($id)
@@ -73,6 +66,7 @@ class UsersController extends Controller
                 'total_attendance' => $request->total_attendance,
                 'attendance_percentage' => $request->attendance_percentage,
                 'description' => $request->description,
+                'updated_by' => Auth::id(),
             ]);
             return redirect('/users')->with(['message' => 'Data ' . $request->full_name . ' berhasil  di update']);
         }

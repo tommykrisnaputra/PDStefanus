@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\EventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +51,20 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
         Route::post('/users/update/{id}', [UsersController::class, 'update']);
         Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');
+
+        /**
+         * Events Routes
+         */
+        Route::get('/events', [EventsController::class, 'index'])->name('events.show');
+        Route::get('/events/edit/{id}', [EventsController::class, 'edit'])->name('events.edit');
+        Route::post('/events/update/{id}', [EventsController::class, 'update'])->name('events.update');
+        Route::post('/events/search', [EventsController::class, 'search'])->name('events.search');
     });
+
+    /**
+     * 404 Routes
+     */
+    Route::any('{query}', function () {
+        return redirect('/');
+    })->where('query', '.*');
 });

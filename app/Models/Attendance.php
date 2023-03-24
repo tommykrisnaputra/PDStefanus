@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property int|null $created_by
  * @property Carbon|null $updated_at
- * @property int|null $udpated_by
+ * @property int|null $updated_by
  * 
  * @property User $user
  * @property Event $event
@@ -34,7 +34,7 @@ class Attendance extends Model
 		'user_id' => 'int',
 		'event_id' => 'int',
 		'created_by' => 'int',
-		'udpated_by' => 'int'
+		'updated_by' => 'int'
 	];
 
 	protected $fillable = [
@@ -42,7 +42,7 @@ class Attendance extends Model
 		'event_id',
 		'description',
 		'created_by',
-		'udpated_by'
+		'updated_by'
 	];
 
 	public function user()

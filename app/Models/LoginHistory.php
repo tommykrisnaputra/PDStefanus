@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property int|null $created_by
  * @property Carbon|null $updated_at
- * @property int|null $udpated_by
+ * @property int|null $updated_by
  * 
  * @property User $user
  *
@@ -34,7 +34,7 @@ class LoginHistory extends Model
 		'user_id' => 'int',
 		'password' => 'int',
 		'created_by' => 'int',
-		'udpated_by' => 'int'
+		'updated_by' => 'int'
 	];
 
 	protected $hidden = [
@@ -47,7 +47,7 @@ class LoginHistory extends Model
 		'status',
 		'description',
 		'created_by',
-		'udpated_by'
+		'updated_by'
 	];
 
 	public function user()

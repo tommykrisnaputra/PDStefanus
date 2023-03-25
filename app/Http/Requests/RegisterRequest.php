@@ -23,7 +23,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'email' => 'required|email:rfc,dns|unique:users,email',
-            'phone_number' => 'required|unique:users,phone_number',
+            'phone' => 'required|unique:users,phone',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ];

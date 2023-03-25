@@ -62,7 +62,7 @@
                                 {{ date('d-m-Y', strtotime($data->birthdate)) }}</div>
                             <div class="col col-1" data-label="Alamat">{{ $data->address }}</div>
                             <div class="col col-2" data-label="Paroki">{{ $data->paroki }}</div>
-                            <div class="col col-2" data-label="Nomor HP">{{ $data->phone_number }}</div>
+                            <div class="col col-2" data-label="Nomor HP">{{ $data->phone }}</div>
                             <div class="col col-2" data-label="Instagram">{{ $data->social_instagram }}</div>
                             <div class="col col-3" data-label="Pertama Datang">
                                 {{ date('d-m-Y', strtotime($data->first_attendance)) }}</div>
@@ -140,10 +140,12 @@
                                 ` + new Date(res.users[i].birthdate).toLocaleString('id-ID', options_2) + `</div>
                             <div class="col col-2" data-label="Alamat">` + res.users[i].address + ` </div>
                             <div class="col col-1" data-label="Paroki"> ` + res.users[i].paroki + ` </div>
-                            <div class="col col-2" data-label="Nomor HP"> ` + res.users[i].phone_number + ` </div>
-                            <div class="col col-1" data-label="Instagram"> <a href="https://www.instagram.com/`+ res.users[i].social_instagram +`" target="_blank" rel="noreferrer noopener">` 
-                                + res.users[i].social_instagram + `</a> </div>
-                            <div class="col col-1" data-label="Tik Tok"> <a href="https://www.tiktok.com/@`+ res.users[i].social_tiktok +`" target="_blank" rel="noreferrer noopener">` + res.users[i].social_tiktok + `</a> </div>
+                            <div class="col col-2" data-label="Nomor HP"> ` + res.users[i].phone + ` </div>
+                            <div class="col col-1" data-label="Instagram"> <a href="https://www.instagram.com/` + res
+                    .users[i].social_instagram + `" target="_blank" rel="noreferrer noopener">` +
+                    res.users[i].social_instagram + `</a> </div>
+                            <div class="col col-1" data-label="Tik Tok"> <a href="https://www.tiktok.com/@` + res
+                    .users[i].social_tiktok + `" target="_blank" rel="noreferrer noopener">` + res.users[i].social_tiktok + `</a> </div>
                             <div class="col col-2" data-label="Pertama Datang">
                                 ` + new Date(res.users[i].first_attendance).toLocaleString('id-ID', options_2) + `
                                </div>

@@ -50,11 +50,11 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="phone_number">Nomor HP</label>
+                        <label for="phone">Nomor HP</label>
                     </div>
                     <div class="col-75">
-                        <input type="tel" id="phone_number" name="phone_number" value="{{ old('phone_number') }}"
-                            placeholder="Masukan nomor HP" class="{{ $errors->has('phone_number') ? 'form-error' : '' }}">
+                        <input type="tel" id="phone" name="phone" value="{{ old('phone') }}"
+                            placeholder="Masukan nomor HP" class="{{ $errors->has('phone') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">
@@ -72,8 +72,9 @@
                         <label for="social_instagram">Instagram</label>
                     </div>
                     <div class="col-75">
-                        <input type="tel" id="social_instagram" name="social_instagram" value="{{ old('social_instagram') }}"
-                            placeholder="Masukan tag Instagram" class="{{ $errors->has('social_instagram') ? 'form-error' : '' }}">
+                        <input type="tel" id="social_instagram" name="social_instagram"
+                            value="{{ old('social_instagram') }}" placeholder="Masukan tag Instagram"
+                            class="{{ $errors->has('social_instagram') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">
@@ -82,7 +83,8 @@
                     </div>
                     <div class="col-75">
                         <input type="tel" id="social_tiktok" name="social_tiktok" value="{{ old('social_tiktok') }}"
-                            placeholder="Masukan tag Tik Tok" class="{{ $errors->has('social_tiktok') ? 'form-error' : '' }}">
+                            placeholder="Masukan tag Tik Tok"
+                            class="{{ $errors->has('social_tiktok') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">

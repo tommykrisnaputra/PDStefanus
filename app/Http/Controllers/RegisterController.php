@@ -33,7 +33,7 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'phone_number' => 'required|numeric|unique:users',
+            'phone' => 'required|numeric|unique:users',
             'birthdate' => 'required|date',
             'social_instagram' => 'nullable|regex:/^^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/',
             'social_tiktok' => 'nullable|regex:/^^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/',
@@ -52,7 +52,7 @@ class RegisterController extends Controller
             $user = User::create([
                 'full_name' => $request->full_name,
                 'email' => $request->email,
-                'phone_number' => $request->phone_number,
+                'phone' => $request->phone,
                 'birthdate' => $request->birthdate,
                 'social_instagram' => $request->social_instagram,
                 'social_tiktok' => $request->social_tiktok,
@@ -61,10 +61,12 @@ class RegisterController extends Controller
                 'gender' => $request->gender,
                 'first_attendance' => $request->first_attendance,
                 'last_attendance' => $request->first_attendance,
+                'password' => $request->password,
                 'total_attendance' => '1',
                 'attendance_percentage' => '100',
                 'description' => '',
             ]);
+            // Add user to attendance table
             if (Auth::check() && Auth::User()->isAdmin()) {
                 return redirect('/users');
             } else {

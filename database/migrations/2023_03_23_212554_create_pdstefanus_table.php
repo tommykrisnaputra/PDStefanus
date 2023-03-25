@@ -145,7 +145,7 @@ return new class extends Migration {
             $table->string('paroki')->nullable();
             $table->string('social_instagram')->nullable();
             $table->string('social_tiktok')->nullable();
-            $table->string('phone_number')->default('0');
+            $table->string('phone')->default('0');
             $table->string('image')->nullable();
             $table->string('email');
             $table->string('description')->nullable();
@@ -221,7 +221,7 @@ return new class extends Migration {
                 'paroki' => 'Kristoforus',
                 'social_instagram' => 'pdstefanus',
                 'social_tiktok' => 'pdstefanus',
-                'phone_number' => '087877828233',
+                'phone' => '087877828233',
                 'email' => 'stefan_news@yahoo.com',
                 'first_attendance' => '2023-03-24',
                 'last_attendance' => '2023-03-24',

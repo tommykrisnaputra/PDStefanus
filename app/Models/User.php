@@ -24,7 +24,7 @@ use App\Models\Role;
  * @property string|null $paroki
  * @property string|null $social_instagram
  * @property string|null $social_tiktok
- * @property string $phone_number
+ * @property string $phone
  * @property string|null $image
  * @property string $email
  * @property string|null $description
@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
-    protected $fillable = ['role_id', 'full_name', 'birthdate', 'address', 'paroki', 'social_instagram', 'social_tiktok', 'phone_number', 'image', 'email', 'description', 'gender', 'first_attendance', 'last_attendance', 'total_attendance', 'attendance_percentage', 'password', 'active', 'remember_token', 'created_by', 'udpated_by'];
+    protected $fillable = ['role_id', 'full_name', 'birthdate', 'address', 'paroki', 'social_instagram', 'social_tiktok', 'phone', 'image', 'email', 'description', 'gender', 'first_attendance', 'last_attendance', 'total_attendance', 'attendance_percentage', 'password', 'active', 'remember_token', 'created_by', 'udpated_by'];
 
     /**
      * Always encrypt the password when it is updated.
@@ -85,8 +85,11 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-		if (auth()->user()->role_id == 2) return true;
-		else return false;
+        if (auth()->user()->role_id == 2) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function attendances()

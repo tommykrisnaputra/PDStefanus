@@ -45,9 +45,8 @@
                         <label for="role">Role</label>
                     </div>
                     <div class="col-75">
-                        <select name="role" id="role"
-                            value="{{ old('role', $roles->id ?? '') }}" placeholder="Masukan role"
-                            class="{{ $errors->has('role') ? 'form-error' : '' }}">
+                        <select name="role" id="role" value="{{ old('role', $roles->id ?? '') }}"
+                            placeholder="Masukan role" class="{{ $errors->has('role') ? 'form-error' : '' }}">
                             <option value="1" @selected($roles->id == 1)>Umat</option>
                             <option value="2" @selected($roles->id == 2)>Admin</option>
                         </select>
@@ -64,12 +63,11 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="phone_number">Nomor HP</label>
+                        <label for="phone">Nomor HP</label>
                     </div>
                     <div class="col-75">
-                        <input type="tel" id="phone_number" name="phone_number"
-                            value="{{ old('phone_number', $users->phone_number ?? '') }}" placeholder="Masukan nomor HP"
-                            class="{{ $errors->has('phone_number') ? 'form-error' : '' }}">
+                        <input type="tel" id="phone" name="phone" value="{{ old('phone', $users->phone ?? '') }}"
+                            placeholder="Masukan nomor HP" class="{{ $errors->has('phone') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">
@@ -130,11 +128,10 @@
                         <label for="gender">Gender</label>
                     </div>
                     <div class="col-75">
-                        <select name="gender" id="gender"
-                            value="{{ old('gender', $users->gender ?? '') }}" placeholder="Masukan gender"
-                            class="{{ $errors->has('gender') ? 'form-error' : '' }}">
-                            <option value="male" @selected($users->gender == "male")>Male</option>
-                            <option value="female" @selected($users->gender == "female")>Female</option>
+                        <select name="gender" id="gender" value="{{ old('gender', $users->gender ?? '') }}"
+                            placeholder="Masukan gender" class="{{ $errors->has('gender') ? 'form-error' : '' }}">
+                            <option value="male" @selected($users->gender == 'male')>Male</option>
+                            <option value="female" @selected($users->gender == 'female')>Female</option>
                         </select>
                     </div>
                 </div>

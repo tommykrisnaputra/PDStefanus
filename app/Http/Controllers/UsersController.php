@@ -27,7 +27,7 @@ class UsersController extends Controller
         $helper = new helper();
         $users = User::find($id);
         $roles = Role::find($users->role_id);
-        $users->phone_number = $helper->checkPhone($users->phone_number);
+        $users->phone = $helper->checkPhone($users->phone);
         return view('users.form', ['users' => $users, 'roles' => $roles]);
     }
 
@@ -37,7 +37,7 @@ class UsersController extends Controller
             'full_name' => 'required|max:255',
             'role' => 'required|numeric',
             'email' => 'required|email',
-            'phone_number' => 'required|numeric',
+            'phone' => 'required|numeric',
             'birthdate' => 'required|date',
             'address' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
@@ -58,7 +58,7 @@ class UsersController extends Controller
                 'paroki' => $request->paroki,
                 'social_instagram' => $request->social_instagram,
                 'social_tiktok' => $request->social_tiktok,
-                'phone_number' => $request->phone_number,
+                'phone' => $request->phone,
                 'email' => $request->email,
                 'gender' => $request->gender,
                 'first_attendance' => $request->first_attendance,
@@ -79,7 +79,7 @@ class UsersController extends Controller
                 $users = DB::table('users')
                     ->where('full_name', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('paroki', 'LIKE', '%' . $request->keyword . '%')
-                    ->orWhere('phone_number', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('phone', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('address', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('social_instagram', 'LIKE', '%' . $request->keyword . '%')
                     ->get();

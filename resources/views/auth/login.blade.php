@@ -32,11 +32,11 @@
                 <!-- {{ csrf_field() }} -->
                 <div class="row">
                     <div class="col-25">
-                        <label for="email">Email</label>
+                        <label for="email">Email atau Nomor HP</label>
                     </div>
                     <div class="col-75">
-                        <input type="email" id="email" name="email" value="{{ old('email') }}"
-                            placeholder="Masukan Email" class="{{ $errors->has('email') ? 'form-error' : '' }}">
+                        <input type="text" id="email" name="email" value="{{ old('email') }}"
+                            placeholder="Masukan Email atau nomor HP" class="{{ $errors->has('email') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">

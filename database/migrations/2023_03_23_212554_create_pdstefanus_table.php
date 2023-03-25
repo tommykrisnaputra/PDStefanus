@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->integer('id', true);
             $table->integer('user_id')->index('user_id');
             $table->integer('event_id')->index('event_id');
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table
                 ->timestamp('created_at')
                 ->nullable()
@@ -38,7 +38,7 @@ return new class extends Migration {
             $table->timestamp('date');
             $table->string('media')->nullable();
             $table->string('links')->nullable();
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table->boolean('active')->default(true);
             $table->integer('order_number')->nullable();
             $table
@@ -60,7 +60,7 @@ return new class extends Migration {
             $table->timestamp('date');
             $table->string('media')->nullable();
             $table->string('links')->nullable();
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table->boolean('active')->default(true);
             $table
                 ->timestamp('created_at')
@@ -80,7 +80,7 @@ return new class extends Migration {
             $table->integer('user_id')->index('user_id');
             $table->integer('password');
             $table->string('status');
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table
                 ->timestamp('created_at')
                 ->nullable()
@@ -98,7 +98,7 @@ return new class extends Migration {
             $table->integer('id', true);
             $table->string('name');
             $table->string('url');
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table
                 ->timestamp('created_at')
                 ->nullable()
@@ -117,7 +117,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('image')->nullable();
             $table->boolean('active')->default(true);
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table->timestamp('begin_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table
@@ -138,7 +138,7 @@ return new class extends Migration {
             $table->string('artist')->nullable();
             $table->string('title');
             $table->string('lyrics')->nullable();
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table->timestamp('production_date')->nullable();
             $table
                 ->timestamp('created_at')
@@ -169,7 +169,7 @@ return new class extends Migration {
             $table->string('phone')->default('0');
             $table->string('image')->nullable();
             $table->string('email');
-            $table->string('description')->nullable();
+            $table->mediumText('description')->nullable();
             $table->string('gender')->nullable();
             $table->timestamp('first_attendance');
             $table->timestamp('last_attendance')->nullable();
@@ -265,7 +265,9 @@ return new class extends Migration {
                 'date' => '2023-03-30',
                 'media' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJRKwHTcmdDwIqcloCC076mxpFa0oP6Nizjw&usqp=CAU',
                 'links' => 'https://www.instagram.com/reel/CqF_KDXgA47/?utm_source=ig_web_copy_link',
-                'description' => 'Deskripsi Dance',
+                'description' => 'Dance ministry pd stefanus adalah suatu wadah untuk kalian yang punya hobi dan bakat menari. Di dance ministry, kita gak hanya undang pelatih dari luar, tapi kita juga bisa buat koreo sendiri ato cover dari youtube.
+
+Latian kita diadakan pada hari senin pukul 7 malam.',
                 'order_number' => 2,
             ],
             [

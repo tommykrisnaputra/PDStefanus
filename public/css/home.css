@@ -46,7 +46,7 @@
 }
 
 .place-card-text1 {
-  font-size: 12px;
+  font-size: 14px;
   max-width: 250px;
   margin-bottom: var(--dl-space-space-doubleunit);
 }
@@ -227,6 +227,10 @@
 .home-icon02 {
   width: 24px;
   height: 24px;
+}
+
+.home-cover{
+  
 }
 
 .home-link2 {

@@ -56,6 +56,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Events Routes
          */
         Route::get('/events', [EventsController::class, 'index'])->name('events.show');
+        Route::get('/events/add', [EventsController::class, 'add'])->name('events.add');
+        Route::post('/events/create', [EventsController::class, 'create'])->name('events.create');
         Route::get('/events/edit/{id}', [EventsController::class, 'edit'])->name('events.edit');
         Route::post('/events/update/{id}', [EventsController::class, 'update'])->name('events.update');
         Route::post('/events/search', [EventsController::class, 'search'])->name('events.search');

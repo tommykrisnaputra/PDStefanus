@@ -33,11 +33,11 @@
                 <!-- {{ csrf_field() }} -->
                 <div class="row">
                     <div class="col-25">
-                        <label for="name">Nama Kegiatan</label>
+                        <label for="title">Nama Kegiatan</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" id="name" name="name" value="{{ old('name', $events->name ?? '') }}"
-                            placeholder="Masukan nama kegiatan" class="{{ $errors->has('name') ? 'form-error' : '' }}">
+                        <input type="text" id="title" name="title" value="{{ old('title', $events->title ?? '') }}"
+                            placeholder="Masukan nama kegiatan" class="{{ $errors->has('title') ? 'form-error' : '' }}">
                     </div>
                 </div>
                 <div class="row">

@@ -97,7 +97,7 @@
                 }
                 htmlView += `
                         <li class="table-row">
-                            <div class="col col-1" data-label="Nama"> ` + res.events[i].name + ` </div>
+                            <div class="col col-1" data-label="Nama"> ` + res.events[i].title + ` </div>
                             <div class="col col-1" data-label="Tanggal Kegiatan">
                                 ` + new Date(res.events[i].date).toLocaleString('id-ID', options_2) + `</div>
                             <div class="col col-4" data-label="Deskripsi"> ` + res.events[i].description + ` </div>

@@ -25,7 +25,7 @@ class EventsController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'date' => 'nullable|date',
             'media' => 'nullable|url',
             'links' => 'required|url',
@@ -40,7 +40,7 @@ class EventsController extends Controller
                 ->withErrors($validator);
         } else {
             Event::find($request->id)->update([
-                'name' => $request->name,
+                'title' => $request->title,
                 'date' => $request->date,
                 'media' => $request->media,
                 'links' => $request->links,
@@ -49,7 +49,7 @@ class EventsController extends Controller
                 'description' => $request->description,
                 'updated_by' => Auth::id(),
             ]);
-            return redirect('/events')->with(['message' => 'Data ' . $request->name . ' berhasil  di update']);
+            return redirect('/events')->with(['message' => 'Data ' . $request->title . ' berhasil  di update']);
         }
     }
 
@@ -58,7 +58,7 @@ class EventsController extends Controller
         try {
             if ($request->keyword) {
                 $users = DB::table('events')
-                    ->where('name', 'LIKE', '%' . $request->keyword . '%')
+                    ->where('title', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('description', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('order_number', 'LIKE', '%' . $request->keyword . '%')
                     ->get();

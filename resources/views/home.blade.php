@@ -96,7 +96,7 @@
                         class="place-card-image" />
                     <div class="place-card-container1">
                         <span class="place-card-text">
-                            <span>{{ $data->name }}</span>
+                            <span>{{ $data->title }}</span>
                         </span>
                         <span class="place-card-text1">
                             <span>

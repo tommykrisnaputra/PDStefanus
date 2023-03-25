@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Event
  * 
  * @property int $id
- * @property string $name
+ * @property string $title
  * @property Carbon $date
  * @property string|null $media
  * @property string|null $links
@@ -43,7 +43,7 @@ class Event extends Model
 	];
 
 	protected $fillable = [
-		'name',
+		'title',
 		'date',
 		'media',
 		'links',

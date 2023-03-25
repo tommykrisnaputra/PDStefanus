@@ -34,13 +34,34 @@ return new class extends Migration {
 
         Schema::create('events', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->string('name');
+            $table->string('title');
             $table->timestamp('date');
             $table->string('media')->nullable();
             $table->string('links')->nullable();
             $table->string('description')->nullable();
             $table->boolean('active')->default(true);
             $table->integer('order_number')->nullable();
+            $table
+                ->timestamp('created_at')
+                ->nullable()
+                ->useCurrent();
+            $table->integer('created_by')->nullable();
+            $table
+                ->timestamp('updated_at')
+                ->useCurrentOnUpdate()
+                ->nullable()
+                ->useCurrent();
+            $table->integer('updated_by')->nullable();
+        });
+
+        Schema::create('tema_pd', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->string('title');
+            $table->timestamp('date');
+            $table->string('media')->nullable();
+            $table->string('links')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('active')->default(true);
             $table
                 ->timestamp('created_at')
                 ->nullable()
@@ -232,31 +253,31 @@ return new class extends Migration {
 
         DB::table('events')->insert([
             [
-                'name' => 'Pujian',
+                'title' => 'Pujian',
                 'date' => '2023-03-30',
                 'media' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/County_Dublin_-_Holmpatrick_Church_of_Ireland_Church_-_20190615195717.jpg/1200px-County_Dublin_-_Holmpatrick_Church_of_Ireland_Church_-_20190615195717.jpg',
                 'links' => 'https://www.instagram.com/reel/Co6EEAphLdQ/?utm_source=ig_web_copy_link',
-                'description' => 'Pujian',
+                'description' => 'Deskripsi Pujian',
                 'order_number' => 1,
             ],
             [
-                'name' => 'Dance',
+                'title' => 'Dance',
                 'date' => '2023-03-30',
                 'media' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJRKwHTcmdDwIqcloCC076mxpFa0oP6Nizjw&usqp=CAU',
                 'links' => 'https://www.instagram.com/reel/CqF_KDXgA47/?utm_source=ig_web_copy_link',
-                'description' => 'Dance',
+                'description' => 'Deskripsi Dance',
                 'order_number' => 2,
             ],
             [
-                'name' => 'Kombas',
+                'title' => 'Kombas',
                 'date' => '2023-03-30',
                 'media' => 'https://holynamewinfield.org/images/stories/rotator/rd2022/rotator1.jpg',
                 'links' => 'https://www.instagram.com/reel/Cnn3ncQoJSL/?utm_source=ig_web_copy_link',
-                'description' => 'Kombas',
+                'description' => 'Deskripsi Kombas',
                 'order_number' => 3,
             ],
             [
-                'name' => 'PD Stefanus',
+                'title' => 'PD Stefanus',
                 'date' => '2023-03-30',
                 'media' => 'https://www.imb.org/wp-content/uploads/2016/08/Local-Church.jpg',
                 'links' => 'https://pdstefanusgrogol.com/',
@@ -299,5 +320,7 @@ return new class extends Migration {
         Schema::dropIfExists('events');
 
         Schema::dropIfExists('attendance');
+
+        Schema::dropIfExists('tema_pd');
     }
 };

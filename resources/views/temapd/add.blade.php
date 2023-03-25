@@ -1,12 +1,12 @@
 @extends('master')
 
 @section('title')
-    Kegiatan PD - Edit
+    Kegiatan PD - Add
 @endsection
 
 @section('css')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/events/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/events/add.css') }}">
 @endsection
 
 @section('navbar')
@@ -28,7 +28,7 @@
             </div>
         @endif
         <div class="container">
-            <form method="POST" action="/events/update/{{ $events->id }}">
+            <form method="POST" action="/temapd/create">
                 @csrf
                 <!-- {{ csrf_field() }} -->
                 <div class="row">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="date">Tanggal Kegiatan</label>
+                        <label for="date">Tanggal Lahir</label>
                     </div>
                     <div class="col-75">
                         <input type="date" id="date" name="date"
@@ -67,29 +67,6 @@
                         <input type="text" id="links" name="links"
                             value="{{ old('links', $events->links ?? '') }}" placeholder="Masukan url kegiatan"
                             class="{{ $errors->has('links') ? 'form-error' : '' }}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="order_number">Order Number</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="number" id="order_number" name="order_number"
-                            value="{{ old('order_number', $events->order_number ?? '') }}"
-                            placeholder="Masukan order number untuk di tampilkan"
-                            class="{{ $errors->has('order_number') ? 'form-error' : '' }}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="active">Active</label>
-                    </div>
-                    <div class="col-75">
-                        <select name="active" id="active" value="{{ old('active', $events->active ?? '') }}"
-                            placeholder="Masukan active" class="{{ $errors->has('active') ? 'form-error' : '' }}">
-                            <option value="1" @selected($events->active)>Yes</option>
-                            <option value="0" @selected(!$events->active)>No</option>
-                        </select>
                     </div>
                 </div>
                 <div class="row">

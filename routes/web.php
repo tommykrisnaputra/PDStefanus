@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\TemaPDController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,14 +44,16 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     });
 
-    Route::group(['middleware' => ['isAdmin', 'NullToBlank']], function () {
+    Route::group(['middleware' => ['isAdmin']], function () {
         /**
          * Users Routes
          */
         Route::get('/users', [UsersController::class, 'index'])->name('users.show');
         Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
         Route::post('/users/update/{id}', [UsersController::class, 'update']);
-        Route::post('/users/search', [UsersController::class, 'search'])->name('users.search');
+        Route::post('/users/search', [UsersController::class, 'search'])
+            ->name('users.search')
+            ->middleware(['NullToBlank']);
 
         /**
          * Events Routes
@@ -60,7 +63,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/events/create', [EventsController::class, 'create'])->name('events.create');
         Route::get('/events/edit/{id}', [EventsController::class, 'edit'])->name('events.edit');
         Route::post('/events/update/{id}', [EventsController::class, 'update'])->name('events.update');
-        Route::post('/events/search', [EventsController::class, 'search'])->name('events.search');
+        Route::post('/events/search', [EventsController::class, 'search'])
+            ->name('events.search')
+            ->middleware(['NullToBlank']);
+
+        /**
+         * Tema PD Routes
+         */
+        Route::get('/temapd', [TemaPDController::class, 'index'])->name('temapd.show');
+        Route::get('/temapd/add', [TemaPDController::class, 'add'])->name('temapd.add');
+        Route::post('/temapd/create', [TemaPDController::class, 'create'])->name('temapd.perform');
+        Route::get('/temapd/edit/{id}', [TemaPDController::class, 'edit'])->name('temapd.edit');
+        Route::post('/temapd/update/{id}', [TemaPDController::class, 'update'])->name('temapd.update');
+        Route::post('/temapd/search', [TemaPDController::class, 'search'])
+            ->name('temapd.search')
+            ->middleware(['NullToBlank']);
     });
 
     /**

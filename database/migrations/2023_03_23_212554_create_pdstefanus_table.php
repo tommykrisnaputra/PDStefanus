@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->integer('user_id')->index('user_id');
             $table->integer('event_id')->index('event_id');
             $table->mediumText('description')->nullable();
+            $table->boolean('active')->default(true);
             $table
                 ->timestamp('created_at')
                 ->nullable()

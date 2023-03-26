@@ -39,10 +39,17 @@
         <div class="home-cards-container">
             @foreach ($temaPd as $key => $data)
                 <div class="place-card-container">
-                    <img alt="image" src={{ $data->media }} class="place-card-image" />
+                    <a href={{ $data->links }}>
+                        <img alt="image" src={{ $data->media }} class="place-card-tema-pd" />
+                    </a>
                     <div class="place-card-container1">
                         <span class="place-card-text">
                             <span>{{ $data->title }}</span>
+                        </span>
+                        <span class="place-card-text1">
+                            <img alt="calendar" src="{{ asset('images/calendar.svg') }}" loading="lazy"
+                                class="temapd-calendar" />
+                            {{ $data->date->format('D d M Y') }}
                         </span>
                     </div>
                 </div>

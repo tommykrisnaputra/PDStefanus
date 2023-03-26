@@ -39,7 +39,7 @@
             <ul class="responsive-table">
                 <li class="table-header">
                     <div class="col col-1">Nama</div>
-                    <div class="col col-1">Tanggal Kegiatan</div>
+                    <div class="col col-2">Tanggal Kegiatan</div>
                     <div class="col col-4">Deskripsi</div>
                     <div class="col col-1">Active</div>
                     <div class="col col-1">Order Number</div>
@@ -105,7 +105,7 @@
                 htmlView += `
                         <li class="table-row">
                             <div class="col col-1" data-label="Nama"> ` + res.events[i].title + ` </div>
-                            <div class="col col-1" data-label="Tanggal Kegiatan">
+                            <div class="col col-2" data-label="Tanggal Kegiatan">
                                 ` + new Date(res.events[i].date).toLocaleString('id-ID', options_2) + `</div>
                             <div class="col col-4" data-label="Deskripsi"> ` + res.events[i].description + ` </div>
                             <div class="col col-1" data-label="Active"> ` + res.events[i].active + ` </div>

@@ -251,13 +251,37 @@ return new class extends Migration {
             ],
         ]);
 
+        DB::table('tema_pd')->insert([
+            [
+                'title' => 'The Art of Giving',
+                'date' => '2023-03-16',
+                'media' => 'https://i.imgur.com/Waty6k8.jpg',
+                'links' => 'https://www.instagram.com/p/Cpws0qXPZvC/?utm_source=ig_web_copy_link',
+                'description' => 'Deskripsi Pujian',
+            ],
+            [
+                'title' => 'B.R.E.A.D',
+                'date' => '2023-03-09',
+                'media' => 'https://i.imgur.com/rE3wWTe.jpg',
+                'links' => 'https://www.instagram.com/p/CpegnvHv3ej/?utm_source=ig_web_copy_link',
+                'description' => 'Deskripsi Dance',
+            ],
+            [
+                'title' => 'Divergent',
+                'date' => '2023-03-02',
+                'media' => 'https://i.imgur.com/SiaQ9hm.jpg',
+                'links' => 'https://www.instagram.com/p/CpMccqdPrUu/?utm_source=ig_web_copy_link',
+                'description' => 'Deskripsi Divergent',
+            ],
+        ]);
+
         DB::table('events')->insert([
             [
                 'title' => 'Pujian',
                 'date' => '2023-03-30',
                 'media' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/County_Dublin_-_Holmpatrick_Church_of_Ireland_Church_-_20190615195717.jpg/1200px-County_Dublin_-_Holmpatrick_Church_of_Ireland_Church_-_20190615195717.jpg',
                 'links' => 'https://www.instagram.com/reel/Co6EEAphLdQ/?utm_source=ig_web_copy_link',
-                'description' => 'Deskripsi Pujian',
+                'description' => 'Tim Pujian PD Stefanus adalah wadah untuk kalian yang punya kerinduan memuji & menyembah Tuhan lewat talenta bernyanyi & bermain musik. Latian Pujian diadakan setiap hari selasa pukul 7 malam. Yuk join kita untuk sama-sama bernyanyi & memuji Tuhan!',
                 'order_number' => 1,
             ],
             [

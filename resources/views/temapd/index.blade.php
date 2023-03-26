@@ -38,10 +38,10 @@
             </div>
             <ul class="responsive-table">
                 <li class="table-header">
-                    <div class="col col-1">Nama</div>
-                    <div class="col col-1">Tanggal Kegiatan</div>
-                    <div class="col col-1">Media</div>
-                    <div class="col col-1">Links</div>
+                    <div class="col col-2">Nama</div>
+                    <div class="col col-2">Tanggal Kegiatan</div>
+                    {{-- <div class="col col-1">Media</div>
+                    <div class="col col-1">Links</div> --}}
                     <div class="col col-4">Deskripsi</div>
                     <div class="col col-1">Active</div>
                     <div class="col col-1"></div>
@@ -105,11 +105,9 @@
                 }
                 htmlView += `
                         <li class="table-row">
-                            <div class="col col-1" data-label="Nama"> ` + res.TemaPd[i].title + ` </div>
-                            <div class="col col-1" data-label="Tanggal Kegiatan">
+                            <div class="col col-2" data-label="Nama"> ` + res.TemaPd[i].title + ` </div>
+                            <div class="col col-2" data-label="Tanggal Kegiatan">
                                 ` + new Date(res.TemaPd[i].date).toLocaleString('id-ID', options_2) + `</div>
-                            <div class="col col-1" data-label="Media"> ` + res.TemaPd[i].media + ` </div>
-                            <div class="col col-1" data-label="Links"> ` + res.TemaPd[i].links + ` </div>
                             <div class="col col-4" data-label="Deskripsi"> ` + res.TemaPd[i].description + ` </div>
                             <div class="col col-1" data-label="Active"> ` + res.TemaPd[i].active + ` </div>
                             <div class="col col-1" data-label="Action">
@@ -124,3 +122,7 @@
         }
     </script>
 @endsection
+
+
+{{-- <div class="col col-1" data-label="Media"> ` + res.TemaPd[i].media + ` </div>
+                            <div class="col col-1" data-label="Links"> ` + res.TemaPd[i].links + ` </div> --}}

@@ -193,6 +193,33 @@ return new class extends Migration {
             $table->integer('updated_by')->nullable('registration');
         });
 
+        Schema::create('failed_jobs', function (Blueprint $table) {
+            $table->id();
+            $table->string('uuid')->unique();
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
+        });
+
+        Schema::create('personal_access_tokens', function (Blueprint $table) {
+            $table->id();
+            $table->morphs('tokenable');
+            $table->string('name');
+            $table->string('token', 64)->unique();
+            $table->text('abilities')->nullable();
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+
         Schema::table('attendance', function (Blueprint $table) {
             $table
                 ->foreign(['user_id'], 'attendance_ibfk_1')
@@ -334,7 +361,7 @@ Latian kita diadakan pada hari senin pukul 7 malam.',
             $table->dropForeign('attendance_ibfk_1');
             $table->dropForeign('attendance_ibfk_2');
         });
-
+    
         Schema::dropIfExists('users');
 
         Schema::dropIfExists('songs');
@@ -350,5 +377,11 @@ Latian kita diadakan pada hari senin pukul 7 malam.',
         Schema::dropIfExists('attendance');
 
         Schema::dropIfExists('tema_pd');
+
+        Schema::dropIfExists('password_reset_tokens');
+        
+        Schema::dropIfExists('personal_access_tokens');
+
+        Schema::dropIfExists('failed_jobs');
     }
 };

@@ -203,17 +203,6 @@ return new class extends Migration {
             $table->timestamp('failed_at')->useCurrent();
         });
 
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
-            $table->timestamps();
-        });
-
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
@@ -318,9 +307,7 @@ return new class extends Migration {
                 'date' => '2023-03-30',
                 'media' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJRKwHTcmdDwIqcloCC076mxpFa0oP6Nizjw&usqp=CAU',
                 'links' => 'https://www.instagram.com/reel/CqF_KDXgA47/?utm_source=ig_web_copy_link',
-                'description' => 'Dance ministry pd stefanus adalah suatu wadah untuk kalian yang punya hobi dan bakat menari. Di dance ministry, kita gak hanya undang pelatih dari luar, tapi kita juga bisa buat koreo sendiri ato cover dari youtube.
-
-Latian kita diadakan pada hari senin pukul 7 malam.',
+                'description' => 'Dance ministry pd stefanus adalah suatu wadah untuk kalian yang punya hobi dan bakat menari. Di dance ministry, kita gak hanya undang pelatih dari luar, tapi kita juga bisa buat koreo sendiri ato cover dari youtube. Latian kita diadakan pada hari senin pukul 7 malam.',
                 'order_number' => 2,
             ],
             [

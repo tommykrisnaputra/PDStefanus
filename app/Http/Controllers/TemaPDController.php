@@ -13,7 +13,7 @@ class TemaPDController extends Controller
     public function index()
     {
         $TemaPd = TemaPd::orderByDesc('date')->get();
-        return view('TemaPd.index', ['TemaPd' => $TemaPd]);
+        return view('temapd.index', ['TemaPd' => $TemaPd]);
     }
 
     public function add()

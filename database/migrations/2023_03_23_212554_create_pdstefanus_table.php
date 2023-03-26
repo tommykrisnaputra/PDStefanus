@@ -38,6 +38,7 @@ return new class extends Migration {
             $table->timestamp('date');
             $table->string('media')->nullable();
             $table->string('links')->nullable();
+            $table->string('address')->nullable();
             $table->mediumText('description')->nullable();
             $table->boolean('active')->default(true);
             $table->integer('order_number')->nullable();

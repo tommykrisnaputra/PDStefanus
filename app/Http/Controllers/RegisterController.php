@@ -65,6 +65,7 @@ class RegisterController extends Controller
                 'total_attendance' => '1',
                 'attendance_percentage' => '100',
                 'description' => '',
+                'created_by' => Auth::id(),
             ]);
             // Add user to attendance table
             if (Auth::check() && Auth::User()->isAdmin()) {

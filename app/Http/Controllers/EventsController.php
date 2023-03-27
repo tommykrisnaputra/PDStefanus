@@ -50,6 +50,7 @@ class EventsController extends Controller
                 'links' => $request->links,
                 'order_number' => intval($request->order_number),
                 'description' => $request->description,
+                'created_by' => Auth::id(),
             ]);
             return redirect()->route('events.show');
         }

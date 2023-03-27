@@ -49,6 +49,7 @@ class TemaPDController extends Controller
                 'media' => $request->media,
                 'links' => $request->links,
                 'description' => $request->description,
+                'created_by' => Auth::id(),
             ]);
             return redirect()->route('temapd.show');
         }

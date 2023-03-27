@@ -42,7 +42,7 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="date">Tanggal Lahir</label>
+                        <label for="date">Tanggal Kegiatan</label>
                     </div>
                     <div class="col-75">
                         <input type="date" id="date" name="date"

@@ -155,7 +155,7 @@
                     <div data-role="MobileMenu" class="home-mobile-menu">
                         <div class="home-nav">
                             <div class="home-top">
-                                <h1>Travel</h1>
+                                <h1>Travel Agency</h1>
                                 <div data-role="CloseMobileMenu" class="home-close-menu">
                                     <svg viewBox="0 0 1024 1024" class="home-icon">
                                         <path

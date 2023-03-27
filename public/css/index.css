@@ -323,6 +323,7 @@ button:hover {
   display: inline-block;
   font-size: 22px;
   padding: 10px 10px 10px 10px;
+  width: max-content;
 }
 
 .nav>.nav-btn {

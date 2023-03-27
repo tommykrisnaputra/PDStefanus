@@ -34,7 +34,7 @@ class EventsController extends Controller
             'date' => 'nullable|date',
             'media' => 'nullable|url',
             'links' => 'nullable|url',
-            'description' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
+            'description' => 'nullable',
             'order_number' => 'nullable|numeric',
         ]);
         if ($validator->fails()) {
@@ -65,7 +65,7 @@ class EventsController extends Controller
             'links' => 'nullable|url',
             'order_number' => 'nullable|numeric',
             'active' => 'nullable',
-            'description' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
+            'description' => 'nullable',
         ]);
         if ($validator->fails()) {
             return redirect()

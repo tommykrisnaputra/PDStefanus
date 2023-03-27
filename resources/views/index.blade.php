@@ -144,7 +144,7 @@
                         </div>
                         <div class="nav-links">
                             <a href="/">Home</a>
-                            <a href="/register">Pendaftaran</a>
+                            <a href="/register">Pendaftaran Baru</a>
                             <a href="/users" class="solid-button-container">
                                 <button class="solid-button-button button Button">
                                     <span>Login</span>

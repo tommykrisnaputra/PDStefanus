@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Http\Requests\AttendanceRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Models\Event;
-use App\Models\Attendance;
+use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
@@ -19,7 +19,6 @@ class AttendanceController extends Controller
     public function register(AttendanceRequest $request)
     {
         $credentials = $request->getCredentials();
-
         $user_id = $request->checkCredentials($credentials);
 
         if (!$user_id) {
@@ -28,47 +27,70 @@ class AttendanceController extends Controller
                 ->withInput()
                 ->withErrors(['email' => 'Data user tidak ditemukan.']);
         }
-
         // dd ($user_id);
 
-        $attendance = Attendance::where('attendance.user_id', $user_id)
-            ->where('attendance.event_id', '4')
-            ->join('events', 'events.id', '=', 'attendance.event_id')
-            ->get();
+        $user = User::find($user_id);
 
-        // "id" => 4
-        // "user_id" => 3
-        // "event_id" => 4
-        // "description" => "PD Stefanus di adakan setiap hari kamis malam pukul 19.00 WIB"
-        // "active" => 1
-        // "created_at" => "2023-03-27 17:23:18"
-        // "created_by" => null
-        // "updated_at" => "2023-03-27 17:23:18"
-        // "updated_by" => null
-        // "title" => "PD Stefanus"
-        // "date" => "2023-03-30 00:00:00"
-        // "media" => "https://www.imb.org/wp-content/uploads/2016/08/Local-Church.jpg"
-        // "links" => "https://pdstefanusgrogol.com/"
-        // "address" => null
-        // "order_number" => 4
+        $this->insertAttendance($user);
 
-        dd($attendance);
-
-        // $event = Event::find($attendance->event_id)->get();
-
-
-        $attendance = Attendance::create([
-            'user_id' => $user->id,
-            'event_id' => 4, // PD Kamis
-            'description' => 'Pendaftaran',
-            'created_by' => Auth::id() ?? $user->id,
-        ]);
-
-        User::find($user_id)->update([
-            'password' => $credentials['password'],
-            'updated_by' => Auth::id(),
-        ]);
+        $this->countAttendance($user);
 
         return redirect()->route('success');
     }
+
+    public function insertAttendance($param)
+    {
+        $today = Carbon::today()->toDateString();
+
+        $attendance = Attendance::where('attendance.user_id', $param->id)
+            ->where('attendance.event_id', '4')
+            ->where('active', true)
+            ->whereDate('date', $today)
+            ->count();
+        // dd($attendance);
+
+        if ($attendance == 0) {
+            $attendance = Attendance::create([
+                'user_id' => $param->id,
+                'event_id' => 4, // PD Kamis
+                'description' => 'Pendaftaran',
+                'created_by' => Auth::id() ?? $param->id,
+            ]);
+        }
+    }
+
+    public function countAttendance($param)
+    {
+        $today = Carbon::today()->toDateString();
+        
+        $total = Carbon::today()->diffInWeeks($param->first_attendance) + 1;
+        // dd($total);
+
+        $active = Attendance::where('attendance.user_id', $param->id)
+            ->where('attendance.event_id', '4')
+            ->where('active', true)
+            ->count();
+        // dd($active);
+
+        $percentage = ($active / $total) * 100;
+        // dd($percentage);
+
+        User::find($param->id)->update([
+            'last_attendance' => $today,
+            'total_attendance' => $active,
+            'attendance_percentage' => $percentage,
+            'updated_by' => Auth::id(),
+        ]);
+    }
 }
+
+// $to = \Carbon\Carbon::parse($request->to);
+// $from = \Carbon\Carbon::parse($request->from);
+
+// $years = $to->diffInYears($from);
+// $months = $to->diffInMonths($from);
+// $weeks = $to->diffInWeeks($from);
+// $days = $to->diffInDays($from);
+// $hours = $to->diffInHours($from);
+// $minutes = $to->diffInMinutes($from);
+// $seconds = $to->diffInSeconds($from);

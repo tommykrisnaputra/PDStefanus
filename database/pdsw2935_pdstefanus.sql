@@ -32,6 +32,7 @@ CREATE TABLE `attendance` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
+  `date` TIMESTAMP NULL DEFAULT current_timestamp(),
   `description` mediumtext DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT current_timestamp(),

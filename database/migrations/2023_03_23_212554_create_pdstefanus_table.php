@@ -18,6 +18,9 @@ return new class extends Migration {
             $table->integer('id', true);
             $table->integer('user_id')->index('user_id');
             $table->integer('event_id')->index('event_id');
+            $table->timestamp('date')
+                ->nullable()
+                ->useCurrent();
             $table->mediumText('description')->nullable();
             $table->boolean('active')->default(true);
             $table

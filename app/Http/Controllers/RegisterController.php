@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -67,7 +68,14 @@ class RegisterController extends Controller
                 'description' => '',
                 'created_by' => Auth::id(),
             ]);
-            // Add user to attendance table
+            
+            $attendance = Attendance::create([
+                'user_id' => $user->id,
+                'event_id' => 4, // PD Kamis
+                'description' => 'Pendaftaran',
+                'created_by' => Auth::id() ?? $user->id,
+            ]);
+
             if (Auth::check() && Auth::User()->isAdmin()) {
                 return redirect('/users');
             } else {

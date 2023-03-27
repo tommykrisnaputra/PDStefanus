@@ -17,6 +17,7 @@
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/register">Pendaftaran</a>
+        <a href="/attendance">Kehadiran</a>
         @auth
             {{-- {{ auth()->user()->role_id }} --}}
             @if (auth()->user()->isAdmin())

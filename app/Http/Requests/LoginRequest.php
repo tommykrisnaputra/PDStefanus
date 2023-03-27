@@ -57,16 +57,16 @@ class LoginRequest extends FormRequest
     public function checkCredentials($param)
     {
         if (array_key_exists('email', $param)) {
-            $user_id = User::where('email', $param['email'])->first()->id;
+            $user = User::where('email', $param['email'])->first();
         } else {
-            $user_id = User::where('phone', $param['phone'])->first()->id;
+            $user = User::where('phone', $param['phone'])->first();
         }
         
         // dd ($user_id);
-        if (empty($user_id)) {
+        if (empty($user)) {
             return false;
         } else {
-            return $user_id;
+            return $user->id;
         }
     }
 

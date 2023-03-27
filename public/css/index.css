@@ -34,9 +34,10 @@
   width: 100%;
   height: auto;
   display: flex;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   align-items: center;
   flex-direction: column;
+  /* background-color: beige; */
 }
 
 .home-top-container {

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Http\Requests\LoginRequest;
 
 class UsersController extends Controller
 {
@@ -29,6 +30,54 @@ class UsersController extends Controller
         $roles = Role::find($users->role_id);
         $users->phone = $helper->checkPhone($users->phone);
         return view('users.form', ['users' => $users, 'roles' => $roles]);
+    }
+
+    public function selfedit()
+    {
+        $helper = new helper();
+        $users = User::find(Auth::id());
+        $roles = Role::find($users->role_id);
+        $users->phone = $helper->checkPhone($users->phone);
+        return view('users.form', ['users' => $users, 'roles' => $roles]);
+    }
+
+    public function changepassword()
+    {
+        return view('auth.changepassword');
+    }
+
+    public function updatepassword(LoginRequest $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+            $credentials = $request->getCredentials();
+            // dd ($credentials);
+
+            $user_id = $request->checkCredentials($credentials);
+            // dd ($user_id);
+
+            if (!$user_id) {
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors(['email' => 'Data user tidak ditemukan.']);
+            }
+
+            User::find($user_id)->update([
+                'password' => $credentials['password'],
+                'updated_by' => Auth::id(),
+            ]);
+
+            return redirect()->route('success');
+        }
     }
 
     public function update(Request $request)

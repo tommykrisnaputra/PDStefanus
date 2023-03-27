@@ -47,9 +47,14 @@
 
 .place-card-text1 {
   font-size: 14px;
-  max-width: 250px;
+  width: 300px;
   margin-bottom: var(--dl-space-space-doubleunit);
-  display: flex;
+}
+
+.place-card-text2 {
+  font-size: 12px;
+  margin-bottom: var(--dl-space-space-doubleunit);
+  display: ruby;
 }
 
 .temapd-calendar {

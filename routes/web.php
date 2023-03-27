@@ -42,6 +42,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Logout Routes
          */
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+
+        Route::get('/users/selfedit', [UsersController::class, 'selfedit'])->name('users.selfedit');
+        Route::post('/users/update/{id}', [UsersController::class, 'update'])->name('users.update');
     });
 
     Route::group(['middleware' => ['isAdmin']], function () {
@@ -49,8 +52,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Users Routes
          */
         Route::get('/users', [UsersController::class, 'index'])->name('users.show');
-        Route::get('/users/edit/{id}', [UsersController::class, 'edit']);
-        Route::post('/users/update/{id}', [UsersController::class, 'update']);
+        Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+        Route::get('/users/changepassword', [UsersController::class, 'changepassword'])->name('users.changepassword');
+        Route::post('/users/updatepassword', [UsersController::class, 'updatepassword'])->name('users.updatepassword');
         Route::post('/users/search', [UsersController::class, 'search'])
             ->name('users.search')
             ->middleware(['NullToBlank']);

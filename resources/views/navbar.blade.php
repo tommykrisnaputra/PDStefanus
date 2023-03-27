@@ -21,9 +21,11 @@
             {{-- {{ auth()->user()->role_id }} --}}
             @if (auth()->user()->isAdmin())
                 <a href="/users">Umat</a>
-                <a href={{route('temapd.show')}}>Tema PD</a>
-                <a href={{route('events.show')}}>Kegiatan PD</a>
+                <a href={{ route('temapd.show') }}>Tema PD</a>
+                <a href={{ route('events.show') }}>Kegiatan PD</a>
+                <a href={{ route('users.changepassword') }}>Ubah Password</a>
             @endif
+            <a href={{ route('users.selfedit') }}>Ubah Data</a>
             <a href="{{ route('logout.perform') }}" class="solid-button-container">
                 <button class="solid-button-button button Button">
                     <span>Logout</span>

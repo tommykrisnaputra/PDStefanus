@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+use App\Models\User;
 
 class LoginRequest extends FormRequest
 {
@@ -45,15 +46,28 @@ class LoginRequest extends FormRequest
         } elseif ($this->isEmail($credentials)) {
             return ['email' => $credentials, 'password' => $this->get('password')];
         }
+    }
 
-        // if ($this->isEmail($email)) {
-        //     return [
-        //         'email' => $email,
-        //         'password' => $this->get('password'),
-        //     ];
-        // }
-
-        // return $this->only('email', 'password');
+    /**
+     * Checks if the credentials exists
+     *
+     * @return boolean
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function checkCredentials($param)
+    {
+        if (array_key_exists('email', $param)) {
+            $user_id = User::where('email', $param['email'])->first()->id;
+        } else {
+            $user_id = User::where('phone', $param['phone'])->first()->id;
+        }
+        
+        // dd ($user_id);
+        if (empty($user_id)) {
+            return false;
+        } else {
+            return $user_id;
+        }
     }
 
     /**

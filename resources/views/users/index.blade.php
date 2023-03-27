@@ -55,28 +55,6 @@
                     <div class="col col-1"></div>
                 </li>
                 <div class="table-rows">
-                    {{-- @foreach ($users as $key => $data) --}}
-                    {{-- <li class="table-row"> --}}
-                    {{-- <div class="col col-2" data-label="Nama">{{ $data->full_name }}</div>
-                            <div class="col col-3" data-label="Tanggal Lahir">
-                                {{ date('d-m-Y', strtotime($data->birthdate)) }}</div>
-                            <div class="col col-1" data-label="Alamat">{{ $data->address }}</div>
-                            <div class="col col-2" data-label="Paroki">{{ $data->paroki }}</div>
-                            <div class="col col-2" data-label="Nomor HP">{{ $data->phone }}</div>
-                            <div class="col col-2" data-label="Instagram">{{ $data->social_instagram }}</div>
-                            <div class="col col-3" data-label="Pertama Datang">
-                                {{ date('d-m-Y', strtotime($data->first_attendance)) }}</div>
-                            <div class="col col-3" data-label="Kedatangan Terakhir">
-                                {{ date('d-m-Y', strtotime($data->last_attendance)) }}</div>
-                            <div class="col col-3" data-label="Persentase Kedatangan">
-                                {{ $data->attendance_percentage }}%</div>
-                            <div class="col col-3" data-label="Action">
-                                <a href="{{ url('users/edit', ['id' => $data->id]) }}" class="solid-button-container">
-                                    <button class="solid-button-button button Button">Edit</button>
-                                </a>
-                            </div> --}}
-                    {{-- </li> --}}
-                    {{-- @endforeach --}}
                 </div>
             </ul>
         </div>

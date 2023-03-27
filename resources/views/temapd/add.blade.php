@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Kegiatan PD - Add
+    Tema PD - Add
 @endsection
 
 @section('css')

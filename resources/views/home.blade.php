@@ -51,6 +51,11 @@
                                 class="temapd-calendar" />
                             {{ $data->date->format('D d M Y') }}
                         </span>
+                        <span class="place-card-text1">
+                            <span>
+                                {{ $data->description }}
+                            </span>
+                        </span>
                     </div>
                 </div>
             @endforeach

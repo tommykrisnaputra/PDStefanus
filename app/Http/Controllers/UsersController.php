@@ -89,6 +89,7 @@ class UsersController extends Controller
             'phone' => 'required|numeric',
             'birthdate' => 'required|date',
             'address' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
+            'wilayah' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender' => 'required|in:male,female',
             'first_attendance' => 'required',
@@ -104,6 +105,7 @@ class UsersController extends Controller
                 'role_id' => $request->role,
                 'birthdate' => $request->birthdate,
                 'address' => $request->address,
+                'wilayah' => $request->wilayah,
                 'paroki' => $request->paroki,
                 'social_instagram' => $request->social_instagram,
                 'social_tiktok' => $request->social_tiktok,
@@ -130,6 +132,7 @@ class UsersController extends Controller
                     ->orWhere('paroki', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('phone', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('address', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('wilayah', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('social_instagram', 'LIKE', '%' . $request->keyword . '%')
                     ->get();
             } else {

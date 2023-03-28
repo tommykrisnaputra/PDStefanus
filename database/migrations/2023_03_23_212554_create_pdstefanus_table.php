@@ -168,6 +168,7 @@ return new class extends Migration {
             $table->string('full_name');
             $table->timestamp('birthdate');
             $table->string('address')->nullable();
+            $table->string('wilayah')->nullable();
             $table->string('paroki')->nullable();
             $table->string('social_instagram')->nullable();
             $table->string('social_tiktok')->nullable();
@@ -260,6 +261,7 @@ return new class extends Migration {
                 'full_name' => 'PD Stefanus',
                 'birthdate' => '2023-03-24',
                 'address' => 'Jl. Satria IV No.Blok C',
+                'wilayah' => 'Jelambar',
                 'paroki' => 'Kristoforus',
                 'social_instagram' => 'pdstefanus',
                 'social_tiktok' => 'pdstefanus',

@@ -98,6 +98,16 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
+                        <label for="wilayah">Wilayah</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="wilayah" name="wilayah"
+                            value="{{ old('wilayah', $users->wilayah ?? '') }}" placeholder="Masukan wilayah tempat tinggal anda"
+                            class="{{ $errors->has('wilayah') ? 'form-error' : '' }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="paroki">Paroki</label>
                     </div>
                     <div class="col-75">

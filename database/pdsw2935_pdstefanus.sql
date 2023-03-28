@@ -243,6 +243,7 @@ CREATE TABLE `users` (
   `full_name` varchar(255) NOT NULL,
   `birthdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `address` varchar(255) DEFAULT NULL,
+  `wilayah` varchar(255) DEFAULT NULL,
   `paroki` varchar(255) DEFAULT NULL,
   `social_instagram` varchar(255) DEFAULT NULL,
   `social_tiktok` varchar(255) DEFAULT NULL,
@@ -268,8 +269,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `full_name`, `birthdate`, `address`, `paroki`, `social_instagram`, `social_tiktok`, `phone`, `image`, `email`, `description`, `gender`, `first_attendance`, `last_attendance`, `total_attendance`, `attendance_percentage`, `password`, `active`, `remember_token`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(2, 2, 'PD Stefanus', '2023-03-23 17:00:00', 'Jl. Satria IV No.Blok C', 'Kristoforus', 'pdstefanus', 'pdstefanus', '087877828233', NULL, 'stefan_news@yahoo.com', NULL, NULL, '2023-03-23 17:00:00', '2023-03-23 17:00:00', NULL, NULL, '$2y$10$uuQ6hqTbGi/UnLwR.rV8EutI1mVjUYpP/u1KCXqmEb0Jz1lMKGiEq', 1, '', '2023-03-26 16:00:00', NULL, '2023-03-26 16:00:00', NULL);
+INSERT INTO `users` (`id`, `role_id`, `full_name`, `birthdate`, `address`, 'wilayah', `paroki`, `social_instagram`, `social_tiktok`, `phone`, `image`, `email`, `description`, `gender`, `first_attendance`, `last_attendance`, `total_attendance`, `attendance_percentage`, `password`, `active`, `remember_token`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+(2, 2, 'PD Stefanus', '2023-03-23 17:00:00', 'Jl. Satria IV No.Blok C', 'Jelambar', 'Kristoforus', 'pdstefanus', 'pdstefanus', '087877828233', NULL, 'stefan_news@yahoo.com', NULL, NULL, '2023-03-23 17:00:00', '2023-03-23 17:00:00', NULL, NULL, '$2y$10$uuQ6hqTbGi/UnLwR.rV8EutI1mVjUYpP/u1KCXqmEb0Jz1lMKGiEq', 1, '', '2023-03-26 16:00:00', NULL, '2023-03-26 16:00:00', NULL);
 
 --
 -- Indexes for dumped tables

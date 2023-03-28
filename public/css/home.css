@@ -52,13 +52,13 @@
 }
 
 .place-card-text2 {
-  font-size: 12px;
+  font-size: 8px;
+  font-style: italic;
   margin-bottom: var(--dl-space-space-doubleunit);
-  display: flex;
 }
 
 .temapd-calendar {
-  margin-right: 4px;
+  margin-right: 8px;
 }
 
 @media(max-width: 479px) {

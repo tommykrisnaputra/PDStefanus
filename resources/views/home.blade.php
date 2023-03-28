@@ -47,8 +47,7 @@
                             <span>{{ $data->title }}</span>
                         </span>
                         <span class="place-card-text2">
-                            <img alt="calendar" src="{{ asset('images/calendar.svg') }}" loading="lazy"
-                                class="temapd-calendar" />
+                            <i class="fa-sharp fa-regular fa-calendar fa-lg"></i>
                             {{ $data->date->format('D d M Y') }}
                         </span>
                         <span class="place-card-text1">

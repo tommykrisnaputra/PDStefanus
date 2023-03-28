@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script src="https://kit.fontawesome.com/d548bf050f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toast.css') }}">

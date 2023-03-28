@@ -15,13 +15,14 @@
         </label>
     </div>
     <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/register">Pendaftaran</a>
-        <a href="/attendance">Kehadiran</a>
+        <a href={{ route('index') }}>Home</a>
+        <a href={{ route('register.show') }}>Pendaftaran</a>
+        <a href={{ route('attendance.show') }}>Kehadiran</a>
         @auth
             {{-- {{ auth()->user()->role_id }} --}}
             @if (auth()->user()->isAdmin())
-                <a href="/users">Umat</a>
+                <a href={{ route('users.show') }}>Data Umat</a>
+                <a href={{ route('attendance.index') }}>Data Kehadiran</a>
                 <a href={{ route('temapd.show') }}>Tema PD</a>
                 <a href={{ route('events.show') }}>Kegiatan PD</a>
                 <a href={{ route('users.changepassword') }}>Ubah Password</a>

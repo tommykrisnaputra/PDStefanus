@@ -13,7 +13,12 @@ class AttendanceController extends Controller
 {
     public function show()
     {
-        return view('auth.attendance');
+        return view('attendance.register');
+    }
+
+    public function index()
+    {
+        return view('attendance.index');
     }
 
     public function register(AttendanceRequest $request)

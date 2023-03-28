@@ -53,7 +53,7 @@ class AttendanceController extends Controller
             $attendance = Attendance::create([
                 'user_id' => $param->id,
                 'event_id' => 4, // PD Kamis
-                'description' => 'Pendaftaran',
+                'description' => 'Absensi Manual',
                 'created_by' => Auth::id() ?? $param->id,
             ]);
         }

@@ -541,7 +541,8 @@
   }
 
   .nav>.nav-links {
-    position: absolute;
+    /* position: absolute; */
+    position: absolute;z-index: 1;
     display: block;
     width: 100%;
     background-color: #d9d9d9;

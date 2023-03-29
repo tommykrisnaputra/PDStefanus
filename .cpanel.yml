@@ -4,7 +4,8 @@ deployment:
     - export DEPLOYPATH=/home/pdsw2935/PDStefanus
     # - export DEPLOYPATH=/home/pdsw2935/public_html/PDStefanus
     - export DEPLOYPATH_public=/home/pdsw2935/public_html
-    - /bin/cp -R public/* $DEPLOYPATH_public
+    - /bin/cp -R public/css $DEPLOYPATH_public
+    - /bin/cp -R public/images $DEPLOYPATH_public
     - /bin/cp -R app $DEPLOYPATH
     - /bin/cp -R bootstrap $DEPLOYPATH
     - /bin/cp -R config $DEPLOYPATH

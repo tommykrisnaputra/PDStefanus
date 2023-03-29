@@ -15,7 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $user_id
  * @property int $event_id
+ * @property Carbon|null $date
  * @property string|null $description
+ * @property bool $active
  * @property Carbon|null $created_at
  * @property int|null $created_by
  * @property Carbon|null $updated_at
@@ -33,6 +35,8 @@ class Attendance extends Model
 	protected $casts = [
 		'user_id' => 'int',
 		'event_id' => 'int',
+		'date' => 'date',
+		'active' => 'bool',
 		'created_by' => 'int',
 		'updated_by' => 'int'
 	];
@@ -40,7 +44,9 @@ class Attendance extends Model
 	protected $fillable = [
 		'user_id',
 		'event_id',
+		'date',
 		'description',
+		'active',
 		'created_by',
 		'updated_by'
 	];

@@ -30,35 +30,27 @@
             </div>
             <ul class="responsive-table">
                 <li class="table-header">
-                    <div class="col col-1">Nama</div>
-                    <div class="col col-1">Event</div>
-                    <div class="col col-1">Tanggal</div>
-                    <div class="col col-1"></div>
+                    <div class="col col-2">Nama</div>
+                    {{-- <div class="col col-2">Kegiatan</div> --}}
+                    <div class="col col-2">Pertama Datang</div>
+                    <div class="col col-2">Tanggal Kehadiran</div>
+                    <div class="col col-2"></div>
                 </li>
-                {{-- <div class="table-rows">
-                </div> --}}
-                <li class="table-row">
-                    <div class="col col-1" data-label="Nama">42235</div>
-                    <div class="col col-1" data-label="Event">John Doe</div>
-                    <div class="col col-1" data-label="Tanggal">$350</div>
-                    <div class="col col-1" data-label="Action">
-                        <a href="{{ url('events/edit/`+res.events[i].id+`') }}" class="solid-button-container">
-                            <button class="solid-button-button button Button">Edit</button>
+
+                @foreach ($attendance as $key => $data)
+                    <li class="table-row">
+                        <div class="col col-2" data-label="Nama">{{ $data->full_name ?? null }}</div>
+                        {{-- <div class="col col-2" data-label="Kegiatan">{{ $data->title ?? null }}</div> --}}
+                        <div class="col col-2" data-label="Pertama Datang">{{ Carbon\Carbon::parse($data->first_attendance)->format('d M Y') ?? null }}</div>
+                        <div class="col col-2" data-label="Tanggal Kehadiran">{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
+                        <div class="col col-2" data-label="Action">
+                            <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
+                                <button class="solid-button-button button Button">Edit</button>
+                            </a>
+                        </div>
                         </a>
-                    </div>
-                    </a>
-                </li>
-                <li class="table-row">
-                    <div class="col col-1" data-label="Nama">42235</div>
-                    <div class="col col-1" data-label="Event">John Doe</div>
-                    <div class="col col-1" data-label="Tanggal">$350</div>
-                    <div class="col col-1" data-label="Action">
-                        <a href="{{ url('events/edit/`+res.events[i].id+`') }}" class="solid-button-container">
-                            <button class="solid-button-button button Button">Edit</button>
-                        </a>
-                    </div>
-                    </a>
-                </li>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>

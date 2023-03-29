@@ -138,16 +138,19 @@
 </head>
 
 <body>
-    <div class="home-container">
+    <div class="home-top-container">
 
         @include('navbar')
 
         @include('toast')
 
-        @yield('content')
+        @yield('home-message')
 
         {{-- @include('footer') --}}
 
+    </div>
+    <div class="home-container">
+        @yield('content')
     </div>
 
     @section('js')

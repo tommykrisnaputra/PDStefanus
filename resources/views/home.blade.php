@@ -12,9 +12,7 @@
     @parent
 @endsection
 
-@section('content')
-    {{-- <img src="https://images.unsplash.com/photo-1484627147104-f5197bcd6651?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1000"
-        width='1400px' height='800px' class="home-cover" /> --}}
+@section('home-message')
     <div class="home-hero">
         <div class="home-content-container">
             <h1 class="home-text06">Come &amp; join us</h1>
@@ -32,6 +30,9 @@
             </span>
         </div>
     </div>
+@endsection
+
+@section('content')
     <div id="main-section" class="home-main">
         @if (count($temaPd) > 0)
             <h1>Tema PD</h1>

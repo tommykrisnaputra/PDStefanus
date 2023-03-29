@@ -43,7 +43,7 @@ class LoginRequest extends FormRequest
 
         if (is_numeric($credentials)) {
             return ['phone' => $credentials, 'password' => $this->get('password')];
-        } elseif ($this->isEmail($credentials)) {
+        } else {
             return ['email' => $credentials, 'password' => $this->get('password')];
         }
     }

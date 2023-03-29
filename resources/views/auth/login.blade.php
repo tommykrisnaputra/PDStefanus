@@ -28,8 +28,7 @@
         @endif
         <div class="container">
             <form method="POST" action="/login">
-                @csrf
-                <!-- {{ csrf_field() }} -->
+                @csrf <!-- {{ csrf_field() }} -->
                 <div class="row">
                     <div class="col-25">
                         <label for="email">Email atau Nomor HP</label>

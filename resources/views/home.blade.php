@@ -52,7 +52,7 @@
                         </span>
                         <span class="place-card-text1">
                             <span>
-                                {{ $data->description }}
+                                {!! nl2br(e($data->description)) !!}
                             </span>
                         </span>
                     </div>
@@ -72,7 +72,7 @@
                         </span>
                         <span class="place-card-text1">
                             <span>
-                                {{ $data->description }}
+                                {!! nl2br(e($data->description)) !!}
                             </span>
                         </span>
                     </div>

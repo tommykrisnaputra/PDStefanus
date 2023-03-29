@@ -2,7 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/pdsw2935/public_html/PDStefanus
-    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R public/css $DEPLOYPATH
+    - /bin/cp -R public/images $DEPLOYPATH
     - /bin/cp -R app $DEPLOYPATH
     - /bin/cp -R bootstrap $DEPLOYPATH
     - /bin/cp -R config $DEPLOYPATH

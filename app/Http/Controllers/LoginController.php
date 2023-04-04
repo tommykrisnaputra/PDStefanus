@@ -30,14 +30,16 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if (!$request->checkCredentials($credentials)) {
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->withErrors(['email' => 'Data user tidak ditemukan.']);
-            }
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['email' => 'Data user tidak ditemukan.']);
+        }
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+            // $request->session()->regenerate();
+            $user = Auth::getProvider()->retrieveByCredentials($credentials); 
+            Auth::login($user);
             return redirect('/');
         }
 

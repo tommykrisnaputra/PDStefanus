@@ -85,8 +85,8 @@ class AttendanceController extends Controller
         }
 
         $user = User::find($user_id);
-
-        $date = Carbon::createFromFormat('Y-m-d', $request->date);
+        $date = Carbon::today()->toDateString();
+        // $date = Carbon::createFromFormat('Y-m-d', $request->date);
 
         $this->insertAttendance($user, $date);
         $this->countAttendance($user, $date);

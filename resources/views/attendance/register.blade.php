@@ -40,7 +40,7 @@
                             class="{{ $errors->has('email') ? 'form-error' : '' }}">
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="date">Tanggal</label>
                     </div>
@@ -48,7 +48,7 @@
                         <input type="date" id="date" name="date" value="<?php echo date('Y-m-d'); ?>"
                             placeholder="Masukan tanggal" class="{{ $errors->has('date') ? 'form-error' : '' }}">
                     </div>
-                </div>
+                </div> --}}
                 <div class="row submit-button-container">
                     <input type="submit" value="Submit" class="submit-button">
                 </div>

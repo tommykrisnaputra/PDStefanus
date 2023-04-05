@@ -72,7 +72,7 @@
                         <label for="social_instagram">Instagram</label>
                     </div>
                     <div class="col-75">
-                        <input type="tel" id="social_instagram" name="social_instagram"
+                        <input type="text" id="social_instagram" name="social_instagram"
                             value="{{ old('social_instagram') }}" placeholder="Masukan tag Instagram"
                             class="{{ $errors->has('social_instagram') ? 'form-error' : '' }}">
                     </div>
@@ -82,7 +82,7 @@
                         <label for="social_tiktok">Tik Tok</label>
                     </div>
                     <div class="col-75">
-                        <input type="tel" id="social_tiktok" name="social_tiktok" value="{{ old('social_tiktok') }}"
+                        <input type="text" id="social_tiktok" name="social_tiktok" value="{{ old('social_tiktok') }}"
                             placeholder="Masukan tag Tik Tok"
                             class="{{ $errors->has('social_tiktok') ? 'form-error' : '' }}">
                     </div>
@@ -98,11 +98,11 @@
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="wilayah">Wilayah</label>
+                        <label for="wilayah">Wilayah tempat tinggal</label>
                     </div>
                     <div class="col-75">
                         <input type="text" id="wilayah" name="wilayah"
-                            value="{{ old('wilayah', $users->wilayah ?? '') }}" placeholder="Masukan wilayah tempat tinggal anda"
+                            value="{{ old('wilayah', $users->wilayah ?? '') }}" placeholder="Masukan wilayah tempat tinggal anda (Jelambar, Tj Duren, ...)"
                             class="{{ $errors->has('wilayah') ? 'form-error' : '' }}">
                     </div>
                 </div>

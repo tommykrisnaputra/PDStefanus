@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" id="wilayah" name="wilayah"
-                            value="{{ old('wilayah', $users->wilayah ?? '') }}" placeholder="Masukan wilayah tempat tinggal anda"
+                            value="{{ old('wilayah', $users->wilayah ?? '') }}" placeholder="Masukan wilayah tempat tinggal anda  (Jelambar, Tj Duren, ...)"
                             class="{{ $errors->has('wilayah') ? 'form-error' : '' }}">
                     </div>
                 </div>

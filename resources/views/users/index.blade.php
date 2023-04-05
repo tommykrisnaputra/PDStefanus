@@ -116,7 +116,8 @@
                             <div class="col col-2" data-label="Tanggal Lahir">
                                 ` + new Date(res.users[i].birthdate).toLocaleString('id-ID', options_2) + `</div>
                             <div class="col col-2" data-label="Wilayah">` + res.users[i].wilayah + ` </div>
-                            <div class="col col-2" data-label="Nomor HP"> ` + res.users[i].phone + ` </div>
+                            <div class="col col-2" data-label="Nomor HP"> <a href="https://wa.me/` + res
+                    .users[i].phone + `" target="_blank" rel="noreferrer noopener">` + res.users[i].phone + `</a> </div>
                             <div class="col col-1" data-label="Instagram"> <a href="https://www.instagram.com/` + res
                     .users[i].social_instagram + `" target="_blank" rel="noreferrer noopener">` +
                     res.users[i].social_instagram + `</a> </div>

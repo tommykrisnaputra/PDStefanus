@@ -37,10 +37,8 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt($credentials)) {
-            // $request->session()->regenerate();
-            $user = Auth::getProvider()->retrieveByCredentials($credentials); 
-            Auth::login($user);
-            return redirect('/');
+            $request->session()->regenerate();
+            return redirect()->intended('/');
         }
 
         return redirect()
@@ -59,6 +57,6 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect()->intended();
+        return redirect()->intended('/');
     }
 }

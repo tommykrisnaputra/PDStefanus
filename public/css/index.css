@@ -256,6 +256,15 @@
     text-align: center;
     margin-left: 0;
   }
+
+  .nav>#nav-check:not(:checked)~.nav-links {
+    height: 0px;
+  }
+
+  .nav>#nav-check:checked~.nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
 }
 
 @media(max-width: 479px) {
@@ -351,7 +360,7 @@ button:hover {
   display: none;
 }
 
-@media (max-width:600px) {
+@media (max-width:800px) {
   .nav>.nav-btn {
     display: inline-block;
     position: absolute;
@@ -393,14 +402,5 @@ button:hover {
   .nav>.nav-links>a {
     display: block;
     width: 100%;
-  }
-
-  .nav>#nav-check:not(:checked)~.nav-links {
-    height: 0px;
-  }
-
-  .nav>#nav-check:checked~.nav-links {
-    height: calc(100vh - 50px);
-    overflow-y: auto;
   }
 }

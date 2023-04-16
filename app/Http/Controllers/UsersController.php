@@ -17,10 +17,49 @@ use App\Http\Requests\LoginRequest;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view('users.index', ['users' => $users]);
+        $request['operators'] = ['=', '>=', '<='];
+        $users = User::orderByDesc('users.last_attendance');
+
+        if ($request->filled('full_name')) {
+            $users->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
+        }
+        if ($request->filled('phone')) {
+            $users->where('users.phone', 'like', '%' . $request['phone'] . '%');
+        }
+        if ($request->filled('paroki')) {
+            $users->where('users.paroki', 'like', '%' . $request['paroki'] . '%');
+        }
+        if ($request->filled('wilayah')) {
+            $users->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
+        }
+        if ($request->filled('address')) {
+            $users->where('users.address', 'like', '%' . $request['address'] . '%');
+        }
+        if ($request->filled('total_attendance')) {
+            $users->where('users.total_attendance', $request['total_op'], $request['total_attendance']);
+        }
+        if ($request->filled('attendance_percentage')) {
+            $users->where('users.attendance_percentage', $request['percentage_op'], $request['attendance_percentage']);
+        }
+        if ($request->filled('birthdate')) {
+            $users->whereDate('users.birthdate', '=', $request['birthdate']);
+        }
+        if ($request->filled('date_from')) {
+            $users->whereDate('users.last_attendance', '>=', $request['date_from']);
+        }
+        if ($request->filled('date_to')) {
+            $users->whereDate('users.last_attendance', '<=', $request['date_to']);
+        }
+        if ($request->filled('first_attendance')) {
+            $users->whereDate('users.first_attendance', '=', $request['first_attendance']);
+        }
+
+        $results = $users->get();
+
+        // $data['attendance'] = $users->paginate(15)->withQueryString();
+        return view('users.index', ['users' => $results, 'data' => $request]);
     }
 
     public function edit($id)

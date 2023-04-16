@@ -42,13 +42,13 @@
                                         placeholder="Masukkan nama umat" value="{{ $data->full_name ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            {{-- <div class="col-4">
                                 <div class="input-group">
                                     <label class="label">Paroki</label>
                                     <input class="input--style-1" type="text" name="paroki"
                                         placeholder="Masukkan paroki" value="{{ $data->paroki ?? null }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- <div class="col-4">
                                 <div class="input-group">
                                     <label class="label">Email</label>
@@ -70,8 +70,6 @@
                                         placeholder="Masukkan wilayah" value="{{ $data->wilayah ?? null }}">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row row-space">
                             <div class="col-4">
                                 <div class="input-group">
                                     <label class="label">Alamat</label>
@@ -79,6 +77,8 @@
                                         placeholder="Masukkan alamat" value="{{ $data->address ?? null }}">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row row-space">
                             <div class="col-4">
                                 <div class="input-group">
                                     <label class="label">Kehadiran (from)</label>
@@ -101,6 +101,9 @@
                                         value="{{ $data->first_attendance ?? null }}">
                                 </div>
                             </div>
+                            <div class="col-4">
+                                <button class="btn-submit m-b-0" type="submit">search</button>
+                            </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-4">
@@ -110,23 +113,10 @@
                                         placeholder="Pilih kegiatan">
                                 </div> --}}
                             </div>
-                            <div class="col-4">
-                                <button class="btn-submit m-b-0" type="submit">search</button>
-                            </div>
                         </div>
                     </form>
                 </div>
             </div>
-            {{-- <div class="search-text"> --}}
-            {{-- <div class="search-container">
-                        <input type="text" name="search" placeholder="Search..." class="search-input"
-                            id="search">
-                        <a href="#" class="search-btn">
-                            <i class="fas fa-search"></i>
-                        </a>
-                    </div> --}}
-            {{-- </div> --}}
-            {{-- </div> --}}
             <ul class="responsive-table">
                 <li class="table-header">
                     <div class="col col-2">Nama Umat</div>

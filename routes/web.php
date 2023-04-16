@@ -58,7 +58,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
         Route::get('/users/changepassword', [UsersController::class, 'changepassword'])->name('users.changepassword');
         Route::post('/users/updatepassword', [UsersController::class, 'updatepassword'])->name('users.updatepassword');
-        Route::post('/users/search', [UsersController::class, 'search'])
+        Route::post('/users', [UsersController::class, 'index'])
             ->name('users.search')
             ->middleware(['NullToBlank']);
 

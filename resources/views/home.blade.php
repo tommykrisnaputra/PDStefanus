@@ -22,10 +22,8 @@
                 <span>Kristoforus ⛪, Grogol, West Jakarta</span>
             </h1>
             <span class="home-text10">
-                <span>WA: 0878 7782 8233</span>
-                <br />
-                <span>Link Stefannews 2022 👇👇</span>
-                <br />
+                <span>WA: 0878 7782 8233</span><br />
+                <span>Link Stefannews 2022 👇👇</span><br />
                 <a href="https://linktr.ee/PDSt.Stefanus" class="home-text15">linktr.ee/PDSt.Stefanus</a>
             </span>
         </div>

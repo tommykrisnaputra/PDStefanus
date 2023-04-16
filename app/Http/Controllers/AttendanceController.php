@@ -19,16 +19,6 @@ class AttendanceController extends Controller
 
     public function index(Request $request)
     {
-        // $data['operators'] = [
-        //     '=' => 'equal to',
-        //     '<>' => 'not equal to',
-        //     '>' => 'greater than',
-        //     '>=' => 'greater than or equal to',
-        //     '<' => 'less than',
-        //     '<=' => 'less than or equal to',
-        //     'between' => 'between',
-        // ];
-
         $query = Attendance::select('attendance.*', 'events.title', 'users.full_name', 'users.email', 'users.phone', 'users.paroki', 'users.address', 'users.wilayah', 'users.first_attendance', 'users.last_attendance', 'users.total_attendance', 'users.attendance_percentage')
             ->orderByDesc('date')
             ->join('users', 'users.id', '=', 'attendance.user_id')

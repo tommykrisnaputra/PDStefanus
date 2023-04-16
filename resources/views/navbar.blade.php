@@ -1,6 +1,6 @@
 <div class="nav home-navbar">
     <input type="checkbox" id="nav-check">
-    <img alt="image" src="{{ asset('images/logo1-600h.png') }}" loading="lazy" class="home-image" />
+    <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="home-image" />
     <div class="nav-header">
         <div class="nav-title">
             <p>PD OMPKK St. Stefanus</p>

@@ -321,7 +321,7 @@ a:active {
   display: block;
   width: 100%;
   /* line-height: 60px; */
-  line-height: 32px;
+  /* line-height: 32px; */
   font-family: inherit;
   background: #ff4b5a;
   -webkit-border-radius: 10px;
@@ -335,7 +335,6 @@ a:active {
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  margin-top: 38px;
 }
 
 @media (max-width: 767px) {
@@ -671,7 +670,7 @@ button {
 }
 
 .label {
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
   padding-left: 8px;
   text-transform: capitalize;
@@ -681,8 +680,8 @@ button {
 }
 
 .input--style-1 {
-  font-size: 18px;
-  padding: 16.5px 20px;
+  font-size: 14px;
+  padding: 15px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -939,12 +938,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .card-6 .card-body {
-  padding: 60px 55px;
+  padding: 30px;
 }
 
 @media (max-width: 767px) {
   .card-6 .card-body {
     padding: 40px 30px;
-    padding-bottom: 55px;
+    padding-bottom: 20px;
   }
 }

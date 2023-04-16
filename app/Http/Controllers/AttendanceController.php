@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AttendanceRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use DateTime;
 
 class AttendanceController extends Controller
 {
@@ -18,58 +19,70 @@ class AttendanceController extends Controller
 
     public function index(Request $request)
     {
-        // return view('attendance.index');
-
-        $data['keyword'] = $request->query('keyword');
-        $data['category_id'] = $request->query('category_id');
-        $data['start'] = $request->query('start');
-        $data['end'] = $request->query('end');
-        // $data['categories'] = Category::all();
-        $data['operators'] = [
-            '=' => 'equal to',
-            '<>' => 'not equal to',
-            '>' => 'greater than',
-            '>=' => 'greater than or equal to',
-            '<' => 'less than',
-            '<=' => 'less than or equal to',
-            'between' => 'between',
-        ];
-        $data['total_operator'] = $request->get('total_operator');
-        $data['total_value'] = $request->get('total_value');
-        $data['total_value_end'] = $request->get('total_value_end');
-
-        $query = Attendance::select('attendance.*', 'events.title', 'users.full_name', 'users.first_attendance')
+        $attendance = Attendance::select('attendance.*', 'events.title', 'users.full_name', 'users.phone', 'users.first_attendance', 'users.last_attendance', 'users.total_attendance', 'users.attendance_percentage')
             ->orderByDesc('date')
             ->join('users', 'users.id', '=', 'attendance.user_id')
             ->join('events', 'events.id', '=', 'attendance.event_id')
-            ->where(function ($query) use ($data) {
-                $query->where('full_name', 'like', '%' . $data['keyword'] . '%');
-                // $query->orWhere('customer_name', 'like', '%' . $data['keyword'] . '%');
-                // $query->orWhere('category_name', 'like', '%' . $data['keyword'] . '%');
-            });
+            ->get();
 
-        if ($data['start']) {
-            $query->whereDate('order_date', '>=', $data['start']);
+        return view('attendance.index', ['attendance' => $attendance, 'data' => []]);
+    }
+
+    public function search(Request $request)
+    {
+        // $data['operators'] = [
+        //     '=' => 'equal to',
+        //     '<>' => 'not equal to',
+        //     '>' => 'greater than',
+        //     '>=' => 'greater than or equal to',
+        //     '<' => 'less than',
+        //     '<=' => 'less than or equal to',
+        //     'between' => 'between',
+        // ];
+
+        $query = Attendance::select('attendance.*', 'events.title', 'users.full_name', 'users.email', 'users.phone', 'users.paroki', 'users.address', 'users.wilayah', 'users.first_attendance', 'users.last_attendance', 'users.total_attendance', 'users.attendance_percentage')
+            ->orderByDesc('date')
+            ->join('users', 'users.id', '=', 'attendance.user_id')
+            ->join('events', 'events.id', '=', 'attendance.event_id');
+
+        if ($request->filled('full_name')) {
+            $query->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
         }
-        if ($data['end']) {
-            $query->whereDate('order_date', '<=', $data['end']);
+        if ($request->filled('email')) {
+            $query->where('users.email', 'like', '%' . $request['email'] . '%');
         }
-        if ($data['category_id']) {
-            $query->where('categories.category_id', $data['category_id']);
+        if ($request->filled('phone')) {
+            $query->where('users.phone', 'like', '%' . $request['phone'] . '%');
         }
-        if ($data['total_operator']) {
-            if ($data['total_operator'] == 'between') {
-                $query->whereRaw('quantity * price between ? AND ?', [$data['total_value'], $data['total_value_end']]);
-            } else {
-                $query->whereRaw('quantity * price ' . $data['total_operator'] . ' ? ', $data['total_value']);
-            }
+        if ($request->filled('paroki')) {
+            $query->where('users.paroki', 'like', '%' . $request['paroki'] . '%');
+        }
+        if ($request->filled('address')) {
+            $query->where('users.address', 'like', '%' . $request['address'] . '%');
+        }
+        if ($request->filled('wilayah')) {
+            $query->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
+        }
+        if ($request->filled('first_attendance')) {
+            $query->whereDate('users.first_attendance', '=', $request['first_attendance']);
+        }
+        // if ($request->filled('date')) {
+        //     $parts = explode(" - ", $request['date']);
+        //     $from = Carbon::parse(strtotime($parts[0]))->addDays(1)->toDateString();
+        //     $to = Carbon::parse(strtotime($parts[1]))->addDays(1)->toDateString();
+        //     $query->whereBetween('attendance.date', [$from.' 00:00:00', $to.' 23:59:59']);
+        // }
+        if ($request->filled('date_from')) {
+            $query->whereDate('attendance.date', '>=', $request['date_from']);
+        }
+        if ($request->filled('date_to')) {
+            $query->whereDate('attendance.date', '<=', $request['date_to']);
         }
 
-        // dd ($query);
         $results = $query->get();
 
         // $data['attendance'] = $query->paginate(15)->withQueryString();
-        return view('attendance.index', ['attendance' => $results]);
+        return view('attendance.index', ['attendance' => $results, 'data' => $request]);
     }
 
     public function register(AttendanceRequest $request)

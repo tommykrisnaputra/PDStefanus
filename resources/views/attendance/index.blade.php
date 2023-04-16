@@ -31,7 +31,7 @@
         <div class="container">
             <div class="card card-6 search-main-container">
                 <div class="card-body">
-                    <form method="POST" action={{ route('attendance.search') }}>
+                    <form method="POST" action={{ route('attendance.index') }}>
                         @csrf
                         <!-- {{ csrf_field() }} -->
                         <div class="row row-space">

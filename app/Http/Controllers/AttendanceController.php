@@ -19,17 +19,6 @@ class AttendanceController extends Controller
 
     public function index(Request $request)
     {
-        $attendance = Attendance::select('attendance.*', 'events.title', 'users.full_name', 'users.phone', 'users.first_attendance', 'users.last_attendance', 'users.total_attendance', 'users.attendance_percentage')
-            ->orderByDesc('date')
-            ->join('users', 'users.id', '=', 'attendance.user_id')
-            ->join('events', 'events.id', '=', 'attendance.event_id')
-            ->get();
-
-        return view('attendance.index', ['attendance' => $attendance, 'data' => []]);
-    }
-
-    public function search(Request $request)
-    {
         // $data['operators'] = [
         //     '=' => 'equal to',
         //     '<>' => 'not equal to',

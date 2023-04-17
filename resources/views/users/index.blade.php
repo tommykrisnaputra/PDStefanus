@@ -154,7 +154,7 @@
                 @foreach ($users as $key => $data)
                     <li class="table-row">
                         <div class="col col-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
-                        <div class="col col-1" data-label="Tanggal Lahir">
+                        <div class="col col-2" data-label="Tanggal Lahir">
                             {{ Carbon\Carbon::parse($data->birthdate)->format('d M Y') ?? null }}</div>
                         <div class="col col-2" data-label="Wilayah">{{ $data->wilayah ?? null }}</div>
                         <div class="col col-2" data-label="Nomor HP">
@@ -172,7 +172,7 @@
                                 {{ $data->social_tiktok ?? null }}
                             </a>
                         </div>
-                        <div class="col col-1" data-label="Terakhir Datang">
+                        <div class="col col-2" data-label="Terakhir Datang">
                             {{ Carbon\Carbon::parse($data->last_attendance)->format('d M Y') ?? null }}</div>
                             
                         <div class="col col-1" data-label="Persentase Kehadiran">

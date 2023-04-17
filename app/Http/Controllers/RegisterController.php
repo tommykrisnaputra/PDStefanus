@@ -59,7 +59,7 @@ class RegisterController extends Controller
                 'social_instagram' => $request->social_instagram,
                 'social_tiktok' => $request->social_tiktok,
                 'address' => $request->address,
-                'address' => $request->wilayah,
+                'wilayah' => $request->wilayah,
                 'paroki' => $request->paroki,
                 'gender' => $request->gender,
                 'first_attendance' => $request->first_attendance,

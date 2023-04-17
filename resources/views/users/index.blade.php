@@ -142,12 +142,12 @@
             <ul class="responsive-table">
                 <li class="table-header">
                     <div class="col col-2">Nama</div>
-                    <div class="col col-1">Tanggal Lahir</div>
+                    <div class="col col-2">Tanggal Lahir</div>
                     <div class="col col-2">Wilayah</div>
-                    <div class="col col-1">Nomor HP</div>
-                    <div class="col col-1">Instagram</div>
+                    <div class="col col-2">Nomor HP</div>
+                    <div class="col col-2">Instagram</div>
                     <div class="col col-1">Tik Tok</div>
-                    <div class="col col-1">Terakhir Datang</div>
+                    <div class="col col-2">Terakhir Datang</div>
                     <div class="col col-1">Persentase Kedatangan</div>
                     <div class="col col-1"></div>
                 </li>
@@ -157,12 +157,12 @@
                         <div class="col col-1" data-label="Tanggal Lahir">
                             {{ Carbon\Carbon::parse($data->birthdate)->format('d M Y') ?? null }}</div>
                         <div class="col col-2" data-label="Wilayah">{{ $data->wilayah ?? null }}</div>
-                        <div class="col col-1" data-label="Nomor HP">
+                        <div class="col col-2" data-label="Nomor HP">
                             <a href="https://wa.me/{{ $data->phone }}">
                                 {{ $data->phone ?? null }}
                             </a>
                         </div>
-                        <div class="col col-1" data-label="Instagram">
+                        <div class="col col-2" data-label="Instagram">
                             <a href="https://www.instagram.com/{{ $data->social_instagram }}">
                                 {{ $data->social_instagram ?? null }}
                             </a>

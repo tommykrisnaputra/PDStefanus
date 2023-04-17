@@ -351,8 +351,6 @@
 .home-logo2 {
   width: 617px;
   align-self: center;
-  text-align: left;
-  margin-left: var(--dl-space-space-unit);
 }
 
 .home-follow-container1 {
@@ -542,7 +540,7 @@
     display: inline-block;
     position: absolute;
     right: 0px;
-    top: 50px;
+    top: 20px;
   }
 
   .nav>.nav-btn>label {
@@ -564,15 +562,15 @@
   }
 
   .nav>.nav-links {
-    /* position: absolute; */
-    position: absolute;z-index: 1;
+    position: absolute;
+    z-index: 1;
     display: block;
     width: 100%;
     background-color: #d9d9d9;
     height: 0px;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
-    top: 100px;
+    top: 70px;
     left: 0px;
   }
 

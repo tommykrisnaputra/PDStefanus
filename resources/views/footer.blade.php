@@ -1,6 +1,6 @@
 <div class="home-footer">
     <div class="home-menu">
-        <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="home-image1" />
+        <img alt="image" src="{{ asset('images/logo1-600h.png') }}" loading="lazy" class="home-image1" />
         <h1 class="home-logo2">PD OMPKK St. Stefanus</h1>
         <div class="home-follow-container1">
             <span class="home-text18">Follow us on</span>

@@ -112,7 +112,6 @@
   }
 }
 
-/* @media all and (max-width: 767px) { */
 @media all and (max-width: 991px) {
   .home-main {
     width: 100%;
@@ -133,6 +132,7 @@
   .responsive-table .col {
     display: flex;
     padding: 10px 0;
+    width: 100%;
   }
 
   .responsive-table .col:before {

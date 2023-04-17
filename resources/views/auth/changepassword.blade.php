@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Change Password
+    Ubah Password
 @endsection
 
 @section('css')

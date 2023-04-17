@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-    Data Kehadiran
+    Kehadiran
 @endsection
 
 @section('css')

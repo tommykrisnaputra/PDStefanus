@@ -107,7 +107,7 @@ class AttendanceController extends Controller
 
     public function countAttendance($param, $date)
     {
-        $total = $date->diffInWeeks($param->first_attendance) + 1;
+        $total = now()->diffInWeeks(Carbon::parse($param->first_attendance)) + 1;
 
         $active = Attendance::where('attendance.user_id', $param->id)
             ->where('attendance.event_id', '4')

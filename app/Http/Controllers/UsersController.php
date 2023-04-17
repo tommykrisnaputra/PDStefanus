@@ -20,7 +20,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $request['operators'] = ['=', '>=', '<='];
-        $users = User::orderByDesc('users.last_attendance');
+        $users = User::orderByDesc('users.created_at');
 
         if ($request->filled('full_name')) {
             $users->where('users.full_name', 'like', '%' . $request['full_name'] . '%');

@@ -56,11 +56,11 @@
                         </div>
                         <div class="row row-space">
                             <div class="col-4">
-                                <div class="input-group">
+                                {{-- <div class="input-group">
                                     <label class="label">Alamat</label>
                                     <input class="input--style-1" type="text" name="address"
                                         placeholder="Masukkan alamat" value="{{ $data->address ?? null }}">
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-op">
                                 <div class="input-group">
@@ -146,7 +146,7 @@
                     <div class="col col-2">Wilayah</div>
                     <div class="col col-2">Nomor HP</div>
                     <div class="col col-3">Instagram</div>
-                    <div class="col col-2">Tik Tok</div>
+                    {{-- <div class="col col-2">Tik Tok</div> --}}
                     <div class="col col-2">Terakhir Datang</div>
                     <div class="col col-1">Persentase Kedatangan</div>
                     <div class="col col-1"></div>
@@ -167,11 +167,11 @@
                                 {{ $data->social_instagram ?? null }}
                             </a>
                         </div>
-                        <div class="col col-2" data-label="Tik Tok">
+                        {{-- <div class="col col-2" data-label="Tik Tok">
                             <a href="https://www.tiktok.com/@{{ $data->social_tiktok }}">
                                 {{ $data->social_tiktok ?? null }}
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="col col-2" data-label="Terakhir Datang">
                             {{ Carbon\Carbon::parse($data->last_attendance)->format('d M Y') ?? null }}</div>
                             

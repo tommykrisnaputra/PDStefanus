@@ -39,7 +39,7 @@
                             placeholder="Masukan nama" class="{{ $errors->has('full_name') ? 'form-error' : '' }}">
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="email">Email</label>
                     </div>
@@ -47,7 +47,7 @@
                         <input type="email" id="email" name="email" value="{{ old('email') }}"
                             placeholder="Masukan email" class="{{ $errors->has('email') ? 'form-error' : '' }}">
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-25">
                         <label for="phone">Nomor HP</label>
@@ -77,7 +77,7 @@
                             class="{{ $errors->has('social_instagram') ? 'form-error' : '' }}">
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="social_tiktok">Tik Tok</label>
                     </div>
@@ -86,8 +86,8 @@
                             placeholder="Masukan tag Tik Tok"
                             class="{{ $errors->has('social_tiktok') ? 'form-error' : '' }}">
                     </div>
-                </div>
-                <div class="row">
+                </div> --}}
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="address">Alamat</label>
                     </div>
@@ -95,7 +95,7 @@
                         <input type="text" id="address" name="address" value="{{ old('address') }}"
                             placeholder="Masukan alamat" class="{{ $errors->has('address') ? 'form-error' : '' }}">
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-25">
                         <label for="wilayah">Wilayah tempat tinggal</label>
@@ -127,7 +127,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="first_attendance">Pertama Datang</label>
                     </div>
@@ -136,7 +136,7 @@
                             placeholder="Masukan tanggal kedatangan pertama kali"
                             class="{{ $errors->has('first_attendance') ? 'form-error' : '' }}">
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-25">
                         <label for="password">Password</label>

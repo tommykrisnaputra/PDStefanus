@@ -81,7 +81,7 @@
                             class="{{ $errors->has('birthdate') ? 'form-error' : '' }}">
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="address">Alamat</label>
                     </div>
@@ -90,7 +90,7 @@
                             value="{{ old('address', $users->address ?? '') }}" placeholder="Masukan alamat"
                             class="{{ $errors->has('address') ? 'form-error' : '' }}">
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-25">
                         <label for="wilayah">Wilayah</label>
@@ -145,7 +145,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="first_attendance">Pertama Datang</label>
                     </div>
@@ -155,7 +155,7 @@
                             placeholder="Masukan tanggal kedatangan pertama kali"
                             class="{{ $errors->has('first_attendance') ? 'form-error' : '' }}">
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-25">
                         <label for="last_attendance">Terakhir Datang</label>
@@ -167,7 +167,7 @@
                             class="{{ $errors->has('last_attendance') ? 'form-error' : '' }}">
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="total_attendance">Total Kedatangan</label>
                     </div>
@@ -177,8 +177,8 @@
                             placeholder="Masukan total kedatangan"
                             class="{{ $errors->has('total_attendance') ? 'form-error' : '' }}">
                     </div>
-                </div>
-                <div class="row">
+                </div> --}}
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="attendance_percentage">Persentase Kedatangan</label>
                     </div>
@@ -188,8 +188,8 @@
                             placeholder="Masukan persentase kedatangan"
                             class="{{ $errors->has('attendance_percentage') ? 'form-error' : '' }}">
                     </div>
-                </div>
-                <div class="row">
+                </div> --}}
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="description">Deskripsi</label>
                     </div>
@@ -197,7 +197,7 @@
                         <textarea id="description" name="description" style="height:200px"
                             value="{{ old('description', $users->description ?? '') }}"></textarea>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="row submit-button-container">
                     <input type="submit" value="Submit" class="submit-button">

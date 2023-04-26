@@ -94,7 +94,6 @@ class EventsController extends Controller
                 $events = DB::table('events')
                     ->where('title', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('description', 'LIKE', '%' . $request->keyword . '%')
-                    ->orWhere('order_number', 'LIKE', '%' . $request->keyword . '%')
                     ->get();
             } else {
                 $events = Event::orderBy('order_number')->get();

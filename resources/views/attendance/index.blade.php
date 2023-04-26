@@ -71,11 +71,11 @@
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="input-group">
+                                {{-- <div class="input-group">
                                     <label class="label">Alamat</label>
                                     <input class="input--style-1" type="text" name="address"
                                         placeholder="Masukkan alamat" value="{{ $data->address ?? null }}">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="row row-space">

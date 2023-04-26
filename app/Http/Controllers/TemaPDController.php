@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\TemaPd;
 use Illuminate\Support\Facades\Log;
+use DB;
 
 class TemaPDController extends Controller
 {
@@ -92,7 +93,6 @@ class TemaPDController extends Controller
                 $TemaPd = DB::table('tema_pd')
                     ->where('title', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('description', 'LIKE', '%' . $request->keyword . '%')
-                    ->orWhere('order_number', 'LIKE', '%' . $request->keyword . '%')
                     ->get();
             } else {
                 $TemaPd = TemaPd::orderByDesc('date')->get();

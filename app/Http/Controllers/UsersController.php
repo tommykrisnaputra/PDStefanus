@@ -124,14 +124,14 @@ class UsersController extends Controller
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
             'role' => 'required|numeric',
-            'email' => 'required|email',
+            // 'email' => 'required|email',
             'phone' => 'required|numeric',
             'birthdate' => 'required|date',
             'address' => 'nullable',
             'wilayah' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender' => 'required|in:male,female',
-            'first_attendance' => 'required',
+            // 'first_attendance' => 'required',
         ]);
         if ($validator->fails()) {
             return redirect()
@@ -151,11 +151,11 @@ class UsersController extends Controller
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'gender' => $request->gender,
-                'first_attendance' => $request->first_attendance,
+                // 'first_attendance' => $request->first_attendance,
                 'last_attendance' => $request->last_attendance,
-                'total_attendance' => $request->total_attendance,
-                'attendance_percentage' => $request->attendance_percentage,
-                'description' => $request->description,
+                // 'total_attendance' => $request->total_attendance,
+                // 'attendance_percentage' => $request->attendance_percentage,
+                // 'description' => $request->description,
                 'updated_by' => Auth::id(),
             ]);
             return redirect('/users')->with(['message' => 'Data ' . $request->full_name . ' berhasil  di update']);

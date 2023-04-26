@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -33,16 +34,16 @@ class RegisterController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
+            // 'email' => 'required|email|unique:users',
             'phone' => 'required|numeric|unique:users',
             'birthdate' => 'required|date',
             'social_instagram' => 'nullable|regex:/^^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/',
-            'social_tiktok' => 'nullable|regex:/^^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/',
+            // 'social_tiktok' => 'nullable|regex:/^^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
-            'address' => 'nullable',
+            // 'address' => 'nullable',
             'wilayah' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender' => 'required|in:male,female',
-            'first_attendance' => 'required',
+            // 'first_attendance' => 'required',
             'password' => 'required|min:8|confirmed',
         ]);
         if ($validator->fails()) {
@@ -51,19 +52,20 @@ class RegisterController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         } else {
+            $now = Carbon::today()->toDateString();
             $user = User::create([
                 'full_name' => $request->full_name,
-                'email' => $request->email,
+                // 'email' => $request->email,
                 'phone' => $request->phone,
                 'birthdate' => $request->birthdate,
                 'social_instagram' => $request->social_instagram,
-                'social_tiktok' => $request->social_tiktok,
-                'address' => $request->address,
+                // 'social_tiktok' => $request->social_tiktok,
+                // 'address' => $request->address,
                 'wilayah' => $request->wilayah,
                 'paroki' => $request->paroki,
                 'gender' => $request->gender,
-                'first_attendance' => $request->first_attendance,
-                'last_attendance' => $request->first_attendance,
+                'first_attendance' => $now,
+                'last_attendance' => $now,
                 'password' => $request->password,
                 'total_attendance' => '1',
                 'attendance_percentage' => '100',

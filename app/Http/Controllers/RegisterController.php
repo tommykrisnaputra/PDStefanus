@@ -39,7 +39,7 @@ class RegisterController extends Controller
             'social_instagram' => 'nullable|regex:/^^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/',
             'social_tiktok' => 'nullable|regex:/^^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
-            'address' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
+            'address' => 'nullable',
             'wilayah' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender' => 'required|in:male,female',
             'first_attendance' => 'required',
@@ -76,6 +76,7 @@ class RegisterController extends Controller
                 'event_id' => 4, // PD Kamis
                 'description' => 'Pendaftaran',
                 'created_by' => Auth::id() ?? $user->id,
+                'date' => $request->first_attendance,
             ]);
 
             if (Auth::check() && Auth::User()->isAdmin()) {

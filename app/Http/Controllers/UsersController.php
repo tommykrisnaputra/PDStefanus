@@ -127,7 +127,7 @@ class UsersController extends Controller
             'email' => 'required|email',
             'phone' => 'required|numeric',
             'birthdate' => 'required|date',
-            'address' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
+            'address' => 'nullable',
             'wilayah' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender' => 'required|in:male,female',

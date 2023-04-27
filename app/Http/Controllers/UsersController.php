@@ -127,7 +127,7 @@ class UsersController extends Controller
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
             'role' => 'required|numeric',
-            // 'email' => 'required|email',
+            'email' => 'email',
             'phone' => 'required|numeric',
             'birthdate' => 'required|date',
             'address' => 'nullable',

@@ -193,11 +193,11 @@ VALUES
   ('admin');
 INSERT INTO `users`(
   `role_id`, `full_name`, `birthdate`, 
-  `address`, 'wilayah', `paroki`, `social_instagram`, 
+  `address`, `wilayah`, `paroki`, `social_instagram`, 
   `social_tiktok`, `phone`, `email`, 
   `first_attendance`, `last_attendance`, 
   `password`, `active`
-) 
+)
 VALUES 
   (
     2, 'PD Stefanus', '2023-03-24', 'Jl. Satria IV No.Blok C', 'Jelambar',
@@ -205,29 +205,6 @@ VALUES
     '087877828233', 'stefan_news@yahoo.com', 
     '2023-03-24', '2023-03-24', '$2y$10$uuQ6hqTbGi/UnLwR.rV8EutI1mVjUYpP/u1KCXqmEb0Jz1lMKGiEq', 
     true
-  );
-INSERT INTO `tema_pd`(
-  `date`, `description`, `links`, `media`, 
-  `title`
-) 
-VALUES 
-  (
-    '2023-03-16', 'Deskripsi Pujian', 
-    'https://www.instagram.com/p/Cpws0qXPZvC/?utm_source=ig_web_copy_link', 
-    'https://i.imgur.com/Waty6k8.jpg', 
-    'The Art of Giving'
-  ), 
-  (
-    '2023-03-09', 'Deskripsi Dance', 
-    'https://www.instagram.com/p/CpegnvHv3ej/?utm_source=ig_web_copy_link', 
-    'https://i.imgur.com/rE3wWTe.jpg', 
-    'B.R.E.A.D'
-  ), 
-  (
-    '2023-03-02', 'Deskripsi Divergent', 
-    'https://www.instagram.com/p/CpMccqdPrUu/?utm_source=ig_web_copy_link', 
-    'https://i.imgur.com/SiaQ9hm.jpg', 
-    'Divergent'
   );
 INSERT INTO `events`(
   `date`, `description`, `links`, `media`, 
@@ -257,4 +234,30 @@ VALUES
     'https://pdstefanusgrogol.com/', 
     'https://www.imb.org/wp-content/uploads/2016/08/Local-Church.jpg', 
     4, 'PD Stefanus'
+  );
+
+
+
+INSERT INTO `tema_pd`(
+  `date`, `description`, `links`, `media`, 
+  `title`
+) 
+VALUES 
+  (
+    '2023-03-16', 'Deskripsi Pujian', 
+    'https://www.instagram.com/p/Cpws0qXPZvC/?utm_source=ig_web_copy_link', 
+    'https://i.imgur.com/Waty6k8.jpg', 
+    'The Art of Giving'
+  ), 
+  (
+    '2023-03-09', 'Deskripsi Dance', 
+    'https://www.instagram.com/p/CpegnvHv3ej/?utm_source=ig_web_copy_link', 
+    'https://i.imgur.com/rE3wWTe.jpg', 
+    'B.R.E.A.D'
+  ), 
+  (
+    '2023-03-02', 'Deskripsi Divergent', 
+    'https://www.instagram.com/p/CpMccqdPrUu/?utm_source=ig_web_copy_link', 
+    'https://i.imgur.com/SiaQ9hm.jpg', 
+    'Divergent'
   );

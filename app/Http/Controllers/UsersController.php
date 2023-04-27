@@ -52,8 +52,11 @@ class UsersController extends Controller
         if ($request->filled('date_to')) {
             $users->whereDate('users.last_attendance', '<=', $request['date_to']);
         }
-        if ($request->filled('first_attendance')) {
-            $users->whereDate('users.first_attendance', '=', $request['first_attendance']);
+        if ($request->filled('fa_from')) {
+            $users->whereDate('users.first_attendance', '>=', $request['fa_from']);
+        }
+        if ($request->filled('fa_to')) {
+            $users->whereDate('users.first_attendance', '<=', $request['fa_to']);
         }
 
         $results = $users->get();

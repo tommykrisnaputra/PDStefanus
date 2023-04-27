@@ -56,12 +56,37 @@
                         </div>
                         <div class="row row-space">
                             <div class="col-4">
-                                {{-- <div class="input-group">
-                                    <label class="label">Alamat</label>
-                                    <input class="input--style-1" type="text" name="address"
-                                        placeholder="Masukkan alamat" value="{{ $data->address ?? null }}">
-                                </div> --}}
+                                <div class="input-group">
+                                    <label class="label">Kehadiran (from)</label>
+                                    <input class="input--style-1" type="date" name="date_from" id="date_from"
+                                        value="{{ $data->date_from ?? null }}">
+                                </div>
                             </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <label class="label">Kehadiran (to)</label>
+                                    <input class="input--style-1" type="date" name="date_to" id="date_to"
+                                        value="{{ $data->date_to ?? null }}">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <label class="label">Pertama Datang (from)</label>
+                                    <input class="input--style-1" type="date" name="fa_from"
+                                        placeholder="DD MMM YYYY" id="fa_from"
+                                        value="{{ $data->fa_from ?? null }}">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <label class="label">Pertama Datang (to)</label>
+                                    <input class="input--style-1" type="date" name="fa_to"
+                                        placeholder="DD MMM YYYY" id="fa_to"
+                                        value="{{ $data->fa_to ?? null }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
                             <div class="col-op">
                                 <div class="input-group">
                                     <label class="label">Total</label>
@@ -98,36 +123,31 @@
                                         value="{{ $data->attendance_percentage ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+
+                            {{-- <div class="col-op">
                                 <div class="input-group">
-                                    <label class="label">Tanggal Lahir</label>
-                                    <input class="input--style-1" type="date" name="birthdate" placeholder="DD MMM YYYY"
-                                        id="birthdate" value="{{ $data->birthdate ?? null }}">
+                                    <label class="label">Tanggal</label>
+                                    <select name="day_from" class="input--style-1 operator">
+                                        @foreach ($data->operators as $item)
+                                            <option value="{{ $item }}" @selected($item == $data->total_op)>
+                                                {{ $item }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
+                                <div class="input-group width-100">
+                                    <label class="label">Lahir (from)</label>
+                                    <select name="day_from" class="input--style-1 operator">
+                                        @foreach ($data->operators as $item)
+                                            <option value="{{ $item }}" @selected($item == $data->total_op)>
+                                                {{ $item }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div> --}}
+
                             <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Kehadiran (from)</label>
-                                    <input class="input--style-1" type="date" name="date_from" id="date-from"
-                                        value="{{ $data->date_from ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Kehadiran (to)</label>
-                                    <input class="input--style-1" type="date" name="date_to" id="date-to"
-                                        value="{{ $data->date_to ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Pertama Datang</label>
-                                    <input class="input--style-1" type="date" name="first_attendance"
-                                        placeholder="DD MMM YYYY" id="first_attendance"
-                                        value="{{ $data->first_attendance ?? null }}">
-                                </div>
                             </div>
                             <div class="col-4">
                                 <div class="input-group">
@@ -168,13 +188,13 @@
                             </a>
                         </div>
                         {{-- <div class="col col-2" data-label="Tik Tok">
-                            <a href="https://www.tiktok.com/@{{ $data->social_tiktok }}">
+                            <a href="https://www.tiktok.com/@{{ $data - > social_tiktok }}">
                                 {{ $data->social_tiktok ?? null }}
                             </a>
                         </div> --}}
                         <div class="col col-2" data-label="Terakhir Datang">
                             {{ Carbon\Carbon::parse($data->last_attendance)->format('d M Y') ?? null }}</div>
-                            
+
                         <div class="col col-1" data-label="Persentase Kehadiran">
                             {{ $data->attendance_percentage ?? null }}%
                         </div>
@@ -272,7 +292,3 @@
         }
     </script>
 @endsection
-
-{{-- <div class="col col-2" data-label="Pertama Datang">
-    ` + new Date(res.users[i].first_attendance).toLocaleString('id-ID', options_2) + `
-</div> --}}

@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="input-group width-100">
                                     <label class="label">Kedatangan</label>
-                                    <input class="input--style-1" type="tel" name="total_attendance"
+                                    <input class="input--style-1 width-100" type="tel" name="total_attendance"
                                         placeholder="Masukkan total kedatangan"
                                         value="{{ $data->total_attendance ?? null }}">
                                 </div>
@@ -118,18 +118,17 @@
                                 </div>
                                 <div class="input-group width-100">
                                     <label class="label">Kedatangan</label>
-                                    <input class="input--style-1" type="tel" name="attendance_percentage"
+                                    <input class="input--style-1 width-100" type="tel" name="attendance_percentage"
                                         placeholder="Masukkan persentase"
                                         value="{{ $data->attendance_percentage ?? null }}">
                                 </div>
                             </div>
-
-                            {{-- <div class="col-op">
+                            <div class="col-op">
                                 <div class="input-group">
                                     <label class="label">Tanggal</label>
                                     <select name="day_from" class="input--style-1 operator">
-                                        @foreach ($data->operators as $item)
-                                            <option value="{{ $item }}" @selected($item == $data->total_op)>
+                                        @foreach ($data->days as $item)
+                                            <option value="{{ $item }}" @selected($item == $data->day_from)>
                                                 {{ $item }}
                                             </option>
                                         @endforeach
@@ -137,18 +136,39 @@
                                 </div>
                                 <div class="input-group width-100">
                                     <label class="label">Lahir (from)</label>
-                                    <select name="day_from" class="input--style-1 operator">
-                                        @foreach ($data->operators as $item)
-                                            <option value="{{ $item }}" @selected($item == $data->total_op)>
+                                    <select name="month_from" class="input--style-1 width-100">
+                                        @foreach ($data->months as $item)
+                                            <option value="{{ $item }}" @selected($item == $data->month_from)>
                                                 {{ $item }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div> --}}
-
-                            <div class="col-4">
                             </div>
+                            <div class="col-op">
+                                <div class="input-group">
+                                    <label class="label">Tanggal</label>
+                                    <select name="day_to" class="input--style-1 operator">
+                                        @foreach ($data->days as $item)
+                                            <option value="{{ $item }}" @selected($item == $data->day_to)>
+                                                {{ $item }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="input-group width-100">
+                                    <label class="label">Lahir (to)</label>
+                                    <select name="month_to" class="input--style-1 width-100">
+                                        @foreach ($data->months as $item)
+                                            <option value="{{ $item }}" @selected($item == $data->month_to) placeholder="Bulan">
+                                                {{ $item }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
                             <div class="col-4">
                                 <div class="input-group">
                                     <button class="btn-submit m-b-0" type="submit">search</button>

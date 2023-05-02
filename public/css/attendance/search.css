@@ -65,7 +65,7 @@
   margin-right: 20px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .col-2 {
     width: 100%;
   }
@@ -246,7 +246,7 @@ a:active {
   padding-top: 275px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .p-t-275 {
     padding-top: 120px;
   }
@@ -256,7 +256,7 @@ a:active {
   padding-top: 290px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .p-t-290 {
     padding-top: 120px;
   }
@@ -266,7 +266,7 @@ a:active {
   padding-top: 240px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .p-t-240 {
     padding-top: 150px;
   }
@@ -276,7 +276,7 @@ a:active {
   padding-top: 200px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .p-t-200 {
     padding-top: 150px;
   }
@@ -286,7 +286,7 @@ a:active {
   padding-top: 165px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .p-t-165 {
     padding-top: 120px;
   }
@@ -296,7 +296,7 @@ a:active {
   padding-bottom: 100px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .p-b-100 {
     padding-bottom: 250px;
   }
@@ -306,7 +306,7 @@ a:active {
   padding-bottom: 120px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .p-b-120 {
     padding-bottom: 250px;
   }
@@ -316,7 +316,7 @@ a:active {
   margin-right: 45px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .m-r-45 {
     margin-right: 15px;
   }
@@ -366,10 +366,14 @@ a:active {
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  margin-top: 20px;
+}
+
+.mt40 {
   margin-top: 40px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .btn-submit {
     margin-top: 15px;
   }
@@ -409,7 +413,7 @@ a:active {
   margin-top: 2px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .daterangepicker {
     width: -webkit-calc(100% - 60px);
     width: -moz-calc(100% - 60px);
@@ -451,7 +455,7 @@ a:active {
   float: right;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .daterangepicker .calendar {
     width: 235px;
     max-width: 270px;
@@ -495,7 +499,7 @@ a:active {
   color: #555;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .daterangepicker td {
     height: 32px;
     width: 32px;
@@ -759,7 +763,7 @@ button {
   margin-bottom: 0;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .m-b-0 {
     margin-bottom: 26px;
   }
@@ -973,7 +977,7 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 30px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .card-6 .card-body {
     padding: 40px 30px;
     padding-bottom: 20px;

@@ -65,17 +65,17 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group">
-                                    <label class="label">Wilayah</label>
-                                    <input class="input--style-1" type="text" name="wilayah"
-                                        placeholder="Masukkan wilayah" value="{{ $data->wilayah ?? null }}">
+                                    <label class="label">Pertama Datang (from)</label>
+                                    <input class="input--style-1" type="date" name="fa_from" placeholder="DD MMM YYYY"
+                                        id="fa_from" value="{{ $data->fa_from ?? null }}">
                                 </div>
                             </div>
                             <div class="col-4">
-                                {{-- <div class="input-group">
-                                    <label class="label">Alamat</label>
-                                    <input class="input--style-1" type="text" name="address"
-                                        placeholder="Masukkan alamat" value="{{ $data->address ?? null }}">
-                                </div> --}}
+                                <div class="input-group">
+                                    <label class="label">Pertama Datang (to)</label>
+                                    <input class="input--style-1" type="date" name="fa_to" placeholder="DD MMM YYYY"
+                                        id="fa_to" value="{{ $data->fa_to ?? null }}">
+                                </div>
                             </div>
                         </div>
                         <div class="row row-space">
@@ -95,14 +95,13 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group">
-                                    <label class="label">Pertama Datang</label>
-                                    <input class="input--style-1" type="date" name="first_attendance"
-                                        placeholder="DD MMM YYYY" id="first_attendance"
-                                        value="{{ $data->first_attendance ?? null }}">
+                                    <label class="label">Wilayah</label>
+                                    <input class="input--style-1" type="text" name="wilayah"
+                                        placeholder="Masukkan wilayah" value="{{ $data->wilayah ?? null }}">
                                 </div>
                             </div>
                             <div class="col-4">
-                                <button class="btn-submit m-b-0" type="submit">search</button>
+                                <button class="btn-submit m-b-0 mt40" type="submit">search</button>
                             </div>
                         </div>
                         <div class="row row-space">

@@ -78,7 +78,7 @@ class RegisterController extends Controller
                 'event_id' => 4, // PD Kamis
                 'description' => 'Pendaftaran',
                 'created_by' => Auth::id() ?? $user->id,
-                'date' => $request->first_attendance,
+                'date' => $now,
             ]);
 
             if (Auth::check() && Auth::User()->isAdmin()) {

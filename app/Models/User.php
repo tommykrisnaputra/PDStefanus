@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
+use Carbon\CarbonPeriod;
 
 /**
  * Class User
@@ -105,5 +106,28 @@ class User extends Authenticatable
     public function passwords()
     {
         return $this->hasMany(Password::class);
+    }
+
+    public function scopeBirthdayBetween($query, $dayBegin, $dayEnd, $monthBegin, $monthEnd)
+    {
+        $currentYear = date('Y');
+
+        $period = CarbonPeriod::create("$currentYear-$monthBegin-$dayBegin", "$currentYear-$monthEnd-$dayEnd");
+
+        foreach ($period as $key => $date) {
+            $queryFn = function ($query) use ($date) {
+                $query->whereMonth('birthdate', '=', $date->format('m'))->whereDay('birthdate', '=', $date->format('d'));
+            };
+
+            if ($key === 0) {
+                $queryFn($query);
+            } else {
+                $query->orWhere(function ($q) use ($queryFn) {
+                    $queryFn($q);
+                });
+            }
+        }
+
+        return $query;
     }
 }

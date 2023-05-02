@@ -42,20 +42,17 @@ class AttendanceController extends Controller
         if ($request->filled('wilayah')) {
             $query->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
         }
-        if ($request->filled('first_attendance')) {
-            $query->whereDate('users.first_attendance', '=', $request['first_attendance']);
-        }
-        // if ($request->filled('date')) {
-        //     $parts = explode(" - ", $request['date']);
-        //     $from = Carbon::parse(strtotime($parts[0]))->addDays(1)->toDateString();
-        //     $to = Carbon::parse(strtotime($parts[1]))->addDays(1)->toDateString();
-        //     $query->whereBetween('attendance.date', [$from.' 00:00:00', $to.' 23:59:59']);
-        // }
         if ($request->filled('date_from')) {
             $query->whereDate('attendance.date', '>=', $request['date_from']);
         }
         if ($request->filled('date_to')) {
             $query->whereDate('attendance.date', '<=', $request['date_to']);
+        }
+        if ($request->filled('fa_from')) {
+            $query->whereDate('users.first_attendance', '>=', $request['fa_from']);
+        }
+        if ($request->filled('fa_to')) {
+            $query->whereDate('users.first_attendance', '<=', $request['fa_to']);
         }
 
         $results = $query->get();
@@ -78,7 +75,6 @@ class AttendanceController extends Controller
 
         $user = User::find($user_id);
         $date = Carbon::today()->toDateString();
-        // $date = Carbon::createFromFormat('Y-m-d', $request->date);
 
         $this->insertAttendance($user, $date);
         $this->countAttendance($user, $date);
@@ -107,7 +103,7 @@ class AttendanceController extends Controller
 
     public function countAttendance($param, $date)
     {
-        $total = now()->diffInWeeks(Carbon::parse($param->first_attendance)) + 1;
+        $total = $param->first_attendance->diffInWeeks(Carbon::parse($date)) + 1;
 
         $active = Attendance::where('attendance.user_id', $param->id)
             ->where('attendance.event_id', '4')

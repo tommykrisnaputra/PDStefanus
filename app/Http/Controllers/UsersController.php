@@ -14,12 +14,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Requests\LoginRequest;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
     public function index(Request $request)
     {
         $request['operators'] = ['=', '>=', '<='];
+        $request['days'] = range(0, 31);
+        $request['months'] = [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         $users = User::orderByDesc('users.created_at');
 
         if ($request->filled('full_name')) {
@@ -58,6 +61,12 @@ class UsersController extends Controller
         if ($request->filled('fa_to')) {
             $users->whereDate('users.first_attendance', '<=', $request['fa_to']);
         }
+
+        $day_from = $request['day_from'] > 0 ? $request['day_from'] : 1;
+        $month_from = $request->filled('month_from') ? date("n",strtotime($request['month_from'])) : 1;
+        $day_to = $request['day_to'] > 0 ? $request['day_to'] : 31;
+        $month_to = $request->filled('month_to') ? date("n",strtotime($request['month_to'])) : 12;
+        $users->birthdayBetween($day_from, $day_to, $month_from, $month_to);
 
         $results = $users->get();
 

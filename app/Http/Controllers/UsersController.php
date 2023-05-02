@@ -21,54 +21,61 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $request['operators'] = ['=', '>=', '<='];
+        $request['roles'] = [null => 'Pilih Role','1' => 'Umat', '2' => 'Admin'];
         $request['days'] = range(0, 31);
-        $request['months'] = [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        $users = User::orderByDesc('users.created_at');
+        $request['months'] = ['Pilih Bulan', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        $query = User::orderByDesc('users.created_at');
 
         if ($request->filled('full_name')) {
-            $users->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
+            $query->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
         }
         if ($request->filled('phone')) {
-            $users->where('users.phone', 'like', '%' . $request['phone'] . '%');
+            $query->where('users.phone', 'like', '%' . $request['phone'] . '%');
+        }
+        if ($request->filled('email')) {
+            $query->where('users.email', 'like', '%' . $request['email'] . '%');
+        }
+        if ($request->filled('role')) {
+            $query->where('users.role_id', $request['role']);
         }
         if ($request->filled('paroki')) {
-            $users->where('users.paroki', 'like', '%' . $request['paroki'] . '%');
+            $query->where('users.paroki', 'like', '%' . $request['paroki'] . '%');
         }
         if ($request->filled('wilayah')) {
-            $users->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
+            $query->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
         }
         if ($request->filled('address')) {
-            $users->where('users.address', 'like', '%' . $request['address'] . '%');
+            $query->where('users.address', 'like', '%' . $request['address'] . '%');
         }
         if ($request->filled('total_attendance')) {
-            $users->where('users.total_attendance', $request['total_op'], $request['total_attendance']);
+            $query->where('users.total_attendance', $request['total_op'], $request['total_attendance']);
         }
         if ($request->filled('attendance_percentage')) {
-            $users->where('users.attendance_percentage', $request['percentage_op'], $request['attendance_percentage']);
+            $query->where('users.attendance_percentage', $request['percentage_op'], $request['attendance_percentage']);
         }
         if ($request->filled('birthdate')) {
-            $users->whereDate('users.birthdate', '=', $request['birthdate']);
+            $query->whereDate('users.birthdate', '=', $request['birthdate']);
         }
         if ($request->filled('date_from')) {
-            $users->whereDate('users.last_attendance', '>=', $request['date_from']);
+            $query->whereDate('users.last_attendance', '>=', $request['date_from']);
         }
         if ($request->filled('date_to')) {
-            $users->whereDate('users.last_attendance', '<=', $request['date_to']);
+            $query->whereDate('users.last_attendance', '<=', $request['date_to']);
         }
         if ($request->filled('fa_from')) {
-            $users->whereDate('users.first_attendance', '>=', $request['fa_from']);
+            $query->whereDate('users.first_attendance', '>=', $request['fa_from']);
         }
         if ($request->filled('fa_to')) {
-            $users->whereDate('users.first_attendance', '<=', $request['fa_to']);
+            $query->whereDate('users.first_attendance', '<=', $request['fa_to']);
         }
 
         $day_from = $request['day_from'] > 0 ? $request['day_from'] : 1;
         $month_from = $request->filled('month_from') ? date("n",strtotime($request['month_from'])) : 1;
         $day_to = $request['day_to'] > 0 ? $request['day_to'] : 31;
         $month_to = $request->filled('month_to') ? date("n",strtotime($request['month_to'])) : 12;
-        $users->birthdayBetween($day_from, $day_to, $month_from, $month_to);
+        $query->birthdayBetween($day_from, $day_to, $month_from, $month_to);
 
-        $results = $users->get();
+        $results = $query->get();
 
         // $data['attendance'] = $users->paginate(15)->withQueryString();
         return view('users.index', ['users' => $results, 'data' => $request]);

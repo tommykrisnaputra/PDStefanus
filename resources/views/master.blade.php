@@ -15,13 +15,11 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         data-tag="font" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script src="https://kit.fontawesome.com/d548bf050f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/toast.css') }}">
     <link rel="stylesheet" href="{{ asset('css/alert.css') }}">
+
     @section('css')
         <style data-tag="reset-style-sheet">
             html {
@@ -154,6 +152,7 @@
     </div>
 
     @section('js')
+        <script src="https://kit.fontawesome.com/d548bf050f.js" crossorigin="anonymous"></script>
     @show
 </body>
 

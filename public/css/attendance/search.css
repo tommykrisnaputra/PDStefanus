@@ -14,6 +14,29 @@
   position: relative;
 }
 
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.search-header {
+  background-color: #EDDDD1;
+  color: black;
+}
+
+.search-button {    
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: row-reverse;
+  min-width: 0;
+  word-wrap: break-word;
+}
+
 .row-space {
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
@@ -36,13 +59,13 @@
   width: calc((100% - 20px) / 2);
 }
 
-.col-4 {
+.search-4 {
   width: -webkit-calc((100% - 80px) / 4);
   width: -moz-calc((100% - 80px) / 4);
   width: calc((100% - 80px) / 4);
 }
 
-.col-op {
+.search-op {
   width: -webkit-calc((100% - 80px) / 4);
   width: -moz-calc((100% - 80px) / 4);
   width: calc((100% - 80px) / 4);
@@ -70,11 +93,11 @@
     width: 100%;
   }
 
-  .col-4 {
+  .search-4 {
     width: 100%;
   }
 
-  .col-op {
+  .search-op {
     width: 100%;
   }
 }
@@ -677,6 +700,7 @@ button {
 .input-group {
   position: relative;
   margin-bottom: 23px;
+  display: block;
 }
 
 .input-group-icon {
@@ -706,24 +730,54 @@ button {
 }
 
 .label {
-  font-size: 16px;
+  font-size: 13px;
   color: #fff;
   padding-left: 8px;
   text-transform: capitalize;
   display: block;
   font-weight: 700;
   margin-bottom: 12px;
+  margin-right: 20px;
 }
 
 .input--style-1 {
-  font-size: 14px;
-  padding: 15px;
+  font-size: 13px;
+  padding: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   color: #666;
   background: #fff;
   font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+}
+
+.input--style-2 {
+  padding: 8px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #666;
+  background: #fff;
+  font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+  margin-right: auto;
+  max-width: 70%;
+}
+
+.input--style-3 {
+  font-size: 13px;
+  padding: 12px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #666;
+  background: #fff;
+  font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+  margin-right: auto;
+  max-width: 50%;
+}
+
+.operator {
+  margin-right: 12px;
 }
 
 .input--style-1::-webkit-input-placeholder {
@@ -766,6 +820,10 @@ button {
 @media (max-width: 991px) {
   .m-b-0 {
     margin-bottom: 26px;
+  }
+  
+  .input--style-1 {
+    padding: 8px;
   }
 }
 

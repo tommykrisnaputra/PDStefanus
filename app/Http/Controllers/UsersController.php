@@ -23,7 +23,7 @@ class UsersController extends Controller
         $request['operators'] = ['=', '>=', '<='];
         $request['roles'] = [null => 'Pilih Role','1' => 'Umat', '2' => 'Admin'];
         $request['days'] = range(0, 31);
-        $request['months'] = ['Pilih Bulan', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        $request['months'] = [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         $query = User::orderByDesc('users.created_at');
 
         if ($request->filled('full_name')) {

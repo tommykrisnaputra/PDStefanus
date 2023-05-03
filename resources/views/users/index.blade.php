@@ -5,6 +5,9 @@
 @endsection
 
 @section('css')
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @parent
     <link rel="stylesheet" href="{{ asset('css/users/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/attendance/search.css') }}">
@@ -19,34 +22,44 @@
 @section('content')
     <div id="main-section" class="home-main">
         <div class="container">
-            <div class="card card-6 search-main-container">
+            <div class="search-button mb20">
+                {{-- <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Link with href
+                </a> --}}
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Advanced Search
+                </button>
+            </div>
+            <div class="collapse show card card-6 search-main-container mb20" id="collapseExample">
                 <div class="card-body">
                     <form method="POST" action={{ route('users.search') }}>
                         @csrf
                         <!-- {{ csrf_field() }} -->
                         <div class="row row-space">
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Nama Umat</label>
                                     <input class="input--style-1" type="text" name="full_name"
                                         placeholder="Masukkan nama umat" value="{{ $data->full_name ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Nomor HP</label>
                                     <input class="input--style-1" type="tel" name="phone"
                                         placeholder="Masukkan nomor HP" value="{{ $data->phone ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Paroki</label>
                                     <input class="input--style-1" type="text" name="paroki"
                                         placeholder="Masukkan paroki" value="{{ $data->paroki ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Wilayah</label>
                                     <input class="input--style-1" type="text" name="wilayah"
@@ -55,14 +68,14 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Email</label>
                                     <input class="input--style-1" type="email" name="email" placeholder="Masukkan email"
                                         value="{{ $data->email ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Roles</label>
                                     <select name="role" class="input--style-1 width-100">
@@ -74,14 +87,14 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Kehadiran (from)</label>
                                     <input class="input--style-1" type="date" name="date_from" id="date_from"
                                         value="{{ $data->date_from ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Kehadiran (to)</label>
                                     <input class="input--style-1" type="date" name="date_to" id="date_to"
@@ -90,34 +103,31 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Pertama Datang (from)</label>
                                     <input class="input--style-1" type="date" name="fa_from" placeholder="DD MMM YYYY"
                                         id="fa_from" value="{{ $data->fa_from ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Pertama Datang (to)</label>
-                                    <input class="input--style-1" type="date" name="fa_to" placeholder="DD MMM YYYY"
-                                        id="fa_to" value="{{ $data->fa_to ?? null }}">
+                                    <input class="input--style-1" type="date" name="fa_to"
+                                        placeholder="DD MMM YYYY" id="fa_to" value="{{ $data->fa_to ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-op">
+                            <div class="search-op">
                                 <div class="input-group">
-                                    <label class="label">Tanggal</label>
-                                    <select name="day_from" class="input--style-1 operator">
+                                    <label class="label">Tanggal Lahir (from)</label>
+                                    <select name="day_from" class="input--style-2 operator">
                                         @foreach ($data->days as $item)
                                             <option value="{{ $item }}" @selected($item == $data->day_from)>
                                                 {{ $item }}
                                             </option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="input-group width-100">
-                                    <label class="label">Lahir (from)</label>
-                                    <select name="month_from" class="input--style-1 width-100">
+                                    <select name="month_from" class="input--style-2">
                                         @foreach ($data->months as $item)
                                             <option value="{{ $item }}" @selected($item == $data->month_from)>
                                                 {{ $item }}
@@ -126,23 +136,19 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-op">
+                            <div class="search-op">
                                 <div class="input-group">
-                                    <label class="label">Tanggal</label>
-                                    <select name="day_to" class="input--style-1 operator">
+                                    <label class="label">Tanggal Lahir (to)</label>
+                                    <select name="day_to" class="input--style-2 operator">
                                         @foreach ($data->days as $item)
                                             <option value="{{ $item }}" @selected($item == $data->day_to)>
                                                 {{ $item }}
                                             </option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="input-group width-100">
-                                    <label class="label">Lahir (to)</label>
-                                    <select name="month_to" class="input--style-1 width-100">
+                                    <select name="month_to" class="input--style-2">
                                         @foreach ($data->months as $item)
-                                            <option value="{{ $item }}" @selected($item == $data->month_to)
-                                                placeholder="Bulan">
+                                            <option value="{{ $item }}" @selected($item == $data->month_to)>
                                                 {{ $item }}
                                             </option>
                                         @endforeach
@@ -151,45 +157,39 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-op">
+                            <div class="search-op">
                                 <div class="input-group">
-                                    <label class="label">Total</label>
-                                    <select name="total_op" class="input--style-1 operator">
+                                    <label class="label">Total Kedatangan</label>
+                                    <select name="total_op" class="input--style-2 operator">
                                         @foreach ($data->operators as $item)
                                             <option value="{{ $item }}" @selected($item == $data->total_op)>
                                                 {{ $item }}
                                             </option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="input-group width-100">
-                                    <label class="label">Kedatangan</label>
-                                    <input class="input--style-1 width-100" type="tel" name="total_attendance"
+                                    <input class="input--style-3" type="tel" name="total_attendance"
                                         placeholder="Masukkan total kedatangan"
                                         value="{{ $data->total_attendance ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-op">
+                            <div class="search-op">
                                 <div class="input-group">
-                                    <label class="label">Persentase</label>
-                                    <select name="percentage_op" class="input--style-1 operator">
+                                    <label class="label">Kedatangan (%)</label>
+                                    <select name="percentage_op" class="input--style-2 operator">
                                         @foreach ($data->operators as $item)
                                             <option value="{{ $item }}" @selected($item == $data->percentage_op)>
                                                 {{ $item }}
                                             </option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="input-group width-100">
-                                    <label class="label">Kedatangan</label>
-                                    <input class="input--style-1 width-100" type="tel" name="attendance_percentage"
+                                    <input class="input--style-3" type="tel" name="attendance_percentage"
                                         placeholder="Masukkan persentase"
                                         value="{{ $data->attendance_percentage ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                             </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <button class="btn-submit m-b-0 mt40" type="submit">search</button>
                                 </div>
@@ -201,44 +201,44 @@
 
             <ul class="responsive-table">
                 <li class="table-header">
-                    <div class="col col-2">Nama</div>
-                    <div class="col col-2">Tanggal Lahir</div>
-                    <div class="col col-2">Wilayah</div>
-                    <div class="col col-2">Nomor HP</div>
-                    <div class="col col-3">Instagram</div>
-                    {{-- <div class="col col-2">Tik Tok</div> --}}
-                    <div class="col col-2">Terakhir Datang</div>
-                    <div class="col col-1">Persentase Kedatangan</div>
-                    <div class="col col-1"></div>
+                    <div class="col table-2">Nama</div>
+                    <div class="col table-2">Tanggal Lahir</div>
+                    <div class="col table-2">Wilayah</div>
+                    <div class="col table-2">Nomor HP</div>
+                    <div class="col table-3">Instagram</div>
+                    {{-- <div class="col table-2">Tik Tok</div> --}}
+                    <div class="col table-2">Terakhir Datang</div>
+                    <div class="col table-1">Persentase Kedatangan</div>
+                    <div class="col table-1"></div>
                 </li>
                 @foreach ($users as $key => $data)
                     <li class="table-row">
-                        <div class="col col-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
-                        <div class="col col-2" data-label="Tanggal Lahir">
+                        <div class="col table-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
+                        <div class="col table-2" data-label="Tanggal Lahir">
                             {{ Carbon\Carbon::parse($data->birthdate)->format('d M Y') ?? null }}</div>
-                        <div class="col col-2" data-label="Wilayah">{{ $data->wilayah ?? null }}</div>
-                        <div class="col col-2" data-label="Nomor HP">
+                        <div class="col table-2" data-label="Wilayah">{{ $data->wilayah ?? null }}</div>
+                        <div class="col table-2" data-label="Nomor HP">
                             <a href="https://wa.me/{{ $data->phone }}">
                                 {{ $data->phone ?? null }}
                             </a>
                         </div>
-                        <div class="col col-3" data-label="Instagram">
+                        <div class="col table-3" data-label="Instagram">
                             <a href="https://www.instagram.com/{{ $data->social_instagram }}">
                                 {{ $data->social_instagram ?? null }}
                             </a>
                         </div>
-                        {{-- <div class="col col-2" data-label="Tik Tok">
+                        {{-- <div class="col table-2" data-label="Tik Tok">
                             <a href="https://www.tiktok.com/@{{ $data - > social_tiktok }}">
                                 {{ $data->social_tiktok ?? null }}
                             </a>
                         </div> --}}
-                        <div class="col col-2" data-label="Terakhir Datang">
+                        <div class="col table-2" data-label="Terakhir Datang">
                             {{ Carbon\Carbon::parse($data->last_attendance)->format('d M Y') ?? null }}</div>
 
-                        <div class="col col-1" data-label="Persentase Kehadiran">
+                        <div class="col table-1" data-label="Persentase Kehadiran">
                             {{ $data->attendance_percentage ?? null }}%
                         </div>
-                        <div class="col col-1" data-label="Action">
+                        <div class="col table-1" data-label="Action">
                             <a href="{{ url("users/edit/$data->id") }}" class="solid-button-container">
                                 <button class="solid-button-button button Button">Edit</button>
                             </a>
@@ -253,82 +253,14 @@
 @endsection
 
 @section('js')
-    <script>
-        $('#search').on('keyup', function() {
-            search();
-        });
-        search();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        function search() {
-            var keyword = $('#search').val();
-            $.post('{{ route('users.search') }}', {
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                    keyword: keyword
-                },
-                function(data) {
-                    table_post_row(data);
-                });
-        }
-        // table row with ajax
-        function table_post_row(res) {
-            let options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            };
-
-            let options_2 = {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            };
-
-            function toLocal(date) {
-                var local = new Date(date);
-                local.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-                return local.toJSON();
-            }
-            let htmlView = '';
-            //         if (res.users.length <= 0) {
-            //             htmlView += `
-        //    <tr>
-        //       <td colspan="4">No data.</td>
-        //   </tr>`;
-            //         }
-            for (let i = 0; i < res.users.length; i++) {
-                htmlView += `
-                        <li class="table-row">
-                            <div class="col col-1" data-label="Nama"> ` + res.users[i].full_name + ` </div>
-                            <div class="col col-2" data-label="Tanggal Lahir">
-                                ` + new Date(res.users[i].birthdate).toLocaleString('id-ID', options_2) + `</div>
-                            <div class="col col-2" data-label="Wilayah">` + res.users[i].wilayah + ` </div>
-                            <div class="col col-2" data-label="Nomor HP"> <a href="https://wa.me/` + res
-                    .users[i].phone + `" target="_blank" rel="noreferrer noopener">` + res.users[i].phone + `</a> </div>
-                            <div class="col col-1" data-label="Instagram"> <a href="https://www.instagram.com/` + res
-                    .users[i].social_instagram + `" target="_blank" rel="noreferrer noopener">` +
-                    res.users[i].social_instagram + `</a> </div>
-                            <div class="col col-1" data-label="Tik Tok"> <a href="https://www.tiktok.com/@` + res
-                    .users[i].social_tiktok + `" target="_blank" rel="noreferrer noopener">` + res.users[i].social_tiktok + `</a> </div>
-                            <div class="col col-2" data-label="Kedatangan Terakhir">
-                                ` + new Date(res.users[i].last_attendance).toLocaleString('id-ID', options_2) + `
-                                </div>
-                            <div class="col col-1" data-label="Persentase Kedatangan">
-                                 ` + res.users[i].attendance_percentage + `%</div>
-                            <div class="col col-1" data-label="Action">
-                                <a href="{{ url('users/edit/`+res.users[i].id+`') }}" class="solid-button-container">
-                                    <button class="solid-button-button button Button">Edit</button>
-                                </a>
-                            </div>
-                        </li>
-                `;
-            }
-            $('.table-rows').html(htmlView);
-        }
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 @endsection

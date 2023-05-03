@@ -32,7 +32,7 @@
                     Advanced Search
                 </button>
             </div>
-            <div class="collapse show card card-6 search-main-container mb20" id="collapseExample">
+            <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
                 <div class="card-body">
                     <form method="POST" action={{ route('users.search') }}>
                         @csrf

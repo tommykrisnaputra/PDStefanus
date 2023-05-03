@@ -5,6 +5,9 @@
 @endsection
 
 @section('css')
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @parent
     <link rel="stylesheet" href="{{ asset('css/attendance/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/attendance/search.css') }}">
@@ -29,121 +32,111 @@
 @section('content')
     <div id="main-section" class="home-main">
         <div class="container">
-            <div class="card card-6 search-main-container">
+            <div class="search-button mb20">
+                {{-- <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Link with href
+                </a> --}}
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Advanced Search
+                </button>
+            </div>
+            <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
                 <div class="card-body">
                     <form method="POST" action={{ route('attendance.index') }}>
                         @csrf
                         <!-- {{ csrf_field() }} -->
                         <div class="row row-space">
-                            <div class="col-4">
+                            <div class="search-4">
+                                <div class="input-group">
+                                    <label class="label">Kehadiran (from)</label>
+                                    <input class="input--style-1" type="date" name="date_from" id="date_from"
+                                        value="{{ $data->date_from ?? null }}">
+                                </div>
+                            </div>
+                            <div class="search-4">
+                                <div class="input-group">
+                                    <label class="label">Kehadiran (to)</label>
+                                    <input class="input--style-1" type="date" name="date_to" id="date_to"
+                                        value="{{ $data->date_to ?? null }}">
+                                </div>
+                            </div>
+                            <div class="search-4">
+                                <div class="input-group">
+                                    <label class="label">Pertama Datang (from)</label>
+                                    <input class="input--style-1" type="date" name="fa_from"
+                                        placeholder="DD MMM YYYY" id="fa_from" value="{{ $data->fa_from ?? null }}">
+                                </div>
+                            </div>
+                            <div class="search-4">
+                                <div class="input-group">
+                                    <label class="label">Pertama Datang (to)</label>
+                                    <input class="input--style-1" type="date" name="fa_to"
+                                        placeholder="DD MMM YYYY" id="fa_to" value="{{ $data->fa_to ?? null }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Nama Umat</label>
                                     <input class="input--style-1" type="text" name="full_name"
                                         placeholder="Masukkan nama umat" value="{{ $data->full_name ?? null }}">
                                 </div>
                             </div>
-                            {{-- <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Paroki</label>
-                                    <input class="input--style-1" type="text" name="paroki"
-                                        placeholder="Masukkan paroki" value="{{ $data->paroki ?? null }}">
-                                </div>
-                            </div> --}}
-                            {{-- <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Email</label>
-                                    <input class="input--style-1" type="email" name="email" placeholder="Masukkan email"
-                                        value="{{ $data->email ?? null }}">
-                                </div>
-                            </div> --}}
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Nomor HP</label>
                                     <input class="input--style-1" type="tel" name="phone"
                                         placeholder="Masukkan nomor HP" value="{{ $data->phone ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Pertama Datang (from)</label>
-                                    <input class="input--style-1" type="date" name="fa_from" placeholder="DD MMM YYYY"
-                                        id="fa_from" value="{{ $data->fa_from ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Pertama Datang (to)</label>
-                                    <input class="input--style-1" type="date" name="fa_to" placeholder="DD MMM YYYY"
-                                        id="fa_to" value="{{ $data->fa_to ?? null }}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Kehadiran (from)</label>
-                                    <input class="input--style-1" type="date" name="date_from" id="date-from"
-                                        value="{{ $data->date_from ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Kehadiran (to)</label>
-                                    <input class="input--style-1" type="date" name="date_to" id="date-to"
-                                        value="{{ $data->date_to ?? null }}">
-                                </div>
-                            </div>
-                            <div class="col-4">
+                            <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Wilayah</label>
                                     <input class="input--style-1" type="text" name="wilayah"
                                         placeholder="Masukkan wilayah" value="{{ $data->wilayah ?? null }}">
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <button class="btn-submit m-b-0 mt40" type="submit">search</button>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-4">
-                                {{-- <div class="input-group">
-                                    <label class="label">Event</label>
-                                    <input class="input--style-1" type="text" name="event"
-                                        placeholder="Pilih kegiatan">
-                                </div> --}}
+                            <div class="search-4">
+                                <div class="input-group">
+                                    <button class="btn-submit m-b-0 mt20" type="submit">search</button>
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+
             <ul class="responsive-table">
                 <li class="table-header">
-                    <div class="col col-2">Nama Umat</div>
-                    <div class="col col-2">Nomor HP</div>
-                    <div class="col col-2">Tanggal Kehadiran</div>
-                    <div class="col col-2">Pertama Datang</div>
-                    <div class="col col-2">Total Kehadiran</div>
-                    <div class="col col-2">Persentase Kehadiran</div>
-                    <div class="col col-2"></div>
+                    <div class="col table-2">Nama Umat</div>
+                    <div class="col table-2">Nomor HP</div>
+                    <div class="col table-2">Tanggal Kehadiran</div>
+                    <div class="col table-2">Pertama Datang</div>
+                    <div class="col table-2">Total Kehadiran</div>
+                    <div class="col table-2">Persentase Kehadiran</div>
+                    <div class="col table-2"></div>
                 </li>
 
                 @foreach ($attendance as $key => $data)
                     <li class="table-row">
-                        <div class="col col-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
-                        <div class="col col-2" data-label="Nomor HP">
+                        <div class="col table-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
+                        <div class="col table-2" data-label="Nomor HP">
                             <a href="https://wa.me/{{ $data->phone }}">
                                 {{ $data->phone ?? null }}
                             </a>
                         </div>
-                        <div class="col col-2" data-label="Tanggal Kehadiran">
+                        <div class="col table-2" data-label="Tanggal Kehadiran">
                             {{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
-                        <div class="col col-2" data-label="Pertama Datang">
+                        <div class="col table-2" data-label="Pertama Datang">
                             {{ Carbon\Carbon::parse($data->first_attendance)->format('d M Y') ?? null }}</div>
-                        <div class="col col-2" data-label="Total Kehadiran">{{ $data->total_attendance ?? null }}</div>
-                        <div class="col col-2" data-label="Persentase Kehadiran">
+                        <div class="col table-2" data-label="Total Kehadiran">{{ $data->total_attendance ?? null }}</div>
+                        <div class="col table-2" data-label="Persentase Kehadiran">
                             {{ $data->attendance_percentage ?? null }}%
                         </div>
-                        <div class="col col-2" data-label="Action">
+                        <div class="col table-2" data-label="Action">
                             <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
                                 <button class="solid-button-button button Button">Details</button>
                             </a>
@@ -171,5 +164,15 @@
                 format: 'DD MMM YYYY'
             }
         });
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 @endsection

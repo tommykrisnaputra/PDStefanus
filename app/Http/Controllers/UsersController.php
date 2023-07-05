@@ -142,14 +142,14 @@ class UsersController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
-            'role' => 'required|numeric',
+            'role' => 'numeric',
             'email' => 'email',
             'phone' => 'required|numeric',
             'birthdate' => 'required|date',
             'address' => 'nullable',
             'wilayah' => 'nullable|regex:/^[a-zA-Z0-9\s\.]+$/',
             'paroki' => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
-            'gender' => 'required|in:male,female',
+            'gender' => 'in:male,female',
             // 'first_attendance' => 'required',
         ]);
         if ($validator->fails()) {

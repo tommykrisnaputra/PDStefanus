@@ -40,6 +40,7 @@
                             class="{{ $errors->has('full_name') ? 'form-error' : '' }}">
                     </div>
                 </div>
+                @if (auth()->user()->isAdmin())
                 <div class="row">
                     <div class="col-25">
                         <label for="role">Role</label>
@@ -52,6 +53,7 @@
                         </select>
                     </div>
                 </div>
+                @endif
                 <div class="row">
                     <div class="col-25">
                         <label for="email">Email</label>
@@ -156,7 +158,7 @@
                             class="{{ $errors->has('first_attendance') ? 'form-error' : '' }}">
                     </div>
                 </div> --}}
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-25">
                         <label for="last_attendance">Terakhir Datang</label>
                     </div>
@@ -166,7 +168,7 @@
                             placeholder="Masukan tanggal kedatangan terakhir"
                             class="{{ $errors->has('last_attendance') ? 'form-error' : '' }}">
                     </div>
-                </div>
+                </div> --}}
                 {{-- <div class="row">
                     <div class="col-25">
                         <label for="total_attendance">Total Kedatangan</label>

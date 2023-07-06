@@ -11,7 +11,6 @@ class LoginController extends Controller
     /**
      * Display login page.
      *
-     * @return Renderable
      */
     public function show()
     {
@@ -23,7 +22,6 @@ class LoginController extends Controller
      *
      * @param LoginRequest $request
      *
-     * @return \Illuminate\Http\Response
      */
     public function login(LoginRequest $request)
     {
@@ -38,7 +36,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect('/');
         }
 
         return redirect()
@@ -53,10 +51,9 @@ class LoginController extends Controller
      * @param Request $request
      * @param Auth $user
      *
-     * @return \Illuminate\Http\Response
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect()->intended('/');
+        return redirect('/');
     }
 }

@@ -20,9 +20,7 @@ class isAdmin
         $isAdmin = false;
 
         if (Auth::check()) {
-            $UserRoles = Role::find(auth()->user()->role_id);
-
-            if ($UserRoles->name == 'admin') {
+            if (auth()->user()->role_id == 2) {
                 $isAdmin = true;
             }
         }

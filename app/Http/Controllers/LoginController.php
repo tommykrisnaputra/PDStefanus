@@ -36,7 +36,7 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt($credentials)) {
-            Session::put('user', Auth::User());
+            $request->session()->regenerate();
             return redirect('/');
         }
 

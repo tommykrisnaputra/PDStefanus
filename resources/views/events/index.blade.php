@@ -57,7 +57,7 @@
         // $('#search').on('keyup', function() {
         //     search();
         // });
-        search();
+        // search();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

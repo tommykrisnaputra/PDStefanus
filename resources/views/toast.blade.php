@@ -8,12 +8,12 @@
         </div>
         <div class="progress active"></div>
     </div>
+    <script type="text/javascript">
+        $("document").ready(function() {
+            setTimeout(function() {
+                $('.toast').remove();
+            }, 2000);
+        });
+    </script>
 @endif
 
-<script type="text/javascript">
-    $("document").ready(function() {
-        setTimeout(function() {
-            $('.toast').remove();
-        }, 2000);
-    });
-</script>

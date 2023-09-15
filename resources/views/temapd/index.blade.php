@@ -55,9 +55,9 @@
 
 @section('js')
     <script>
-        $('#search').on('keyup', function() {
-            search();
-        });
+        // $('#search').on('keyup', function() {
+        //     search();
+        // });
         search();
         $.ajaxSetup({
             headers: {

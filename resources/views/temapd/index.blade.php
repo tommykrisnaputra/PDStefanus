@@ -65,16 +65,16 @@
             }
         });
 
-        function search() {
-            var keyword = $('#search').val();
-            $.post('{{ route('temapd.search') }}', {
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                    keyword: keyword
-                },
-                function(data) {
-                    table_post_row(data);
-                });
-        }
+        // function search() {
+        //     var keyword = $('#search').val();
+        //     $.post('{{ route('temapd.search') }}', {
+        //             _token: $('meta[name="csrf-token"]').attr('content'),
+        //             keyword: keyword
+        //         },
+        //         function(data) {
+        //             table_post_row(data);
+        //         });
+        // }
         // table row with ajax
         function table_post_row(res) {
             let options = {

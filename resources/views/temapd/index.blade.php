@@ -59,11 +59,11 @@
         //     search();
         // });
         // search();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
 
         // function search() {
         //     var keyword = $('#search').val();

@@ -212,7 +212,7 @@
                     </div>
             </nav>
             <div class="home-hero">
-                <div class="home-content-container">
+                {{-- <div class="home-content-container">
                     <h1 class="home-text06">Come &amp; join us</h1>
                     <h2 class="home-subheading">
                         <span>Every Thursday 🕖7pm</span>
@@ -226,7 +226,7 @@
                         <br />
                         <a href="https://linktr.ee/PDSt.Stefanus" class="home-text15">linktr.ee/PDSt.Stefanus</a>
                     </span>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div id="main-section" class="home-main">

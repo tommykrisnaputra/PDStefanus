@@ -13,25 +13,16 @@
 @endsection
 
 @section('home-message')
-    <div class="home-hero">
-        <div class="home-content-container">
-            <h1 class="home-text06">Come &amp; join us</h1>
-            <h1 class="home-subheading">
-                <span>Every Thursday 🕖7pm</span>
-                <br class="Subheading" />
-                <span>Kristoforus ⛪, Grogol, West Jakarta</span>
-            </h1>
-            <span class="home-text10">
-                <span>WA: 0878 7782 8233</span><br />
-                <span>Link Stefannews 2022 👇👇</span><br />
-                <a href="https://linktr.ee/PDSt.Stefanus" class="home-text15">linktr.ee/PDSt.Stefanus</a>
-            </span>
-        </div>
-    </div>
 @endsection
 
 @section('content')
     <div id="main-section" class="home-main">
+        <div class="home-hero">
+            <div class="home-content-container">
+                <h2 class="home-text06">Come &amp; join us! Every Thursday 🕖7pm</h2>
+                <h2 class="home-subheading"><span>Kristoforus ⛪, Grogol, West Jakarta</span></h2>
+            </div>
+        </div>
         @if (count($temaPd) > 0)
             <h1>Tema PD</h1>
         @endif

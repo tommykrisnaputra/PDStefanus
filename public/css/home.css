@@ -421,6 +421,10 @@
     padding-right: var(--dl-space-space-tripleunit);
   }
 
+  .home-top-container {
+    background-position: 50% 0%;
+  }
+
   .home-content-container {
     align-items: flex-start;
   }

@@ -1,12 +1,16 @@
 <div class="nav home-navbar">
     <input type="checkbox" id="nav-check">
-    <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="home-image" />
-    <div class="nav-header">
-        <div class="nav-title">
-            <p>PD OMPKK St. Stefanus</p>
-            <p>@yield('title')</p>
+    <a href={{ route('index') }}>
+        <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="home-image" />
+    </a>
+    @guest
+        <div class="nav-header">
+            <div class="nav-title">
+                <p>PD OMPKK St. Stefanus</p>
+                <p>@yield('title')</p>
+            </div>
         </div>
-    </div>
+    @endguest
     <div class="nav-btn">
         <label for="nav-check">
             <span></span>
@@ -15,8 +19,8 @@
         </label>
     </div>
     <div class="nav-links">
+        <a href={{ route('index') }}>Home</a>
         @guest
-            <a href={{ route('index') }}>Home</a>
             <a href={{ route('register.show') }}>Pendaftaran</a>
             <a href={{ route('attendance.show') }}>Kehadiran</a>
         @endguest

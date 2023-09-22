@@ -39,9 +39,9 @@
                         aria-expanded="false" aria-controls="collapseExample">
                         Advanced Search
                     </button>
-                    {{-- <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
+                    <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
                         Download Excel
-                    </button> --}}
+                    </button>
                 </div>
                 <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
                     <div class="card-body">

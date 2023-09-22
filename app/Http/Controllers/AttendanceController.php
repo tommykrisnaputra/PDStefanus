@@ -64,30 +64,6 @@ class AttendanceController extends Controller
         if ($request->action == 'download') {
             $data_array[] = array("Nama", "Phone", "Paroki", "Alamat", "Wilayah", "First Attendance", "Last Attendance", "Total Attendance", "Attendance Percentage", "Deskripsi");
 
-            // dd($results);
-    
-            // "id" => 1
-            // "user_id" => 1
-            // "event_id" => 4
-            // "date" => "2023-09-18 00:00:00"
-            // "description" => "Manual Attendance"
-            // "active" => 1
-            // "created_at" => "2023-09-18 22:05:52"
-            // "created_by" => 1
-            // "updated_at" => "2023-09-18 22:05:52"
-            // "updated_by" => null
-            // "title" => "PD Stefanus"
-            // "full_name" => "PD Stefanus"
-            // "email" => "stefan_news@yahoo.com"
-            // "phone" => "087877828233"
-            // "paroki" => "Kristoforus"
-            // "address" => "Jl. Satria IV No.Blok C"
-            // "wilayah" => "Jelambar"
-            // "first_attendance" => "2023-03-24 00:00:00"
-            // "last_attendance" => "2023-09-18 00:00:00"
-            // "total_attendance" => "1"
-            // "attendance_percentage" => "4"
-
             foreach ($results as $data_item) {
                 $data_array[] = array(
                     'Nama' => $data_item->full_name,
@@ -179,7 +155,7 @@ class AttendanceController extends Controller
             $spreadSheet->getActiveSheet()->fromArray($attendance_data);
             $Excel_writer = new Xls($spreadSheet);
             header('Content-Type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment;filename="Customer_ExportedData.xls"');
+            header('Content-Disposition: attachment;filename="Attendance_Data.xls"');
             header('Cache-Control: max-age=0');
             ob_end_clean();
             $Excel_writer->save('php://output');
@@ -189,14 +165,3 @@ class AttendanceController extends Controller
         }
     }
 }
-
-// $to = \Carbon\Carbon::parse($request->to);
-// $from = \Carbon\Carbon::parse($request->from);
-
-// $years = $to->diffInYears($from);
-// $months = $to->diffInMonths($from);
-// $weeks = $to->diffInWeeks($from);
-// $days = $to->diffInDays($from);
-// $hours = $to->diffInHours($from);
-// $minutes = $to->diffInMinutes($from);
-// $seconds = $to->diffInSeconds($from);

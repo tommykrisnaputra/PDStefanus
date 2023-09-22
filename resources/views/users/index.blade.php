@@ -23,10 +23,6 @@
     <div id="main-section" class="home-main">
         <div class="container">
             <div class="search-button mb20">
-                {{-- <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Link with href
-                </a> --}}
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
                     aria-expanded="false" aria-controls="collapseExample">
                     Advanced Search

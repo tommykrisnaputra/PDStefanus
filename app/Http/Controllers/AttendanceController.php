@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AttendanceRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use DateTime;
+use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Reader\Exception;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class AttendanceController extends Controller
 {
@@ -57,8 +61,53 @@ class AttendanceController extends Controller
 
         $results = $query->get();
 
-        // $data['attendance'] = $query->paginate(15)->withQueryString();
-        return view('attendance.index', ['attendance' => $results, 'data' => $request]);
+        if ($request->action == 'download') {
+            $data_array[] = array("Nama", "Phone", "Paroki", "Alamat", "Wilayah", "First Attendance", "Last Attendance", "Total Attendance", "Attendance Percentage", "Deskripsi");
+
+            // dd($results);
+    
+            // "id" => 1
+            // "user_id" => 1
+            // "event_id" => 4
+            // "date" => "2023-09-18 00:00:00"
+            // "description" => "Manual Attendance"
+            // "active" => 1
+            // "created_at" => "2023-09-18 22:05:52"
+            // "created_by" => 1
+            // "updated_at" => "2023-09-18 22:05:52"
+            // "updated_by" => null
+            // "title" => "PD Stefanus"
+            // "full_name" => "PD Stefanus"
+            // "email" => "stefan_news@yahoo.com"
+            // "phone" => "087877828233"
+            // "paroki" => "Kristoforus"
+            // "address" => "Jl. Satria IV No.Blok C"
+            // "wilayah" => "Jelambar"
+            // "first_attendance" => "2023-03-24 00:00:00"
+            // "last_attendance" => "2023-09-18 00:00:00"
+            // "total_attendance" => "1"
+            // "attendance_percentage" => "4"
+
+            foreach ($results as $data_item) {
+                $data_array[] = array(
+                    'Nama' => $data_item->full_name,
+                    'Phone' => $data_item->phone,
+                    'Paroki' => $data_item->paroki,
+                    'Alamat' => $data_item->address,
+                    'Wilayah' => $data_item->wilayah,
+                    'First Attendance' => $data_item->first_attendance,
+                    'Last Attendance' => $data_item->last_attendance,
+                    'Total Attendance' => $data_item->total_attendance,
+                    'Attendance Percentage' => $data_item->attendance_percentage,
+                    'Deskripsi' => $data_item->description
+                );
+            }
+    
+            $this->ExportExcel($data_array);
+        } else {
+            // $data['attendance'] = $query->paginate(15)->withQueryString();
+            return view('attendance.index', ['attendance' => $results, 'data' => $request]);
+        }
     }
 
     public function register(AttendanceRequest $request)
@@ -93,7 +142,8 @@ class AttendanceController extends Controller
         if ($attendance == 0) {
             $attendance = Attendance::create([
                 'user_id' => $param->id,
-                'event_id' => 4, // PD Kamis
+                'event_id' => 4,
+                // PD Kamis
                 'date' => $date,
                 'description' => 'Manual Attendance',
                 'created_by' => Auth::id() ?? $param->id,
@@ -118,6 +168,25 @@ class AttendanceController extends Controller
             'attendance_percentage' => $percentage,
             'updated_by' => Auth::id(),
         ]);
+    }
+
+    public function ExportExcel($attendance_data){
+        ini_set('max_execution_time', 0);
+        ini_set('memory_limit', '4000M');
+        try {
+            $spreadSheet = new Spreadsheet();
+            $spreadSheet->getActiveSheet()->getDefaultColumnDimension()->setWidth(20);
+            $spreadSheet->getActiveSheet()->fromArray($attendance_data);
+            $Excel_writer = new Xls($spreadSheet);
+            header('Content-Type: application/vnd.ms-excel');
+            header('Content-Disposition: attachment;filename="Customer_ExportedData.xls"');
+            header('Cache-Control: max-age=0');
+            ob_end_clean();
+            $Excel_writer->save('php://output');
+            exit();
+        } catch (Exception $e) {
+            return;
+        }
     }
 }
 

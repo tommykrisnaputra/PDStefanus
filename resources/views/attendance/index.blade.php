@@ -32,20 +32,21 @@
 @section('content')
     <div id="main-section" class="home-main">
         <div class="container">
-            <div class="search-button mb20">
-                {{-- <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Link with href
-                </a> --}}
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Advanced Search
-                </button>
-            </div>
-            <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
-                <div class="card-body">
-                    <form method="POST" action={{ route('attendance.index') }}>
-                        @csrf
+            <form method="POST" action={{ route('attendance.index') }}>
+                @csrf
+                <div class="search-button mb20 btn-group">
+                    <button class="btn btn-primary col col-md-3" type="button" data-toggle="collapse" data-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Advanced Search
+                    </button>
+                    <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
+                        Download Excel
+                    </button>
+                </div>
+                <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
+                    <div class="card-body">
+                        {{-- <form method="POST" action={{ route('attendance.index') }}>
+                        @csrf --}}
                         <!-- {{ csrf_field() }} -->
                         <div class="row row-space">
                             <div class="search-4">
@@ -65,15 +66,15 @@
                             <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Pertama Datang (from)</label>
-                                    <input class="input--style-1" type="date" name="fa_from"
-                                        placeholder="DD MMM YYYY" id="fa_from" value="{{ $data->fa_from ?? null }}">
+                                    <input class="input--style-1" type="date" name="fa_from" placeholder="DD MMM YYYY"
+                                        id="fa_from" value="{{ $data->fa_from ?? null }}">
                                 </div>
                             </div>
                             <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Pertama Datang (to)</label>
-                                    <input class="input--style-1" type="date" name="fa_to"
-                                        placeholder="DD MMM YYYY" id="fa_to" value="{{ $data->fa_to ?? null }}">
+                                    <input class="input--style-1" type="date" name="fa_to" placeholder="DD MMM YYYY"
+                                        id="fa_to" value="{{ $data->fa_to ?? null }}">
                                 </div>
                             </div>
                         </div>
@@ -101,53 +102,56 @@
                             </div>
                             <div class="search-4">
                                 <div class="input-group">
-                                    <button class="btn-submit m-b-0 mt20" type="submit">search</button>
+                                    <button class="btn-submit m-b-0 mt20" type="submit" name="action"
+                                        value="search">search</button>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                        {{-- </form> --}}
+                    </div>
                 </div>
-            </div>
 
-            <ul class="responsive-table">
-                <li class="table-header">
-                    <div class="col table-2">Nama Umat</div>
-                    <div class="col table-2">Nomor HP</div>
-                    <div class="col table-2">Tanggal Kehadiran</div>
-                    <div class="col table-2">Pertama Datang</div>
-                    <div class="col table-2">Total Kehadiran</div>
-                    <div class="col table-2">Persentase Kehadiran</div>
-                    <div class="col table-2"></div>
-                </li>
+                <ul class="responsive-table">
+                    <li class="table-header">
+                        <div class="col table-2">Nama Umat</div>
+                        <div class="col table-2">Nomor HP</div>
+                        <div class="col table-2">Tanggal Kehadiran</div>
+                        <div class="col table-2">Pertama Datang</div>
+                        <div class="col table-2">Total Kehadiran</div>
+                        <div class="col table-2">Persentase Kehadiran</div>
+                        {{-- <div class="col table-2"></div> --}}
+                    </li>
 
-                @foreach ($attendance as $key => $data)
-                    <li class="table-row">
-                        <div class="col table-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
-                        <div class="col table-2" data-label="Nomor HP">
-                            <a href="https://wa.me/{{ $data->phone }}">
-                                {{ $data->phone ?? null }}
-                            </a>
-                        </div>
-                        <div class="col table-2" data-label="Tanggal Kehadiran">
-                            {{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
-                        <div class="col table-2" data-label="Pertama Datang">
-                            {{ Carbon\Carbon::parse($data->first_attendance)->format('d M Y') ?? null }}</div>
-                        <div class="col table-2" data-label="Total Kehadiran">{{ $data->total_attendance ?? null }}</div>
-                        <div class="col table-2" data-label="Persentase Kehadiran">
-                            {{ $data->attendance_percentage ?? null }}%
-                        </div>
-                        <div class="col table-2" data-label="Action">
-                            <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
-                                <button class="solid-button-button button Button">Details</button>
-                            </a>
-                            {{-- <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
+                    @foreach ($attendance as $key => $data)
+                        <li class="table-row">
+                            <div class="col table-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
+                            <div class="col table-2" data-label="Nomor HP">
+                                <a href="https://wa.me/{{ $data->phone }}">
+                                    {{ $data->phone ?? null }}
+                                </a>
+                            </div>
+                            <div class="col table-2" data-label="Tanggal Kehadiran">
+                                {{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
+                            <div class="col table-2" data-label="Pertama Datang">
+                                {{ Carbon\Carbon::parse($data->first_attendance)->format('d M Y') ?? null }}</div>
+                            <div class="col table-2" data-label="Total Kehadiran">{{ $data->total_attendance ?? null }}
+                            </div>
+                            <div class="col table-2" data-label="Persentase Kehadiran">
+                                {{ $data->attendance_percentage ?? null }}%
+                            </div>
+                            {{-- <div class="col table-2" data-label="Action"> --}}
+                                {{-- <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
+                                    <button class="solid-button-button button Button">Details</button>
+                                </a> --}}
+                                {{-- <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
                                 <button class="solid-button-button button Button">Edit</button>
                             </a> --}}
-                        </div>
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
+                            {{-- </div> --}}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </form>
         </div>
     </div>
 @endsection

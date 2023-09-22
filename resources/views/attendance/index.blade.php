@@ -35,13 +35,15 @@
             <form method="POST" action={{ route('attendance.index') }}>
                 @csrf
                 <div class="search-button mb20 btn-group">
-                    <button class="btn btn-primary col col-md-3" type="button" data-toggle="collapse" data-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample">
+                    <button class="btn btn-primary col col-md-3" type="button" data-toggle="collapse"
+                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Advanced Search
                     </button>
-                    <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
-                        Download Excel
-                    </button>
+                    @if (config('app.environment') == 'localhost')
+                        <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
+                            Download Excel
+                        </button>
+                    @endif
                 </div>
                 <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
                     <div class="card-body">
@@ -140,10 +142,10 @@
                                 {{ $data->attendance_percentage ?? null }}%
                             </div>
                             {{-- <div class="col table-2" data-label="Action"> --}}
-                                {{-- <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
+                            {{-- <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
                                     <button class="solid-button-button button Button">Details</button>
                                 </a> --}}
-                                {{-- <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
+                            {{-- <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
                                 <button class="solid-button-button button Button">Edit</button>
                             </a> --}}
                             {{-- </div> --}}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f199e15c186e6393480a1c5e932ff418",
+    "content-hash": "54b2b897d21b545aa3c0feecc5aeac1a",
     "packages": [
         {
             "name": "brick/math",
@@ -2191,6 +2191,7 @@
             "time": "2022-04-17T13:12:02+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "maatwebsite/excel",
             "version": "3.1.48",
             "source": {
@@ -2271,6 +2272,8 @@
             "time": "2023-02-22T21:01:38+00:00"
         },
         {
+=======
+>>>>>>> development
             "name": "maennchen/zipstream-php",
             "version": "3.1.0",
             "source": {

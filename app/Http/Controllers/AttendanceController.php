@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AttendanceRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Exception;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+
+use App\Exports\AttendanceExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendanceController extends Controller
 {
@@ -78,9 +80,10 @@ class AttendanceController extends Controller
                     'Deskripsi' => $data_item->description
                 );
             }
-    
+
             $this->ExportExcel($data_array);
         } else {
+            // dd($results);
             // $data['attendance'] = $query->paginate(15)->withQueryString();
             return view('attendance.index', ['attendance' => $results, 'data' => $request]);
         }
@@ -146,7 +149,8 @@ class AttendanceController extends Controller
         ]);
     }
 
-    public function ExportExcel($attendance_data){
+    public function ExportExcel($attendance_data)
+    {
         ini_set('max_execution_time', 0);
         ini_set('memory_limit', '4000M');
         try {
@@ -163,5 +167,11 @@ class AttendanceController extends Controller
         } catch (Exception $e) {
             return;
         }
+    }
+
+    public function export(Request $request)
+    {
+        $export = new AttendanceExport($request);
+        return Excel::download($export, 'Data Kehadiran ' . date('d-M-Y') .'.xlsx');
     }
 }

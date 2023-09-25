@@ -64,6 +64,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          * Attendance Routes
          */
         Route::get('/attendance/index', 'AttendanceController@index')->name('attendance.index');
+        // Route::get('/attendance/export', 'AttendanceController@export')->name('attendance.export');
+        Route::post('/attendance/export', 'AttendanceController@export')->name('attendance.export');
         Route::post('/attendance/index', 'AttendanceController@index')
             ->name('attendance.index')
             ->middleware(['NullToBlank']);

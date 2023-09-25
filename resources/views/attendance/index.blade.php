@@ -32,23 +32,47 @@
 @section('content')
     <div id="main-section" class="home-main">
         <div class="container">
-            <form method="POST" action={{ route('attendance.index') }}>
+            {{-- <form method="POST" action={{ route('attendance.index') }}>
+                @csrf --}}
+            <form method="post" action={{ route('attendance.export') }}>
                 @csrf
                 <div class="search-button mb20 btn-group">
                     <button class="btn btn-primary col col-md-3" type="button" data-toggle="collapse"
                         data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Advanced Search
                     </button>
-                    @if (config('app.environment') == 'localhost')
+                    {{-- @if (config('app.environment') == 'localhost')
                         <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
                             Download Excel
                         </button>
-                    @endif
-                </div>
-                <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
-                    <div class="card-body">
-                        {{-- <form method="POST" action={{ route('attendance.index') }}>
+                @endif --}}
+
+                    {{-- <a href="{{ url('attendance/export') }}" class="solid-button-container">
+                    <button class="solid-button-button button Button">Download Excel</button>
+                </a> --}}
+
+                    <input type="hidden" name="date_from" value="{{ $data->date_from }}">
+                    <input type="hidden" name="date_to" value="{{ $data->date_to }}">
+                    <input type="hidden" name="fa_from" value="{{ $data->fa_from }}">
+                    <input type="hidden" name="fa_to" value="{{ $data->fa_to }}">
+                    <input type="hidden" name="full_name" value="{{ $data->full_name }}">
+                    <input type="hidden" name="phone" value="{{ $data->phone }}">
+                    <input type="hidden" name="wilayah" value="{{ $data->wilayah }}">
+
+                    {{-- @if (config('app.environment') == 'localhost') --}}
+                        {{-- <form method="post" action={{ route('attendance.export') }}>
                         @csrf --}}
+                        <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
+                            Download Excel
+                        </button>
+                        {{-- </form> --}}
+                    {{-- @endif --}}
+                </div>
+            </form>
+            <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
+                <div class="card-body">
+                    <form method="POST" action={{ route('attendance.index') }}>
+                        @csrf
                         <!-- {{ csrf_field() }} -->
                         <div class="row row-space">
                             <div class="search-4">
@@ -109,51 +133,51 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- </form> --}}
-                    </div>
+                    </form>
                 </div>
+            </div>
 
-                <ul class="responsive-table">
-                    <li class="table-header">
-                        <div class="col table-2">Nama Umat</div>
-                        <div class="col table-2">Nomor HP</div>
-                        <div class="col table-2">Tanggal Kehadiran</div>
-                        <div class="col table-2">Pertama Datang</div>
-                        <div class="col table-2">Total Kehadiran</div>
-                        <div class="col table-2">Persentase Kehadiran</div>
-                        {{-- <div class="col table-2"></div> --}}
-                    </li>
+            <ul class="responsive-table">
+                <li class="table-header">
+                    <div class="col table-2">Nama Umat</div>
+                    <div class="col table-2">Nomor HP</div>
+                    <div class="col table-2">Tanggal Kehadiran</div>
+                    <div class="col table-2">Pertama Datang</div>
+                    <div class="col table-2">Total Kehadiran</div>
+                    <div class="col table-2">Persentase Kehadiran</div>
+                    {{-- <div class="col table-2"></div> --}}
+                </li>
 
-                    @foreach ($attendance as $key => $data)
-                        <li class="table-row">
-                            <div class="col table-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
-                            <div class="col table-2" data-label="Nomor HP">
-                                <a href="https://wa.me/{{ $data->phone }}">
-                                    {{ $data->phone ?? null }}
-                                </a>
-                            </div>
-                            <div class="col table-2" data-label="Tanggal Kehadiran">
-                                {{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
-                            <div class="col table-2" data-label="Pertama Datang">
-                                {{ Carbon\Carbon::parse($data->first_attendance)->format('d M Y') ?? null }}</div>
-                            <div class="col table-2" data-label="Total Kehadiran">{{ $data->total_attendance ?? null }}
-                            </div>
-                            <div class="col table-2" data-label="Persentase Kehadiran">
-                                {{ $data->attendance_percentage ?? null }}%
-                            </div>
-                            {{-- <div class="col table-2" data-label="Action"> --}}
-                            {{-- <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
+                @foreach ($attendance as $key => $data)
+                    <li class="table-row">
+                        <div class="col table-2" data-label="Nama Umat">{{ $data->full_name ?? null }}</div>
+                        <div class="col table-2" data-label="Nomor HP">
+                            <a href="https://wa.me/{{ $data->phone }}">
+                                {{ $data->phone ?? null }}
+                            </a>
+                        </div>
+                        <div class="col table-2" data-label="Tanggal Kehadiran">
+                            {{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
+                        <div class="col table-2" data-label="Pertama Datang">
+                            {{ Carbon\Carbon::parse($data->first_attendance)->format('d M Y') ?? null }}</div>
+                        <div class="col table-2" data-label="Total Kehadiran">{{ $data->total_attendance ?? null }}
+                        </div>
+                        <div class="col table-2" data-label="Persentase Kehadiran">
+                            {{ $data->attendance_percentage ?? null }}%
+                        </div>
+                        {{-- <div class="col table-2" data-label="Action"> --}}
+                        {{-- <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
                                     <button class="solid-button-button button Button">Details</button>
                                 </a> --}}
-                            {{-- <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
+                        {{-- <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
                                 <button class="solid-button-button button Button">Edit</button>
                             </a> --}}
-                            {{-- </div> --}}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </form>
+                        {{-- </div> --}}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            {{-- </form> --}}
         </div>
     </div>
 @endsection

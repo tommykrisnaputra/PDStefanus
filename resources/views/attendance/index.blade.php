@@ -41,11 +41,6 @@
                         data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Advanced Search
                     </button>
-                    {{-- @if (config('app.environment') == 'localhost')
-                        <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
-                            Download Excel
-                        </button>
-                @endif --}}
 
                     {{-- <a href="{{ url('attendance/export') }}" class="solid-button-container">
                     <button class="solid-button-button button Button">Download Excel</button>
@@ -60,12 +55,12 @@
                     <input type="hidden" name="wilayah" value="{{ $data->wilayah }}">
 
                     {{-- @if (config('app.environment') == 'localhost') --}}
-                        {{-- <form method="post" action={{ route('attendance.export') }}>
+                    {{-- <form method="post" action={{ route('attendance.export') }}>
                         @csrf --}}
-                        <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
-                            Download Excel
-                        </button>
-                        {{-- </form> --}}
+                    <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
+                        Download Excel
+                    </button>
+                    {{-- </form> --}}
                     {{-- @endif --}}
                 </div>
             </form>

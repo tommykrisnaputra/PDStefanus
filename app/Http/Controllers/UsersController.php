@@ -11,19 +11,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\HelperController as helper;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Http\Requests\LoginRequest;
-use Carbon\Carbon;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
     public function index(Request $request)
     {
         $request['operators'] = ['=', '>=', '<='];
-        $request['roles'] = [null => 'Pilih Role','1' => 'Umat', '2' => 'Admin'];
+        $request['roles'] = [null => 'Pilih Role', '1' => 'Umat', '2' => 'Admin'];
         $request['days'] = range(0, 31);
         $request['months'] = [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
         $query = User::orderByDesc('users.created_at');
 
         if ($request->filled('full_name')) {
@@ -70,9 +70,9 @@ class UsersController extends Controller
         }
 
         $day_from = $request['day_from'] > 0 ? $request['day_from'] : 1;
-        $month_from = $request->filled('month_from') ? date("n",strtotime($request['month_from'])) : 1;
+        $month_from = $request->filled('month_from') ? date("n", strtotime($request['month_from'])) : 1;
         $day_to = $request['day_to'] > 0 ? $request['day_to'] : 31;
-        $month_to = $request->filled('month_to') ? date("n",strtotime($request['month_to'])) : 12;
+        $month_to = $request->filled('month_to') ? date("n", strtotime($request['month_to'])) : 12;
         $query->birthdayBetween($day_from, $day_to, $month_from, $month_to);
 
         $results = $query->get();
@@ -86,7 +86,8 @@ class UsersController extends Controller
         $helper = new helper();
         $users = User::find($id);
         $roles = Role::find($users->role_id);
-        if ($roles && $roles->id && $roles->id != 2) $roles = 1;
+        if ($roles && $roles->id && $roles->id != 2)
+            $roles = 1;
         $users->phone = $helper->checkPhone($users->phone);
         return view('users.form', ['users' => $users, 'roles' => $roles]);
     }
@@ -96,7 +97,8 @@ class UsersController extends Controller
         $helper = new helper();
         $users = User::find(Auth::id());
         $roles = Role::find($users->role_id);
-        if ($roles && $roles->id && $roles->id != 2) $roles = 1;
+        if ($roles && $roles->id && $roles->id != 2)
+            $roles = 1;
         $users->phone = $helper->checkPhone($users->phone);
         return view('users.form', ['users' => $users, 'roles' => $roles]);
     }
@@ -204,5 +206,11 @@ class UsersController extends Controller
         } catch (Exception $e) {
             dd($e->getMessage());
         }
+    }
+
+    public function export(Request $request)
+    {
+        $export = new UsersExport($request);
+        return Excel::download($export, 'Data Umat ' . date('d-M-Y') . '.xlsx');
     }
 }

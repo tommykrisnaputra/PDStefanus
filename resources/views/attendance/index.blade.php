@@ -32,8 +32,6 @@
 @section('content')
     <div id="main-section" class="home-main">
         <div class="container">
-            {{-- <form method="POST" action={{ route('attendance.index') }}>
-                @csrf --}}
             <form method="post" action={{ route('attendance.export') }}>
                 @csrf
                 <div class="search-button mb20 btn-group">
@@ -41,10 +39,6 @@
                         data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Advanced Search
                     </button>
-
-                    {{-- <a href="{{ url('attendance/export') }}" class="solid-button-container">
-                    <button class="solid-button-button button Button">Download Excel</button>
-                </a> --}}
 
                     <input type="hidden" name="date_from" value="{{ $data->date_from }}">
                     <input type="hidden" name="date_to" value="{{ $data->date_to }}">
@@ -55,12 +49,9 @@
                     <input type="hidden" name="wilayah" value="{{ $data->wilayah }}">
 
                     {{-- @if (config('app.environment') == 'localhost') --}}
-                    {{-- <form method="post" action={{ route('attendance.export') }}>
-                        @csrf --}}
                     <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
                         Download Excel
                     </button>
-                    {{-- </form> --}}
                     {{-- @endif --}}
                 </div>
             </form>
@@ -172,7 +163,6 @@
                     </li>
                 @endforeach
             </ul>
-            {{-- </form> --}}
         </div>
     </div>
 @endsection

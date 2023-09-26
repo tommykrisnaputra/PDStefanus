@@ -172,6 +172,6 @@ class AttendanceController extends Controller
     public function export(Request $request)
     {
         $export = new AttendanceExport($request);
-        return Excel::download($export, 'Data Kehadiran ' . date('d-M-Y') .'.xlsx');
+        return Excel::download($export, 'Data Kehadiran ' . date('d-M-Y') . '.xlsx');
     }
 }

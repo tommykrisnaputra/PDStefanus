@@ -22,12 +22,34 @@
 @section('content')
     <div id="main-section" class="home-main">
         <div class="container">
-            <div class="search-button mb20">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Advanced Search
-                </button>
-            </div>
+            <form method="post" action={{ route('users.export') }}>
+                @csrf
+                <div class="search-button mb20 btn-group">
+                    <button class="btn btn-primary col col-md-3" type="button" data-toggle="collapse"
+                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Advanced Search
+                    </button>
+
+                    <input type="hidden" name="full_name" value="{{ $data->full_name }}">
+                    <input type="hidden" name="phone" value="{{ $data->phone }}">
+                    <input type="hidden" name="paroki" value="{{ $data->paroki }}">
+                    <input type="hidden" name="wilayah" value="{{ $data->wilayah }}">
+                    <input type="hidden" name="email" value="{{ $data->email }}">
+                    <input type="hidden" name="role" value="{{ $data->role }}">
+                    <input type="hidden" name="date_from" value="{{ $data->date_from }}">
+                    <input type="hidden" name="date_to" value="{{ $data->date_to }}">
+                    <input type="hidden" name="fa_from" value="{{ $data->fa_from }}">
+                    <input type="hidden" name="fa_to" value="{{ $data->fa_to }}">
+                    <input type="hidden" name="day_from" value="{{ $data->day_from }}">
+                    <input type="hidden" name="day_to" value="{{ $data->day_to }}">
+                    <input type="hidden" name="total_op" value="{{ $data->total_op }}">
+                    <input type="hidden" name="percentage_op" value="{{ $data->percentage_op }}">
+
+                    <button class="btn btn-info col col-md-3" type="submit">
+                        Download Excel
+                    </button>
+                </div>
+            </form>
             <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
                 <div class="card-body">
                     <form method="POST" action={{ route('users.search') }}>
@@ -102,8 +124,8 @@
                             <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Pertama Datang (from)</label>
-                                    <input class="input--style-1" type="date" name="fa_from" placeholder="DD MMM YYYY"
-                                        id="fa_from" value="{{ $data->fa_from ?? null }}">
+                                    <input class="input--style-1" type="date" name="fa_from"
+                                        placeholder="DD MMM YYYY" id="fa_from" value="{{ $data->fa_from ?? null }}">
                                 </div>
                             </div>
                             <div class="search-4">
@@ -202,7 +224,6 @@
                     <div class="col table-2">Wilayah</div>
                     <div class="col table-2">Nomor HP</div>
                     <div class="col table-3">Instagram</div>
-                    {{-- <div class="col table-2">Tik Tok</div> --}}
                     <div class="col table-2">Terakhir Datang</div>
                     <div class="col table-1">Persentase Kedatangan</div>
                     <div class="col table-1"></div>
@@ -223,14 +244,8 @@
                                 {{ $data->social_instagram ?? null }}
                             </a>
                         </div>
-                        {{-- <div class="col table-2" data-label="Tik Tok">
-                            <a href="https://www.tiktok.com/@{{ $data - > social_tiktok }}">
-                                {{ $data->social_tiktok ?? null }}
-                            </a>
-                        </div> --}}
                         <div class="col table-2" data-label="Terakhir Datang">
                             {{ Carbon\Carbon::parse($data->last_attendance)->format('d M Y') ?? null }}</div>
-
                         <div class="col table-1" data-label="Persentase Kehadiran">
                             {{ $data->attendance_percentage ?? null }}%
                         </div>

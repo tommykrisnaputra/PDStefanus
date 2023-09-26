@@ -54,6 +54,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
         Route::get('/users', [UsersController::class, 'index'])->name('users.show');
         Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+        Route::post('/users/export', [UsersController::class, 'export'])->name('users.export');
         Route::get('/users/changepassword', [UsersController::class, 'changepassword'])->name('users.changepassword');
         Route::post('/users/updatepassword', [UsersController::class, 'updatepassword'])->name('users.updatepassword');
         Route::post('/users', [UsersController::class, 'index'])
@@ -63,10 +64,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         /**
          * Attendance Routes
          */
-        Route::get('/attendance/index', 'AttendanceController@index')->name('attendance.index');
-        // Route::get('/attendance/export', 'AttendanceController@export')->name('attendance.export');
-        Route::post('/attendance/export', 'AttendanceController@export')->name('attendance.export');
-        Route::post('/attendance/index', 'AttendanceController@index')
+        Route::get('/attendance/index', [AttendanceController::class, 'index'])->name('attendance.index');
+        Route::post('/attendance/export', [AttendanceController::class, 'export'])->name('attendance.export');
+        Route::post('/attendance/index', [AttendanceController::class, 'index'])
             ->name('attendance.index')
             ->middleware(['NullToBlank']);
 

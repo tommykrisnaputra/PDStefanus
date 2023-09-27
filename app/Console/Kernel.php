@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\User;
 use App\Notifications\BirthdayDaily;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Notification;
@@ -25,12 +26,22 @@ class Kernel extends ConsoleKernel
     {
         // php artisan schedule:work
         $schedule->call(function () {
-            $email = 'stefan_news@yahoo.com';
-            Notification::route('mail', $email)->notify(new BirthdayDaily());
+            // $email = 'stefan_news@yahoo.com';
+            $today = now();
+
+            $user = User::whereMonth('birthdate', $today->month)
+                ->whereDay('birthdate', $today->day)
+                ->get();
+
+            if ($user->isNotEmpty()) {
+                // Notification::route('mail', $email)->notify(new BirthdayDaily($user));
+                $admin = User::where('role_id', 2)->get();
+                Notification::send($admin, new BirthdayDaily($user));
+            }
         })
-            ->dailyAt('10:00')
-            // ->everyMinute()
-            ->environments(['production']);
+            // ->dailyAt('10:00')
+            ->everyTenSeconds()
+            ->environments(['localhost', 'production']);
     }
 
     /**

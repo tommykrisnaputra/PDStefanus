@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Role;
@@ -51,6 +52,8 @@ use Carbon\CarbonPeriod;
  */
 class User extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'users';
 
     protected $casts = [

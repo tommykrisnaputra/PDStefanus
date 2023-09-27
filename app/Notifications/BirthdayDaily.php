@@ -14,9 +14,9 @@ class BirthdayDaily extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -26,7 +26,8 @@ class BirthdayDaily extends Notification
      */
     public function via($notifiable): array
     {
-        return ['mail'];
+        // return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -34,20 +35,22 @@ class BirthdayDaily extends Notification
      */
     public function toMail($notifiable): MailMessage
     {
+        $add = [];
         $today = now();
-
-        $user = User::whereMonth('birthdate', $today->month)
-            ->whereDay('birthdate', $today->day)
-            ->get();
 
         $mail = (new MailMessage)
             ->subject('PD Stefanus - Umat Berulang Tahun')
             ->greeting('Hai!')
             ->line('Berikut adalah list umat yang berulang tahun pada hari ini ' . date('d M Y', strtotime($today)));
 
-        foreach($user as $line) {
-            $mail->line('Nama: ' . $line->full_name . ', Whatsapp: ' . $line->phone);
+        foreach ($this->user as $line) {
+            $add[] = $line->full_name;
         }
+
+        // foreach ($this->user as $line) {
+            // $mail->line('Nama: ' . $line->full_name . ', Whatsapp: ' . $line->phone);
+            $mail->line('Nama: ' . implode (", ", $add));
+        // }
 
         return $mail;
     }
@@ -57,10 +60,14 @@ class BirthdayDaily extends Notification
      *
      * @return array<string, mixed>
      */
-    public function toArray(object $notifiable): array
+    public function toDatabase($notifiable)
     {
-        return [
-            //
-        ];
+        $add = [];
+
+        foreach ($this->user as $line) {
+            $add[] = $line->full_name;
+        }
+
+        return $add;
     }
 }

@@ -272,6 +272,21 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `role_id`, `full_name`, `birthdate`, `address`, 'wilayah', `paroki`, `social_instagram`, `social_tiktok`, `phone`, `image`, `email`, `description`, `gender`, `first_attendance`, `last_attendance`, `total_attendance`, `attendance_percentage`, `password`, `active`, `remember_token`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 (2, 2, 'PD Stefanus', '2023-03-23 17:00:00', 'Jl. Satria IV No.Blok C', 'Jelambar', 'Kristoforus', 'pdstefanus', 'pdstefanus', '087877828233', NULL, 'stefan_news@yahoo.com', NULL, NULL, '2023-03-23 17:00:00', '2023-03-23 17:00:00', NULL, NULL, '$2y$10$uuQ6hqTbGi/UnLwR.rV8EutI1mVjUYpP/u1KCXqmEb0Jz1lMKGiEq', 1, '', '2023-03-26 16:00:00', NULL, '2023-03-26 16:00:00', NULL);
 
+-- laravel.notifications definition
+
+CREATE TABLE `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint unsigned NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Indexes for dumped tables
 --

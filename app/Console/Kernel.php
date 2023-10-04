@@ -25,7 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        Log::info('schedule run');
         // php artisan schedule:work
         $schedule->call(function () {
             $today = now();
@@ -46,6 +45,7 @@ class Kernel extends ConsoleKernel
             // ->dailyAt('10:00')
             ->everyTenSeconds();
             // ->environments(['localhost', 'production']);
+        Log::info('schedule run');
     }
 
     /**

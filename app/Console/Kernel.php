@@ -43,8 +43,7 @@ class Kernel extends ConsoleKernel
             }
         })
             // ->dailyAt('10:00')
-            ->everyTenSeconds();
-            // ->environments(['localhost', 'production']);
+            ->everyMinute();
         Log::info('schedule run');
     }
 

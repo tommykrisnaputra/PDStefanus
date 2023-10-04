@@ -33,17 +33,12 @@ class Kernel extends ConsoleKernel
                 ->whereDay('birthdate', $today->day)
                 ->get();
 
-            // $ricky = User::where('full_name', 'LIKE', '%' . 'ricky' . '%')->get();
-            // $admin = User::where('role_id', 2)->get();
-            // Notification::send($admin, new BirthdayDaily($ricky));
-
             if ($user->isNotEmpty()) {
                 $admin = User::where('role_id', 2)->get();
                 Notification::send($admin, new BirthdayDaily($user));
             }
-        })
-            ->dailyAt('10:00');
-            // ->everyMinute();
+        })->dailyAt('10:00');
+
         Log::info('schedule run');
     }
 

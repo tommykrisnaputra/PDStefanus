@@ -98,8 +98,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'stefan_news@yahoo.com'),
-        'name' => env('MAIL_FROM_NAME', 'pdstefanusgrogol.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'mailtrap@pdstefanusgrogol.com'),
+        'name' => env('MAIL_FROM_NAME', 'PD Stefanus'),
     ],
 
     /*

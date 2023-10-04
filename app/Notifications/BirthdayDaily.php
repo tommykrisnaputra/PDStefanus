@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -47,10 +46,7 @@ class BirthdayDaily extends Notification
             $add[] = $line->full_name;
         }
 
-        // foreach ($this->user as $line) {
-            // $mail->line('Nama: ' . $line->full_name . ', Whatsapp: ' . $line->phone);
-            $mail->line('Nama: ' . implode (", ", $add));
-        // }
+        $mail->line('Nama: ' . implode(", ", $add));
 
         return $mail;
     }

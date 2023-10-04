@@ -58,9 +58,31 @@
   flex-wrap: nowrap !important;
 }
 
+.ml-20 {
+  margin-left: 20px;
+}
+
 .home-image {
   width: 100px;
   object-fit: cover;
+}
+
+.home-image-spin {
+  width: 100px;
+  object-fit: cover;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
 
 .home-logo {

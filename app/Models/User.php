@@ -96,6 +96,18 @@ class User extends Authenticatable
         }
     }
 
+    public function hasNotification()
+    {
+        $user = auth()->user()
+            ->unreadNotifications;
+
+        if (count($user) > 0 && auth()->user()->role_id == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function attendances()
     {
         return $this->hasMany(Attendance::class);

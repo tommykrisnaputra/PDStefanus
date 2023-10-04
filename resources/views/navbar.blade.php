@@ -1,7 +1,7 @@
 <div class="nav home-navbar">
     <input type="checkbox" id="nav-check">
-    <a href={{ route('index') }}>
-        <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="home-image" />
+    <a href={{ route('notification.index') }}>
+        <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="{{ (Auth::user() && auth()->user()->hasNotification()) ? 'home-image-spin' : 'home-image'  }}"/>
     </a>
     @guest
         <div class="nav-header">

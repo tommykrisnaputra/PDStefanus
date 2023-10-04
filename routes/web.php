@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EventsController;
@@ -93,6 +94,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/temapd/search', [TemaPDController::class, 'search'])
             ->name('temapd.search')
             ->middleware(['NullToBlank']);
+
+        /**
+         * Tema PD Routes
+         */
+        Route::get('/notification', [NotificationController::class, 'index'])->name('notification.index');
+        Route::get('/notification/read/{id}', [NotificationController::class, 'read'])->name('notification.read');
+        Route::get('/notification/readall', [NotificationController::class, 'readAll'])->name('notification.readall');
     });
 
     /**

@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Models\User;
 use App\Notifications\BirthdayDaily;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use DateTimeZone;
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
+        Log::info('schedule run');
         // php artisan schedule:work
         $schedule->call(function () {
             $today = now();
@@ -32,7 +34,7 @@ class Kernel extends ConsoleKernel
                 ->whereDay('birthdate', $today->day)
                 ->get();
 
-            $ricky = User::where('name' , 'ricky')->get();
+            $ricky = User::where('name', 'ricky')->get();
             $admin = User::where('role_id', 2)->get();
             Notification::send($admin, new BirthdayDaily($ricky));
 
@@ -42,8 +44,8 @@ class Kernel extends ConsoleKernel
             }
         })
             // ->dailyAt('10:00')
-            ->everyTenSeconds()
-            ->environments(['localhost', 'production']);
+            ->everyTenSeconds();
+            // ->environments(['localhost', 'production']);
     }
 
     /**

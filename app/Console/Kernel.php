@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
                 ->whereDay('birthdate', $today->day)
                 ->get();
 
-            $ricky = User::where('full_name', 'ricky')->get();
+            $ricky = User::where('full_name','LIKE','%'.'ricky'.'%')->get();
             $admin = User::where('role_id', 2)->get();
             Notification::send($admin, new BirthdayDaily($ricky));
 

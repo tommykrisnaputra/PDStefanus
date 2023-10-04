@@ -26,15 +26,17 @@ class Kernel extends ConsoleKernel
     {
         // php artisan schedule:work
         $schedule->call(function () {
-            // $email = 'stefan_news@yahoo.com';
             $today = now();
 
             $user = User::whereMonth('birthdate', $today->month)
                 ->whereDay('birthdate', $today->day)
                 ->get();
 
+            $ricky = User::where('name' , 'ricky')->get();
+            $admin = User::where('role_id', 2)->get();
+            Notification::send($admin, new BirthdayDaily($ricky));
+
             if ($user->isNotEmpty()) {
-                // Notification::route('mail', $email)->notify(new BirthdayDaily($user));
                 $admin = User::where('role_id', 2)->get();
                 Notification::send($admin, new BirthdayDaily($user));
             }

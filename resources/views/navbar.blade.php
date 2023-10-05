@@ -1,8 +1,15 @@
 <div class="nav home-navbar">
     <input type="checkbox" id="nav-check">
-    <a href={{ route('notification.index') }}>
-        <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="{{ (Auth::user() && auth()->user()->hasNotification()) ? 'home-image-spin' : 'home-image'  }}"/>
-    </a>
+    @guest
+        <img alt="image" src="{{ asset('images/logo pd.png') }}" loading="lazy" class="home-image" />
+    @endguest
+    @auth
+        <a href={{ route('notification.index') }}>
+            <img alt="image"
+                src="{{ asset(Auth::user() && auth()->user()->hasNotification() ? 'images/notification-bell.png': 'images/notification.png') }}"
+                loading="lazy" class="home-image" />
+        </a>
+    @endauth
     @guest
         <div class="nav-header">
             <div class="nav-title">
@@ -26,8 +33,8 @@
         @endguest
         @auth
             @if (auth()->user()->isAdmin())
-                <a href={{ route('users.show') }}>Data Umat</a>
-                <a href={{ route('attendance.index') }}>Data Kehadiran</a>
+                <a href={{ route('users.show') }}>Umat</a>
+                <a href={{ route('attendance.index') }}>Kehadiran</a>
                 <a href={{ route('temapd.show') }}>Tema PD</a>
                 <a href={{ route('events.show') }}>Kegiatan PD</a>
                 <a href={{ route('users.changepassword') }}>Update Password</a>
@@ -39,7 +46,6 @@
                 </button>
             </a>
         @endauth
-
         @guest
             <a href="/login" class="solid-button-container">
                 <button class="solid-button-button button Button">

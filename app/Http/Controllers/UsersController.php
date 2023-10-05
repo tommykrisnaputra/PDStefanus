@@ -86,8 +86,11 @@ class UsersController extends Controller
         $helper = new helper();
         $users = User::find($id);
         $roles = Role::find($users->role_id);
-        if ($roles && $roles->id && $roles->id != 2)
-            $roles = 1;
+        if ($roles && $roles->id && $roles->id != 2) {
+            $roles->id = 1;
+        } else {
+            $roles->id = 2;
+        }
         $users->phone = $helper->checkPhone($users->phone);
         return view('users.form', ['users' => $users, 'roles' => $roles]);
     }
@@ -97,8 +100,11 @@ class UsersController extends Controller
         $helper = new helper();
         $users = User::find(Auth::id());
         $roles = Role::find($users->role_id);
-        if ($roles && $roles->id && $roles->id != 2)
-            $roles = 1;
+        if ($roles && $roles->id && $roles->id != 2) {
+            $roles->id = 1;
+        } else {
+            $roles->id = 2;
+        }
         $users->phone = $helper->checkPhone($users->phone);
         return view('users.form', ['users' => $users, 'roles' => $roles]);
     }
@@ -147,7 +153,7 @@ class UsersController extends Controller
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
             'role' => 'numeric',
-            'email' => 'email',
+            'email' => 'email|nullable',
             'phone' => 'required|numeric',
             'birthdate' => 'required|date',
             'address' => 'nullable',

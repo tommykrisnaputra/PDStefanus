@@ -151,13 +151,9 @@
                         <div class="col table-2" data-label="Persentase Kehadiran">
                             {{ $data->attendance_percentage ?? null }}%
                         </div>
-                        {{-- <div class="col table-2" data-label="Action"> --}}
-                        {{-- <a href="{{ url("users/edit/$data->user_id") }}" class="solid-button-container">
-                                    <button class="solid-button-button button Button">Details</button>
-                                </a> --}}
-                        {{-- <a href="{{ url('attendance/edit/`+res.events[i].id+`') }}" class="solid-button-container">
-                                <button class="solid-button-button button Button">Edit</button>
-                            </a> --}}
+                        {{-- <a href="{{ url("users/edit/$data->id") }}" class="solid-button-container">
+                            <button class="solid-button-button button Button">Detail</button>
+                        </a> --}}
                         {{-- </div> --}}
                         </a>
                     </li>

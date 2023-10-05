@@ -14,7 +14,7 @@
 @section('content')
     @if (auth()->user()->isAdmin())
         @forelse($notifications as $notification)
-            <div class="alert alert-success col-md-6" role="alert">
+            <div class="alert alert-success" role="alert">
                 @foreach ($notification->data as $nama)
                     @if (!$loop->first)
                         &
@@ -30,7 +30,7 @@
 
             @if ($loop->last)
                 <a href="{{ route('notification.readall') }}" id="mark-all">
-                    Mark all as read
+                    <button class="solid-button-button button Button">Mark all as read</button>
                 </a>
             @endif
         @empty

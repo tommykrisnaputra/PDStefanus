@@ -40,18 +40,11 @@
   /* background-color: beige; */
 }
 
-.home-top-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 .home-navbar {
   width: 100%;
   display: flex;
-  padding: var(--dl-space-space-doubleunit);
-  max-width: 1000px;
+  padding: var(--dl-space-space-doubleunit) !important;
+  max-width: 1100px;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
@@ -63,8 +56,25 @@
 }
 
 .home-image {
-  width: 100px;
+  width: 50px;
   object-fit: cover;
+}
+
+.home-image-tilt-shak {
+  width: 50px;
+  object-fit: cover;
+  animation-name: tilt-shaking;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes tilt-shaking {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .home-image-spin {
@@ -73,15 +83,16 @@
   animation-name: spin;
   animation-duration: 5000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
 }
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -158,7 +169,7 @@
   width: 100%;
   display: block;
   align-items: center;
-  padding-top: var(--dl-space-space-doubleunit);
+  /* padding-top: var(--dl-space-space-doubleunit); */
   padding-left: var(--dl-space-space-doubleunit);
   padding-right: var(--dl-space-space-doubleunit);
   flex-direction: column;
@@ -382,6 +393,10 @@ button:hover {
 }
 
 @media (max-width:800px) {
+  .nav {
+    padding-left: 30px !important; 
+  }
+
   .nav>.nav-btn {
     display: inline-block;
     position: absolute;
@@ -412,12 +427,13 @@ button:hover {
     z-index: 1;
     display: block;
     width: 100%;
-    background-color: #d9d9d9;
+    background-color: aliceblue;
     height: 0px;
     transition: all 0.3s ease-in;
     overflow-y: hidden;
     top: 70px;
     left: 0px;
+    color: #000000;
   }
 
   .nav>.nav-links>a {

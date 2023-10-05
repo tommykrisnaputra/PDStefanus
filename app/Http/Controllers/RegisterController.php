@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -15,7 +14,6 @@ class RegisterController extends Controller
     /**
      * Display register page.
      *
-     * @return \Illuminate\Http\Response
      */
     public function show()
     {
@@ -25,9 +23,6 @@ class RegisterController extends Controller
     /**
      * Handle account registration request
      *
-     * @param RegisterRequest $request
-     *
-     * @return \Illuminate\Http\Response
      */
 
     public function register(Request $request)
@@ -72,7 +67,7 @@ class RegisterController extends Controller
                 'description' => '',
                 'created_by' => Auth::id(),
             ]);
-            
+
             $attendance = Attendance::create([
                 'user_id' => $user->id,
                 'event_id' => 4, // PD Kamis

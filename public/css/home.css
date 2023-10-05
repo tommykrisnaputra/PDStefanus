@@ -14,6 +14,10 @@
   background-color: var(--dl-color-primary-100);
 }
 
+.home-navbar {
+  color: azure;
+}
+
 .place-card-container {
   width: 300px;
   display: flex;
@@ -79,13 +83,13 @@
 
 .home-top-container {
   width: 100%;
-  height: 800px;
+  height: 700px;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-size: cover;
   background-image: url("https://lh3.googleusercontent.com/drive-viewer/AITFw-y9fJSPOUnJr7xzlcbDezg4yg2Xo81fFq10OYowe-OX1oMyWV4xzCpDukacR9Ud8MfE6sUPRvbe4IvMiDoc6CU4QJM6fg=s1600");
-  background-position: 0% 40%;
+  background-position: 100% 100%;
 }
 
 .home-image-tilt-shaking {
@@ -472,11 +476,6 @@
 
   .nav>#nav-check:not(:checked)~.nav-links {
     height: 0px;
-  }
-
-  .nav>#nav-check:checked~.nav-links {
-    height: calc(100vh - 50px);
-    overflow-y: auto;
   }
 
   .nav>.nav-header {

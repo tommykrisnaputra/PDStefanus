@@ -89,8 +89,8 @@
                             <div class="search-4">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-1" type="email" name="email" placeholder="Masukkan email"
-                                        value="{{ $data->email ?? null }}">
+                                    <input class="input--style-1" type="email" name="email"
+                                        placeholder="Masukkan email" value="{{ $data->email ?? null }}">
                                 </div>
                             </div>
                             <div class="search-4">
@@ -256,8 +256,7 @@
                         </div>
                     </li>
                 @endforeach
-                <div class="table-rows">
-                </div>
+                {{ $users->appends($_POST)->links() }}
             </ul>
         </div>
     </div>

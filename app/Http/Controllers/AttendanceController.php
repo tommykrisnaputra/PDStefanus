@@ -61,7 +61,7 @@ class AttendanceController extends Controller
             $query->whereDate('users.first_attendance', '<=', $request['fa_to']);
         }
 
-        $results = $query->get();
+        $results = $query->paginate(10)->withQueryString();
 
         if ($request->action == 'download') {
             $data_array[] = array("Nama", "Phone", "Paroki", "Alamat", "Wilayah", "First Attendance", "Last Attendance", "Total Attendance", "Attendance Percentage", "Deskripsi");

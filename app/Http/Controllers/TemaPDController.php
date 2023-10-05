@@ -13,7 +13,7 @@ class TemaPDController extends Controller
 {
     public function index()
     {
-        $TemaPd = TemaPd::orderByDesc('date')->get();
+        $TemaPd = TemaPd::orderByDesc('date')->paginate(10)->withQueryString();
         return view('temapd.index', ['TemaPd' => $TemaPd]);
     }
 

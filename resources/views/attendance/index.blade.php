@@ -48,11 +48,9 @@
                     <input type="hidden" name="phone" value="{{ $data->phone }}">
                     <input type="hidden" name="wilayah" value="{{ $data->wilayah }}">
 
-                    {{-- @if (config('app.environment') == 'localhost') --}}
                     <button class="btn btn-info col col-md-3" type="submit" name="action" value="download">
                         Download Excel
                     </button>
-                    {{-- @endif --}}
                 </div>
             </form>
             <div class="collapse card card-6 search-main-container mb20" id="collapseExample">
@@ -158,6 +156,7 @@
                         </a>
                     </li>
                 @endforeach
+                {{ $attendance->appends($_POST)->links() }}
             </ul>
         </div>
     </div>

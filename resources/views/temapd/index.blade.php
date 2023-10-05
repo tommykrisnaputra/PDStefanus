@@ -49,8 +49,7 @@
                         </div>
                     </li>
                 @endforeach
-                <div class="table-rows">
-                </div>
+                {{ $TemaPd->appends($_POST)->links() }}
             </ul>
         </div>
     </div>

@@ -26,14 +26,6 @@
                         </button>
                     </a>
                 </div>
-                {{-- <div class="search-text">
-                    <div class="search-container">
-                        <input type="text" name="search" placeholder="Search..." class="search-input" id="search">
-                        <a href="#" class="search-btn">
-                            <i class="fas fa-search"></i>
-                        </a>
-                    </div>
-                </div> --}}
             </div>
             <ul class="responsive-table">
                 <li class="table-header">
@@ -59,6 +51,7 @@
                         </div>
                     </li>
                 @endforeach
+                {{ $events->appends($_POST)->links() }}
             </ul>
         </div>
     </div>

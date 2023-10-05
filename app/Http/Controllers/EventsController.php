@@ -12,7 +12,7 @@ class EventsController extends Controller
 {
     public function index()
     {
-        $events = Event::orderBy('order_number')->get();
+        $events = Event::orderBy('order_number')->paginate(10)->withQueryString();
         return view('events.index', ['events' => $events]);
     }
 

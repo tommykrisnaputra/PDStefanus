@@ -75,9 +75,8 @@ class UsersController extends Controller
         $month_to = $request->filled('month_to') ? date("n", strtotime($request['month_to'])) : 12;
         $query->birthdayBetween($day_from, $day_to, $month_from, $month_to);
 
-        $results = $query->get();
+        $results = $query->paginate(10)->withQueryString();
 
-        // $data['attendance'] = $users->paginate(15)->withQueryString();
         return view('users.index', ['users' => $results, 'data' => $request]);
     }
 

@@ -56,6 +56,11 @@
 }
 
 .home-image {
+  width: 100px;
+  object-fit: cover;
+}
+
+.notify-image {
   width: 50px;
   object-fit: cover;
 }

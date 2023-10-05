@@ -7,7 +7,7 @@
         <a href={{ route('notification.index') }}>
             <img alt="image"
                 src="{{ asset(Auth::user() && auth()->user()->hasNotification() ? 'images/notification-bell.png': 'images/notification.png') }}"
-                loading="lazy" class="home-image" />
+                loading="lazy" class="notify-image" />
         </a>
     @endauth
     @guest

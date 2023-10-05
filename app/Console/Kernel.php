@@ -34,7 +34,8 @@ class Kernel extends ConsoleKernel
                 ->get();
 
             if ($user->isNotEmpty()) {
-                $admin = User::where('role_id', 2)->get();
+                // $admin = User::where('role_id', 2)->get();
+                $admin = User::find(1);
                 Notification::send($admin, new BirthdayDaily($user));
             }
         })->dailyAt('10:00');

@@ -50,6 +50,8 @@ class AttendanceController extends Controller
         }
         if ($request->filled('date_from')) {
             $query->whereDate('attendance.date', '>=', $request['date_from']);
+        } else {
+            $query->whereDate('attendance.date', '>=', Carbon::parse('last Thursday'));
         }
         if ($request->filled('date_to')) {
             $query->whereDate('attendance.date', '<=', $request['date_to']);

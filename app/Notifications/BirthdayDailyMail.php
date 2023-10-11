@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class BirthdayDaily extends Notification
+class BirthdayDailyMail extends Notification
 {
     use Queueable;
 
@@ -25,8 +25,7 @@ class BirthdayDaily extends Notification
      */
     public function via($notifiable): array
     {
-        // return ['database'];
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**

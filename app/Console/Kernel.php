@@ -3,7 +3,8 @@
 namespace App\Console;
 
 use App\Models\User;
-use App\Notifications\BirthdayDaily;
+use App\Notifications\BirthdayDailyDatabase;
+use App\Notifications\BirthdayDailyMail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
@@ -34,9 +35,11 @@ class Kernel extends ConsoleKernel
                 ->get();
 
             if ($user->isNotEmpty()) {
-                // $admin = User::where('role_id', 2)->get();
-                $admin = User::find(1);
-                Notification::send($admin, new BirthdayDaily($user));
+                $admin = User::where('role_id', 2)->get();
+                $pdstefanus = User::find(1);
+                
+                Notification::send($admin, new BirthdayDailyDatabase($user));
+                Notification::send($pdstefanus, new BirthdayDailyMail($user));
             }
         })->dailyAt('10:00');
 

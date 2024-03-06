@@ -50,6 +50,7 @@
                             placeholder="Masukan role" class="{{ $errors->has('role') ? 'form-error' : '' }}">
                             <option value="1" @selected($roles->id == 1)>Umat</option>
                             <option value="2" @selected($roles->id == 2)>Admin</option>
+                            <option value="3" @selected($roles->id == 3)>Tim</option>
                         </select>
                     </div>
                 </div>

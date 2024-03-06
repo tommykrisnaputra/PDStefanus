@@ -20,7 +20,7 @@ class UsersController extends Controller
     public function index ( Request $request )
         {
         $request[ 'operators' ] = [ '=', '>=', '<=' ];
-        $request[ 'roles' ]     = [ NULL => 'Pilih Role', '1' => 'Umat', '2' => 'Admin' ];
+        $request[ 'roles' ]     = [ NULL => 'Pilih Role', '1' => 'Umat', '2' => 'Admin', '3' => 'Tim' ];
         $request[ 'days' ]      = range ( 0, 31 );
         $request[ 'months' ]    = [ NULL, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
 

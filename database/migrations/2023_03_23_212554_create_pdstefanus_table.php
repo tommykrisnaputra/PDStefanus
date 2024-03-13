@@ -340,6 +340,9 @@ return new class extends Migration
             [ 
                 'name' => 'admin',
             ],
+            [ 
+                'name' => 'tim',
+            ],
         ] );
 
         DB::table ( 'users' )->insert ( [ 

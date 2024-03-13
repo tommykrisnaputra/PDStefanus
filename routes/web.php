@@ -114,9 +114,12 @@ Route::group ( [ 'namespace' => 'App\Http\Controllers' ], function ()
         Route::post ( '/team-events/create', [ TeamEventsController::class, 'create' ] )->name ( 'team-events.create' );
         Route::get ( '/team-events/edit/{id}', [ TeamEventsController::class, 'edit' ] )->name ( 'team-events.edit' );
         Route::post ( '/team-events/update/{id}', [ TeamEventsController::class, 'update' ] )->name ( 'team-events.update' );
-        // Route::post ( '/events/search', [ EventsController::class, 'search' ] )
-        //     ->name ( 'events.search' )
-        //     ->middleware ( [ 'NullToBlank' ] );
+
+        /**
+         * Team Attendance Routes
+         */
+        Route::get ( '/team-attendance/{id}', [ TeamAttendanceController::class, 'index' ] )->name ( 'team-attendance.index' );
+        Route::get ( '/team-attendance/update/{id}', [ TeamAttendanceController::class, 'update' ] )->name ( 'team-attendance.update' );
         } );
 
 

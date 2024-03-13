@@ -6,6 +6,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\TemaPDController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\TeamEventsController;
+use App\Http\Controllers\TeamAttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,7 +105,20 @@ Route::group ( [ 'namespace' => 'App\Http\Controllers' ], function ()
         Route::get ( '/notification', [ NotificationController::class, 'index' ] )->name ( 'notification.index' );
         Route::get ( '/notification/read/{id}', [ NotificationController::class, 'read' ] )->name ( 'notification.read' );
         Route::get ( '/notification/readall', [ NotificationController::class, 'readAll' ] )->name ( 'notification.readall' );
+
+        /**
+         * Team Events Routes
+         */
+        Route::get ( '/team-events', [ TeamEventsController::class, 'index' ] )->name ( 'team-events.show' );
+        Route::get ( '/team-events/add', [ TeamEventsController::class, 'add' ] )->name ( 'team-events.add' );
+        Route::post ( '/team-events/create', [ TeamEventsController::class, 'create' ] )->name ( 'team-events.create' );
+        Route::get ( '/team-events/edit/{id}', [ TeamEventsController::class, 'edit' ] )->name ( 'team-events.edit' );
+        Route::post ( '/team-events/update/{id}', [ TeamEventsController::class, 'update' ] )->name ( 'team-events.update' );
+        // Route::post ( '/events/search', [ EventsController::class, 'search' ] )
+        //     ->name ( 'events.search' )
+        //     ->middleware ( [ 'NullToBlank' ] );
         } );
+
 
     /**
      * 404 Routes

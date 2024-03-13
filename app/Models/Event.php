@@ -31,18 +31,20 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  */
 class Event extends Model
-{
+	{
 	protected $table = 'events';
 
-	protected $casts = [
-		'date' => 'date',
-		'active' => 'bool',
+	protected $casts = [ 
+		'date'         => 'date',
+		'active'       => 'bool',
 		'order_number' => 'int',
-		'created_by' => 'int',
-		'updated_by' => 'int'
+		'created_at'   => 'date',
+		'created_by'   => 'int',
+		'updated_at'   => 'date',
+		'updated_by'   => 'int'
 	];
 
-	protected $fillable = [
+	protected $fillable = [ 
 		'title',
 		'date',
 		'media',
@@ -54,8 +56,8 @@ class Event extends Model
 		'updated_by'
 	];
 
-	public function attendances()
-	{
-		return $this->hasMany(Attendance::class);
+	public function attendances ()
+		{
+		return $this->hasMany ( Attendance::class);
+		}
 	}
-}

@@ -23,15 +23,15 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  */
 class FailedJob extends Model
-{
+	{
 	protected $table = 'failed_jobs';
-	public $timestamps = false;
+	public $timestamps = FALSE;
 
-	protected $casts = [
+	protected $casts = [ 
 		'failed_at' => 'date'
 	];
 
-	protected $fillable = [
+	protected $fillable = [ 
 		'uuid',
 		'connection',
 		'queue',
@@ -39,4 +39,4 @@ class FailedJob extends Model
 		'exception',
 		'failed_at'
 	];
-}
+	}

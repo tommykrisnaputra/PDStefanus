@@ -22,26 +22,27 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $created_by
  * @property Carbon|null $updated_at
  * @property int|null $updated_by
- * 
  * @property User $user
  * @property Event $event
  *
  * @package App\Models
  */
 class Attendance extends Model
-{
+	{
 	protected $table = 'attendance';
 
-	protected $casts = [
-		'user_id' => 'int',
-		'event_id' => 'int',
-		'date' => 'date',
-		'active' => 'bool',
+	protected $casts = [ 
+		'user_id'    => 'int',
+		'event_id'   => 'int',
+		'date'       => 'date',
+		'active'     => 'bool',
+		'created_at' => 'date',
 		'created_by' => 'int',
+		'updated_at' => 'date',
 		'updated_by' => 'int'
 	];
 
-	protected $fillable = [
+	protected $fillable = [ 
 		'user_id',
 		'event_id',
 		'date',
@@ -51,13 +52,13 @@ class Attendance extends Model
 		'updated_by'
 	];
 
-	public function user()
-	{
-		return $this->belongsTo(User::class);
-	}
+	public function user ()
+		{
+		return $this->belongsTo ( User::class);
+		}
 
-	public function event()
-	{
-		return $this->belongsTo(Event::class);
+	public function event ()
+		{
+		return $this->belongsTo ( Event::class);
+		}
 	}
-}

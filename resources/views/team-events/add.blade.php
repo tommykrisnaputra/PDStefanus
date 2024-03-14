@@ -37,7 +37,7 @@
 					</div>
 					<div class="col-75">
 						<input class="{{ $errors->has('title') ? 'form-error' : '' }}" id="title" name="title" type="text"
-							value="{{ old('title', $events->title ?? '') }}" placeholder="Masukan nama kegiatan">
+							placeholder="Masukan nama kegiatan">
 					</div>
 				</div>
 				<div class="row">
@@ -46,7 +46,7 @@
 					</div>
 					<div class="col-75">
 						<input class="{{ $errors->has('date') ? 'form-error' : '' }}" id="date" name="date" type="date"
-							value="{{ date('Y-m-d', strtotime(old('date', $events->date ?? ''))) }}" placeholder="Masukan tanggal kegiatan">
+							value="{{ date('Y-m-d') }}" placeholder="Masukan tanggal kegiatan">
 					</div>
 				</div>
 				<div class="row">
@@ -54,7 +54,7 @@
 						<label for="description">Deskripsi</label>
 					</div>
 					<div class="col-75">
-						<textarea id="description" name="description" style="height:200px">{{ old('description', $events->description ?? '') }}</textarea>
+						<textarea id="description" name="description" style="height:200px" placeholder="Opsional"></textarea>
 					</div>
 				</div>
 				<div class="row submit-button-container">

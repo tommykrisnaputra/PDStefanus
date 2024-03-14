@@ -14,6 +14,17 @@
   background-color: var(--dl-color-primary-100);
 }
 
+.solid-button-button-active {
+  color: var(--dl-color-gray-black);
+  border: none;
+  /* padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-doubleunit); */
+  border-radius: 50px;
+  /* padding-right: var(--dl-space-space-doubleunit);
+  padding-bottom: var(--dl-space-space-halfunit); */
+  /* background-color: var(--dl-color-gray-white); */
+}
+
 .solid-button-root-class-name {
   margin-top: 20px;
 }
@@ -75,11 +86,25 @@
 }
 
 @keyframes tilt-shaking {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  50% { transform: rotate(0eg); }
-  75% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(5deg);
+  }
+
+  50% {
+    transform: rotate(0eg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .home-image-spin {
@@ -406,7 +431,7 @@ button:hover {
 
 @media (max-width:800px) {
   .nav {
-    padding-left: 30px !important; 
+    padding-left: 30px !important;
   }
 
   .nav>.nav-btn {

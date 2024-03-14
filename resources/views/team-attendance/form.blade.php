@@ -33,15 +33,17 @@
 				<li class="table-header">
 					<div class="col col-3">Nama</div>
 					<div class="col col-3">Kehadiran</div>
-					<div class="col col-1"></div>
 				</li>
 				@foreach ($attendance as $key => $data)
 					<li class="table-row">
 						<div class="col col-3" data-label="Nama">{{ $data->name ?? null }}</div>
-						<div class="col col-3" data-label="Deskripsi">{{ $data->active == '1' ? 'Hadir' : null }}</div>
-						<div class="col col-1" data-label="Action">
+						<div class="col col-3" data-label="Action">
 							<a class="solid-button-container" href="{{ url("team-attendance/update/$data->id") }}">
-								<button class="solid-button-button button Button">Hadir</button>
+								@if ($data->active == '1')
+									<button class="solid-button-button-active Button">Hadir</button>
+								@else
+									<button class="solid-button-button button Button">Belum Hadir</button>
+								@endif
 							</a>
 						</div>
 					</li>

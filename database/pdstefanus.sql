@@ -204,7 +204,8 @@ ADD
 INSERT INTO `roles`(`name`) 
 VALUES 
   ('umat'), 
-  ('admin');
+  ('admin'),
+  ('tim');
 INSERT INTO `users`(
   `role_id`, `full_name`, `birthdate`, 
   `address`, `wilayah`, `paroki`, `social_instagram`, 

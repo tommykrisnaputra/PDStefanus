@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-75">
                         <input type="date" id="date" name="date"
-                            value="{{ date('Y-m-d', strtotime(old('date', $events->date ?? ''))) }}"
+                            value="{{ date('Y-m-d') }}"
                             placeholder="Masukan tanggal kegiatan" class="{{ $errors->has('date') ? 'form-error' : '' }}">
                     </div>
                 </div>

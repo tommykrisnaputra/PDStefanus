@@ -27,17 +27,19 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  */
 class TemaPd extends Model
-{
+	{
 	protected $table = 'tema_pd';
 
-	protected $casts = [
-		'date' => 'date',
-		'active' => 'bool',
+	protected $casts = [ 
+		'date'       => 'date',
+		'active'     => 'bool',
+		'created_at' => 'date',
 		'created_by' => 'int',
+		'updated_at' => 'date',
 		'updated_by' => 'int'
 	];
 
-	protected $fillable = [
+	protected $fillable = [ 
 		'title',
 		'date',
 		'media',
@@ -47,4 +49,4 @@ class TemaPd extends Model
 		'created_by',
 		'updated_by'
 	];
-}
+	}

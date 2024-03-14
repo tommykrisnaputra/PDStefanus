@@ -30,18 +30,20 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  */
 class Role extends Model
-{
+	{
 	protected $table = 'roles';
 
-	protected $casts = [
-		'active' => 'bool',
+	protected $casts = [ 
+		'active'     => 'bool',
 		'begin_date' => 'date',
-		'end_date' => 'date',
+		'end_date'   => 'date',
+		'created_at' => 'date',
 		'created_by' => 'int',
+		'updated_at' => 'date',
 		'updated_by' => 'int'
 	];
 
-	protected $fillable = [
+	protected $fillable = [ 
 		'name',
 		'image',
 		'active',
@@ -52,8 +54,8 @@ class Role extends Model
 		'updated_by'
 	];
 
-	public function users()
-	{
-		return $this->hasMany(User::class);
+	public function users ()
+		{
+		return $this->hasMany ( User::class);
+		}
 	}
-}

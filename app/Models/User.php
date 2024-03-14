@@ -51,25 +51,27 @@ use Carbon\CarbonPeriod;
  * @package App\Models
  */
 class User extends Authenticatable
-{
+    {
     use Notifiable;
 
     protected $table = 'users';
 
-    protected $casts = [
-        'role_id' => 'int',
-        'birthdate' => 'date',
-        'first_attendance' => 'date',
-        'last_attendance' => 'date',
-        'total_attendance' => 'float',
+    protected $casts = [ 
+        'role_id'               => 'int',
+        'birthdate'             => 'date',
+        'first_attendance'      => 'date',
+        'last_attendance'       => 'date',
+        'total_attendance'      => 'float',
         'attendance_percentage' => 'float',
-        'created_by' => 'int',
-        'updated_by' => 'int',
+        'created_at'            => 'date',
+        'created_by'            => 'int',
+        'updated_at'            => 'date',
+        'updated_by'            => 'int'
     ];
 
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [ 'password', 'remember_token' ];
 
-    protected $fillable = ['role_id', 'full_name', 'birthdate', 'address', 'wilayah', 'paroki', 'social_instagram', 'social_tiktok', 'phone', 'image', 'email', 'description', 'gender', 'first_attendance', 'last_attendance', 'total_attendance', 'attendance_percentage', 'password', 'active', 'remember_token', 'created_by', 'udpated_by'];
+    protected $fillable = [ 'role_id', 'full_name', 'birthdate', 'address', 'wilayah', 'paroki', 'social_instagram', 'social_tiktok', 'phone', 'image', 'email', 'description', 'gender', 'first_attendance', 'last_attendance', 'total_attendance', 'attendance_percentage', 'password', 'active', 'remember_token', 'created_by', 'udpated_by' ];
 
     /**
      * Always encrypt the password when it is updated.
@@ -77,72 +79,81 @@ class User extends Authenticatable
      * @param $value
      * @return string
      */
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
-
-    public function role()
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
-    public function isAdmin()
-    {
-        if (auth()->user()->role_id == 2) {
-            return true;
-        } else {
-            return false;
+    public function setPasswordAttribute ( $value )
+        {
+        $this->attributes[ 'password' ] = Hash::make ( $value );
         }
-    }
 
-    public function hasNotification()
-    {
-        $user = auth()->user()
-            ->unreadNotifications;
-
-        if (count($user) > 0 && auth()->user()->role_id == 2) {
-            return true;
-        } else {
-            return false;
+    public function role ()
+        {
+        return $this->belongsToMany ( Role::class);
         }
-    }
 
-    public function attendances()
-    {
-        return $this->hasMany(Attendance::class);
-    }
-
-    public function login_histories()
-    {
-        return $this->hasMany(LoginHistory::class);
-    }
-
-    public function passwords()
-    {
-        return $this->hasMany(Password::class);
-    }
-
-    public function scopeBirthdayBetween($query, $dayBegin, $dayEnd, $monthBegin, $monthEnd)
-    {
-        $currentYear = date('Y');
-
-        $period = CarbonPeriod::create("$currentYear-$monthBegin-$dayBegin", "$currentYear-$monthEnd-$dayEnd");
-
-        foreach ($period as $key => $date) {
-            $queryFn = function ($query) use ($date) {
-                $query->whereMonth('birthdate', '=', $date->format('m'))->whereDay('birthdate', '=', $date->format('d'));
-            };
-
-            if ($key === 0) {
-                $queryFn($query);
-            } else {
-                $query->orWhere(function ($q) use ($queryFn) {
-                    $queryFn($q);
-                });
+    public function isAdmin ()
+        {
+        if ( auth ()->user ()->role_id == 2 )
+            {
+            return TRUE;
+            } else
+            {
+            return FALSE;
             }
         }
 
+    public function hasNotification ()
+        {
+        $user = auth ()->user ()
+            ->unreadNotifications;
+
+        if ( count ( $user ) > 0 && auth ()->user ()->role_id == 2 )
+            {
+            return TRUE;
+            } else
+            {
+            return FALSE;
+            }
+        }
+
+    public function attendances ()
+        {
+        return $this->hasMany ( Attendance::class);
+        }
+
+    public function login_histories ()
+        {
+        return $this->hasMany ( LoginHistory::class);
+        }
+
+    public function passwords ()
+        {
+        return $this->hasMany ( Password::class);
+        }
+
+    public function scopeBirthdayBetween ( $query, $dayBegin, $dayEnd, $monthBegin, $monthEnd )
+        {
+        $currentYear = date ( 'Y' );
+
+        $period = CarbonPeriod::create ( "$currentYear-$monthBegin-$dayBegin", "$currentYear-$monthEnd-$dayEnd" );
+
+        foreach ( $period as $key => $date )
+            {
+            $queryFn = function ($query) use ($date)
+                {
+                $query->whereMonth ( 'birthdate', '=', $date->format ( 'm' ) )->whereDay ( 'birthdate', '=', $date->format ( 'd' ) );
+                };
+
+            if ( $key === 0 )
+                {
+                $queryFn ( $query );
+                } else
+                {
+                $query->orWhere ( function ($q) use ($queryFn)
+                    {
+                    $queryFn ( $q );
+                    } );
+                }
+            }
+
         return $query;
+        }
     }
-}

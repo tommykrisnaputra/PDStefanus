@@ -19,15 +19,9 @@
 	<div class="home-main" id="main-section">
 		<div class="container">
 			<div class="row justify-content-md-center event">
-				<div class="col col-10">{{ $events->title }}</div>
-				<div class="col col-2">{{ Carbon\Carbon::parse($events->date)->format('d M Y') ?? null }}</div>
+				<div class="col col-md-10 col-sm-8">{{ $events->title }}</div>
+				<div class="col col-md-2 col-sm-4">{{ Carbon\Carbon::parse($events->date)->format('d M Y') ?? null }}</div>
 			</div>
-
-			@if ($events->description)
-				<div class="row justify-content-md-center event">
-					<div class="col col-12" data-label="Deskripsi">{{ $events->description ?? null }}</div>
-				</div>
-			@endif
 
 			<div class="row">
 				@foreach ($attendance as $key => $data)
@@ -44,6 +38,21 @@
 						</div>
 					</div>
 				@endforeach
+
+				<div class="col col-12 col-lg-4 col-md-6 col-sm-12 attendance attendance-font-2">
+					<div class="col-12" data-label="Kehadiran">
+						<div class="p-8">Hadir = {{ $present }}</div>
+						<div class="p-8">Belum Hadir = {{ $absent }}</div>
+					</div>
+				</div>
+
+				@if ($events->description)
+					<div class="col col-12 attendance attendance-font-2">
+						<div class="col-12 p-10" data-label="Deskripsi">
+							<div class="col col-12" data-label="Deskripsi">{{ $events->description ?? null }}</div>
+						</div>
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>

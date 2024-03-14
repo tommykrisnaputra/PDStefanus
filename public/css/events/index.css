@@ -242,3 +242,11 @@
 .attendance-font {
     font-size: 12px;
 }
+
+.attendance-font-2 {
+    font-size: 14px;
+}
+
+.nav>.nav-links>a {
+    color: #000000;
+}

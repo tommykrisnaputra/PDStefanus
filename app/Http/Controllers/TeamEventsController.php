@@ -50,8 +50,8 @@ class TeamEventsController extends Controller
                 'created_by'  => Auth::id (),
             ] );
 
-            $tim = User::whereIn ( 'role_id', [ 2, 3 ] )->where ( 'users.id', '<>', '1' )->get ();
-            foreach ( $tim as $team )
+            $total_team = User::whereIn ( 'role_id', [ 2, 3 ] )->where ( 'users.id', '<>', '1' )->get ();
+            foreach ( $total_team as $team )
                 {
                 $data[] = array(
                     'user_id'       => $team->id,

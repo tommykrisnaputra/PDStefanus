@@ -280,6 +280,25 @@ return new class extends Migration
             $table->timestamps ();
             } );
 
+        Schema::create ( 'aba', function (Blueprint $table)
+            {
+            $table->id ();
+            $table->integer ( 'user_id' )->index ( 'user_id' );
+            $table->mediumText ( 'verses' )->nullable ();
+            $table->timestamp ( 'date' );
+            $table->mediumText ( 'description' )->nullable ();
+            $table
+                ->timestamp ( 'created_at' )
+                ->nullable ()
+                ->useCurrent ();
+            $table->integer ( 'created_by' )->nullable ();
+            $table
+                ->timestamp ( 'updated_at' )
+                ->useCurrentOnUpdate ()
+                ->nullable ()
+                ->useCurrent ();
+            $table->integer ( 'updated_by' )->nullable ();
+            } );
 
         Schema::table ( 'attendance', function (Blueprint $table)
             {
@@ -467,5 +486,7 @@ return new class extends Migration
         Schema::dropIfExists ( 'team_attendances' );
         Schema::dropIfExists ( 'team_events' );
         Schema::dropIfExists ( 'notifications' );
+        Schema::dropIfExists ( 'aba' );
+
         }
     };

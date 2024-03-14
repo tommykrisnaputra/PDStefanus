@@ -8,6 +8,7 @@ use App\Http\Controllers\TemaPDController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\TeamEventsController;
 use App\Http\Controllers\TeamAttendanceController;
+use App\Http\Controllers\AbaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,8 +121,20 @@ Route::group ( [ 'namespace' => 'App\Http\Controllers' ], function ()
          */
         Route::get ( '/team-attendance/{id}', [ TeamAttendanceController::class, 'index' ] )->name ( 'team-attendance.index' );
         Route::get ( '/team-attendance/update/{id}', [ TeamAttendanceController::class, 'update' ] )->name ( 'team-attendance.update' );
-        } );
 
+        /**
+         * ABA Routes
+         */
+        Route::get ( '/aba', [ AbaController::class, 'index' ] )->name ( 'aba.show' );
+        Route::get ( '/aba/add', [ AbaController::class, 'add' ] )->name ( 'aba.add' );
+        Route::post ( '/aba/create', [ AbaController::class, 'create' ] )->name ( 'aba.create' );
+        Route::get ( '/aba/edit/{id}', [ AbaController::class, 'edit' ] )->name ( 'aba.edit' );
+        Route::post ( '/aba/update/{id}', [ AbaController::class, 'update' ] )->name ( 'aba.update' );
+        Route::post ( '/aba/search', [ AbaController::class, 'search' ] )
+            ->name ( 'aba.search' )
+            ->middleware ( [ 'NullToBlank' ] );
+
+        } );
 
     /**
      * 404 Routes

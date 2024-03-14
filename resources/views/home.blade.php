@@ -18,66 +18,54 @@
 @endsection
 
 @section('content')
-	<div class="home-main" id="main-section">
-		<div class="home-hero">
-			<div class="home-content-container">
-				<h2 class="home-text06">Come &amp; join us! Every Thursday 🕖7pm</h2>
-				<h2 class="home-subheading"><span>Kristoforus ⛪, Grogol, West Jakarta</span></h2>
-			</div>
-		</div>
-		@if (count($temaPd) > 0)
-			<h1>Tema PD</h1>
-		@endif
-		<div class="home-cards-container">
-			@foreach ($temaPd as $key => $data)
-				<div class="place-card-container">
-					<a href={{ $data->links }}>
-						<img class="place-card-tema-pd" src={{ $data->media }} alt="image" />
-					</a>
-					<div class="place-card-container1">
-						<span class="place-card-text">
-							<span>{{ $data->title }}</span>
-						</span>
-						<span class="place-card-text2">
-							<i class="fa-sharp fa-regular fa-calendar fa-lg"></i>
-							{{ $data->date->format('D d M Y') }}
-						</span>
-						<span class="place-card-text1">
-							<span>
-								{!! nl2br(e($data->description)) !!}
-							</span>
-						</span>
-					</div>
-				</div>
-			@endforeach
-		</div>
-		@if (count($events) > 0)
-			<h1>Kegiatan PD</h1>
-		@endif
-		<div class="home-cards-container">
-			@foreach ($events as $key => $data)
-				<div class="place-card-container">
-					<img class="place-card-image" src={{ $data->media }} alt="image" />
-					<div class="place-card-container1">
-						<span class="place-card-text">
-							<span>{{ $data->title }}</span>
-						</span>
-						<span class="place-card-text1">
-							<span>
-								{!! nl2br(e($data->description)) !!}
-							</span>
-						</span>
-					</div>
-				</div>
-			@endforeach
-		</div>
-	</div>
-	<a class="float"
-		href="https://api.whatsapp.com/send?phone=087877828233&text=Halo%20admin%20PD%20Stefanus!"
-		target="_blank">
-		<i class="fa fa-whatsapp my-float"></i>
-	</a>
-	@include('footer')
+    <div id="main-section" class="home-main">
+        <div class="home-main-container">
+            @include('home/temabanner')
+            <div class="home-hero">
+                  <div class="home-content-container">
+                      <div class="home-content-title">
+                        Come And Join Us<br>
+                        And Lets Grow Together in God
+                      </div>
+                      <div class="home-content-grid">
+                          <div class="home-content-grid-item">
+                            <i class="fa-solid fa-clock"></i><br>
+                            <span class="home-content-text">Every Thursday 19.00</span>
+                          </div>
+                          <div class="home-content-grid-item">
+                            <i class="fa fa-home"></i><br>
+                            <span class="home-content-text">Aula St.Kristoforus Grogol</span>
+                          </div>
+                          <div class="home-content-grid-item">
+                            <i class="fa fa-signal"></i><br>
+                            <span class="home-content-text">Or join us live on ig @pdstefanus</span>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+            @if (count($events) > 0)
+                <h1>Kegiatan PD</h1>
+            @endif
+            <div class="home-cards-container">
+                @foreach ($events as $key => $data)
+                    <div class="place-card-container home-card">
+                        <div class="place-card-container1">
+                           <span class="place-card-text">
+                               <span>{{ $data->title }}</span><br>
+                           </span>
+                           <span class="place-card-text1">
+                               <span>
+                                   {!! nl2br(e($data->description)) !!}
+                               </span>
+                           </span>
+                         </div>
+                        <img alt="image" src={{ $data->media }} class="place-card-image" />
+                    </div>
+                @endforeach
+          </div>
+      </div>
+    </div>
+    @include('footer')
 @endsection
 
 @section('js')

@@ -56,7 +56,6 @@
   width: 100%;
   display: flex;
   padding: var(--dl-space-space-doubleunit) !important;
-  max-width: 1100px;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;

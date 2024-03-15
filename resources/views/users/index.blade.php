@@ -222,9 +222,9 @@
                     <div class="col table-2">Nama</div>
                     <div class="col table-2">Tanggal Lahir</div>
                     <div class="col table-2">Wilayah</div>
-                    <div class="col table-2">Nomor HP</div>
-                    <div class="col table-3">Instagram</div>
-                    <div class="col table-2">Terakhir Datang</div>
+                    <div class="col table-1">Nomor HP</div>
+                    <div class="col table-1">Instagram</div>
+                    <div class="col table-1">Terakhir Datang</div>
                     <div class="col table-1">Persentase Kedatangan</div>
                     <div class="col table-1"></div>
                 </li>
@@ -234,17 +234,17 @@
                         <div class="col table-2" data-label="Tanggal Lahir">
                             {{ Carbon\Carbon::parse($data->birthdate)->format('d M Y') ?? null }}</div>
                         <div class="col table-2" data-label="Wilayah">{{ $data->wilayah ?? null }}</div>
-                        <div class="col table-2" data-label="Nomor HP">
+                        <div class="col table-1" data-label="Nomor HP">
                             <a href="https://wa.me/{{ $data->phone }}">
                                 {{ $data->phone ?? null }}
                             </a>
                         </div>
-                        <div class="col table-3" data-label="Instagram">
+                        <div class="col table-1" data-label="Instagram">
                             <a href="https://www.instagram.com/{{ $data->social_instagram }}">
                                 {{ $data->social_instagram ?? null }}
                             </a>
                         </div>
-                        <div class="col table-2" data-label="Terakhir Datang">
+                        <div class="col table-1" data-label="Terakhir Datang">
                             {{ Carbon\Carbon::parse($data->last_attendance)->format('d M Y') ?? null }}</div>
                         <div class="col table-1" data-label="Persentase Kehadiran">
                             {{ $data->attendance_percentage ?? null }}%

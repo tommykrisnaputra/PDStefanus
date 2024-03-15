@@ -141,18 +141,11 @@
 
 	<body>
 		<div class="home-top-container">
-
 			@include('navbar')
-
-			@include('banner')
-
 			@include('toast')
-			
 			@yield('home-message')
-
-			{{-- @include('footer') --}}
-
 		</div>
+		
 		<div class="home-container">
 			@yield('content')
 		</div>

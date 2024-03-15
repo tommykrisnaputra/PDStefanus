@@ -29,22 +29,22 @@
 			</div>
 			<ul class="responsive-table">
 				<li class="table-header">
-					<div class="col col-3">Nama</div>
-					<div class="col col-3">Tanggal Kegiatan</div>
-					<div class="col col-1"></div>
-					<div class="col col-1"></div>
+					<div class="col table-3">Nama</div>
+					<div class="col table-3">Tanggal Kegiatan</div>
+					<div class="col table-1"></div>
+					<div class="col table-1"></div>
 				</li>
 				@foreach ($events as $key => $data)
 					<li class="table-row">
-						<div class="col col-3" data-label="Nama">{{ $data->title ?? null }}</div>
-						<div class="col col-3" data-label="Tanggal Kegiatan">
+						<div class="col table-3" data-label="Nama">{{ $data->title ?? null }}</div>
+						<div class="col table-3" data-label="Tanggal Kegiatan">
 							{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
-						<div class="col col-1" data-label="Action">
+						<div class="col table-1" data-label="Action">
                             <a href="{{ url("team-events/edit/$data->id") }}" class="solid-button-container">
                                 <button class="solid-button-button button Button">Edit</button>
                             </a>
                         </div>
-						<div class="col col-1" data-label="Action">
+						<div class="col table-1" data-label="Action">
 							<a class="solid-button-container" href="{{ url("team-attendance/$data->id") }}">
 								<button class="solid-button-button button Button">Absen</button>
 							</a>

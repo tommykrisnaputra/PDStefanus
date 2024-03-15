@@ -146,16 +146,6 @@ input[type=submit] {
   flex-direction: column;
 }
 
-.home-navbar {
-  width: 100%;
-  display: flex;
-  padding: var(--dl-space-space-doubleunit);
-  max-width: 1000px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .home-image {
   width: 100px;
   object-fit: cover;

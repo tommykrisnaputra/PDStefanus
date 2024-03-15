@@ -5,14 +5,9 @@
 @endsection
 
 @section('css')
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @parent
     <link rel="stylesheet" href="{{ asset('css/users/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/attendance/search.css') }}">
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 @endsection
 
 @section('navbar')

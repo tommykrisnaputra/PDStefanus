@@ -14,7 +14,6 @@
     background: #fff;
     height: 30px;
     border-radius: 30px;
-    /* padding: 10px 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,10 +132,6 @@
     }
 }
 
-.search-container:active {
-    /* animation: hoverShake 0.15s linear 3; */
-}
-
 @media(max-width: 1300px) {
     .home-main {
         width: 100%;
@@ -220,10 +215,8 @@
 
 .event {
     margin-bottom: 20px;
-    display: inline-flex;
     text-align: center;
-    border-radius: 12px;
-    background: #fff;
+    border-radius: 50px;
     padding: 20px 35px 20px 25px;
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px 0px 0px 1px rgba(209, 213, 219, 1);
@@ -232,17 +225,11 @@
 .attendance {
     display: inline-flex;
     border-radius: 50px;
-    background: #fff;
     margin-bottom: 10px;
-    padding: 10px;
-    /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px 0px 0px 1px rgba(209, 213, 219, 1); */
+    padding: 25px;
     box-shadow: 0px 8px 24px 0px rgba(140, 149, 159, 0.2);
 }
 
 .attendance-font {
     font-size: 12px;
-}
-
-.attendance-font-2 {
-    font-size: 14px;
 }

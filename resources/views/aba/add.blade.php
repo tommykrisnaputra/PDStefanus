@@ -15,7 +15,6 @@
 
 @section('content')
 	<div class="home-main" id="main-section">
-		{{-- {{ $events }} --}}
 		@if ($errors->any())
 			<div class="alert-toast">
 				<div class="alert-toast-content">

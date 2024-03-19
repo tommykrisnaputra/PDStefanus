@@ -10,9 +10,6 @@
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<!-- Bootstrap CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link type="icon/png" href="images/logo.png" rel="shortcut icon" sizes="32x32" />
 		<link data-tag="font"
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"

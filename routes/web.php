@@ -107,21 +107,11 @@ Route::group ( [ 'namespace' => 'App\Http\Controllers' ], function ()
         Route::get ( '/notification/read/{id}', [ NotificationController::class, 'read' ] )->name ( 'notification.read' );
         Route::get ( '/notification/readall', [ NotificationController::class, 'readAll' ] )->name ( 'notification.readall' );
 
-        /**
-         * Team Events Routes
-         */
-        Route::get ( '/team-events', [ TeamEventsController::class, 'index' ] )->name ( 'team-events.show' );
-        Route::get ( '/team-events/add', [ TeamEventsController::class, 'add' ] )->name ( 'team-events.add' );
-        Route::post ( '/team-events/create', [ TeamEventsController::class, 'create' ] )->name ( 'team-events.create' );
-        Route::get ( '/team-events/edit/{id}', [ TeamEventsController::class, 'edit' ] )->name ( 'team-events.edit' );
-        Route::post ( '/team-events/update/{id}', [ TeamEventsController::class, 'update' ] )->name ( 'team-events.update' );
 
-        /**
-         * Team Attendance Routes
-         */
-        Route::get ( '/team-attendance/{id}', [ TeamAttendanceController::class, 'index' ] )->name ( 'team-attendance.index' );
-        Route::get ( '/team-attendance/update/{id}', [ TeamAttendanceController::class, 'update' ] )->name ( 'team-attendance.update' );
+        } );
 
+    Route::group ( [ 'middleware' => [ 'isTeam' ] ], function ()
+        {
         /**
          * ABA Routes
          */
@@ -133,6 +123,17 @@ Route::group ( [ 'namespace' => 'App\Http\Controllers' ], function ()
         Route::post ( '/aba/search', [ AbaController::class, 'search' ] )
             ->name ( 'aba.search' )
             ->middleware ( [ 'NullToBlank' ] );
+
+        /**
+         * Absensi PD Routes
+         */
+        Route::get ( '/team-events', [ TeamEventsController::class, 'index' ] )->name ( 'team-events.show' );
+        Route::get ( '/team-events/add', [ TeamEventsController::class, 'add' ] )->name ( 'team-events.add' );
+        Route::post ( '/team-events/create', [ TeamEventsController::class, 'create' ] )->name ( 'team-events.create' );
+        Route::get ( '/team-events/edit/{id}', [ TeamEventsController::class, 'edit' ] )->name ( 'team-events.edit' );
+        Route::post ( '/team-events/update/{id}', [ TeamEventsController::class, 'update' ] )->name ( 'team-events.update' );
+        Route::get ( '/team-attendance/{id}', [ TeamAttendanceController::class, 'index' ] )->name ( 'team-attendance.index' );
+        Route::get ( '/team-attendance/update/{id}', [ TeamAttendanceController::class, 'update' ] )->name ( 'team-attendance.update' );
 
         } );
 

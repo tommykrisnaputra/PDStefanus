@@ -40,10 +40,10 @@
 						<div class="col table-3" data-label="Tanggal Kegiatan">
 							{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
 						<div class="col table-1" data-label="Action">
-                            <a href="{{ url("team-events/edit/$data->id") }}" class="solid-button-container">
-                                <button class="solid-button-button button Button">Edit</button>
-                            </a>
-                        </div>
+							<a class="solid-button-container" href="{{ url("team-events/edit/$data->id") }}">
+								<button class="solid-button-button button Button">Edit</button>
+							</a>
+						</div>
 						<div class="col table-1" data-label="Action">
 							<a class="solid-button-container" href="{{ url("team-attendance/$data->id") }}">
 								<button class="solid-button-button button Button">Absen</button>

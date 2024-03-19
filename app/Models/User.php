@@ -99,6 +99,16 @@ class User extends Authenticatable
             return FALSE;
             }
         }
+    public function isTeam ()
+        {
+        if ( auth ()->user ()->role_id == 2 || auth ()->user ()->role_id == 3 )
+            {
+            return TRUE;
+            } else
+            {
+            return FALSE;
+            }
+        }
 
     public function hasNotification ()
         {

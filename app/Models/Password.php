@@ -27,21 +27,20 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Password extends Model
-	{
+class Password extends Model {
 	protected $table = 'password';
 
-	protected $casts = [ 
+	protected $casts = [
 		'user_id'    => 'int',
 		'created_by' => 'int',
 		'udpated_by' => 'int'
 	];
 
-	protected $hidden = [ 
+	protected $hidden = [
 		'password'
 	];
 
-	protected $fillable = [ 
+	protected $fillable = [
 		'user_id',
 		'password',
 		'password_question',
@@ -51,8 +50,7 @@ class Password extends Model
 		'udpated_by'
 	];
 
-	public function user ()
-		{
-		return $this->belongsTo ( User::class);
+	public function user() {
+		return $this->belongsTo(User::class);
 		}
 	}

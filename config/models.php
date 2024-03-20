@@ -25,7 +25,7 @@ return [
         |
         */
 
-        'path' => app_path('Models'),
+        'path'                    => app_path('Models'),
 
         /*
         |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
         |
         */
 
-        'namespace' => 'App\Models',
+        'namespace'               => 'App\Models',
 
         /*
         |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
         |
         */
 
-        'parent' => Illuminate\Database\Eloquent\Model::class,
+        'parent'                  => Illuminate\Database\Eloquent\Model::class,
 
         /*
         |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
         |
         */
 
-        'use' => [
+        'use'                     => [
             // Reliese\Database\Eloquent\BitBooleans::class,
             // Reliese\Database\Eloquent\BlamableBehavior::class,
         ],
@@ -83,7 +83,7 @@ return [
         |
         */
 
-        'connection' => false,
+        'connection'              => FALSE,
 
         /*
         |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ return [
         |
         */
 
-        'timestamps' => true,
+        'timestamps'              => TRUE,
 
         // 'timestamps' => [
         //     'enabled' => true,
@@ -123,7 +123,7 @@ return [
         |
         */
 
-        'soft_deletes' => true,
+        'soft_deletes'            => TRUE,
 
         // 'soft_deletes' => [
         //     'enabled' => true,
@@ -141,7 +141,7 @@ return [
         |
         */
 
-        'date_format' => 'Y-m-d H:i:s',
+        'date_format'             => 'Y-m-d H:i:s',
 
         /*
         |--------------------------------------------------------------------------
@@ -154,7 +154,7 @@ return [
         |
         */
 
-        'per_page' => 15,
+        'per_page'                => 15,
 
         /*
         |--------------------------------------------------------------------------
@@ -170,7 +170,7 @@ return [
         |
         */
 
-        'base_files' => false,
+        'base_files'              => FALSE,
 
         /*
         |--------------------------------------------------------------------------
@@ -183,7 +183,7 @@ return [
         |
         */
 
-        'snake_attributes' => true,
+        'snake_attributes'        => TRUE,
 
         /*
         |--------------------------------------------------------------------------
@@ -196,7 +196,7 @@ return [
         |
         */
 
-        'indent_with_space' => 0,
+        'indent_with_space'       => 0,
 
         /*
         |--------------------------------------------------------------------------
@@ -214,7 +214,7 @@ return [
         |   i.e if class name(plural) matches table name, then table name will not be added
         */
 
-        'qualified_tables' => false,
+        'qualified_tables'        => FALSE,
 
         /*
         |--------------------------------------------------------------------------
@@ -228,7 +228,7 @@ return [
         |
         */
 
-        'hidden' => [
+        'hidden'                  => [
             '*secret*', '*password', '*token',
         ],
 
@@ -244,7 +244,7 @@ return [
         |
         */
 
-        'guarded' => [
+        'guarded'                 => [
             // 'created_by', 'updated_by'
         ],
 
@@ -263,7 +263,7 @@ return [
         |
         */
 
-        'casts' => [
+        'casts'                   => [
             '*_json' => 'json',
         ],
 
@@ -279,7 +279,7 @@ return [
         |
         */
 
-        'except' => [
+        'except'                  => [
             'migrations',
         ],
 
@@ -293,7 +293,7 @@ return [
         |
         */
 
-        'only' => [
+        'only'                    => [
             // 'users',
         ],
 
@@ -307,7 +307,7 @@ return [
         |
         */
 
-        'table_prefix' => '',
+        'table_prefix'            => '',
 
         /*
         |--------------------------------------------------------------------------
@@ -319,7 +319,7 @@ return [
         |
         */
 
-        'lower_table_name_first' => false,
+        'lower_table_name_first'  => FALSE,
 
         /*
         |--------------------------------------------------------------------------
@@ -337,7 +337,7 @@ return [
         |     'billing_invoices' => 'Invoice',
         */
 
-        'model_names' => [
+        'model_names'             => [
 
         ],
 
@@ -368,7 +368,7 @@ return [
         |                       generates Post::user() and User::posts()
         */
 
-        'relation_name_strategy' => 'related',
+        'relation_name_strategy'  => 'related',
         // 'relation_name_strategy' => 'foreign_key',
 
         /*
@@ -389,7 +389,7 @@ return [
          | that helps to avoid typos in strings when typing field names and allows to use
          | code competition with available model's field names.
          */
-        'with_property_constants' => false,
+        'with_property_constants' => FALSE,
 
         /*
         |--------------------------------------------------------------------------
@@ -399,7 +399,7 @@ return [
         | You can disable pluralization tables and relations
         |
         */
-        'pluralize' => true,
+        'pluralize'               => TRUE,
 
         /*
         |--------------------------------------------------------------------------
@@ -409,7 +409,7 @@ return [
         | You can enable pluralization for certain tables
         |
         */
-        'override_pluralize_for' => [
+        'override_pluralize_for'  => [
 
         ],
         /*
@@ -420,7 +420,7 @@ return [
         | if you want the $fillable to be generated in base files
         |
         */
-        'fillable_in_base_files' => false,
+        'fillable_in_base_files'  => FALSE,
 
         /*
         |--------------------------------------------------------------------------
@@ -432,7 +432,7 @@ return [
         | NOTE: This requires PHP 7.0 or later.
         |
         */
-        'enable_return_types' => false,
+        'enable_return_types'     => FALSE,
     ],
 
     /*
@@ -489,7 +489,7 @@ return [
     |
     */
 
-//    'connections' => [
+    //    'connections' => [
 //        'read_only_external' => [
 //            'parent' => \App\Models\ReadOnlyModel::class,
 //            'connection' => true,

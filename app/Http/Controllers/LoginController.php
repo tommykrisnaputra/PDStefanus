@@ -7,16 +7,14 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
     /**
      * Display login page.
      *
      */
-    public function show()
-    {
+    public function show() {
         return view('auth.login');
-    }
+        }
 
     /**
      * Handle account login request
@@ -24,27 +22,26 @@ class LoginController extends Controller
      * @param LoginRequest $request
      *
      */
-    public function login(LoginRequest $request)
-    {
+    public function login(LoginRequest $request) {
         $credentials = $request->getCredentials();
 
-        if (!$request->checkCredentials($credentials)) {
+        if (! $request->checkCredentials($credentials)) {
             return redirect()
                 ->back()
                 ->withInput()
                 ->withErrors(['email' => 'Data user tidak ditemukan.']);
-        }
+            }
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect('/');
-        }
+            }
 
         return redirect()
             ->back()
             ->withInput()
             ->withErrors(['password' => 'Password yang anda masukan salah.']);
-    }
+        }
 
     /**
      * Handle response after user authenticated
@@ -53,9 +50,8 @@ class LoginController extends Controller
      * @param Auth $user
      *
      */
-    protected function authenticated(Request $request, $user)
-    {
+    protected function authenticated(Request $request, $user) {
         $request->session()->regenerate();
         return redirect('/');
+        }
     }
-}

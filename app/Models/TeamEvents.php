@@ -23,13 +23,12 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  */
 
-class TeamEvents extends Model
-    {
+class TeamEvents extends Model {
     use HasFactory;
 
     protected $table = 'team_events';
 
-    protected $casts = [ 
+    protected $casts = [
         'date'       => 'date',
         'active'     => 'bool',
         'created_at' => 'date',
@@ -38,7 +37,7 @@ class TeamEvents extends Model
         'updated_by' => 'int'
     ];
 
-    protected $fillable = [ 
+    protected $fillable = [
         'title',
         'date',
         'description',

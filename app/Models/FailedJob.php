@@ -22,16 +22,15 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class FailedJob extends Model
-	{
+class FailedJob extends Model {
 	protected $table = 'failed_jobs';
 	public $timestamps = FALSE;
 
-	protected $casts = [ 
+	protected $casts = [
 		'failed_at' => 'date'
 	];
 
-	protected $fillable = [ 
+	protected $fillable = [
 		'uuid',
 		'connection',
 		'queue',

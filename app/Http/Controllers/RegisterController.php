@@ -9,15 +9,13 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class RegisterController extends Controller
-    {
+class RegisterController extends Controller {
     /**
      * Display register page.
      *
      */
-    public function show ()
-        {
-        return view ( 'auth.register' );
+    public function show() {
+        return view('auth.register');
         }
 
     /**
@@ -25,9 +23,8 @@ class RegisterController extends Controller
      *
      */
 
-    public function register ( Request $request )
-        {
-        $validator = Validator::make ( $request->all (), [ 
+    public function register(Request $request) {
+        $validator = Validator::make($request->all(), [
             'full_name'        => 'required|max:255',
             // 'email' => 'required|email|unique:users',
             'phone'            => 'required|numeric|unique:users',
@@ -40,17 +37,15 @@ class RegisterController extends Controller
             'gender'           => 'required|in:male,female',
             // 'first_attendance' => 'required',
             'password'         => 'required|min:8|confirmed',
-        ] );
-        if ( $validator->fails () )
-            {
-            return redirect ()
-                ->back ()
-                ->withInput ()
-                ->withErrors ( $validator );
-            } else
-            {
-            $now  = Carbon::today ()->toDateString ();
-            $user = User::create ( [ 
+        ]);
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+            } else {
+            $now  = Carbon::today()->toDateString();
+            $user = User::create([
                 'full_name'             => $request->full_name,
                 'role_id'               => 1,
                 'phone'                 => $request->phone,
@@ -65,25 +60,23 @@ class RegisterController extends Controller
                 'total_attendance'      => '1',
                 'attendance_percentage' => '100',
                 'description'           => '',
-                'created_by'            => Auth::id (),
-            ] );
+                'created_by'            => Auth::id(),
+            ]);
 
-            $attendance = Attendance::create ( [ 
+            $attendance = Attendance::create([
                 'user_id'     => $user->id,
                 'event_id'    => 4, // PD Kamis
                 'description' => 'Pendaftaran',
-                'created_by'  => Auth::id () ?? $user->id,
+                'created_by'  => Auth::id() ?? $user->id,
                 'date'        => $now,
-            ] );
+            ]);
 
-            if ( Auth::check () && Auth::User ()->isAdmin () )
-                {
-                return redirect ( '/users' );
-                } else
-                {
-                auth ()->login ( $user );
-                $request->session ()->regenerate ();
-                return redirect ()->route ( 'success' );
+            if (Auth::check() && Auth::User()->isAdmin()) {
+                return redirect('/users');
+                } else {
+                auth()->login($user);
+                $request->session()->regenerate();
+                return redirect()->route('success');
                 }
             }
         }

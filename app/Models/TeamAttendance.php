@@ -24,23 +24,22 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  */
 
-class TeamAttendance extends Model
-    {
+class TeamAttendance extends Model {
     use HasFactory;
     protected $table = 'team_attendances';
 
-    protected $casts = [ 
+    protected $casts = [
         'user_id'       => 'int',
         'team_event_id' => 'int',
-        'date'          => 'date',
+        'date'          => 'datetime: H:i',
         'active'        => 'bool',
-        'created_at'    => 'date',
+        'created_at'    => 'datetime',
         'created_by'    => 'int',
-        'updated_at'    => 'date',
+        'updated_at'    => 'datetime',
         'updated_by'    => 'int'
     ];
 
-    protected $fillable = [ 
+    protected $fillable = [
         'user_id',
         'team_event_id',
         'date',
@@ -50,8 +49,7 @@ class TeamAttendance extends Model
         'updated_by'
     ];
 
-    public function user ()
-        {
-        return $this->belongsTo ( User::class);
+    public function user() {
+        return $this->belongsTo(User::class);
         }
     }

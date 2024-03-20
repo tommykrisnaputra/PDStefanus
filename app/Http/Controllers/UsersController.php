@@ -15,168 +15,142 @@ use App\Http\Requests\LoginRequest;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class UsersController extends Controller
-    {
-    public function index ( Request $request )
-        {
-        $request[ 'operators' ] = [ '=', '>=', '<=' ];
-        $request[ 'roles' ]     = [ NULL => 'Pilih Role', '1' => 'Umat', '2' => 'Admin', '3' => 'Tim' ];
-        $request[ 'days' ]      = range ( 0, 31 );
-        $request[ 'months' ]    = [ NULL, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
+class UsersController extends Controller {
+    public function index(Request $request) {
+        $request['operators'] = ['=', '>=', '<='];
+        $request['roles']     = [NULL => 'Pilih Role', '1' => 'Umat', '2' => 'Admin', '3' => 'Tim'];
+        $request['days']      = range(0, 31);
+        $request['months']    = [NULL, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-        $query = User::orderByDesc ( 'users.created_at' );
+        $query = User::orderByDesc('users.created_at');
 
-        if ( $request->filled ( 'full_name' ) )
-            {
-            $query->where ( 'users.full_name', 'like', '%' . $request[ 'full_name' ] . '%' );
+        if ($request->filled('full_name')) {
+            $query->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
             }
-        if ( $request->filled ( 'phone' ) )
-            {
-            $query->where ( 'users.phone', 'like', '%' . $request[ 'phone' ] . '%' );
+        if ($request->filled('phone')) {
+            $query->where('users.phone', 'like', '%' . $request['phone'] . '%');
             }
-        if ( $request->filled ( 'email' ) )
-            {
-            $query->where ( 'users.email', 'like', '%' . $request[ 'email' ] . '%' );
+        if ($request->filled('email')) {
+            $query->where('users.email', 'like', '%' . $request['email'] . '%');
             }
-        if ( $request->filled ( 'role' ) )
-            {
-            $query->where ( 'users.role_id', $request[ 'role' ] );
+        if ($request->filled('role')) {
+            $query->where('users.role_id', $request['role']);
             }
-        if ( $request->filled ( 'paroki' ) )
-            {
-            $query->where ( 'users.paroki', 'like', '%' . $request[ 'paroki' ] . '%' );
+        if ($request->filled('paroki')) {
+            $query->where('users.paroki', 'like', '%' . $request['paroki'] . '%');
             }
-        if ( $request->filled ( 'wilayah' ) )
-            {
-            $query->where ( 'users.wilayah', 'like', '%' . $request[ 'wilayah' ] . '%' );
+        if ($request->filled('wilayah')) {
+            $query->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
             }
-        if ( $request->filled ( 'address' ) )
-            {
-            $query->where ( 'users.address', 'like', '%' . $request[ 'address' ] . '%' );
+        if ($request->filled('address')) {
+            $query->where('users.address', 'like', '%' . $request['address'] . '%');
             }
-        if ( $request->filled ( 'total_attendance' ) )
-            {
-            $query->where ( 'users.total_attendance', $request[ 'total_op' ], $request[ 'total_attendance' ] );
+        if ($request->filled('total_attendance')) {
+            $query->where('users.total_attendance', $request['total_op'], $request['total_attendance']);
             }
-        if ( $request->filled ( 'attendance_percentage' ) )
-            {
-            $query->where ( 'users.attendance_percentage', $request[ 'percentage_op' ], $request[ 'attendance_percentage' ] );
+        if ($request->filled('attendance_percentage')) {
+            $query->where('users.attendance_percentage', $request['percentage_op'], $request['attendance_percentage']);
             }
-        if ( $request->filled ( 'birthdate' ) )
-            {
-            $query->whereDate ( 'users.birthdate', '=', $request[ 'birthdate' ] );
+        if ($request->filled('birthdate')) {
+            $query->whereDate('users.birthdate', '=', $request['birthdate']);
             }
-        if ( $request->filled ( 'date_from' ) )
-            {
-            $query->whereDate ( 'users.last_attendance', '>=', $request[ 'date_from' ] );
+        if ($request->filled('date_from')) {
+            $query->whereDate('users.last_attendance', '>=', $request['date_from']);
             }
-        if ( $request->filled ( 'date_to' ) )
-            {
-            $query->whereDate ( 'users.last_attendance', '<=', $request[ 'date_to' ] );
+        if ($request->filled('date_to')) {
+            $query->whereDate('users.last_attendance', '<=', $request['date_to']);
             }
-        if ( $request->filled ( 'fa_from' ) )
-            {
-            $query->whereDate ( 'users.first_attendance', '>=', $request[ 'fa_from' ] );
+        if ($request->filled('fa_from')) {
+            $query->whereDate('users.first_attendance', '>=', $request['fa_from']);
             }
-        if ( $request->filled ( 'fa_to' ) )
-            {
-            $query->whereDate ( 'users.first_attendance', '<=', $request[ 'fa_to' ] );
+        if ($request->filled('fa_to')) {
+            $query->whereDate('users.first_attendance', '<=', $request['fa_to']);
             }
 
-        $day_from   = $request[ 'day_from' ] > 0 ? $request[ 'day_from' ] : 1;
-        $month_from = $request->filled ( 'month_from' ) ? date ( "n", strtotime ( $request[ 'month_from' ] ) ) : 1;
-        $day_to     = $request[ 'day_to' ] > 0 ? $request[ 'day_to' ] : 31;
-        $month_to   = $request->filled ( 'month_to' ) ? date ( "n", strtotime ( $request[ 'month_to' ] ) ) : 12;
-        $query->birthdayBetween ( $day_from, $day_to, $month_from, $month_to );
+        $day_from   = $request['day_from'] > 0 ? $request['day_from'] : 1;
+        $month_from = $request->filled('month_from') ? date("n", strtotime($request['month_from'])) : 1;
+        $day_to     = $request['day_to'] > 0 ? $request['day_to'] : 31;
+        $month_to   = $request->filled('month_to') ? date("n", strtotime($request['month_to'])) : 12;
+        $query->birthdayBetween($day_from, $day_to, $month_from, $month_to);
 
-        $results = $query->paginate ( 10 )->withQueryString ();
+        $results = $query->paginate(10)->withQueryString();
 
-        return view ( 'users.index', [ 'users' => $results, 'data' => $request ] );
+        return view('users.index', ['users' => $results, 'data' => $request]);
         }
 
-    public function edit ( $id )
-        {
-        $helper = new helper ();
-        $users  = User::find ( $id );
+    public function edit($id) {
+        $helper = new helper();
+        $users  = User::find($id);
         $role   = $users->role_id;
-        if ( $role == NULL )
-            {
-            User::find ( $users->id )->update ( [ 
+        if ($role == NULL) {
+            User::find($users->id)->update([
                 'role_id'    => 1,
-                'updated_by' => Auth::id (),
-            ] );
+                'updated_by' => Auth::id(),
+            ]);
             $role = 1;
             }
         ;
-        $roles        = Role::find ( $role );
-        $users->phone = $helper->checkPhone ( $users->phone );
-        return view ( 'users.form', [ 'users' => $users, 'roles' => $roles ] );
+        $roles        = Role::find($role);
+        $users->phone = $helper->checkPhone($users->phone);
+        return view('users.form', ['users' => $users, 'roles' => $roles]);
         }
 
-    public function selfedit ()
-        {
-        $helper = new helper ();
-        $users  = User::find ( Auth::id () );
+    public function selfedit() {
+        $helper = new helper();
+        $users  = User::find(Auth::id());
         $role   = $users->role_id;
-        if ( $role == NULL )
-            {
-            User::find ( $users->id )->update ( [ 
+        if ($role == NULL) {
+            User::find($users->id)->update([
                 'role_id'    => 1,
-                'updated_by' => Auth::id (),
-            ] );
+                'updated_by' => Auth::id(),
+            ]);
             $role = 1;
             }
         ;
-        $roles        = Role::find ( $role );
-        $users->phone = $helper->checkPhone ( $users->phone );
-        return view ( 'users.form', [ 'users' => $users, 'roles' => $roles ] );
+        $roles        = Role::find($role);
+        $users->phone = $helper->checkPhone($users->phone);
+        return view('users.form', ['users' => $users, 'roles' => $roles]);
         }
 
-    public function changepassword ()
-        {
-        return view ( 'auth.changepassword' );
+    public function changepassword() {
+        return view('auth.changepassword');
         }
 
-    public function updatepassword ( LoginRequest $request )
-        {
-        $validator = Validator::make ( $request->all (), [ 
+    public function updatepassword(LoginRequest $request) {
+        $validator = Validator::make($request->all(), [
             'password' => 'required|min:8|confirmed',
-        ] );
+        ]);
 
-        if ( $validator->fails () )
-            {
-            return redirect ()
-                ->back ()
-                ->withInput ()
-                ->withErrors ( $validator );
-            } else
-            {
-            $credentials = $request->getCredentials ();
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+            } else {
+            $credentials = $request->getCredentials();
             // dd ($credentials);
 
-            $user_id = $request->checkCredentials ( $credentials );
+            $user_id = $request->checkCredentials($credentials);
             // dd ($user_id);
 
-            if ( ! $user_id )
-                {
-                return redirect ()
-                    ->back ()
-                    ->withInput ()
-                    ->withErrors ( [ 'email' => 'Data user tidak ditemukan.' ] );
+            if (! $user_id) {
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors(['email' => 'Data user tidak ditemukan.']);
                 }
 
-            User::find ( $user_id )->update ( [ 
-                'password'   => $credentials[ 'password' ],
-                'updated_by' => Auth::id (),
-            ] );
+            User::find($user_id)->update([
+                'password'   => $credentials['password'],
+                'updated_by' => Auth::id(),
+            ]);
 
-            return redirect ()->route ( 'success' );
+            return redirect()->route('success');
             }
         }
 
-    public function update ( Request $request )
-        {
-        $validator = Validator::make ( $request->all (), [ 
+    public function update(Request $request) {
+        $validator = Validator::make($request->all(), [
             'full_name' => 'required|max:255',
             'role'      => 'numeric',
             'email'     => 'email|nullable',
@@ -187,16 +161,14 @@ class UsersController extends Controller
             'paroki'    => 'nullable|regex:/^[a-zA-Z0-9\s]+$/',
             'gender'    => 'in:male,female',
             // 'first_attendance' => 'required',
-        ] );
-        if ( $validator->fails () )
-            {
-            return redirect ()
-                ->back ()
-                ->withInput ()
-                ->withErrors ( $validator );
-            } else
-            {
-            User::find ( $request->id )->update ( [ 
+        ]);
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+            } else {
+            User::find($request->id)->update([
                 'full_name'        => $request->full_name,
                 'role_id'          => $request->role ?? 1,
                 'birthdate'        => $request->birthdate,
@@ -213,42 +185,36 @@ class UsersController extends Controller
                 // 'total_attendance' => $request->total_attendance,
                 // 'attendance_percentage' => $request->attendance_percentage,
                 // 'description' => $request->description,
-                'updated_by'       => Auth::id (),
-            ] );
-            return redirect ( '/users' )->with ( [ 'message' => 'Data ' . $request->full_name . ' berhasil  di update' ] );
+                'updated_by'       => Auth::id(),
+            ]);
+            return redirect('/users')->with(['message' => 'Data ' . $request->full_name . ' berhasil  di update']);
             }
         }
 
-    public function search ( Request $request )
-        {
-        try
-            {
-            if ( $request->keyword )
-                {
-                $users = DB::table ( 'users' )
-                    ->where ( 'full_name', 'LIKE', '%' . $request->keyword . '%' )
-                    ->orWhere ( 'paroki', 'LIKE', '%' . $request->keyword . '%' )
-                    ->orWhere ( 'phone', 'LIKE', '%' . $request->keyword . '%' )
-                    ->orWhere ( 'address', 'LIKE', '%' . $request->keyword . '%' )
-                    ->orWhere ( 'wilayah', 'LIKE', '%' . $request->keyword . '%' )
-                    ->orWhere ( 'social_instagram', 'LIKE', '%' . $request->keyword . '%' )
-                    ->get ();
-                } else
-                {
-                $users = User::all ();
+    public function search(Request $request) {
+        try {
+            if ($request->keyword) {
+                $users = DB::table('users')
+                    ->where('full_name', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('paroki', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('phone', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('address', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('wilayah', 'LIKE', '%' . $request->keyword . '%')
+                    ->orWhere('social_instagram', 'LIKE', '%' . $request->keyword . '%')
+                    ->get();
+                } else {
+                $users = User::all();
                 }
-            return response ()->json ( [ 
+            return response()->json([
                 'users' => $users,
-            ] );
-            } catch ( Exception $e )
-            {
-            dd ( $e->getMessage () );
+            ]);
+            } catch (Exception $e) {
+            dd($e->getMessage());
             }
         }
 
-    public function export ( Request $request )
-        {
-        $export = new UsersExport ( $request );
-        return Excel::download ( $export, 'Data Umat ' . date ( 'd-M-Y' ) . '.xlsx' );
+    public function export(Request $request) {
+        $export = new UsersExport($request);
+        return Excel::download($export, 'Data Umat ' . date('d-M-Y') . '.xlsx');
         }
     }

@@ -27,7 +27,7 @@
 			</div>
 		@endif
 		<div class="container">
-			<form method="POST" action="/events/create">
+			<form method="POST" action="/aba/create">
 				@csrf
 				<!-- {{ csrf_field() }} -->
 				<div class="row">

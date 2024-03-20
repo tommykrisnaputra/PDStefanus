@@ -23,16 +23,15 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Medium extends Model
-	{
+class Medium extends Model {
 	protected $table = 'media';
 
-	protected $casts = [ 
+	protected $casts = [
 		'created_by' => 'int',
 		'updated_by' => 'int'
 	];
 
-	protected $fillable = [ 
+	protected $fillable = [
 		'name',
 		'url',
 		'description',

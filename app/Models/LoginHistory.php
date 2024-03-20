@@ -26,11 +26,10 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class LoginHistory extends Model
-	{
+class LoginHistory extends Model {
 	protected $table = 'login_history';
 
-	protected $casts = [ 
+	protected $casts = [
 		'user_id'    => 'int',
 		'password'   => 'int',
 		'created_at' => 'date',
@@ -39,11 +38,11 @@ class LoginHistory extends Model
 		'updated_by' => 'int'
 	];
 
-	protected $hidden = [ 
+	protected $hidden = [
 		'password'
 	];
 
-	protected $fillable = [ 
+	protected $fillable = [
 		'user_id',
 		'password',
 		'status',
@@ -52,8 +51,7 @@ class LoginHistory extends Model
 		'updated_by'
 	];
 
-	public function user ()
-		{
-		return $this->belongsTo ( User::class);
+	public function user() {
+		return $this->belongsTo(User::class);
 		}
 	}

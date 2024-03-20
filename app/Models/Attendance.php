@@ -27,11 +27,10 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Attendance extends Model
-	{
+class Attendance extends Model {
 	protected $table = 'attendance';
 
-	protected $casts = [ 
+	protected $casts = [
 		'user_id'    => 'int',
 		'event_id'   => 'int',
 		'date'       => 'date',
@@ -42,7 +41,7 @@ class Attendance extends Model
 		'updated_by' => 'int'
 	];
 
-	protected $fillable = [ 
+	protected $fillable = [
 		'user_id',
 		'event_id',
 		'date',
@@ -52,13 +51,11 @@ class Attendance extends Model
 		'updated_by'
 	];
 
-	public function user ()
-		{
-		return $this->belongsTo ( User::class);
+	public function user() {
+		return $this->belongsTo(User::class);
 		}
 
-	public function event ()
-		{
-		return $this->belongsTo ( Event::class);
+	public function event() {
+		return $this->belongsTo(Event::class);
 		}
 	}

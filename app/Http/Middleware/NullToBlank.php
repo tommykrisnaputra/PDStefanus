@@ -4,8 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class NullToBlank
-{
+class NullToBlank {
     /**
      * Handle an incoming request.
      *
@@ -13,22 +12,21 @@ class NullToBlank
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
+    public function handle($request, Closure $next) {
         $output = $next($request);
         if ($output) {
 
-            $json = $output->content();
-            $modelAsArray = json_decode($json, true);
+            $json         = $output->content();
+            $modelAsArray = json_decode($json, TRUE);
 
             if (is_array($modelAsArray)) {
                 array_walk_recursive($modelAsArray, function (&$item, $key) {
-                    $item = $item === null ? '' : $item;
-                });
+                    $item = $item === NULL ? '' : $item;
+                    });
                 return response($modelAsArray);
-            } else {
+                } else {
                 return $next($request);
+                }
             }
         }
     }
-}

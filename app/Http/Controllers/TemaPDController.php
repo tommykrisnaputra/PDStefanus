@@ -9,33 +9,28 @@ use App\Models\TemaPd;
 use Illuminate\Support\Facades\Log;
 use DB;
 
-class TemaPDController extends Controller
-{
-    public function index()
-    {
+class TemaPDController extends Controller {
+    public function index() {
         $TemaPd = TemaPd::orderByDesc('date')->paginate(10)->withQueryString();
         return view('temapd.index', ['TemaPd' => $TemaPd]);
-    }
+        }
 
-    public function add()
-    {
+    public function add() {
         return view('temapd.add');
-    }
+        }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         $TemaPd = TemaPd::find($id);
         return view('temapd.form', ['TemaPd' => $TemaPd]);
-    }
+        }
 
-    public function create(Request $request)
-    {
+    public function create(Request $request) {
         Log::info('message ' . $request->title);
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'date' => 'nullable|date',
-            'media' => 'nullable|url',
-            'links' => 'nullable|url',
+            'title'       => 'required|max:255',
+            'date'        => 'nullable|date',
+            'media'       => 'nullable|url',
+            'links'       => 'nullable|url',
             'description' => 'nullable',
         ]);
         if ($validator->fails()) {
@@ -43,65 +38,63 @@ class TemaPDController extends Controller
                 ->back()
                 ->withInput()
                 ->withErrors($validator);
-        } else {
+            } else {
             TemaPd::create([
-                'title' => $request->title,
-                'date' => $request->date,
-                'media' => $request->media,
-                'links' => $request->links,
+                'title'       => $request->title,
+                'date'        => $request->date,
+                'media'       => $request->media,
+                'links'       => $request->links,
                 'description' => $request->description,
-                'created_by' => Auth::id(),
+                'created_by'  => Auth::id(),
             ]);
             return redirect()->route('temapd.show');
+            }
         }
-    }
 
-    public function update(Request $request)
-    {
+    public function update(Request $request) {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'date' => 'nullable|date',
-            'media' => 'nullable|url',
-            'links' => 'nullable|url',
+            'title'        => 'required|max:255',
+            'date'         => 'nullable|date',
+            'media'        => 'nullable|url',
+            'links'        => 'nullable|url',
             'order_number' => 'nullable|numeric',
-            'active' => 'nullable',
-            'description' => 'nullable',
+            'active'       => 'nullable',
+            'description'  => 'nullable',
         ]);
         if ($validator->fails()) {
             return redirect()
                 ->back()
                 ->withInput()
                 ->withErrors($validator);
-        } else {
+            } else {
             TemaPd::find($request->id)->update([
-                'title' => $request->title,
-                'date' => $request->date,
-                'media' => $request->media,
-                'links' => $request->links,
-                'active' => $request->active,
+                'title'       => $request->title,
+                'date'        => $request->date,
+                'media'       => $request->media,
+                'links'       => $request->links,
+                'active'      => $request->active,
                 'description' => $request->description,
-                'updated_by' => Auth::id(),
+                'updated_by'  => Auth::id(),
             ]);
             return redirect('/temapd')->with(['message' => 'Data ' . $request->title . ' berhasil  di update']);
+            }
         }
-    }
 
-    public function search(Request $request)
-    {
+    public function search(Request $request) {
         try {
             if ($request->keyword) {
                 $TemaPd = DB::table('tema_pd')
                     ->where('title', 'LIKE', '%' . $request->keyword . '%')
                     ->orWhere('description', 'LIKE', '%' . $request->keyword . '%')
                     ->get();
-            } else {
+                } else {
                 $TemaPd = TemaPd::orderByDesc('date')->get();
-            }
+                }
             return response()->json([
                 'TemaPd' => $TemaPd,
             ]);
-        } catch (Exception $e) {
+            } catch (Exception $e) {
             dd($e->getMessage());
+            }
         }
     }
-}

@@ -28,7 +28,9 @@
 						<div class="col col-6" data-label="Action">
 							<a class="solid-button-container" href="{{ url("team-attendance/update/$data->id") }}">
 								@if ($data->active == '1')
-									<button class="solid-button-button-active Button attendance-font">Hadir</button>
+									<button class="solid-button-button-active Button attendance-font">
+										{{ Carbon\Carbon::parse($data->date)->format('H:i:s') ?? null }}
+									</button>
 								@else
 									<button class="solid-button-button-nonactive button Button attendance-font">Belum Hadir</button>
 								@endif
@@ -38,7 +40,7 @@
 				@endforeach
 
 				<div class="col col-12 col-lg-4 col-md-6 justify-content-md-center attendance">
-					<div class="">Hadir = {{ $present }}, Belum Hadir = {{ $absent }}</div>
+					<div class="">Hadir = {{ $present }} Belum Hadir = {{ $absent }}</div>
 				</div>
 
 				@if ($events->description)

@@ -25,11 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Song extends Model
-	{
+class Song extends Model {
 	protected $table = 'songs';
 
-	protected $casts = [ 
+	protected $casts = [
 		'production_date' => 'date',
 		'created_at'      => 'date',
 		'created_by'      => 'int',
@@ -37,7 +36,7 @@ class Song extends Model
 		'updated_by'      => 'int'
 	];
 
-	protected $fillable = [ 
+	protected $fillable = [
 		'artist',
 		'title',
 		'lyrics',

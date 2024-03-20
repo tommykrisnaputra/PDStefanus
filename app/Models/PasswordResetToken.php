@@ -18,18 +18,17 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class PasswordResetToken extends Model
-	{
+class PasswordResetToken extends Model {
 	protected $table = 'password_reset_tokens';
 	protected $primaryKey = 'email';
 	public $incrementing = FALSE;
 	public $timestamps = FALSE;
 
-	protected $hidden = [ 
+	protected $hidden = [
 		'token'
 	];
 
-	protected $fillable = [ 
+	protected $fillable = [
 		'token'
 	];
 	}

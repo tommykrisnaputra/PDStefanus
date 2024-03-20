@@ -23,12 +23,11 @@ use Illuminate\Database\Eloquent\Collection;
  * @package App\Models
  */
 
-class Aba extends Model
-    {
+class Aba extends Model {
     use HasFactory;
     protected $table = 'aba';
 
-    protected $casts = [ 
+    protected $casts = [
         'user_id'    => 'int',
         'date'       => 'date',
         'created_at' => 'date',
@@ -37,7 +36,7 @@ class Aba extends Model
         'updated_by' => 'int'
     ];
 
-    protected $fillable = [ 
+    protected $fillable = [
         'user_id',
         'date',
         'verses',

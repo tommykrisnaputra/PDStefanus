@@ -27,7 +27,7 @@
 
 .home-navbar.nav {
   padding: 0 !important;
-  z-index: 1;
+  z-index: 2;
   position: relative;
 }
 
@@ -623,7 +623,7 @@
   }
 
   .home-background-image {
-    background-position: 50% 0%;
+    background-position: 50% -340px;
     width: 100%;
   }
 

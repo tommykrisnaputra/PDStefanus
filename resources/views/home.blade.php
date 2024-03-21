@@ -30,7 +30,8 @@
 					</div>
 					<div class="home-content-grid">
 						<div class="home-content-grid-item">
-							<i class="fa-solid fa-clock"></i><br>
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+							<br>
 							<span class="home-content-text">Every Thursday 19.00</span>
 						</div>
 						<div class="home-content-grid-item">

@@ -39,8 +39,8 @@
 				<a href={{ route('events.show') }}>Kegiatan PD</a>
 				<a href={{ route('users.changepassword') }}>Update Password</a>
 			@endif
-			@if (auth()->user()->isTeam() && env('APP_ENV', 'localhost'))
-				<a href={{ route('aba.show') }}>ABA</a>
+			@if (auth()->user()->isTeam())
+				{{-- <a href={{ route('aba.show') }}>ABA</a> --}}
 				<a href={{ route('team-events.show') }}>Absensi PD</a>
 			@endif
 			<a href={{ route('users.selfedit') }}>Update Data</a>

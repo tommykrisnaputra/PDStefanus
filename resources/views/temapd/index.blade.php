@@ -38,7 +38,7 @@
 						<div class="col col-4" data-label="Nama">{{ $data->title ?? null }}</div>
 						<div class="col col-4" data-label="Tanggal Kegiatan">
 							{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
-						<div class="col col-2" data-label="Active">{{ $data->active ?? null }}</div>
+						<div class="col col-2" data-label="Active">{{ $data->active ? 'Active' : null }}</div>
 						<div class="col col-4" data-label="Deskripsi">{{ $data->description ?? null }}</div>
 						<div class="col col-1" data-label="Action">
 							<a class="solid-button-container" href="{{ url("temapd/edit/$data->id") }}">

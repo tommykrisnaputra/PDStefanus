@@ -41,12 +41,12 @@
 							{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
 						<div class="col table-1" data-label="Action">
 							<a class="solid-button-container" href="{{ url("team-events/edit/$data->id") }}">
-								<button class="solid-button-button button Button">Edit</button>
+								<button class="Button">Edit</button>
 							</a>
 						</div>
 						<div class="col table-1" data-label="Action">
 							<a class="solid-button-container" href="{{ url("team-attendance/$data->id") }}">
-								<button class="solid-button-button button Button">Absen</button>
+								<button class="Button">Absen</button>
 							</a>
 						</div>
 					</li>

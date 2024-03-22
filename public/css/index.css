@@ -375,18 +375,15 @@ h2 small {
 
 button {
   padding: 12px 20px;
-  font-size: 20px;
-  outline: none;
   border: none;
-  background-color: #4070f4;
-  color: #07a0dd;
+  background-color: inherit;
   border-radius: 6px;
-  cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover {
-  background-color: #0e4bf1;
+  /* background-color: #0e4bf1; */
+  background-color: burlywood ;
 }
 
 .nav {
@@ -419,6 +416,10 @@ button:hover {
   display: inline-block;
   padding: 8px;
   text-decoration: none;
+}
+
+a {
+  color: inherit;
 }
 
 .nav>.nav-links>a:hover {

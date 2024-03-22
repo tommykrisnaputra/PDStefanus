@@ -42,7 +42,7 @@
 						<div class="col col-4" data-label="Tanggal Kegiatan">
 							{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
 						{{-- <div class="col table-2" data-label="Deskripsi">{{ $data->description ?? null }}</div> --}}
-						<div class="col col-2" data-label="Active">{{ $data->active ?? null }}</div>
+						<div class="col col-2" data-label="Active">{{ $data->active ? 'Active' : null }}</div>
 						<div class="col col-2" data-label="Order Number">{{ $data->order_number ?? null }}</div>
 						<div class="col col-1" data-label="Action">
 							<a class="solid-button-container" href="{{ url("events/edit/$data->id") }}">

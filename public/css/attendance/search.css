@@ -735,7 +735,7 @@ button {
 }
 
 .label {
-  font-size: 13px;
+  font-size: 12px;
   color: #fff;
   padding-left: 8px;
   text-transform: capitalize;
@@ -757,7 +757,7 @@ button {
 }
 
 .input--style-2 {
-  padding: 8px;
+  padding: 6px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;

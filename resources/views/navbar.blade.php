@@ -33,17 +33,19 @@
 		@endguest
 		@auth
 			@if (auth()->user()->isAdmin())
+			@endif
+			@if (auth()->user()->isTeam())
 				<a href={{ route('users.show') }}>Umat</a>
 				<a href={{ route('attendance.index') }}>Kehadiran</a>
 				<a href={{ route('temapd.show') }}>Tema PD</a>
 				<a href={{ route('events.show') }}>Kegiatan PD</a>
-				<a href={{ route('users.changepassword') }}>Update Password</a>
-			@endif
-			@if (auth()->user()->isTeam())
 				{{-- <a href={{ route('aba.show') }}>ABA</a> --}}
 				<a href={{ route('team-events.show') }}>Absensi PD</a>
+				<a href={{ route('users.changepassword') }}>Password</a>
 			@endif
-			<a href={{ route('users.selfedit') }}>Update Data</a>
+			@if (auth()->user()->isMember())
+				<a href={{ route('users.selfedit') }}>Update Data</a>
+			@endif
 			<a class="solid-button-container" href="{{ route('logout.perform') }}">
 				<button class="solid-button-button button Button">
 					<span>Logout</span>

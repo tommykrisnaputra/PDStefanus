@@ -24,6 +24,11 @@
 
 .buttons a {
     padding: 0px 10px;
+    text-decoration: none;
+}
+
+.solid-button-container a {
+    text-decoration: none;
 }
 
 .action-button {
@@ -35,6 +40,7 @@
     padding-right: var(--dl-space-space-doubleunit);
     padding-bottom: var(--dl-space-space-halfunit);
     background-color: #FFCEFE;
+    font-size: 14px;
 }
 
 .action-button:hover {

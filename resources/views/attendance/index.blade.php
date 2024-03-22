@@ -136,10 +136,6 @@
 						<div class="col table-2" data-label="Persentase Kehadiran">
 							{{ $data->attendance_percentage ?? null }}%
 						</div>
-						{{-- <a href="{{ url("users/edit/$data->id") }}" class="solid-button-container">
-                            <button class="solid-button-button button Button">Detail</button>
-                        </a> --}}
-						{{-- </div> --}}
 						</a>
 					</li>
 				@endforeach

@@ -76,10 +76,10 @@ class User extends Authenticatable {
      * Always encrypt the password when it is updated.
      *
      * @param $value
-     * @return string
      */
     public function setPasswordAttribute($value) {
         $this->attributes['password'] = Hash::make($value);
+        return;
         }
 
     public function role() {
@@ -95,6 +95,13 @@ class User extends Authenticatable {
         }
     public function isTeam() {
         if (auth()->user()->role_id == 2 || auth()->user()->role_id == 3) {
+            return TRUE;
+            } else {
+            return FALSE;
+            }
+        }
+    public function isMember() {
+        if (auth()->user()->role_id == 1) {
             return TRUE;
             } else {
             return FALSE;

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AbaController extends Controller {
     public function index() {
-        $aba = Aba::orderBy('order_number')->paginate(10)->withQueryString();
+        $aba = Aba::join('users', 'users.id', 'aba.user_id')->select('aba.*', 'users.full_name as name')->orderBy('created_at', 'desc')->paginate(10)->withQueryString();
         return view('aba.index', ['aba' => $aba]);
         }
 
@@ -24,8 +24,8 @@ class AbaController extends Controller {
 
     public function create(Request $request) {
         $validator = Validator::make($request->all(), [
-            'verses'      => 'nullable',
             'date'        => 'nullable|date',
+            'verses'      => 'nullable',
             'description' => 'nullable',
         ]);
 
@@ -36,14 +36,15 @@ class AbaController extends Controller {
                 ->withErrors($validator);
             } else {
 
-            $events = TeamEvents::firstOrCreate([
-                'verses'      => $request->title,
+            Aba::firstOrCreate([
+                'verses'      => $request->verses,
                 'date'        => $request->date,
                 'description' => $request->description,
                 'created_by'  => Auth::id(),
+                'user_id'     => Auth::id(),
             ]);
 
-            return redirect()->route('team-events.show');
+            return redirect()->route('aba.show');
             }
         }
     }

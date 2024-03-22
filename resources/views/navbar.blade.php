@@ -39,7 +39,7 @@
 				<a href={{ route('attendance.index') }}>Kehadiran</a>
 				<a href={{ route('temapd.show') }}>Tema PD</a>
 				<a href={{ route('events.show') }}>Kegiatan PD</a>
-				{{-- <a href={{ route('aba.show') }}>ABA</a> --}}
+				<a href={{ route('aba.show') }}>ABA</a>
 				<a href={{ route('team-events.show') }}>Absensi PD</a>
 				<a href={{ route('users.changepassword') }}>Password</a>
 			@endif

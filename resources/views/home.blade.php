@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		<a class="float"
-			href="https://api.whatsapp.com/send?phone=087877828233&text=Hi%20Admin%20PD%20Stefanus!"
+			href="https://api.whatsapp.com/send?phone=6287877828233&text=Hi%20Admin%20PD%20Stefanus!"
 			target="_blank">
 			<i class="fa fa-whatsapp my-float"></i>
 		</a>

@@ -15,7 +15,7 @@
 
 @section('content')
 	<div class="home-main" id="main-section">
-		<div class="container">
+		<div class="">
 			<div class="search-main-container">
 				<div class="buttons">
 					<a href="{{ route('temapd.add') }}">

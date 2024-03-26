@@ -113,6 +113,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
         Route::get('/aba', [AbaController::class, 'index'])->name('aba.show');
         Route::get('/aba/add', [AbaController::class, 'add'])->name('aba.add');
+        Route::get('/aba/delete/{id}', [AbaController::class, 'delete'])->name('aba.delete');
         Route::post('/aba/create', [AbaController::class, 'create'])->name('aba.create');
         Route::get('/aba/edit/{id}', [AbaController::class, 'edit'])->name('aba.edit');
         Route::post('/aba/update/{id}', [AbaController::class, 'update'])->name('aba.update');

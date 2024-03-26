@@ -136,7 +136,6 @@ input[type=submit] {
   width: 100%;
   height: auto;
   display: flex;
-  min-height: 100vh;
   align-items: center;
   flex-direction: column;
 }

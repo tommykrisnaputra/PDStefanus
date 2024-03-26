@@ -18,7 +18,7 @@ class AbaController extends Controller {
         }
 
     public function edit($id) {
-        $aba = Aba::find($id);
+        $aba = Aba::join('users', 'users.id', 'aba.user_id')->select('aba.*', 'users.full_name as name')->find($id);
         return view('aba.form', ['aba' => $aba]);
         }
 
@@ -46,5 +46,36 @@ class AbaController extends Controller {
 
             return redirect()->route('aba.show');
             }
+        }
+
+    public function update(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'date'        => 'nullable|date',
+            'verses'      => 'nullable',
+            'description' => 'nullable',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+            } else {
+
+            Aba::find($request->id)->update([
+                'verses'      => $request->verses,
+                'date'        => $request->date,
+                'description' => $request->description,
+                'updated_by'  => Auth::id(),
+            ]);
+
+            return redirect()->route('aba.show');
+            }
+        }
+
+
+    public function delete($id) {
+        Aba::find($id)->delete();
+        return redirect()->route('aba.show');
         }
     }

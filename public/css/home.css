@@ -98,10 +98,8 @@
   width: 100%;
   height: auto;
   display: flex;
-  min-height: 100vh;
   align-items: center;
   flex-direction: column;
-  /* background-color: beige; */
 }
 
 .home-top-container {
@@ -749,8 +747,7 @@
   .nav>.nav-btn {
     display: inline-block;
     position: absolute;
-    right: 0px;
-    top: 20px;
+    right: 10px;
   }
 
   .nav>.nav-btn>label {

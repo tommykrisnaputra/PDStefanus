@@ -23,7 +23,6 @@ class Kernel extends ConsoleKernel {
      * Define the application's command schedule.
      */
     protected function schedule(Schedule $schedule): void {
-        // php artisan schedule:work
         $schedule->call(function () {
             $today = now();
 
@@ -38,7 +37,7 @@ class Kernel extends ConsoleKernel {
                 Notification::send($admin, new BirthdayDailyDatabase($user));
                 Notification::send($pdstefanus, new BirthdayDailyMail($user));
                 }
-            })->dailyAt('10:00');
+            })->dailyAt('02:00');
 
         Log::info('schedule run');
         }

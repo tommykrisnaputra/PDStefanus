@@ -92,10 +92,9 @@ class UsersController extends Controller {
             ]);
             $role = 1;
             }
-        ;
         $roles        = Role::find($role);
         $users->phone = $helper->checkPhone($users->phone);
-        return view('users.form', ['users' => $users, 'roles' => $roles]);
+        return view('users.form', compact('users', 'roles'));
         }
 
     public function selfedit() {
@@ -109,7 +108,7 @@ class UsersController extends Controller {
             ]);
             $role = 1;
             }
-        ;
+        
         $roles        = Role::find($role);
         $users->phone = $helper->checkPhone($users->phone);
         return view('users.form', ['users' => $users, 'roles' => $roles]);
@@ -131,10 +130,8 @@ class UsersController extends Controller {
                 ->withErrors($validator);
             } else {
             $credentials = $request->getCredentials();
-            // dd ($credentials);
 
             $user_id = $request->checkCredentials($credentials);
-            // dd ($user_id);
 
             if (! $user_id) {
                 return redirect()

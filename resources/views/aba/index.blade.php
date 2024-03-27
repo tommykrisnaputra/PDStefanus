@@ -1,8 +1,6 @@
 @extends('master')
 
-@section('title')
-	Ayo Baca Alkitab
-@endsection
+@section('title', 'Ayo Baca Alkitab')
 
 @section('css')
 	@parent
@@ -34,12 +32,11 @@
 					<div class="col col-4">Ayat</div>
 					<div class="col col-4"></div>
 				</li>
-				@foreach ($aba as $key => $data)
+				@foreach ($aba as $data)
 					<li class="table-row">
-						<div class="col col-4" data-label="Nama">{{ $data->name ?? null }}</div>
-						<div class="col col-4" data-label="Tanggal">
-							{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
-						<div class="col col-4" data-label="Ayat">{{ $data->verses ?? null }}</div>
+						<div class="col col-4" data-label="Nama">{{ $data->name }}</div>
+						<div class="col col-4" data-label="Tanggal">{{ $data->date->format('d M Y') }}</div>
+						<div class="col col-4" data-label="Ayat">{{ $data->verses }}</div>
 						<div class="col col-4" data-label="Action">
 							<a class="solid-button-container" href="{{ url("aba/edit/$data->id") }}">
 								<button class="solid-button-button button Button">Edit</button>

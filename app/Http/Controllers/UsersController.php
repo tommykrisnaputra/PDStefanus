@@ -24,54 +24,57 @@ class UsersController extends Controller {
 
         $query = User::orderByDesc('users.created_at');
 
-        if ($request->filled('full_name')) {
-            $query->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
-            }
-        if ($request->filled('phone')) {
-            $query->where('users.phone', 'like', '%' . $request['phone'] . '%');
-            }
-        if ($request->filled('email')) {
-            $query->where('users.email', 'like', '%' . $request['email'] . '%');
-            }
-        if ($request->filled('role')) {
-            $query->where('users.role_id', $request['role']);
-            }
-        if ($request->filled('paroki')) {
-            $query->where('users.paroki', 'like', '%' . $request['paroki'] . '%');
-            }
-        if ($request->filled('wilayah')) {
-            $query->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
-            }
-        if ($request->filled('address')) {
-            $query->where('users.address', 'like', '%' . $request['address'] . '%');
-            }
-        if ($request->filled('total_attendance')) {
-            $query->where('users.total_attendance', $request['total_op'], $request['total_attendance']);
-            }
-        if ($request->filled('attendance_percentage')) {
-            $query->where('users.attendance_percentage', $request['percentage_op'], $request['attendance_percentage']);
-            }
-        if ($request->filled('birthdate')) {
-            $query->whereDate('users.birthdate', '=', $request['birthdate']);
-            }
-        if ($request->filled('date_from')) {
-            $query->whereDate('users.last_attendance', '>=', $request['date_from']);
-            }
-        if ($request->filled('date_to')) {
-            $query->whereDate('users.last_attendance', '<=', $request['date_to']);
-            }
-        if ($request->filled('fa_from')) {
-            $query->whereDate('users.first_attendance', '>=', $request['fa_from']);
-            }
-        if ($request->filled('fa_to')) {
-            $query->whereDate('users.first_attendance', '<=', $request['fa_to']);
-            }
+        $query->when($request->filled('full_name'), function ($q) use ($request) {
+            return $q->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
+            })
+            ->when($request->filled('phone'), function ($q) use ($request) {
+                return $q->where('users.phone', 'like', '%' . $request['phone'] . '%');
+                })
+            ->when($request->filled('email'), function ($q) use ($request) {
+                return $q->where('users.email', 'like', '%' . $request['email'] . '%');
+                })
+            ->when($request->filled('role'), function ($q) use ($request) {
+                return $q->where('users.role_id', $request['role']);
+                })
+            ->when($request->filled('paroki'), function ($q) use ($request) {
+                return $q->where('users.paroki', 'like', '%' . $request['paroki'] . '%');
+                })
+            ->when($request->filled('wilayah'), function ($q) use ($request) {
+                return $q->where('users.wilayah', 'like', '%' . $request['wilayah'] . '%');
+                })
+            ->when($request->filled('address'), function ($q) use ($request) {
+                return $q->where('users.address', 'like', '%' . $request['address'] . '%');
+                })
+            ->when($request->filled('total_attendance'), function ($q) use ($request) {
+                return $q->where('users.total_attendance', $request['total_op'], $request['total_attendance']);
+                })
+            ->when($request->filled('attendance_percentage'), function ($q) use ($request) {
+                return $q->where('users.attendance_percentage', $request['percentage_op'], $request['attendance_percentage']);
+                })
+            ->when($request->filled('birthdate'), function ($q) use ($request) {
+                return $q->whereDate('users.birthdate', '=', $request['birthdate']);
+                })
+            ->when($request->filled('date_from'), function ($q) use ($request) {
+                return $q->whereDate('users.last_attendance', '>=', $request['date_from']);
+                })
+            ->when($request->filled('date_to'), function ($q) use ($request) {
+                return $q->whereDate('users.last_attendance', '<=', $request['date_to']);
+                })
+            ->when($request->filled('fa_from'), function ($q) use ($request) {
+                return $q->whereDate('users.first_attendance', '>=', $request['fa_from']);
+                })
+            ->when($request->filled('fa_to'), function ($q) use ($request) {
+                return $q->whereDate('users.first_attendance', '<=', $request['fa_to']);
+                });
 
-        $day_from   = $request['day_from'] > 0 ? $request['day_from'] : 1;
-        $month_from = $request->filled('month_from') ? date("n", strtotime($request['month_from'])) : 1;
-        $day_to     = $request['day_to'] > 0 ? $request['day_to'] : 31;
-        $month_to   = $request->filled('month_to') ? date("n", strtotime($request['month_to'])) : 12;
-        $query->birthdayBetween($day_from, $day_to, $month_from, $month_to);
+        $startMonth = $request->filled('month_from') ? date("n", strtotime($request['month_from'])) : 1;
+        $startDay   = $request['day_from'] > 0 ? $request['day_from'] : 1;
+        $endMonth   = $request->filled('month_to') ? date("n", strtotime($request['month_to'])) : 12;
+        $endDay     = $request['day_to'] > 0 ? $request['day_to'] : 31;
+
+        $query->whereRaw("MONTH(users.birthdate) BETWEEN ? AND ? AND DAY(users.birthdate) BETWEEN ? AND ?", [
+            $startMonth, $endMonth, $startDay, $endDay
+        ]);
 
         $results = $query->paginate(10)->withQueryString();
 

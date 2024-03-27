@@ -49,45 +49,23 @@
 				<div class="card-body">
 					<form method="POST" action={{ route('users.search') }}>
 						@csrf
-						<!-- {{ csrf_field() }} -->
 						<div class="row row-space">
-							<div class="search-4">
-								<div class="input-group">
-									<label class="label">Nama Umat</label>
-									<input class="input--style-1" name="full_name" type="text" value="{{ $data->full_name ?? null }}"
-										placeholder="Masukkan nama umat">
+							@foreach ([
+									'full_name' => 'Nama Umat',
+									'phone' => 'Nomor HP',
+									'paroki' => 'Paroki',
+									'wilayah' => 'Wilayah',
+									'email' => 'Email',
+					] as $field => $label)
+								<div class="search-4">
+									<div class="input-group">
+										<label class="label">{{ $label }}</label>
+										<input class="input--style-1" name="{{ $field }}" type="{{ $field == 'email' ? 'email' : 'text' }}"
+											value="{{ $data->$field ?? null }}" placeholder="Masukkan {{ strtolower($label) }}">
+									</div>
 								</div>
-							</div>
-							<div class="search-4">
-								<div class="input-group">
-									<label class="label">Nomor HP</label>
-									<input class="input--style-1" name="phone" type="tel" value="{{ $data->phone ?? null }}"
-										placeholder="Masukkan nomor HP">
-								</div>
-							</div>
-							<div class="search-4">
-								<div class="input-group">
-									<label class="label">Paroki</label>
-									<input class="input--style-1" name="paroki" type="text" value="{{ $data->paroki ?? null }}"
-										placeholder="Masukkan paroki">
-								</div>
-							</div>
-							<div class="search-4">
-								<div class="input-group">
-									<label class="label">Wilayah</label>
-									<input class="input--style-1" name="wilayah" type="text" value="{{ $data->wilayah ?? null }}"
-										placeholder="Masukkan wilayah">
-								</div>
-							</div>
-						</div>
-						<div class="row row-space">
-							<div class="search-4">
-								<div class="input-group">
-									<label class="label">Email</label>
-									<input class="input--style-1" name="email" type="email" value="{{ $data->email ?? null }}"
-										placeholder="Masukkan email">
-								</div>
-							</div>
+							@endforeach
+
 							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Roles</label>
@@ -100,6 +78,7 @@
 									</select>
 								</div>
 							</div>
+
 							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Kehadiran (from)</label>
@@ -107,6 +86,7 @@
 										value="{{ $data->date_from ?? null }}">
 								</div>
 							</div>
+
 							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Kehadiran (to)</label>
@@ -115,6 +95,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="row row-space">
 							<div class="search-4">
 								<div class="input-group">
@@ -123,6 +104,7 @@
 										value="{{ $data->fa_from ?? null }}" placeholder="DD MMM YYYY">
 								</div>
 							</div>
+
 							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Pertama Datang (to)</label>
@@ -130,7 +112,8 @@
 										value="{{ $data->fa_to ?? null }}" placeholder="DD MMM YYYY">
 								</div>
 							</div>
-							<div class="search-op">
+
+							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Tanggal Lahir (from)</label>
 									<select class="input--style-2 operator" name="day_from">
@@ -149,7 +132,8 @@
 									</select>
 								</div>
 							</div>
-							<div class="search-op">
+
+							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Tanggal Lahir (to)</label>
 									<select class="input--style-2 operator" name="day_to">
@@ -169,6 +153,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="row row-space">
 							<div class="search-op">
 								<div class="input-group">
@@ -184,6 +169,7 @@
 										value="{{ $data->total_attendance ?? null }}" placeholder="Masukkan total kedatangan">
 								</div>
 							</div>
+
 							<div class="search-op">
 								<div class="input-group">
 									<label class="label">Kedatangan (%)</label>
@@ -198,11 +184,12 @@
 										value="{{ $data->attendance_percentage ?? null }}" placeholder="Masukkan persentase">
 								</div>
 							</div>
-							<div class="search-4">
-							</div>
+
+							<div class="search-4"></div>
+
 							<div class="search-4">
 								<div class="input-group">
-									<button class="btn-submit m-b-0 mt40" type="submit">search</button>
+									<button class="btn-submit m-b-0 mt40" type="submit">Search</button>
 								</div>
 							</div>
 						</div>
@@ -259,7 +246,7 @@
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-	</script> --}}
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 	</script>

@@ -39,15 +39,6 @@
 							value="{{ old('full_name') }}" placeholder="Masukan nama">
 					</div>
 				</div>
-				{{-- <div class="row">
-                    <div class="col-25">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="email" id="email" name="email" value="{{ old('email') }}"
-                            placeholder="Masukan email" class="{{ $errors->has('email') ? 'form-error' : '' }}">
-                    </div>
-                </div> --}}
 				<div class="row">
 					<div class="col-25">
 						<label for="phone">Nomor HP</label>

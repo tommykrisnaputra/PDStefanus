@@ -106,8 +106,6 @@
 				</div>
 			</div>
 
-			{{--  --}}
-
 			<ul class="responsive-table">
 				<li class="table-header">
 					<div class="col table-2">Nama Umat</div>
@@ -116,7 +114,6 @@
 					<div class="col table-2">Pertama Datang</div>
 					<div class="col table-2">Total Kehadiran</div>
 					<div class="col table-2">Persentase Kehadiran</div>
-					{{-- <div class="col table-2"></div> --}}
 				</li>
 
 				@foreach ($attendance as $key => $data)

@@ -143,60 +143,6 @@
 						</select>
 					</div>
 				</div>
-				{{-- <div class="row">
-                    <div class="col-25">
-                        <label for="first_attendance">Pertama Datang</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="date" id="first_attendance" name="first_attendance"
-                            value="{{ date('Y-m-d', strtotime(old('first_attendance', $users->first_attendance ?? ''))) }}"
-                            placeholder="Masukan tanggal kedatangan pertama kali"
-                            class="{{ $errors->has('first_attendance') ? 'form-error' : '' }}">
-                    </div>
-                </div> --}}
-				{{-- <div class="row">
-                    <div class="col-25">
-                        <label for="last_attendance">Terakhir Datang</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="date" id="last_attendance" name="last_attendance"
-                            value="{{ date('Y-m-d', strtotime(old('last_attendance', $users->last_attendance ?? ''))) }}"
-                            placeholder="Masukan tanggal kedatangan terakhir"
-                            class="{{ $errors->has('last_attendance') ? 'form-error' : '' }}">
-                    </div>
-                </div> --}}
-				{{-- <div class="row">
-                    <div class="col-25">
-                        <label for="total_attendance">Total Kedatangan</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="total_attendance" name="total_attendance"
-                            value="{{ old('total_attendance', $users->total_attendance ?? '') }}"
-                            placeholder="Masukan total kedatangan"
-                            class="{{ $errors->has('total_attendance') ? 'form-error' : '' }}">
-                    </div>
-                </div> --}}
-				{{-- <div class="row">
-                    <div class="col-25">
-                        <label for="attendance_percentage">Persentase Kedatangan</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="attendance_percentage" name="attendance_percentage"
-                            value="{{ old('attendance_percentage', $users->attendance_percentage ?? '') }}"
-                            placeholder="Masukan persentase kedatangan"
-                            class="{{ $errors->has('attendance_percentage') ? 'form-error' : '' }}">
-                    </div>
-                </div> --}}
-				{{-- <div class="row">
-                    <div class="col-25">
-                        <label for="description">Deskripsi</label>
-                    </div>
-                    <div class="col-75">
-                        <textarea id="description" name="description" style="height:200px"
-                            value="{{ old('description', $users->description ?? '') }}"></textarea>
-                    </div>
-                </div> --}}
-
 				<div class="row submit-button-container">
 					<input class="submit-button" type="submit" value="Submit">
 				</div>

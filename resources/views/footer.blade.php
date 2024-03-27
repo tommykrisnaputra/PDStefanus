@@ -28,6 +28,5 @@
 				</a>
 			</div>
 		</div>
-		{{-- test --}}
 	</div>
 </div>

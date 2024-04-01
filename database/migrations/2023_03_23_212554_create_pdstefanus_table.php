@@ -265,6 +265,14 @@ return new class extends Migration {
             $table->timestamps();
             });
 
+        Schema::create('parameters', function (Blueprint $table) {
+            $table->integer('id', TRUE);
+            $table->string('name');
+            $table->string('value');
+            $table->timestamp('date');
+            $table->string('description');
+            });
+
         Schema::create('aba', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->index('user_id');
@@ -419,6 +427,21 @@ return new class extends Migration {
                 'links'        => 'https://pdstefanusgrogol.com/',
                 'description'  => 'PD Stefanus di adakan setiap hari kamis malam pukul 19.00 WIB',
                 'order_number' => 4,
+            ],
+        ]);
+
+        DB::table('parameters')->insert([
+            [
+                'name'        => 'ABA Start',
+                'value'       => '',
+                'date'        => now(),
+                'description' => 'Perhitungan ABA awal',
+            ],
+            [
+                'name'        => 'ABA End',
+                'value'       => '',
+                'date'        => now(),
+                'description' => 'Tanggal hari ini',
             ],
         ]);
         }

@@ -7,6 +7,8 @@
 @section('css')
 	@parent
 	<link href="{{ asset('css/events/index.css') }}" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 @endsection
 
 @section('navbar')
@@ -15,16 +17,15 @@
 
 @section('content')
 	<div class="home-main" id="main-section">
-		<div class="">
-			<div class="search-main-container">
-				<div class="buttons">
-					<a href="{{ route('temapd.add') }}">
-						<button class="action-button">
-							<span>Tambah Tema PD</span>
-						</button>
-					</a>
-				</div>
+		<div class="container">
+			<div class="row justify-content-end links-container">
+				<a class="col-auto" href="{{ route('temapd.add') }}">
+					<button class="action-button">
+						<span>Tambah Tema PD</span>
+					</button>
+				</a>
 			</div>
+			
 			<ul class="responsive-table">
 				<li class="table-header">
 					<div class="col col-4">Nama</div>

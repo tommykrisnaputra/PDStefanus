@@ -18,8 +18,8 @@
 @section('content')
 	<div class="home-main" id="main-section">
 		<div class="container">
-			<div class="mb20 row justify-content-end links-container">
-				<form class="col col-12 col-sm-6 col-md-4 col-lg-3" method="post" action={{ route('users.export') }}>
+			<div class="row justify-content-end">
+				<form class="col-auto" method="post" action={{ route('users.export') }}>
 					@csrf
 					<button class="action-button" data-toggle="collapse" data-target="#collapseExample" type="button"
 						aria-expanded="false" aria-controls="collapseExample">
@@ -31,48 +31,45 @@
 					<input name="day_to" type="hidden" value="{{ $data->day_to }}"> --}}
 				</form>
 
-				<a class="col col-12 col-sm-6 col-md-3 col-lg-2" href="{{ route('aba.forgot') }}">
+				<a class="col-auto" href="{{ route('aba.forgot') }}">
 					<button class="action-button">
 						<span>Lupa Lapor</span>
 					</button>
 				</a>
 
-				<a class="col col-12 col-sm-6 col-md-3 col-lg-3" href="{{ route('aba.add') }}">
+				<a class="col-auto" href="{{ route('aba.add') }}">
 					<button class="action-button">
 						<span>Tambah ABA</span>
 					</button>
 				</a>
 			</div>
 
-			<div class="card card-6 mb20 collapse" id="collapseExample">
-				<div class="card-body">
-					<form method="POST" action={{ route('users.search') }}>
-						@csrf
-						<div class="row row-space">
-							<div class="col col-md-3">
-								<label class="label">Nama Umat</label>
-								<input class="input--style-1" name="full_name" type="text" {{-- value="{{ $data->$field ?? null }}"  --}} placeholder="Masukkan nama">
-							</div>
-
-							<div class="col col-md-3">
-								<label class="label">Tanggal (from)</label>
-								<input class="input--style-1" id="fa_from" name="fa_from" type="date" {{-- value="{{ $data->fa_from ?? null }}"  --}}
-									placeholder="DD MMM YYYY">
-							</div>
-
-							<div class="col col-md-3">
-								<label class="label">Tanggal (to)</label>
-								<input class="input--style-1" id="fa_to" name="fa_to" type="date" {{-- value="{{ $data->fa_to ?? null }}"  --}}
-									placeholder="DD MMM YYYY">
-							</div>
-
-							<div class="col col-md-3">
-								<label class="label"></label>
-								<button class="btn-submit" type="submit">Search</button>
-							</div>
+			<div class="card card-6 collapse" id="collapseExample">
+				<form class="card-body" method="POST" action={{ route('users.search') }}>
+					@csrf
+					<div class="row row-space search-input justify-content-end">
+						<div class="col-auto">
+							<label class="label">Nama</label>
+							<input class="input--style-1" name="full_name" type="text" {{-- value="{{ $data->$field ?? null }}"  --}} placeholder="Masukkan nama">
 						</div>
-					</form>
-				</div>
+
+						<div class="col-auto">
+							<label class="label">Tanggal (from)</label>
+							<input class="input--style-1" id="fa_from" name="fa_from" type="date" {{-- value="{{ $data->fa_from ?? null }}"  --}}
+								placeholder="DD MMM YYYY">
+						</div>
+
+						<div class="col-auto">
+							<label class="label">Tanggal (to)</label>
+							<input class="input--style-1" id="fa_to" name="fa_to" type="date" {{-- value="{{ $data->fa_to ?? null }}"  --}}
+								placeholder="DD MMM YYYY">
+						</div>
+
+						<div class="col-auto">
+							<button class="btn-submit" type="submit">Search</button>
+						</div>
+					</div>
+				</form>
 			</div>
 
 			<ul class="responsive-table">

@@ -18,15 +18,14 @@
 @section('content')
 	<div class="home-main" id="main-section">
 		<div class="container">
-			<div class="search-main-container">
-				<div class="buttons">
-					<a href="{{ route('team-events.add') }}">
-						<button class="action-button">
-							<span>Tambah Kegiatan</span>
-						</button>
-					</a>
-				</div>
+			<div class="row justify-content-end links-container">
+				<a class="col-auto" href="{{ route('team-events.add') }}">
+					<button class="action-button">
+						<span>Tambah Kegiatan</span>
+					</button>
+				</a>
 			</div>
+
 			<ul class="responsive-table">
 				<li class="table-header">
 					<div class="col table-3">Nama</div>

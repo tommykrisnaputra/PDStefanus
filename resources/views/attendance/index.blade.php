@@ -18,13 +18,9 @@
 @section('content')
 	<div class="home-main" id="main-section">
 		<div class="container">
-			<form method="post" action={{ route('attendance.export') }}>
-				@csrf
-				<div class="search-button mb20 btn-group">
-					<button class="btn btn-primary col col-md-3" data-toggle="collapse" data-target="#collapseExample" type="button"
-						aria-expanded="false" aria-controls="collapseExample">
-						Advanced Search
-					</button>
+			<div class="row justify-content-end links-container">
+				<form class="col-auto" method="post" action={{ route('attendance.export') }}>
+					@csrf
 
 					<input name="date_from" type="hidden" value="{{ $data->date_from }}">
 					<input name="date_to" type="hidden" value="{{ $data->date_to }}">
@@ -34,11 +30,17 @@
 					<input name="phone" type="hidden" value="{{ $data->phone }}">
 					<input name="wilayah" type="hidden" value="{{ $data->wilayah }}">
 
-					<button class="btn btn-info col col-md-3" name="action" type="submit" value="download">
+					<button class="action-button" name="action" type="submit" value="download">
 						Download Excel
 					</button>
-				</div>
-			</form>
+
+					<button class="action-button" data-toggle="collapse" data-target="#collapseExample" type="button"
+						aria-expanded="false" aria-controls="collapseExample">
+						Advanced Search
+					</button>
+				</form>
+			</div>
+
 			<div class="card card-6 search-main-container mb20 collapse" id="collapseExample">
 				<div class="card-body">
 					<form method="POST" action={{ route('attendance.index') }}>
@@ -62,15 +64,15 @@
 							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Pertama Datang (from)</label>
-									<input class="input--style-1" id="fa_from" name="fa_from" type="date" value="{{ $data->fa_from ?? null }}"
-										placeholder="DD MMM YYYY">
+									<input class="input--style-1" id="fa_from" name="fa_from" type="date"
+										value="{{ $data->fa_from ?? null }}" placeholder="DD MMM YYYY">
 								</div>
 							</div>
 							<div class="search-4">
 								<div class="input-group">
 									<label class="label">Pertama Datang (to)</label>
-									<input class="input--style-1" id="fa_to" name="fa_to" type="date" value="{{ $data->fa_to ?? null }}"
-										placeholder="DD MMM YYYY">
+									<input class="input--style-1" id="fa_to" name="fa_to" type="date"
+										value="{{ $data->fa_to ?? null }}" placeholder="DD MMM YYYY">
 								</div>
 							</div>
 						</div>

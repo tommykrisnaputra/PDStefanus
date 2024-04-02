@@ -119,20 +119,6 @@ fieldset, legend {
     width: 200px;
 }
 
-.search-container:hover>.search-input {
-    width: 150px;
-}
-
-.search-container .search-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    width: 0px;
-    font-weight: 500;
-    font-size: 16px;
-    transition: 0.8s;
-}
-
 .search-container .search-btn .fas {
     color: #5cbdbb;
 }
@@ -232,9 +218,11 @@ fieldset, legend {
     display: table;
 }
 
-.links-container {}
-
 .links-container a, form {
+    margin-bottom: 15px;
+}
+
+.input-container div {
     margin-bottom: 15px;
 }
 

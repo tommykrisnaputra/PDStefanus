@@ -105,6 +105,30 @@
   }
 }
 
+.action-button {
+  color: black;
+  border: none;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-doubleunit);
+  border-radius: 50px;
+  padding-right: var(--dl-space-space-doubleunit);
+  padding-bottom: var(--dl-space-space-halfunit);
+  background-color: #FFCEFE;
+  font-size: 14px;
+}
+
+.action-button:hover {
+  background-color: #D9ACF5;
+}
+
+.links-container a, form {
+  margin-bottom: 15px;
+}
+
+.input-container div {
+  margin-bottom: 15px;
+}
+
 /* ==========================================================================
    #BOX-SIZING
    ========================================================================== */
@@ -1016,6 +1040,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 10px;
   background: transparent;
   position: relative;
+  margin-bottom: 20px;
 }
 
 .card-6:before {

@@ -17,13 +17,9 @@
 @section('content')
 	<div class="home-main" id="main-section">
 		<div class="container">
-			<form method="post" action={{ route('users.export') }}>
-				@csrf
-				<div class="search-button mb20 btn-group">
-					<button class="btn btn-primary col col-md-3" data-toggle="collapse" data-target="#collapseExample" type="button"
-						aria-expanded="false" aria-controls="collapseExample">
-						Advanced Search
-					</button>
+			<div class="row justify-content-end links-container">
+				<form class="col-auto" method="post" action={{ route('users.export') }}>
+					@csrf
 
 					<input name="full_name" type="hidden" value="{{ $data->full_name }}">
 					<input name="phone" type="hidden" value="{{ $data->phone }}">
@@ -40,11 +36,17 @@
 					<input name="total_op" type="hidden" value="{{ $data->total_op }}">
 					<input name="percentage_op" type="hidden" value="{{ $data->percentage_op }}">
 
-					<button class="btn btn-info col col-md-3" type="submit">
+					<button class="action-button" name="action" type="submit" value="download">
 						Download Excel
 					</button>
-				</div>
-			</form>
+
+					<button class="action-button" data-toggle="collapse" data-target="#collapseExample" type="button"
+						aria-expanded="false" aria-controls="collapseExample">
+						Advanced Search
+					</button>
+				</form>
+			</div>
+
 			<div class="card card-6 search-main-container mb20 collapse" id="collapseExample">
 				<div class="card-body">
 					<form method="POST" action={{ route('users.search') }}>

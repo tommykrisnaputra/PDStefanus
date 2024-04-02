@@ -18,7 +18,7 @@
 @section('content')
 	<div class="home-main" id="main-section">
 		<div class="container">
-			<div class="row justify-content-end">
+			<div class="row justify-content-end links-container">
 				<form class="col-auto" method="post" action={{ route('users.export') }}>
 					@csrf
 					<button class="action-button" data-toggle="collapse" data-target="#collapseExample" type="button"
@@ -47,7 +47,7 @@
 			<div class="card card-6 collapse" id="collapseExample">
 				<form class="card-body" method="POST" action={{ route('users.search') }}>
 					@csrf
-					<div class="row row-space search-input justify-content-end">
+					<div class="row row-space input-container justify-content-end">
 						<div class="col-auto">
 							<label class="label">Nama</label>
 							<input class="input--style-1" name="full_name" type="text" {{-- value="{{ $data->$field ?? null }}"  --}} placeholder="Masukkan nama">
@@ -77,14 +77,14 @@
 					<div class="col col-4">Nama</div>
 					<div class="col col-4">Tanggal</div>
 					<div class="col col-4">Ayat</div>
-					<div class="col col-4"></div>
+					<div class="col col-1"></div>
 				</li>
 				@foreach ($aba as $data)
 					<li class="table-row">
 						<div class="col col-4" data-label="Nama">{{ $data->name }}</div>
 						<div class="col col-4" data-label="Tanggal">{{ $data->date->format('d M Y') }}</div>
 						<div class="col col-4" data-label="Ayat">{{ $data->verses }}</div>
-						<div class="col col-4" data-label="Action">
+						<div class="col col-1" data-label="Action">
 							<a class="solid-button-container" href="{{ url("aba/edit/$data->id") }}">
 								<button class="solid-button-button button Button">Edit</button>
 							</a>

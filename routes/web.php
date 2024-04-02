@@ -118,7 +118,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/aba/create', [AbaController::class, 'create'])->name('aba.create');
         Route::get('/aba/edit/{id}', [AbaController::class, 'edit'])->name('aba.edit');
         Route::post('/aba/update/{id}', [AbaController::class, 'update'])->name('aba.update');
-        Route::post('/aba/search', [AbaController::class, 'search'])
+        Route::post('/aba', [AbaController::class, 'index'])
             ->name('aba.search')
             ->middleware(['NullToBlank']);
 

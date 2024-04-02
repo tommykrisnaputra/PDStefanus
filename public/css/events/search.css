@@ -45,6 +45,95 @@
   word-wrap: break-word;
 }
 
+.row-space {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.row-refine {
+  margin: 0 -15px;
+}
+
+.col-2 {
+  width: -webkit-calc((100% - 20px) / 2);
+  width: -moz-calc((100% - 20px) / 2);
+  width: calc((100% - 20px) / 2);
+}
+
+.search-4 {
+  width: -webkit-calc((100% - 80px) / 4);
+  width: -moz-calc((100% - 80px) / 4);
+  width: calc((100% - 80px) / 4);
+}
+
+.search-op {
+  width: -webkit-calc((100% - 80px) / 4);
+  width: -moz-calc((100% - 80px) / 4);
+  width: calc((100% - 80px) / 4);
+  display: flex;
+}
+
+.col-6 {
+  width: -webkit-calc((100% - 120px) / 6);
+  width: -moz-calc((100% - 120px) / 6);
+  width: calc((100% - 120px) / 6);
+}
+
+.col-12 {
+  width: -webkit-calc((100% - 240px) / 12);
+  width: -moz-calc((100% - 240px) / 12);
+  width: calc((100% - 240px) / 12);
+}
+
+.operator {
+  margin-right: 20px;
+}
+
+@media (max-width: 991px) {
+  .col-2 {
+    width: 100%;
+  }
+
+  .search-4 {
+    width: 100%;
+  }
+
+  .search-op {
+    width: 100%;
+  }
+}
+
+.action-button {
+  color: black;
+  border: none;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-doubleunit);
+  border-radius: 50px;
+  padding-right: var(--dl-space-space-doubleunit);
+  padding-bottom: var(--dl-space-space-halfunit);
+  background-color: #FFCEFE;
+  font-size: 14px;
+}
+
+.action-button:hover {
+  background-color: #D9ACF5;
+}
+
+.links-container a, form {
+  margin-bottom: 15px;
+}
+
+.input-container div {
+  margin-bottom: 15px;
+}
+
 /* ==========================================================================
    #BOX-SIZING
    ========================================================================== */
@@ -67,6 +156,23 @@ html {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
+}
+
+/* ==========================================================================
+   #RESET
+   ========================================================================== */
+/**
+ * A very simple reset that sits on top of Normalize.css.
+ */
+body,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, dd, ol, ul,
+figure,
+hr,
+fieldset, legend {
+  margin: 0;
+  padding: 0;
 }
 
 /**
@@ -300,6 +406,8 @@ a:active {
 .btn-submit {
   display: block;
   width: 100%;
+  /* line-height: 60px; */
+  /* line-height: 32px; */
   font-family: inherit;
   background: #ff4b5a;
   -webkit-border-radius: 10px;
@@ -307,21 +415,39 @@ a:active {
   border-radius: 10px;
   text-transform: uppercase;
   color: #fff;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 700;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .mt40 {
   margin-top: 40px;
 }
 
+@media (max-width: 991px) {
+  .btn-submit {
+    margin-top: 15px;
+  }
+}
+
 .btn-submit:hover {
   background: #eb3746;
+}
+
+.m-t-0 {
+  margin-top: 0;
+}
+
+.m-t-15 {
+  margin-top: 15px;
+}
+
+.m-t-35 {
+  margin-top: 35px;
 }
 
 /* ==========================================================================
@@ -640,13 +766,16 @@ button {
 .label {
   font-size: 12px;
   color: #fff;
+  padding-left: 8px;
   text-transform: capitalize;
+  display: block;
   font-weight: 700;
   margin-bottom: 12px;
+  margin-right: 20px;
 }
 
 .input--style-1 {
-  font-size: 12px;
+  font-size: 13px;
   padding: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -654,6 +783,35 @@ button {
   color: #666;
   background: #fff;
   font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+}
+
+.input--style-2 {
+  padding: 6px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #666;
+  background: #fff;
+  font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+  margin-right: auto;
+  max-width: 70%;
+}
+
+.input--style-3 {
+  font-size: 13px;
+  padding: 12px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #666;
+  background: #fff;
+  font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+  margin-right: auto;
+  max-width: 50%;
+}
+
+.operator {
+  margin-right: 12px;
 }
 
 .input--style-1::-webkit-input-placeholder {
@@ -909,7 +1067,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .card-6 .card-body {
-  padding: 20px;
+  padding: 30px;
 }
 
 @media (max-width: 991px) {

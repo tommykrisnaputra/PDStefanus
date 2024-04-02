@@ -10,13 +10,27 @@ use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 
 class AbaController extends Controller {
-    public function index() {
-        $aba = Aba::join('users', 'users.id', 'aba.user_id')
-            ->select('aba.*', 'users.full_name as name')
+    public function index(Request $request) {
+        $query = Aba::join('users', 'users.id', 'aba.user_id')
+            ->select('aba.*', 'users.full_name as name', 'users.last_aba')
             ->orderBy('users.last_aba', 'desc')
-            ->whereDate('aba.created_at', Carbon::today())
-            ->paginate(10)->withQueryString();
-        return view('aba.index', ['aba' => $aba]);
+            ->when($request->filled('date_from'), function ($q) use ($request) {
+                return $q->whereDate('aba.date', '>=', $request['date_from']);
+                }, function ($q) {
+                    return $q->whereDate('aba.date', '>=', Carbon::now());
+                    })
+            ->when($request->filled('date_to'), function ($q) use ($request) {
+                return $q->whereDate('aba.date', '<=', $request['date_to']);
+                }, function ($q) {
+                    return $q->whereDate('aba.date', '<=', Carbon::now());
+                    })
+            ->when($request->filled('full_name'), function ($q) use ($request) {
+                return $q->where('users.full_name', 'like', '%' . $request['full_name'] . '%');
+                });
+
+        $results = $query->paginate(10)->withQueryString();
+
+        return view('aba.index', ['aba' => $results, 'data' => $request]);
         }
 
     public function add() {
@@ -98,7 +112,6 @@ class AbaController extends Controller {
             return redirect()->route('aba.show');
             }
         }
-
 
     public function delete($id) {
         Aba::find($id)->delete();

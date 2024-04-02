@@ -5,7 +5,7 @@
 @section('css')
 	@parent
 	<link href="{{ asset('css/events/index.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/events/search.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/attendance/search.css') }}" rel="stylesheet">
 	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
@@ -19,17 +19,13 @@
 	<div class="home-main" id="main-section">
 		<div class="container">
 			<div class="row justify-content-end links-container">
-				<form class="col-auto" method="post" action={{ route('users.export') }}>
+				<div class="mb20 col-auto">
 					@csrf
-					<button class="action-button" data-toggle="collapse" data-target="#collapseExample" type="button"
+					<button class="action-button col-auto" data-toggle="collapse" data-target="#collapseExample" type="button"
 						aria-expanded="false" aria-controls="collapseExample">
 						Advanced Search
 					</button>
-
-					{{-- <input name="full_name" type="hidden" value="{{ $data->full_name }}">
-					<input name="day_from" type="hidden" value="{{ $data->day_from }}">
-					<input name="day_to" type="hidden" value="{{ $data->day_to }}"> --}}
-				</form>
+				</div>
 
 				<a class="col-auto" href="{{ route('aba.forgot') }}">
 					<button class="action-button">
@@ -45,31 +41,42 @@
 			</div>
 
 			<div class="card card-6 collapse" id="collapseExample">
-				<form class="card-body" method="POST" action={{ route('users.search') }}>
-					@csrf
-					<div class="row row-space input-container justify-content-end">
-						<div class="col-auto">
-							<label class="label">Nama</label>
-							<input class="input--style-1" name="full_name" type="text" {{-- value="{{ $data->$field ?? null }}"  --}} placeholder="Masukkan nama">
-						</div>
+				<div class="card-body">
+					<form method="POST" action={{ route('aba.search') }}>
+						@csrf
+						<div class="row row-space">
+							<div class="search-4">
+								<div class="input-group">
+									<label class="label">Nama</label>
+									<input class="input--style-1" id="full_name" name="full_name" type="text"
+										value="{{ $data->full_name ?? null }}" placeholder="Masukkan nama">
+								</div>
+							</div>
 
-						<div class="col-auto">
-							<label class="label">Tanggal (from)</label>
-							<input class="input--style-1" id="fa_from" name="fa_from" type="date" {{-- value="{{ $data->fa_from ?? null }}"  --}}
-								placeholder="DD MMM YYYY">
-						</div>
+							<div class="search-4">
+								<div class="input-group">
+									<label class="label">Tanggal (from)</label>
+									<input class="input--style-1" id="date_from" name="date_from" type="date"
+										value="{{ $data->date_from ?? date('Y-m-d') }}">
+								</div>
+							</div>
 
-						<div class="col-auto">
-							<label class="label">Tanggal (to)</label>
-							<input class="input--style-1" id="fa_to" name="fa_to" type="date" {{-- value="{{ $data->fa_to ?? null }}"  --}}
-								placeholder="DD MMM YYYY">
-						</div>
+							<div class="search-4">
+								<div class="input-group">
+									<label class="label">Tanggal (to)</label>
+									<input class="input--style-1" id="date_to" name="date_to" type="date"
+										value="{{ $data->date_to ?? date('Y-m-d') }}">
+								</div>
+							</div>
 
-						<div class="col-auto">
-							<button class="btn-submit" type="submit">Search</button>
+							<div class="search-4">
+								<div class="input-group">
+									<button class="btn-submit m-b-0" type="submit">Search</button>
+								</div>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 
 			<ul class="responsive-table">

@@ -401,8 +401,6 @@ a:active {
 .btn-submit {
   display: block;
   width: 100%;
-  /* line-height: 60px; */
-  /* line-height: 32px; */
   font-family: inherit;
   background: #ff4b5a;
   -webkit-border-radius: 10px;
@@ -410,13 +408,13 @@ a:active {
   border-radius: 10px;
   text-transform: uppercase;
   color: #fff;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 700;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .mt40 {
@@ -770,7 +768,7 @@ button {
 }
 
 .input--style-1 {
-  font-size: 13px;
+  font-size: 12px;
   padding: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -1062,12 +1060,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .card-6 .card-body {
-  padding: 30px;
+  padding: 20px;
 }
 
 @media (max-width: 991px) {
   .card-6 .card-body {
-    padding: 40px 30px;
-    padding-bottom: 20px;
+    padding: 20px;
   }
 }

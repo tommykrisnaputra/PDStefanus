@@ -176,6 +176,7 @@ return new class extends Migration {
             $table->string('email');
             $table->mediumText('description')->nullable();
             $table->string('gender')->nullable();
+            $table->timestamp('last_aba');
             $table->timestamp('first_attendance');
             $table->timestamp('last_attendance')->nullable();
             $table->decimal('total_attendance', 10, 0)->nullable();

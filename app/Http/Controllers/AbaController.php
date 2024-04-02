@@ -13,7 +13,7 @@ class AbaController extends Controller {
     public function index() {
         $aba = Aba::join('users', 'users.id', 'aba.user_id')
             ->select('aba.*', 'users.full_name as name')
-            ->orderBy('aba.created_at', 'desc')
+            ->orderBy('users.last_aba', 'desc')
             ->whereDate('aba.created_at', Carbon::today())
             ->paginate(10)->withQueryString();
         return view('aba.index', ['aba' => $aba]);

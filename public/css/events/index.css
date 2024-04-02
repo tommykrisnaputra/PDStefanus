@@ -218,7 +218,7 @@
 .links-container {
 }
 
-.links-container a {
+.links-container a, form {
     margin-bottom: 15px;
 }
 

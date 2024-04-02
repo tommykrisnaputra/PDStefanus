@@ -16,14 +16,22 @@
 @section('content')
 	<div class="home-main" id="main-section">
 		<div class="container">
-			<div class="search-main-container">
-				<div class="buttons">
-					<a href="{{ route('aba.add') }}">
-						<button class="action-button">
-							<span>Tambah ABA</span>
-						</button>
-					</a>
-				</div>
+			<div class="row justify-content-end links-container">
+				<a class="col col-6 col-sm-3 col-md-3" href="{{ route('aba.forgot') }}">
+					<button class="action-button">
+						<span>Lupa Lapor</span>
+					</button>
+				</a>
+				<a class="col col-6 col-sm-3 col-md-3" href="{{ route('aba.add') }}">
+					<button class="action-button">
+						<span>Tambah ABA</span>
+					</button>
+				</a>
+				<a class="col col-6 col-sm-3 col-md-3" href="{{ route('aba.add') }}">
+					<button class="action-button">
+						<span>Advanced Search</span>
+					</button>
+				</a>
 			</div>
 			<ul class="responsive-table">
 				<li class="table-header">

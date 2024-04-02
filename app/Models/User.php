@@ -62,6 +62,7 @@ class User extends Authenticatable {
         'last_attendance'       => 'date',
         'total_attendance'      => 'float',
         'attendance_percentage' => 'float',
+        'last_aba'              => 'date',
         'created_at'            => 'date',
         'created_by'            => 'int',
         'updated_at'            => 'date',
@@ -70,7 +71,7 @@ class User extends Authenticatable {
 
     protected $hidden = ['password', 'remember_token'];
 
-    protected $fillable = ['role_id', 'full_name', 'birthdate', 'address', 'wilayah', 'paroki', 'social_instagram', 'social_tiktok', 'phone', 'image', 'email', 'description', 'gender', 'first_attendance', 'last_attendance', 'total_attendance', 'attendance_percentage', 'password', 'active', 'remember_token', 'created_by', 'udpated_by'];
+    protected $fillable = ['role_id', 'full_name', 'birthdate', 'address', 'wilayah', 'paroki', 'social_instagram', 'social_tiktok', 'phone', 'image', 'email', 'description', 'gender', 'first_attendance', 'last_attendance', 'total_attendance', 'attendance_percentage', 'password', 'active', 'last_aba', 'remember_token', 'created_by', 'udpated_by'];
 
     /**
      * Always encrypt the password when it is updated.

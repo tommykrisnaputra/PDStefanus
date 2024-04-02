@@ -210,9 +210,16 @@
 }
 
 .search-main-container {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-left: auto;
     display: table;
+}
+
+.links-container {
+}
+
+.links-container a {
+    margin-bottom: 15px;
 }
 
 .search-info {

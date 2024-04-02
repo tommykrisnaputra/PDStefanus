@@ -36,6 +36,7 @@ class TeamEventsController extends Controller {
                 ->withInput()
                 ->withErrors($validator);
             } else {
+
             $events = TeamEvents::firstOrCreate([
                 'title'       => $request->title,
                 'date'        => $request->date,
@@ -44,18 +45,20 @@ class TeamEventsController extends Controller {
             ]);
 
             $total_team = User::whereIn('role_id', [2, 3])->where('users.id', '<>', '1')->get();
-            foreach ($total_team as $team) {
-                $data[] = array(
-                    'user_id'       => $team->id,
-                    'team_event_id' => $events->id,
-                    'date'          => $events->date,
-                    'description'   => NULL,
-                    'active'        => FALSE,
-                    'created_by'    => '1'
-                );
-                }
 
-            TeamAttendance::insert($data);
+            if ($total_team->count()) {
+                foreach ($total_team as $team) {
+                    $data[] = array(
+                        'user_id'       => $team->id,
+                        'team_event_id' => $events->id,
+                        'date'          => $events->date,
+                        'active'        => FALSE,
+                        'created_by'    => '1'
+                    );
+                    }
+
+                TeamAttendance::insert($data);
+                }
 
             return redirect()->route('team-events.show');
             }

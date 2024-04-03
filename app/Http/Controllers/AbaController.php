@@ -40,7 +40,7 @@ class AbaController extends Controller {
     public function forgot() {
         $users = User::whereIn('role_id', [2, 3])
             ->where('users.id', '<>', '1')
-            ->get();
+            ->paginate(10)->withQueryString();
 
         return view('aba.forgot', compact('users'));
         }

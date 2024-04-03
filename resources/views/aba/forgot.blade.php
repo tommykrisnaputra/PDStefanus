@@ -34,6 +34,7 @@
 						</li>
 					@endif
 				@endforeach
+				{{ $users->appends($_POST)->links() }}
 			</ul>
 		</div>
 	</div>

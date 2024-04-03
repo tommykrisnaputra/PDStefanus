@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-	<div class="home-main" id="main-section">
+	<div class="users-main" id="main-section">
 		<div class="container">
 			<div class="row justify-content-end links-container">
 				<form class="col-auto" method="post" action={{ route('users.export') }}>
@@ -205,7 +205,7 @@
 					<div class="col table-2">Tanggal Lahir</div>
 					<div class="col table-2">Wilayah</div>
 					<div class="col table-1">Nomor HP</div>
-					<div class="col table-1">Instagram</div>
+					<div class="col table-2">Instagram</div>
 					<div class="col table-1">Terakhir Datang</div>
 					<div class="col table-1">Persentase Kedatangan</div>
 					<div class="col table-1"></div>
@@ -221,13 +221,13 @@
 								{{ $data->phone ?? null }}
 							</a>
 						</div>
-						<div class="col table-1" data-label="Instagram">
+						<div class="col table-2" data-label="Instagram">
 							<a href="https://www.instagram.com/{{ $data->social_instagram }}">
 								{{ $data->social_instagram ?? null }}
 							</a>
 						</div>
 						<div class="col table-1" data-label="Terakhir Datang">
-							{{ Carbon\Carbon::parse($data->last_attendance)->format('d M Y') ?? null }}</div>
+							{{ Carbon\Carbon::parse($data->last_attendance)->format('d M') ?? null }}</div>
 						<div class="col table-1" data-label="Persentase Kehadiran">
 							{{ $data->attendance_percentage ?? null }}%
 						</div>

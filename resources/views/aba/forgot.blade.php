@@ -25,14 +25,12 @@
 				</li>
 				@foreach ($users as $data)
 					<?php $days_count = Carbon\Carbon::parse($data->last_aba)->diffInDays($now); ?>
-					@if ($days_count > 0)
-						<li class="table-row">
-							<div class="col col-4" data-label="Nama">{{ $data->full_name }}</div>
-							<div class="col col-4" data-label="Tanggal Terakhir Lapor">
-								{{ $data->last_aba ? $data->last_aba->format('d M Y') : '' }}</div>
-							<div class="col col-4" data-label="Total Hari">{{ $days_count }}</div>
-						</li>
-					@endif
+					<li class="table-row">
+						<div class="col col-4" data-label="Nama">{{ $data->full_name }}</div>
+						<div class="col col-4" data-label="Tanggal Terakhir Lapor">
+							{{ $data->last_aba ? $data->last_aba->format('d M Y') : '' }}</div>
+						<div class="col col-4" data-label="Total Hari">{{ $days_count }}</div>
+					</li>
 				@endforeach
 				{{ $users->appends($_POST)->links() }}
 			</ul>

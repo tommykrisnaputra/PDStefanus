@@ -106,8 +106,12 @@ class AbaController extends Controller {
                 'updated_by'  => Auth::id(),
             ]);
 
-            User::find($aba_user)->update([
-                'last_aba' => $request->date,
+            $user = User::find($aba_user);
+
+            $aba_date = $user->last_aba < $request->date ? $request->date : $user->last_aba;
+
+            $user->update([
+                'last_aba' => $aba_date,
             ]);
 
             return redirect()->route('aba.show');

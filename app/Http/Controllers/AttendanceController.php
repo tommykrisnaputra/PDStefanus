@@ -22,6 +22,8 @@ class AttendanceController extends Controller {
         }
 
     public function index(Request $request) {
+        $today = new Carbon();
+
         $query = Attendance::select('attendance.*', 'events.title', 'users.full_name', 'users.email', 'users.phone', 'users.paroki', 'users.address', 'users.wilayah', 'users.first_attendance', 'users.last_attendance', 'users.total_attendance', 'users.attendance_percentage')
             ->orderByDesc('date')
             ->join('users', 'users.id', '=', 'attendance.user_id')
@@ -47,6 +49,8 @@ class AttendanceController extends Controller {
             }
         if ($request->filled('date_from')) {
             $query->whereDate('attendance.date', '>=', $request['date_from']);
+            } elseif ($today->dayOfWeek == Carbon::parse('this Thursday')) {
+            $query->whereDate('attendance.date', '>=', Carbon::parse('this Thursday'));
             } else {
             $query->whereDate('attendance.date', '>=', Carbon::parse('last Thursday'));
             }

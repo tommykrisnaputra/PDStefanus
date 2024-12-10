@@ -75,7 +75,7 @@ class AttendanceController extends Controller {
                     'Alamat'                => $data_item->address,
                     'Wilayah'               => $data_item->wilayah,
                     'First Attendance'      => $data_item->first_attendance,
-                    'Last Attendance'       => $data_item->last_attendance,
+                    'Last Attendance'       => $data_item->created_at,
                     'Total Attendance'      => $data_item->total_attendance,
                     'Attendance Percentage' => $data_item->attendance_percentage,
                     'Deskripsi'             => $data_item->description

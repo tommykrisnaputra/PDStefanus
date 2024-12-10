@@ -22,7 +22,7 @@ class AttendanceController extends Controller {
         }
 
     public function index(Request $request) {
-        $query = Attendance::select('attendance.*', 'events.title', 'users.full_name', 'users.email', 'users.phone', 'users.paroki', 'users.address', 'users.wilayah', 'users.first_attendance', 'users.last_attendance', 'users.total_attendance', 'users.attendance_percentage')
+        $query = Attendance::select('attendance.*', 'attendance.created_at as last_attendance', 'events.title', 'users.full_name', 'users.email', 'users.phone', 'users.paroki', 'users.address', 'users.wilayah', 'users.first_attendance', 'users.total_attendance', 'users.attendance_percentage')
             ->orderByDesc('date')
             ->join('users', 'users.id', '=', 'attendance.user_id')
             ->join('events', 'events.id', '=', 'attendance.event_id');
@@ -75,7 +75,7 @@ class AttendanceController extends Controller {
                     'Alamat'                => $data_item->address,
                     'Wilayah'               => $data_item->wilayah,
                     'First Attendance'      => $data_item->first_attendance,
-                    'Last Attendance'       => $data_item->created_at,
+                    'Last Attendance'       => $data_item->last_attendance,
                     'Total Attendance'      => $data_item->total_attendance,
                     'Attendance Percentage' => $data_item->attendance_percentage,
                     'Deskripsi'             => $data_item->description

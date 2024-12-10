@@ -127,7 +127,8 @@
 							</a>
 						</div>
 						<div class="col table-2" data-label="Tanggal Kehadiran">
-							{{ Carbon\Carbon::parse($data->date)->format('d M Y') ?? null }}</div>
+							{{ Carbon\Carbon::parse($data->date)->format('d M Y H:i:s') ?? null }}
+						</div>
 						<div class="col table-2" data-label="Pertama Datang">
 							{{ Carbon\Carbon::parse($data->first_attendance)->format('d M Y') ?? null }}</div>
 						<div class="col table-2" data-label="Total Kehadiran">{{ $data->total_attendance ?? null }}

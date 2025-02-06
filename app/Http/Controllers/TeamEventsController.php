@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TeamEventsController extends Controller {
     public function index() {
-        $events = TeamEvents::orderBy('created_at', 'desc')->paginate(10)->withQueryString();
+        $events = TeamEvents::orderBy('created_at', 'desc')->where('active', '1')->paginate(10)->withQueryString();
         return view('team-events.index', ['events' => $events]);
         }
 

@@ -22,3 +22,5 @@ jobs:
       - name: Install dependencies
         run: |
           composer install --prefer-dist --no-interaction --no-progress --no-scripts
+      - name: Update dependencies
+        run: composer update --no-progress --no-suggest --prefer-dist

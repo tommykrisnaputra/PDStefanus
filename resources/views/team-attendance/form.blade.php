@@ -26,40 +26,44 @@
                     <div class="col table-2">Nama</div>
                     <div class="col table-2">Status</div>
                     <div class="col table-2">Deskripsi</div>
-                    <div class="col table-6">Action</div>
+                    <div class="col table-2"></div>
+                    <div class="col table-2"></div>
+                    <div class="col table-2">Action</div>
                 </li>
 
                 @foreach ($attendance as $key => $data)
-                    <li class="table-row">
-                        <div class="col table-2" data-label="Nama">{{ $data->name ?? null }}</div>
-                        <div class="col table-2" data-label="Status">
-                            @if ($data->active == '1')
-                                {{ Carbon\Carbon::parse($data->date)->format('H:i:s') ?? null }}
-                            @else
-                                Belum Hadir
-                            @endif
-                        </div>
-                        <div class="col table-2" data-label="Deskripsi">{{ $data->description ?? null }}</div>
-                        <div class="col table-2" data-label="Action">
-                            <form action="{{ route('team-attendance.update', $data->id) }}" method="POST">
-                                @csrf
-                                @method('POST')
-
-                                <!-- Description Input -->
-                                <input type="text" name="description" class="form-control" 
-                                       placeholder="Deskripsi" value="{{ $data->description ?? '' }}">
-
+                    <form action="{{ route('team-attendance.update', $data->id) }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <li class="table-row">
+                            <div class="col table-2 mt-2" data-label="Nama">{{ $data->name ?? null }}</div>
+                            <div class="col table-2 mt-2" data-label="Status">
+                                @if ($data->active == '1')
+                                    {{ Carbon\Carbon::parse($data->date)->format('H:i:s') ?? null }}
+                                @else
+                                    Belum Hadir
+                                @endif
+                            </div>
+                            <div class="col table-2 mt-2" data-label="Deskripsi">{{ $data->description ?? null }}</div>
+                            <div class="col table-2" data-label="">
                                 <!-- Attendance Dropdown -->
-                                <select name="status" class="form-control mt-2" required>
+                                <select name="status" class="form-control" required>
                                     <option value="1" {{ $data->active == '1' ? 'selected' : '' }}>Hadir</option>
                                     <option value="0" {{ $data->active == '0' ? 'selected' : '' }}>Tidak Hadir</option>
                                 </select>
+                            </div>
+                            <div class="col table-2" data-label="">
+                                <!-- Description Input -->
+                                <input type="text" name="description" class="form-control" placeholder="Deskripsi"
+                                    value="{{ $data->description ?? '' }}">
+                            </div>
 
+                            <div class="col table-2" data-label="Action">
                                 <!-- Submit Button -->
-                                <button type="submit" class="btn btn-primary mt-2">Simpan</button>
-                            </form>
-                        </div>
-                    </li>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </li>
+                    </form>
                 @endforeach
             </ul>
 

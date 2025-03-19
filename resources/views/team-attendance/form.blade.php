@@ -21,35 +21,45 @@
 				<div class="col col-md-2 col-sm-4">{{ Carbon\Carbon::parse($events->date)->format('d M Y') ?? null }}</div>
 			</div>
 
-			<div class="row">
+			<ul class="responsive-table">
+				<li class="table-header">
+					<div class="col table-2">Nama</div>
+					<div class="col table-2">Status</div>
+					<div class="col table-2">Deskripsi</div>
+					<div class="col table-6">Action</div>
+				</li>
+
 				@foreach ($attendance as $key => $data)
-					<div class="col col-12 col-lg-4 col-md-6 justify-content-md-center attendance">
-						<div class="col col-6" data-label="Nama">{{ $data->name ?? null }}</div>
-						<div class="col col-6" data-label="Action">
-							<a class="solid-button-container" href="{{ url("team-attendance/update/$data->id") }}">
-								@if ($data->active == '1')
-									<button class="solid-button-button-active Button attendance-font">
-										{{ Carbon\Carbon::parse($data->date)->format('H:i:s') ?? null }}
-									</button>
-								@else
-									<button class="solid-button-button-nonactive button Button attendance-font">Belum Hadir</button>
-								@endif
-							</a>
+					<li class="table-row">
+						<div class="col table-2" data-label="Nama">{{ $data->name ?? null }}</div>
+						<div class="col table-2" data-label="Status">
+							@if ($data->active == '1')
+								{{ Carbon\Carbon::parse($data->date)->format('H:i:s') ?? null }}
+							@else
+								Belum Hadir
+							@endif
 						</div>
-					</div>
+						<div class="col table-2" data-label="Deskripsi">{{ $data->description ?? null }}</div>
+						<div class="col table-2" data-label="Action">
+							<button class="solid-button-button-nonactive button Button attendance-font">
+								Belum Hadir
+							</button>
+							@if ($data->active == '1')
+								<button class="solid-button-button-active Button attendance-font">
+									{{ Carbon\Carbon::parse($data->date)->format('H:i:s') ?? null }}
+								</button>
+							@else
+								<button class="solid-button-button-nonactive button Button attendance-font">Belum Hadir</button>
+							@endif
+						</div>
+						</a>
+					</li>
 				@endforeach
+			</ul>
 
-				<div class="col col-12 col-lg-4 col-md-6 justify-content-md-center attendance">
-					<div class="">Hadir = {{ $present }} Belum Hadir = {{ $absent }}</div>
-				</div>
-
-				@if ($events->description)
-					<div class="col col-12 justify-content-md-center attendance">
-						<div class="col-12" data-label="Deskripsi">
-							<div class="col col-12" data-label="Deskripsi">{{ $events->description ?? null }}</div>
-						</div>
-					</div>
-				@endif
+			<div class="row justify-content-md-center event">
+				<div class="col col-md-6">Hadir = {{ $present }}</div>
+				<div class="col col-md-6">Belum Hadir = {{ $absent }}</div>
 			</div>
 		</div>
 	</div>

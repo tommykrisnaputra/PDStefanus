@@ -43,4 +43,17 @@ class TeamAttendanceController extends Controller {
 
         return redirect('/team-attendance/' . $events_id);
         }
+        
+        public function updateDescription(Request $request, $id)
+        {
+            $attendance             = TeamAttendance::findOrFail($request->id);
+            $attendance->active     = $request->input('status');
+            $events_id              = $attendance->team_event_id;
+            $attendance->description = $request->input('description');
+            $attendance->date       = now();
+            $attendance->updated_by = Auth::id();
+            $attendance->save();
+    
+            return redirect('/team-attendance/' . $events_id);            // return redirect()->back()->with('success', 'Absensi berhasil diperbarui.');
+        }
     }

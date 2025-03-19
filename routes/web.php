@@ -132,6 +132,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/team-events/update/{id}', [TeamEventsController::class, 'update'])->name('team-events.update');
         Route::get('/team-attendance/{id}', [TeamAttendanceController::class, 'index'])->name('team-attendance.index');
         Route::get('/team-attendance/update/{id}', [TeamAttendanceController::class, 'update'])->name('team-attendance.update');
+        Route::post('/team-attendance/update/{id}', [TeamAttendanceController::class, 'updateDescription'])->name('team-attendance.updateDescription');
 
         });
 

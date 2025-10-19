@@ -57,18 +57,27 @@ class TeamAttendanceController extends Controller {
 
         foreach ($attendanceIds as $id) {
             $attendance = TeamAttendance::find($id);
-            if ($attendance && $attendance->active == 0) { // only update those who are not yet present
-                $attendance->active     = 1;
-                $attendance->date       = now();
+
+            if ($attendance) {
+                if ($attendance->active == 0) {
+                    // Mark as attended
+                    $attendance->active = 1;
+                    $attendance->date   = now();
+                    } else {
+                    // Revert attendance (unset)
+                    $attendance->active = 0;
+                    $attendance->date   = NULL;
+                    }
+
                 $attendance->updated_by = Auth::id();
                 $attendance->save();
                 $updatedCount++;
                 }
             }
 
-        // Redirect back with a success message
         return redirect()->back()->with('success', "Berhasil {$updatedCount} absensi.");
         }
+
 
     public function updateDescription(Request $request, $id) {
         $attendance              = TeamAttendance::findOrFail($request->id);

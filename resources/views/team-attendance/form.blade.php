@@ -60,7 +60,7 @@
 					@endif
 
 					<div class="col-12 mt-4 text-center">
-						<button class="btn btn-primary" type="submit">Submit Selected</button>
+						<button class="btn btn-primary" type="submit">Submit</button>
 					</div>
 				</div>
 			</form>

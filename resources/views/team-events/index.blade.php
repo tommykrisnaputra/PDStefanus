@@ -29,7 +29,7 @@
 			<ul class="responsive-table">
 				<li class="table-header">
 					<div class="col col-4">Nama</div>
-					<div class="col col-4">Tanggal Kegiatan</div>
+					<div class="col col-4">Tanggal</div>
 					<div class="col col-1"></div>
 					<div class="col col-1"></div>
 				</li>

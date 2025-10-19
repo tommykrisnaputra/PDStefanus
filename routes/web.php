@@ -133,7 +133,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/team-attendance/{id}', [TeamAttendanceController::class, 'index'])->name('team-attendance.index');
         Route::get('/team-attendance/update/{id}', [TeamAttendanceController::class, 'update'])->name('team-attendance.update');
         Route::post('/team-attendance/update/{id}', [TeamAttendanceController::class, 'updateDescription'])->name('team-attendance.updateDescription');
-
+        Route::post('/team-attendance/bulk-update', [TeamAttendanceController::class, 'bulkUpdate'])
+            ->name('team-attendance.bulk-update');
         });
 
     /**

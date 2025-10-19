@@ -1,78 +1,71 @@
 @extends('master')
 
 @section('title')
-    Absensi PD
+	Absensi PD
 @endsection
 
 @section('css')
-    @parent
-    <link href="{{ asset('css/events/index.css') }}" rel="stylesheet">
+	@parent
+	<link href="{{ asset('css/events/index.css') }}" rel="stylesheet">
 @endsection
 
 @section('navbar')
-    @parent
+	@parent
 @endsection
 
 @section('content')
-    <div class="home-main" id="main-section">
-        <div class="container">
-            <div class="row justify-content-md-center event">
-                <div class="col col-md-10 col-sm-8">{{ $events->title }}</div>
-                <div class="col col-md-2 col-sm-4">{{ Carbon\Carbon::parse($events->date)->format('d M Y') ?? null }}</div>
-            </div>
+	@if (session('success'))
+		<div class="alert alert-success">
+			{{ session('success') }}
+		</div>
+	@endif
 
-            <ul class="responsive-table">
-                <li class="table-header">
-                    <div class="col table-2">Nama</div>
-                    <div class="col table-2">Status</div>
-                    <div class="col table-2">Deskripsi</div>
-                    <div class="col table-2"></div>
-                    <div class="col table-2"></div>
-                    <div class="col table-2">Action</div>
-                </li>
+	<div class="home-main" id="main-section">
+		<div class="container">
+			<div class="row justify-content-md-center event">
+				<div class="col col-md-10 col-sm-8">{{ $events->title }}</div>
+				<div class="col col-md-2 col-sm-4">{{ Carbon\Carbon::parse($events->date)->format('d M Y') ?? null }}</div>
+			</div>
 
-                @foreach ($attendance as $key => $data)
-                    <form action="{{ route('team-attendance.update', $data->id) }}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <li class="table-row">
-                            <div class="col table-2 mt-2" data-label="Nama">{{ $data->name ?? null }}</div>
-                            <div class="col table-2 mt-2" data-label="Status">
-                                @if ($data->active == '1')
-                                    {{ Carbon\Carbon::parse($data->date)->format('H:i:s') ?? null }}
-                                @else
-                                    Belum Hadir
-                                @endif
-                            </div>
-                            <div class="col table-2 mt-2" data-label="Deskripsi">{{ $data->description ?? null }}</div>
-                            <div class="col table-2" data-label="">
-                                <!-- Attendance Dropdown -->
-                                <select name="status" class="form-control" required>
-                                    <option value="1" {{ $data->active == '1' ? 'selected' : '' }}>Hadir</option>
-                                    <option value="0" {{ $data->active == '0' ? 'selected' : '' }}>Tidak Hadir</option>
-                                </select>
-                            </div>
-                            <div class="col table-2" data-label="">
-                                <!-- Description Input -->
-                                <input type="text" name="description" class="form-control" placeholder="Deskripsi"
-                                    value="{{ $data->description ?? '' }}">
-                            </div>
+			<form method="POST" action="{{ route('team-attendance.bulk-update') }}">
+				@csrf
+				<div class="row">
+					@foreach ($attendance as $key => $data)
+						<div class="col col-12 col-lg-4 col-md-6 justify-content-md-center attendance">
+							<div class="col col-7" data-label="Nama">{{ $data->name ?? null }}</div>
+							<div class="col col-3" data-label="Kehadiran">
+								@if ($data->active == '0')
+									Belum Hadir
+								@else
+									{{ \Carbon\Carbon::parse($data->date)->format('H:i:s') }}
+								@endif
+							</div>
 
-                            <div class="col table-2" data-label="Action">
-                                <!-- Submit Button -->
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
-                        </li>
-                    </form>
-                @endforeach
-            </ul>
+							<div class="col col-2" data-label="Action" style="text-align: center;">
+								<input name="attendance_ids[]" type="checkbox" value="{{ $data->id }}">
+							</div>
+						</div>
+					@endforeach
 
-            <div class="row justify-content-md-center event">
-                <div class="col col-md-6">Hadir = {{ $present }}</div>
-                <div class="col col-md-6">Belum Hadir = {{ $absent }}</div>
-            </div>
-        </div>
-    </div>
+					<div class="col col-12 col-lg-4 col-md-6 justify-content-md-center attendance">
+						<div class="">Hadir = {{ $present }} | Belum Hadir = {{ $absent }}</div>
+					</div>
+
+					@if ($events->description)
+						<div class="col col-12 justify-content-md-center attendance">
+							<div class="col-12" data-label="Deskripsi">
+								<div class="col col-12" data-label="Deskripsi">{{ $events->description ?? null }}</div>
+							</div>
+						</div>
+					@endif
+
+					<div class="col-12 mt-4 text-center">
+						<button class="btn btn-primary" type="submit">Submit Selected</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 @endsection
 
 @section('js')

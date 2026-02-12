@@ -8,31 +8,32 @@
 							<div>
 								<div class="place-card-title">
 									<span class="place-card-text">
-										<h3><b>Next Topic</b></h3>
-										<span class="place-card-text2">
-											<span>{{ $data->title }}</span>
-										</span><br>
-										<span class="place-card-text1">
-											<span>
-												{!! nl2br(e($data->description)) !!}
-											</span>
-										</span>
-								</div>
+										<h3>Next Topic</h3>
+									</span>
 
+									<span class="place-card-text2">
+										<span>{{ $data->title }}</span>
+									</span><br>
+
+									<span class="place-card-text1">
+										<span>
+											{!! nl2br(e($data->description)) !!}
+										</span>
+									</span>
+								</div>
 								<div class="place-card-date">
 									<span class="place-card-text3">
 										&nbsp;
 										<i class="fa-sharp fa-regular fa-calendar fa-lg"></i>
-										{{ $data->date->format('D d M Y') }}
+										{{ \Carbon\Carbon::parse($data->date)->format('D d M Y') }}
 									</span>
 								</div>
 							</div>
 							<div class="place-card-tema-pd">
-								<a href={{ $data->links }}>
-									<img class="place-card-tema-pd-img" src={{ $data->media }}/ alt="image">
+								<a href="{{ $data->links }}">
+									<img class="place-card-tema-pd-img" src="{{ $data->media }}" alt="image">
 								</a>
 							</div>
-
 						</div>
 					</div>
 				@endforeach
